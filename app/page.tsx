@@ -26,7 +26,7 @@ export default function HomePage() {
         },
       });
       setTimeout(() => setCopied(false), 2000);
-    } catch (_err) {
+    } catch {
       toast.error('コピーに失敗しました', {
         style: {
           background: '#ef4444',
