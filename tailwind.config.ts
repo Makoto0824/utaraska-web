@@ -8,9 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'rocknroll': ['var(--font-rocknroll)', 'sans-serif'],
-      },
+
     },
   },
   plugins: [],

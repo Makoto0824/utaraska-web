@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, RocknRoll_One } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,11 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const rocknRollOne = RocknRoll_One({
-  variable: "--font-rocknroll",
-  weight: "400",
-  subsets: ["latin"],
-});
+
 
 export const metadata: Metadata = {
   title: "ウタラスカ合同会社 - あそびゴコロ至上主義",
@@ -36,7 +32,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${rocknRollOne.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
