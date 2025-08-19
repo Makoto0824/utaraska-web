@@ -15,18 +15,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  async redirects() {
-    return [
-      // ルート（/）に来た  wwwなし だけ を wwwへ
-      {
-        source: "/",
-        has: [{ type: "host", value: "utaraska.co.jp" }],
-        destination: "https://www.utaraska.co.jp",
-        permanent: true
-      }
-    ];
-  },
-
   async rewrites() {
     return [
       // /designshelf は URL を変えずに さくら(サブドメイン) へプロキシ
