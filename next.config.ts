@@ -4,25 +4,35 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains'
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains"
           }
         ]
       }
     ];
   },
+
   async redirects() {
     return [
+      // ルート（/）に来た  wwwなし だけ を wwwへ
       {
         source: "/",
-        has: [
-          { "type": "host", "value": "utaraska.co.jp" }
-        ],
+        has: [{ type: "host", value: "utaraska.co.jp" }],
         destination: "https://www.utaraska.co.jp",
         permanent: true
+      }
+    ];
+  },
+
+  async rewrites() {
+    return [
+      // /designshelf は URL を変えずに さくら(サブドメイン) へプロキシ
+      {
+        source: "/designshelf/:path*",
+        destination: "https://designshelf.utaraska.co.jp/:path*"
       }
     ];
   }
