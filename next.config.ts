@@ -17,14 +17,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/:path*',
+        source: "/",
         has: [
-          {
-            type: 'host',
-            value: 'utaraska.co.jp'
-          }
+          { "type": "host", "value": "utaraska.co.jp" }
         ],
-        destination: 'https://www.utaraska.co.jp/:path*',
+        destination: "https://www.utaraska.co.jp",
         permanent: true
       }
     ];
