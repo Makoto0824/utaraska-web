@@ -13,16 +13,6 @@ const nextConfig: NextConfig = {
         ]
       }
     ];
-  },
-
-  async rewrites() {
-    return [
-      // /designshelf は URL を変えずに さくら(サブドメイン) へプロキシ
-      {
-        source: "/designshelf/:path*",
-        destination: "https://designshelf.utaraska.co.jp/:path*"
-      }
-    ];
   }
 };
 
