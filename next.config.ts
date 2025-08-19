@@ -13,6 +13,21 @@ const nextConfig: NextConfig = {
         ]
       }
     ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'utaraska.co.jp'
+          }
+        ],
+        destination: 'https://www.utaraska.co.jp/:path*',
+        permanent: true
+      }
+    ];
   }
 };
 
