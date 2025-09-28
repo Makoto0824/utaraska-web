@@ -8,23 +8,17 @@ export default function Brands() {
     {
       name: "ゆるスタイル・ジャパン",
       description: "伝統的な日本のモチーフを、かわいくデフォルメしたポップアートデザインを展開するブランド。和風キャラクターアートの新しい表現を追求します。",
-      image: "/designshelf/images/tee1.png",
-      link: "/designshelf/brands/yuru-style-japan",
-      color: "from-pink-100 to-purple-100"
+      link: "/designshelf/brands/yuru-style-japan"
     },
     {
       name: "Japanese Art Studio",
       description: "浮世絵や日本画の伝統を現代的なアート表現で再構築。サイケデリックな色彩と幻想的な世界観が特徴のブランドです。",
-      image: "/designshelf/images/tee21.png",
-      link: "/designshelf/brands/japanese-art-studio",
-      color: "from-blue-100 to-cyan-100"
+      link: "/designshelf/brands/japanese-art-studio"
     },
     {
       name: "ワロタ商店",
       description: "「おもしろ」「ギャグ」「ことわざ逆」「パロディ」「ユーモア」「遊び心」をテーマにした、オリジナルグッズブランドです。",
-      image: "/designshelf/images/tee13.png",
-      link: "/designshelf/brands/warota-shoten",
-      color: "from-yellow-100 to-orange-100"
+      link: "/designshelf/brands/warota-shoten"
     }
   ];
 
@@ -79,27 +73,14 @@ export default function Brands() {
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {brands.map((brand, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
-                <div className={`h-48 bg-gradient-to-br ${brand.color} flex items-center justify-center`}>
-                  <Image 
-                    src={brand.image} 
-                    alt={brand.name}
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <div className="p-6">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-3">{brand.name}</h2>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{brand.description}</p>
-                  <Link 
-                    href={brand.link}
-                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-                  >
-                    ブランドページを見る
-                  </Link>
-                </div>
-              </div>
+              <Link 
+                key={index} 
+                href={brand.link}
+                className="bg-white rounded-lg shadow-md p-8 text-center hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 no-underline"
+              >
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">{brand.name}</h2>
+                <p className="text-gray-600 leading-relaxed">{brand.description}</p>
+              </Link>
             ))}
           </div>
         </section>
@@ -120,25 +101,34 @@ export default function Brands() {
       </main>
 
       {/* フッター */}
-      <footer className="bg-gray-800 text-white py-12 mt-16">
+      <footer className="bg-gray-100 py-12 mt-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">ウタラスカ合同会社</h3>
-              <p className="text-gray-300 mb-2">〒150-0001 東京都渋谷区神宮前4-18-9</p>
-              <p className="text-gray-300">contact@utaraska.co.jp</p>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-center md:text-left mb-4 md:mb-0">
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">Design Shelf</h2>
+              <p className="text-gray-600">Amazon Merch on Demand Collection</p>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
-              <ul className="space-y-2">
-                <li><Link href="/designshelf/brands" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
-                <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
-                <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link></li>
-              </ul>
+            <div className="flex gap-6">
+              <a 
+                href="https://x.com/utaraska" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                X
+              </a>
+              <a 
+                href="https://www.instagram.com/designshelf2025/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                Instagram
+              </a>
+              <Link href="/" className="text-gray-600 hover:text-gray-800 transition-colors">
+                お問い合わせ
+              </Link>
             </div>
-          </div>
-          <div className="text-center pt-8 border-t border-gray-700">
-            <p className="text-gray-400">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
           </div>
         </div>
       </footer>
