@@ -75,7 +75,7 @@ export default function DesignShelf() {
     setIsZoomed(!isZoomed);
   };
 
-  // 元のサイトと同じ順序で24商品のデータ（正しいAmazonリンク付き）
+  // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products = [
     {
       id: 24,
@@ -155,8 +155,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee2_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3YOiNmd",
-      features: ["商品2の特徴1", "商品2の特徴2"],
-      description: "商品2の詳細説明です。"
+      features: [
+        "日本の伝統的なお面を可愛くデフォルメしたキャラクターアート",
+        "能面や歌舞伎の面をモチーフにした和風ポップデザイン"
+      ],
+      description: "日本の伝統芸能に欠かせないお面を、現代のファッションに合うよう可愛くデフォルメしたデザイン。能面や歌舞伎の面の特徴を活かしながらも、親しみやすいキャラクターとして再構築しました。"
     },
     {
       id: 3,
@@ -166,8 +169,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee3_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4jV8sNP",
-      features: ["商品3の特徴1", "商品3の特徴2"],
-      description: "商品3の詳細説明です。"
+      features: [
+        "威厳ある虎を可愛くデフォルメした和風デザイン",
+        "左右対称の配置でバランスの取れた構図"
+      ],
+      description: "虎の威厳と美しさを保ちながらも、親しみやすい表情でデフォルメした和風デザイン。左右対称の配置でバランスが良く、和風テイストを好む方におすすめです。"
     },
     {
       id: 4,
@@ -177,8 +183,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee4_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/44IDOm1",
-      features: ["商品4の特徴1", "商品4の特徴2"],
-      description: "商品4の詳細説明です。"
+      features: [
+        "仏教の阿修羅を可愛くデフォルメしたユニークなデザイン",
+        "伝統的な仏像の特徴を活かした和風アート"
+      ],
+      description: "仏教の阿修羅像を、現代のファッションに合うよう可愛くデフォルメしたユニークなデザイン。伝統的な仏像の特徴を保ちながらも、親しみやすいキャラクターとして再構築しました。"
     },
     {
       id: 5,
@@ -188,8 +197,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee5_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4kszcVL",
-      features: ["商品5の特徴1", "商品5の特徴2"],
-      description: "商品5の詳細説明です。"
+      features: [
+        "龍と虎の対決をテーマにした和風キャラクターアート",
+        "左右対称の配置でバランスの取れた構図"
+      ],
+      description: "龍と虎の対決をテーマにした和風キャラクターアート。左右対称の配置でバランスが良く、和風テイストを好む方におすすめのデザインです。"
     },
     {
       id: 6,
@@ -199,8 +211,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee6_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3ZorvYq",
-      features: ["商品6の特徴1", "商品6の特徴2"],
-      description: "商品6の詳細説明です。"
+      features: [
+        "龍の顔を対称に配置した和風ポップアート",
+        "ミニマルで印象的なデザイン"
+      ],
+      description: "龍の顔を対称に配置した和風ポップアート。ミニマルで印象的なデザインで、和風テイストを好む方におすすめです。"
     },
     {
       id: 7,
@@ -210,8 +225,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee7_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4mmNbOG",
-      features: ["商品7の特徴1", "商品7の特徴2"],
-      description: "商品7の詳細説明です。"
+      features: [
+        "虎の顔を対称に配置した和風アニマルデザイン",
+        "左右対称の配置でバランスの取れた構図"
+      ],
+      description: "虎の顔を対称に配置した和風アニマルデザイン。左右対称の配置でバランスが良く、和風テイストを好む方におすすめです。"
     },
     {
       id: 8,
@@ -221,8 +239,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee8_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/44I7S1h",
-      features: ["商品8の特徴1", "商品8の特徴2"],
-      description: "商品8の詳細説明です。"
+      features: [
+        "浮世絵の役者絵をサイケデリックアートで再構築",
+        "伝統的な和風要素を現代的にアレンジ"
+      ],
+      description: "浮世絵の役者絵をサイケデリックアートで再構築した和風ビジュアル。伝統的な和風要素を現代的にアレンジし、個性的なファッションアイテムとして仕上げました。"
     },
     {
       id: 9,
@@ -232,8 +253,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee9_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4mhTnrn",
-      features: ["商品9の特徴1", "商品9の特徴2"],
-      description: "商品9の詳細説明です。"
+      features: [
+        "葛飾北斎の「神奈川沖浪裏」をサイケデリックアートで再構築",
+        "富士山と波をモチーフにした和風ビジュアル"
+      ],
+      description: "葛飾北斎の「神奈川沖浪裏」をサイケデリックアートで再構築した和風ビジュアル。富士山と波をモチーフにした伝統的な和風要素を現代的にアレンジしました。"
     },
     {
       id: 10,
@@ -243,8 +267,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee10_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4ktKJUX",
-      features: ["商品10の特徴1", "商品10の特徴2"],
-      description: "商品10の詳細説明です。"
+      features: [
+        "浮世絵の美人画をネオジャパネスクスタイルで再構築",
+        "茶道をテーマにした和風アート"
+      ],
+      description: "浮世絵の美人画をネオジャパネスクスタイルで再構築した和風アート。茶道をテーマにした伝統的な和風要素を現代的にアレンジしました。"
     },
     {
       id: 11,
@@ -254,8 +281,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee11_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4k17XBV",
-      features: ["商品11の特徴1", "商品11の特徴2"],
-      description: "商品11の詳細説明です。"
+      features: [
+        "富士山をサイケデリック浮世絵で表現",
+        "ネオンアートスタイルの和風デザイン"
+      ],
+      description: "富士山をサイケデリック浮世絵で表現した和風ネオンアート。伝統的な和風要素を現代的にアレンジし、個性的なファッションアイテムとして仕上げました。"
     },
     {
       id: 12,
@@ -265,8 +295,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee12_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4j90pLY",
-      features: ["商品12の特徴1", "商品12の特徴2"],
-      description: "商品12の詳細説明です。"
+      features: [
+        "武士・サムライをサイケデリックアートで表現",
+        "ポップアートファッションに合う和風デザイン"
+      ],
+      description: "武士・サムライをサイケデリックアートで表現したポップアートファッション。伝統的な和風要素を現代的にアレンジし、個性的なファッションアイテムとして仕上げました。"
     },
     {
       id: 13,
@@ -276,8 +309,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee13_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/43eKqHT",
-      features: ["商品13の特徴1", "商品13の特徴2"],
-      description: "商品13の詳細説明です。"
+      features: [
+        "「笑う門には福来たる」を「笑うカバには福きたる」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「笑う門には福来たる」を「笑うカバには福きたる」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
     },
     {
       id: 14,
@@ -287,8 +323,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee14_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3HetJDv",
-      features: ["商品14の特徴1", "商品14の特徴2"],
-      description: "商品14の詳細説明です。"
+      features: [
+        "「二兎を追うものは一兎をも得ず」を「二兎を追うものはワンダフル」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「二兎を追うものは一兎をも得ず」を「二兎を追うものはワンダフル」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインです。"
     },
     {
       id: 15,
@@ -298,8 +337,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee15_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4j8jHRK",
-      features: ["商品15の特徴1", "商品15の特徴2"],
-      description: "商品15の詳細説明です。"
+      features: [
+        "「犬も歩けば棒に当たる」を「犬も歩けばカーニバル」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「犬も歩けば棒に当たる」を「犬も歩けばカーニバル」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントに最適です。"
     },
     {
       id: 16,
@@ -309,8 +351,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee16_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/44HqiiF",
-      features: ["商品16の特徴1", "商品16の特徴2"],
-      description: "商品16の詳細説明です。"
+      features: [
+        "「棚からぼたもち」を「棚から豚キムチ」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「棚からぼたもち」を「棚から豚キムチ」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
     },
     {
       id: 17,
@@ -320,8 +365,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee17_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/43Ce8GD",
-      features: ["商品17の特徴1", "商品17の特徴2"],
-      description: "商品17の詳細説明です。"
+      features: [
+        "「塵も積もれば山となる」を「塵も積もれば筋肉になる」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「塵も積もれば山となる」を「塵も積もれば筋肉になる」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントに最適です。"
     },
     {
       id: 18,
@@ -331,8 +379,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee18_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3H6FxI1",
-      features: ["商品18の特徴1", "商品18の特徴2"],
-      description: "商品18の詳細説明です。"
+      features: [
+        "「花より団子」を「花より男子」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「花より団子」を「花より男子」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
     },
     {
       id: 19,
@@ -342,8 +393,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee19_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3H4CHU4",
-      features: ["商品19の特徴1", "商品19の特徴2"],
-      description: "商品19の詳細説明です。"
+      features: [
+        "「泣きっ面に蜂」を「泣きっつらにポチっとな」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「泣きっ面に蜂」を「泣きっつらにポチっとな」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
     },
     {
       id: 20,
@@ -353,8 +407,11 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee20_design.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4dqyHcx",
-      features: ["商品20の特徴1", "商品20の特徴2"],
-      description: "商品20の詳細説明です。"
+      features: [
+        "「知らぬが仏」を「知らぬが日焼け」にダジャレ化",
+        "ことわざ×ギャグアートのユニークなデザイン"
+      ],
+      description: "「知らぬが仏」を「知らぬが日焼け」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
     }
   ];
 
