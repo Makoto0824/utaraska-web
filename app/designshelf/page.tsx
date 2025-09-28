@@ -75,7 +75,7 @@ export default function DesignShelf() {
     setIsZoomed(!isZoomed);
   };
 
-  // 元のサイトと同じ24商品のデータ（実際のAmazonリンク付き）
+  // 元のサイトと同じ24商品のデータ（実際の商品名とAmazonリンク付き）
   const products = [
     {
       id: 24,
@@ -149,7 +149,7 @@ export default function DesignShelf() {
     },
     {
       id: 2,
-      title: "デザインTシャツ 2",
+      title: "日本のお面 デフォルメ イラスト 和風ポップデザイン JAPANESE MASKS アート Tシャツ",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee2.png",
       designImage: "/designshelf/images/tee2_design.png",
@@ -160,7 +160,7 @@ export default function DesignShelf() {
     },
     {
       id: 3,
-      title: "デザインTシャツ 3",
+      title: "和風タイガーフェイス – ゆるかわ虎デザイン Tシャツ",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee3.png",
       designImage: "/designshelf/images/tee3_design.png",
@@ -171,7 +171,7 @@ export default function DesignShelf() {
     },
     {
       id: 4,
-      title: "デザインTシャツ 4",
+      title: "阿修羅 ゆるキャラ風 仏像イラスト 和風ユニーク Tシャツ",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee4.png",
       designImage: "/designshelf/images/tee4_design.png",
@@ -182,7 +182,7 @@ export default function DesignShelf() {
     },
     {
       id: 5,
-      title: "デザインTシャツ 5",
+      title: "龍 虎 対決 和風キャラクターアート デフォルメポップデザイン Tシャツ",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee5.png",
       designImage: "/designshelf/images/tee5_design.png",
@@ -193,7 +193,7 @@ export default function DesignShelf() {
     },
     {
       id: 6,
-      title: "デザインTシャツ 6",
+      title: "龍 ドラゴン 顔 対称 ポップアート 和風ユニークデザイン Tシャツ",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee6.png",
       designImage: "/designshelf/images/tee6_design.png",
@@ -204,7 +204,7 @@ export default function DesignShelf() {
     },
     {
       id: 7,
-      title: "デザインTシャツ 7",
+      title: "虎 タイガー 顔 対称 ポップアート 和風アニマルデザイン Tシャツ",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee7.png",
       designImage: "/designshelf/images/tee7_design.png",
@@ -215,8 +215,8 @@ export default function DesignShelf() {
     },
     {
       id: 8,
-      title: "デザインTシャツ 8",
-      brand: "ゆるスタイル・ジャパン",
+      title: "浮世絵 役者絵 サイケデリックアート 和風ビジュアル Tシャツ",
+      brand: "Japanese Art Studio",
       image: "/designshelf/images/tee8.png",
       designImage: "/designshelf/images/tee8_design.png",
       price: "¥2,300",
@@ -226,7 +226,7 @@ export default function DesignShelf() {
     },
     {
       id: 9,
-      title: "デザインTシャツ 9",
+      title: "浮世絵 波 富士山 サイケデリックアート 和風ビジュアル Tシャツ",
       brand: "Japanese Art Studio",
       image: "/designshelf/images/tee9.png",
       designImage: "/designshelf/images/tee9_design.png",
@@ -237,7 +237,7 @@ export default function DesignShelf() {
     },
     {
       id: 10,
-      title: "デザインTシャツ 10",
+      title: "美人画 茶道 浮世絵風 ネオジャパネスク 和風アートTシャツ",
       brand: "Japanese Art Studio",
       image: "/designshelf/images/tee10.png",
       designImage: "/designshelf/images/tee10_design.png",
@@ -248,7 +248,7 @@ export default function DesignShelf() {
     },
     {
       id: 11,
-      title: "デザインTシャツ 11",
+      title: "富士山 サイケデリック浮世絵 和風ネオンアート Tシャツ",
       brand: "Japanese Art Studio",
       image: "/designshelf/images/tee11.png",
       designImage: "/designshelf/images/tee11_design.png",
@@ -259,7 +259,7 @@ export default function DesignShelf() {
     },
     {
       id: 12,
-      title: "デザインTシャツ 12",
+      title: "武士 サムライ サイケデリックアート ポップアートファッション 和風",
       brand: "Japanese Art Studio",
       image: "/designshelf/images/tee12.png",
       designImage: "/designshelf/images/tee12_design.png",
@@ -270,8 +270,8 @@ export default function DesignShelf() {
     },
     {
       id: 13,
-      title: "デザインTシャツ 13",
-      brand: "Japanese Art Studio",
+      title: "【おもしろ】笑うカバには福きたる 笑う門には福来たるのダジャレ ことわざ×ギャグアート プレゼント・ギフトにも最適",
+      brand: "ワロタ商店",
       image: "/designshelf/images/tee13.png",
       designImage: "/designshelf/images/tee13_design.png",
       price: "¥2,300",
@@ -281,8 +281,8 @@ export default function DesignShelf() {
     },
     {
       id: 14,
-      title: "デザインTシャツ 14",
-      brand: "Japanese Art Studio",
+      title: "【おもしろ】二兎を追うものはワンダフル 二兎を追うものは一兎をも得ずのダジャレデザイン ことわざ×ギャグアート",
+      brand: "ワロタ商店",
       image: "/designshelf/images/tee14.png",
       designImage: "/designshelf/images/tee14_design.png",
       price: "¥2,300",
@@ -292,8 +292,8 @@ export default function DesignShelf() {
     },
     {
       id: 15,
-      title: "デザインTシャツ 15",
-      brand: "Japanese Art Studio",
+      title: "【おもしろ】犬も歩けばカーニバル 犬の歩けば棒に当たるのダジャレデザイン ことわざ×ギャグ アート プレゼントに最適",
+      brand: "ワロタ商店",
       image: "/designshelf/images/tee15.png",
       designImage: "/designshelf/images/tee15_design.png",
       price: "¥2,300",
@@ -303,7 +303,7 @@ export default function DesignShelf() {
     },
     {
       id: 16,
-      title: "デザインTシャツ 16",
+      title: "【おもしろ】棚から豚キムチ 棚からぼたもちのダジャレデザイン ことわざ×ギャグアート プレゼント・ギフトにも最適",
       brand: "ワロタ商店",
       image: "/designshelf/images/tee16.png",
       designImage: "/designshelf/images/tee16_design.png",
@@ -314,7 +314,7 @@ export default function DesignShelf() {
     },
     {
       id: 17,
-      title: "デザインTシャツ 17",
+      title: "【おもしろ】塵も積もれば筋肉になる 塵も積もれば山となるのダジャレデザイン ことわざ×ギャグアート プレゼントに最適",
       brand: "ワロタ商店",
       image: "/designshelf/images/tee17.png",
       designImage: "/designshelf/images/tee17_design.png",
@@ -325,7 +325,7 @@ export default function DesignShelf() {
     },
     {
       id: 18,
-      title: "デザインTシャツ 18",
+      title: "【おもしろ】花より男子 花より団子のダジャレデザイン ことわざ×ギャグアートプレゼント・ギフトにも最適",
       brand: "ワロタ商店",
       image: "/designshelf/images/tee18.png",
       designImage: "/designshelf/images/tee18_design.png",
@@ -336,7 +336,7 @@ export default function DesignShelf() {
     },
     {
       id: 19,
-      title: "デザインTシャツ 19",
+      title: "【おもしろ】泣きっつらにポチっとな 泣きっ面に蜂のダジャレデザイン ことわざ×ギャグアート プレゼント・ギフトにも最適",
       brand: "ワロタ商店",
       image: "/designshelf/images/tee19.png",
       designImage: "/designshelf/images/tee19_design.png",
@@ -347,7 +347,7 @@ export default function DesignShelf() {
     },
     {
       id: 20,
-      title: "デザインTシャツ 20",
+      title: "【おもしろ】知らぬが日焼け 知らぬが仏のダジャレデザイン ことわざ×ギャグアート プレゼント・ギフトにも最適",
       brand: "ワロタ商店",
       image: "/designshelf/images/tee20.png",
       designImage: "/designshelf/images/tee20_design.png",
