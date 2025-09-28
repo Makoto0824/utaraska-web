@@ -539,14 +539,50 @@ export default function DesignShelf() {
                     className={`overflow-hidden transition-all duration-300 ${
                       expandedDetails === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onMouseUp={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
                   >
                     <div className="mb-4">
                       {product.features.map((feature, idx) => (
-                        <p key={idx} className="text-sm text-gray-600 mb-2">{feature}</p>
+                        <p 
+                          key={idx} 
+                          className="text-sm text-gray-600 mb-2"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
+                        >
+                          {feature}
+                        </p>
                       ))}
                     </div>
-                    <p className="text-sm text-gray-700 leading-relaxed">{product.description}</p>
+                    <p 
+                      className="text-sm text-gray-700 leading-relaxed"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }}
+                    >
+                      {product.description}
+                    </p>
                   </div>
                   
                   <div className="mt-auto pt-4 flex items-center justify-between">
