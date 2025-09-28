@@ -2,166 +2,217 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function DesignShelf() {
+  const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
+
+  const toggleDetails = (index: number) => {
+    setExpandedDetails(expandedDetails === index ? null : index);
+  };
+
+  const products = [
+    {
+      id: 24,
+      title: "ゆるい和風ドラゴンのイラストアート 龍デザイン Tシャツ",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee24.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4nN1Zqw",
+      features: [
+        "ユーモラスな表情が魅力の、ゆるくて親しみやすい龍のイラスト",
+        "和風テイストを取り入れたポップで個性的なドラゴンデザイン"
+      ],
+      description: "日本的な龍をモチーフにしながらも、親しみやすくゆるい表情で描かれたイラストが特徴。威圧感のないデフォルメスタイルのドラゴンが、ユーモアと個性を添えます。和風・アジア風のデザインが好きな方や、かわいい系のキャラクターTシャツを探している方におすすめの一枚です。"
+    },
+    {
+      id: 21,
+      title: "戦国武将 兜 和風 侍 ピクセルアート #1 Tシャツ",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee21.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4kmiHeh",
+      features: [
+        "時の天下人が\"日本一の兵\"と称えた、戦国屈指の武将の兜をピクセルアートで表現したデザイン",
+        "ドット調のアートスタイルで、レトロゲーム風のユニークな戦国モチーフ"
+      ],
+      description: "戦国時代の英雄の特徴的な兜を、ポップで懐かしいピクセルアートとしてデザインしました。赤備えと鹿角のシルエットを強調し、現代のファッションに落とし込んだ和風デザインです。戦国ファンやゲーム好きにもおすすめ。"
+    },
+    {
+      id: 22,
+      title: "戦国武将 兜 和風 侍 ピクセルアート #2 Tシャツ",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee22.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4kr7ZTF",
+      features: [
+        "「愛」の前立てが印象的な戦国武将の兜をピクセルアートで再現",
+        "シンプルな配置で、戦国ファンにもストリートファッションにもマッチ"
+      ],
+      description: "義と愛、戦国時代の名将が着用した兜を、懐かしさ漂うピクセルアートでデザインしました。兜正面には「愛」の文字が力強く表現されており、忠義と信念を象徴します。和風デザインとしてだけでなく、個性的なファッションアイテムとしても映える一枚です。武将ファン、歴史好き、和モチーフ好きにおすすめのデザインです。プレゼントやギフトにも最適です。"
+    },
+    {
+      id: 23,
+      title: "戦国武将 兜 和風 侍 ピクセルアート #3 Tシャツ",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee23.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/43ML12e",
+      features: [
+        "特徴的な鹿角兜をドット絵で再現したミニマルで印象的なデザイン。",
+        "戦国・武将ファン必見。和風でレトロなピクセルアートが胸元に映える。"
+      ],
+      description: "戦国最強と名高い戦国武将の兜をピクセルアートで表現したグラフィックデザイン。左右対称の鹿角が圧倒的な存在感を放ち、戦国時代の力強さと美しさを現代風にアレンジ。ドット絵のワンポイントデザインは、カジュアルながらも個性を主張し、和風テイストや侍モチーフのアイテムを好む方にぴったりです。戦国武将ファンやレトロゲーマーへのプレゼントやギフトにも最適。"
+    },
+    {
+      id: 1,
+      title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee1.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3xQZ8Kj",
+      features: [
+        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
+        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
+      ],
+      description: "日本の伝統的な風神・雷神を、現代のポップアートスタイルで可愛くデフォルメしたデザイン。威厳ある神々を親しみやすいキャラクターとして再構築し、和風テイストを保ちながらもモダンなファッションアイテムとして仕上げました。"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-pink-50 to-cyan-100">
-      <div className="designshelf-container">
-        {/* ヘッダー */}
-        <header className="bg-white/90 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-          <nav>
-            <div className="max-w-6xl mx-auto flex items-center justify-between px-8 py-4">
-              <Link href="/" className="flex items-center">
-                <Image 
-                  src="/images/logo.png" 
-                  alt="ウタラスカ合同会社" 
-                  width={120} 
-                  height={40}
-                  className="h-10 w-auto"
-                />
-              </Link>
-              <div className="flex items-center gap-8">
-                <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">ホーム</Link>
-                <div className="relative group">
-                  <span className="text-gray-700 hover:text-blue-600 font-medium transition-colors cursor-pointer">ブランド</span>
-                  <div className="absolute top-full left-0 bg-white rounded-lg shadow-lg p-4 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                    <div className="flex flex-col gap-2">
-                      <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">ゆるスタイル・ジャパン</Link>
-                      <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">Japanese Art Studio</Link>
-                      <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">ワロタ商店</Link>
-                      <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">詳しくはこちら</Link>
-                    </div>
-                  </div>
-                </div>
-                <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">お問い合わせ</Link>
-                <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">運営者情報</Link>
-              </div>
-            </div>
-          </nav>
-        </header>
-
-        {/* メインコンテンツ */}
-        <main>
-          {/* バナースライドショー */}
-          <section className="relative h-96 overflow-hidden">
-            <div className="relative w-full h-full">
+    <div className="min-h-screen bg-gray-100">
+      {/* ヘッダー */}
+      <header className="bg-white shadow-sm">
+        <nav>
+          <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+            <Link href="/" className="flex items-center">
               <Image 
-                src="/designshelf/images/banner1.jpg" 
-                alt="Design Shelf Collection" 
-                fill
-                className="object-cover"
+                src="/images/logo.png" 
+                alt="Design Shelf" 
+                width={120} 
+                height={60}
+                className="h-15 w-auto hover:scale-105 transition-transform"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">Design Shelf</h1>
-                  <p className="text-2xl mb-8 drop-shadow-md">Amazon Merch Collection</p>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
-                    コレクションを見る
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* ブランド紹介セクション */}
-          <section className="py-16 bg-white/80 backdrop-blur-sm">
-            <div className="max-w-6xl mx-auto px-8">
-              <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">ブランド一覧</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center p-8 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition-all duration-300">
-                  <Image 
-                    src="/designshelf/images/tee1.png" 
-                    alt="ゆるスタイル・ジャパン" 
-                    width={300} 
-                    height={300}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <h3 className="text-2xl font-bold mb-4 text-gray-800">ゆるスタイル・ジャパン</h3>
-                  <p className="text-gray-600 mb-6">日本のゆるい文化をテーマにしたデザイン</p>
-                  <Link href="/designshelf" className="text-blue-600 font-semibold hover:text-blue-800 transition-colors">詳細を見る</Link>
-                </div>
-                
-                <div className="text-center p-8 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition-all duration-300">
-                  <Image 
-                    src="/designshelf/images/tee2.png" 
-                    alt="Japanese Art Studio" 
-                    width={300} 
-                    height={300}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <h3 className="text-2xl font-bold mb-4 text-gray-800">Japanese Art Studio</h3>
-                  <p className="text-gray-600 mb-6">伝統的な日本美術をモダンにアレンジ</p>
-                  <Link href="/designshelf" className="text-blue-600 font-semibold hover:text-blue-800 transition-colors">詳細を見る</Link>
-                </div>
-                
-                <div className="text-center p-8 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition-all duration-300">
-                  <Image 
-                    src="/designshelf/images/tee3.png" 
-                    alt="ワロタ商店" 
-                    width={300} 
-                    height={300}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <h3 className="text-2xl font-bold mb-4 text-gray-800">ワロタ商店</h3>
-                  <p className="text-gray-600 mb-6">笑いをテーマにしたユニークなデザイン</p>
-                  <Link href="/designshelf" className="text-blue-600 font-semibold hover:text-blue-800 transition-colors">詳細を見る</Link>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* 商品グリッド */}
-          <section className="py-16">
-            <div className="max-w-6xl mx-auto px-8">
-              <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">人気商品</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {Array.from({ length: 12 }, (_, i) => (
-                  <div key={i} className="bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:transform hover:-translate-y-2 transition-all duration-300">
-                    <Image 
-                      src={`/designshelf/images/tee${i + 1}.png`} 
-                      alt={`商品 ${i + 1}`} 
-                      width={256} 
-                      height={256}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-gray-800">デザインTシャツ {i + 1}</h3>
-                      <p className="text-xl font-bold text-blue-600 mb-4">¥2,980</p>
-                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors">
-                        Amazonで購入
-                      </button>
-                    </div>
+            </Link>
+            <div className="flex items-center gap-6">
+              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
+              <div className="relative group">
+                <span className="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">ブランド</span>
+                <div className="absolute top-full left-0 bg-white rounded-lg shadow-lg p-4 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="flex flex-col gap-2">
+                    <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">ゆるスタイル・ジャパン</Link>
+                    <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">Japanese Art Studio</Link>
+                    <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">ワロタ商店</Link>
+                    <Link href="/designshelf" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">詳しくはこちら</Link>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </section>
-        </main>
-
-        {/* フッター */}
-        <footer className="bg-gray-800 text-white py-12">
-          <div className="max-w-6xl mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div>
-                <h3 className="text-xl font-bold mb-4">ウタラスカ合同会社</h3>
-                <p className="text-gray-300 mb-2">〒150-0001 東京都渋谷区神宮前4-18-9</p>
-                <p className="text-gray-300">contact@utaraska.co.jp</p>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
-                <ul className="space-y-2">
-                  <li><Link href="/designshelf" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
-                  <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
-                  <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="text-center pt-8 border-t border-gray-700">
-              <p className="text-gray-400">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
+              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
             </div>
           </div>
-        </footer>
-      </div>
+        </nav>
+      </header>
+
+      {/* メインコンテンツ */}
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        {/* バナースライドショー */}
+        <section className="mb-12">
+          <div className="relative w-full h-96 overflow-hidden rounded-lg shadow-lg">
+            <Image 
+              src="/designshelf/images/banner5.jpg" 
+              alt="セールバナー" 
+              fill
+              className="object-cover"
+            />
+          </div>
+        </section>
+
+        {/* 商品セクション */}
+        <section>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">すべてのデザイン</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto">
+                <div className="p-4 flex justify-center items-center h-72 bg-white">
+                  <Image 
+                    src={product.image} 
+                    alt={product.title}
+                    width={256}
+                    height={256}
+                    className="object-contain hover:scale-105 transition-transform"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
+                  <p className="text-blue-600 font-medium mb-4">{product.brand}</p>
+                  
+                  <button 
+                    onClick={() => toggleDetails(index)}
+                    className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0 after:transition-transform after:duration-300"
+                    style={{ 
+                      transform: expandedDetails === index ? 'rotate(180deg)' : 'rotate(0deg)' 
+                    }}
+                  >
+                    商品詳細
+                  </button>
+                  
+                  <div className={`overflow-hidden transition-all duration-300 ${
+                    expandedDetails === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                  }`}>
+                    <div className="mb-4">
+                      {product.features.map((feature, idx) => (
+                        <p key={idx} className="text-sm text-gray-600 mb-2">{feature}</p>
+                      ))}
+                    </div>
+                    <p className="text-sm text-gray-700 leading-relaxed">{product.description}</p>
+                  </div>
+                  
+                  <div className="mt-auto pt-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl font-bold text-gray-800">{product.price}</span>
+                      <span className="text-sm text-gray-500">税込</span>
+                      <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">NEW</span>
+                    </div>
+                    <a 
+                      href={product.amazonLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors"
+                    >
+                      Amazonで見る
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {/* フッター */}
+      <footer className="bg-gray-800 text-white py-12 mt-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">ウタラスカ合同会社</h3>
+              <p className="text-gray-300 mb-2">〒150-0001 東京都渋谷区神宮前4-18-9</p>
+              <p className="text-gray-300">contact@utaraska.co.jp</p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
+              <ul className="space-y-2">
+                <li><Link href="/designshelf" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
+                <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
+                <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center pt-8 border-t border-gray-700">
+            <p className="text-gray-400">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
