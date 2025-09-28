@@ -454,7 +454,7 @@ export default function DesignShelf() {
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* バナースライドショー */}
         <section className="mb-12">
-          <div className="relative w-full h-96 overflow-hidden rounded-lg shadow-lg">
+          <div className="relative w-full h-[500px] overflow-hidden rounded-lg shadow-lg">
             {banners.map((banner, index) => (
               <div
                 key={index}
