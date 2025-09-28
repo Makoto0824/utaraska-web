@@ -524,8 +524,13 @@ export default function DesignShelf() {
                   
                   <button 
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       toggleDetails(index);
+                    }}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                     }}
                     className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0 after:transition-transform after:duration-300"
                     style={{ 
@@ -539,6 +544,7 @@ export default function DesignShelf() {
                     className={`overflow-hidden transition-all duration-300 ${
                       expandedDetails === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
+                    style={{ pointerEvents: 'none' }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -548,6 +554,14 @@ export default function DesignShelf() {
                       e.stopPropagation();
                     }}
                     onMouseUp={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onTouchStart={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onTouchEnd={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
