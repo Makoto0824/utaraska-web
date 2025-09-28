@@ -605,9 +605,9 @@ export default function DesignShelf() {
                       href={product.amazonLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors text-center"
                     >
-                      Amazonで見る
+                      Amazon<br />で見る
                     </a>
                   </div>
                 </div>
