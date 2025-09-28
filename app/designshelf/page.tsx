@@ -75,7 +75,7 @@ export default function DesignShelf() {
     setIsZoomed(!isZoomed);
   };
 
-  // 元のサイトと同じ24商品のデータ（実際の商品名とAmazonリンク付き）
+  // 元のサイトと同じ順序で24商品のデータ（正しいAmazonリンク付き）
   const products = [
     {
       id: 24,
@@ -140,7 +140,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee1.png",
       designImage: "/designshelf/images/tee1_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/3xQZ8Kj",
+      amazonLink: "https://amzn.to/45hj1Gl",
       features: [
         "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
         "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
@@ -154,7 +154,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee2.png",
       designImage: "/designshelf/images/tee2_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/45hj1Gl",
+      amazonLink: "https://amzn.to/3YOiNmd",
       features: ["商品2の特徴1", "商品2の特徴2"],
       description: "商品2の詳細説明です。"
     },
@@ -165,7 +165,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee3.png",
       designImage: "/designshelf/images/tee3_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/3YOiNmd",
+      amazonLink: "https://amzn.to/4jV8sNP",
       features: ["商品3の特徴1", "商品3の特徴2"],
       description: "商品3の詳細説明です。"
     },
@@ -176,7 +176,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee4.png",
       designImage: "/designshelf/images/tee4_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4jV8sNP",
+      amazonLink: "https://amzn.to/44IDOm1",
       features: ["商品4の特徴1", "商品4の特徴2"],
       description: "商品4の詳細説明です。"
     },
@@ -187,7 +187,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee5.png",
       designImage: "/designshelf/images/tee5_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/44IDOm1",
+      amazonLink: "https://amzn.to/4kszcVL",
       features: ["商品5の特徴1", "商品5の特徴2"],
       description: "商品5の詳細説明です。"
     },
@@ -198,7 +198,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee6.png",
       designImage: "/designshelf/images/tee6_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4kszcVL",
+      amazonLink: "https://amzn.to/3ZorvYq",
       features: ["商品6の特徴1", "商品6の特徴2"],
       description: "商品6の詳細説明です。"
     },
@@ -209,7 +209,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee7.png",
       designImage: "/designshelf/images/tee7_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/3ZorvYq",
+      amazonLink: "https://amzn.to/4mmNbOG",
       features: ["商品7の特徴1", "商品7の特徴2"],
       description: "商品7の詳細説明です。"
     },
@@ -220,7 +220,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee8.png",
       designImage: "/designshelf/images/tee8_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4mmNbOG",
+      amazonLink: "https://amzn.to/44I7S1h",
       features: ["商品8の特徴1", "商品8の特徴2"],
       description: "商品8の詳細説明です。"
     },
@@ -231,7 +231,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee9.png",
       designImage: "/designshelf/images/tee9_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/44I7S1h",
+      amazonLink: "https://amzn.to/4mhTnrn",
       features: ["商品9の特徴1", "商品9の特徴2"],
       description: "商品9の詳細説明です。"
     },
@@ -242,7 +242,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee10.png",
       designImage: "/designshelf/images/tee10_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4mhTnrn",
+      amazonLink: "https://amzn.to/4ktKJUX",
       features: ["商品10の特徴1", "商品10の特徴2"],
       description: "商品10の詳細説明です。"
     },
@@ -253,7 +253,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee11.png",
       designImage: "/designshelf/images/tee11_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4ktKJUX",
+      amazonLink: "https://amzn.to/4k17XBV",
       features: ["商品11の特徴1", "商品11の特徴2"],
       description: "商品11の詳細説明です。"
     },
@@ -264,7 +264,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee12.png",
       designImage: "/designshelf/images/tee12_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4k17XBV",
+      amazonLink: "https://amzn.to/4j90pLY",
       features: ["商品12の特徴1", "商品12の特徴2"],
       description: "商品12の詳細説明です。"
     },
@@ -275,7 +275,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee13.png",
       designImage: "/designshelf/images/tee13_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4j90pLY",
+      amazonLink: "https://amzn.to/43eKqHT",
       features: ["商品13の特徴1", "商品13の特徴2"],
       description: "商品13の詳細説明です。"
     },
@@ -286,7 +286,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee14.png",
       designImage: "/designshelf/images/tee14_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/43eKqHT",
+      amazonLink: "https://amzn.to/3HetJDv",
       features: ["商品14の特徴1", "商品14の特徴2"],
       description: "商品14の詳細説明です。"
     },
@@ -297,7 +297,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee15.png",
       designImage: "/designshelf/images/tee15_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/3HetJDv",
+      amazonLink: "https://amzn.to/4j8jHRK",
       features: ["商品15の特徴1", "商品15の特徴2"],
       description: "商品15の詳細説明です。"
     },
@@ -308,7 +308,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee16.png",
       designImage: "/designshelf/images/tee16_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/4j8jHRK",
+      amazonLink: "https://amzn.to/44HqiiF",
       features: ["商品16の特徴1", "商品16の特徴2"],
       description: "商品16の詳細説明です。"
     },
@@ -319,7 +319,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee17.png",
       designImage: "/designshelf/images/tee17_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/44HqiiF",
+      amazonLink: "https://amzn.to/43Ce8GD",
       features: ["商品17の特徴1", "商品17の特徴2"],
       description: "商品17の詳細説明です。"
     },
@@ -330,7 +330,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee18.png",
       designImage: "/designshelf/images/tee18_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/43Ce8GD",
+      amazonLink: "https://amzn.to/3H6FxI1",
       features: ["商品18の特徴1", "商品18の特徴2"],
       description: "商品18の詳細説明です。"
     },
@@ -341,7 +341,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee19.png",
       designImage: "/designshelf/images/tee19_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/3H6FxI1",
+      amazonLink: "https://amzn.to/3H4CHU4",
       features: ["商品19の特徴1", "商品19の特徴2"],
       description: "商品19の詳細説明です。"
     },
@@ -352,7 +352,7 @@ export default function DesignShelf() {
       image: "/designshelf/images/tee20.png",
       designImage: "/designshelf/images/tee20_design.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/3H4CHU4",
+      amazonLink: "https://amzn.to/4dqyHcx",
       features: ["商品20の特徴1", "商品20の特徴2"],
       description: "商品20の詳細説明です。"
     }
