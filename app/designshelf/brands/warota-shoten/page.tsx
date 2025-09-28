@@ -203,8 +203,8 @@ export default function WarotaShoten() {
                   </div>
                 </div>
               </div>
-              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
-              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
+              <Link href="/designshelf/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
+              <Link href="/designshelf/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
             </div>
           </div>
         </nav>

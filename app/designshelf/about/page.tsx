@@ -3,25 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Brands() {
-  const brands = [
-    {
-      name: "ゆるスタイル・ジャパン",
-      description: "伝統的な日本のモチーフを、かわいくデフォルメしたポップアートデザインを展開するブランド。和風キャラクターアートの新しい表現を追求します。",
-      link: "/designshelf/brands/yuru-style-japan"
-    },
-    {
-      name: "Japanese Art Studio",
-      description: "浮世絵や日本画の伝統を現代的なアート表現で再構築。サイケデリックな色彩と幻想的な世界観が特徴のブランドです。",
-      link: "/designshelf/brands/japanese-art-studio"
-    },
-    {
-      name: "ワロタ商店",
-      description: "「おもしろ」「ギャグ」「ことわざ逆」「パロディ」「ユーモア」「遊び心」をテーマにした、オリジナルグッズブランドです。",
-      link: "/designshelf/brands/warota-shoten"
-    }
-  ];
-
+export default function About() {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* ヘッダー */}
@@ -58,46 +40,44 @@ export default function Brands() {
       </header>
 
       {/* メインコンテンツ */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* ページヘッダー */}
-        <section className="mb-12">
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">ブランド一覧</h1>
-            <p className="text-lg text-center text-gray-600 max-w-4xl mx-auto">
-              Design Shelfでは、3つの個性的なブランドが展開されています。それぞれ異なるコンセプトで、日本の文化を現代的に表現したデザインを提供しています。
+      <main className="max-w-4xl mx-auto px-4 py-8">
+        <div className="bg-white rounded-lg shadow-lg p-8">
+          <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">運営者情報</h1>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">Design Shelfについて</h2>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              Design Shelfは、日本の伝統文化と現代アートを融合させたデザインを展開するブランドです。Amazon Merch on Demandを通じて、オリジナルデザインのグッズを販売しています。
             </p>
-          </div>
-        </section>
+            <p className="text-gray-600 leading-relaxed">
+              私たちは、日本の豊かな文化遺産を現代的な表現で再解釈し、新しい価値を創造することを目指しています。
+            </p>
+          </section>
 
-        {/* ブランド一覧 */}
-        <section>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {brands.map((brand, index) => (
-              <Link 
-                key={index} 
-                href={brand.link}
-                className="bg-white rounded-lg shadow-md p-8 text-center hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 no-underline"
-              >
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">{brand.name}</h2>
-                <p className="text-gray-600 leading-relaxed">{brand.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* 全商品へのリンク */}
-        <section className="mt-16">
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">すべての商品を見る</h2>
-            <p className="text-gray-600 mb-6">全ブランドの商品を一覧で確認できます</p>
-            <Link 
-              href="/designshelf"
-              className="inline-block bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-lg font-medium transition-colors"
-            >
-              全商品一覧へ
-            </Link>
-          </div>
-        </section>
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">運営会社情報</h2>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <dl className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <dt className="font-bold text-gray-800 mb-1">社名</dt>
+                  <dd className="text-gray-600 mb-4">utaraska合同会社（ウタラスカ）</dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-gray-800 mb-1">所在地</dt>
+                  <dd className="text-gray-600 mb-4">東京都渋谷区神宮前4-18-9</dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-gray-800 mb-1">事業内容</dt>
+                  <dd className="text-gray-600 mb-4">デジタルイラスト制作、デザイン制作、Webサイト制作、ゲームアプリ開発</dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-gray-800 mb-1">設立日</dt>
+                  <dd className="text-gray-600 mb-4">2021年4月1日</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+        </div>
       </main>
 
       {/* フッター */}
