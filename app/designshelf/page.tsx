@@ -9,6 +9,8 @@ export default function DesignShelf() {
   const [currentBanner, setCurrentBanner] = useState(0);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [popupId, setPopupId] = useState<string | null>(null);
+  const [currentImageType, setCurrentImageType] = useState<'product' | 'design'>('product');
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const banners = [
     { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
@@ -25,37 +27,336 @@ export default function DesignShelf() {
     return () => clearInterval(interval);
   }, [banners.length]);
 
+  // ESCキーでポップアップを閉じる
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && popupImage) {
+        closeImagePopup();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [popupImage]);
+
   const toggleDetails = (index: number) => {
     setExpandedDetails(expandedDetails === index ? null : index);
   };
 
-  const openImagePopup = (imageSrc: string, popupId: string) => {
-    setPopupImage(imageSrc);
-    setPopupId(popupId);
-    document.body.style.overflow = 'hidden';
+  const openImagePopup = (productId: number) => {
+    const product = products.find(p => p.id === productId);
+    if (product) {
+      setPopupImage(product.image);
+      setPopupId(`imagePopup${productId}`);
+      setCurrentImageType('product');
+      setIsZoomed(false);
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   const closeImagePopup = () => {
     setPopupImage(null);
     setPopupId(null);
+    setIsZoomed(false);
     document.body.style.overflow = '';
   };
 
-  // 全24商品のデータ
-  const products = Array.from({ length: 24 }, (_, i) => ({
-    id: i + 1,
-    title: `デザインTシャツ ${i + 1}`,
-    brand: i < 8 ? "ゆるスタイル・ジャパン" : i < 16 ? "Japanese Art Studio" : "ワロタ商店",
-    image: `/designshelf/images/tee${i + 1}.png`,
-    designImage: `/designshelf/images/tee${i + 1}_design.png`,
-    price: "¥2,300",
-    amazonLink: `https://amzn.to/example${i + 1}`,
-    features: [
-      `商品 ${i + 1} の特徴1`,
-      `商品 ${i + 1} の特徴2`
-    ],
-    description: `商品 ${i + 1} の詳細説明です。この商品は高品質なデザインと素材を使用しており、日常使いに最適です。`
-  }));
+  const switchImageType = (type: 'product' | 'design') => {
+    if (!popupId) return;
+    const productId = parseInt(popupId.replace('imagePopup', ''));
+    const product = products.find(p => p.id === productId);
+    if (product) {
+      setCurrentImageType(type);
+      setPopupImage(type === 'product' ? product.image : product.designImage);
+      setIsZoomed(false);
+    }
+  };
+
+  const toggleZoom = () => {
+    setIsZoomed(!isZoomed);
+  };
+
+  // 元のサイトと同じ24商品のデータ（実際のAmazonリンク付き）
+  const products = [
+    {
+      id: 24,
+      title: "ゆるい和風ドラゴンのイラストアート 龍デザイン Tシャツ",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee24.png",
+      designImage: "/designshelf/images/tee24_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4nN1Zqw",
+      features: [
+        "ユーモラスな表情が魅力の、ゆるくて親しみやすい龍のイラスト",
+        "和風テイストを取り入れたポップで個性的なドラゴンデザイン"
+      ],
+      description: "日本的な龍をモチーフにしながらも、親しみやすくゆるい表情で描かれたイラストが特徴。威圧感のないデフォルメスタイルのドラゴンが、ユーモアと個性を添えます。和風・アジア風のデザインが好きな方や、かわいい系のキャラクターTシャツを探している方におすすめの一枚です。"
+    },
+    {
+      id: 21,
+      title: "戦国武将 兜 和風 侍 ピクセルアート #1 Tシャツ",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee21.png",
+      designImage: "/designshelf/images/tee21_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4kmiHeh",
+      features: [
+        "時の天下人が\"日本一の兵\"と称えた、戦国屈指の武将の兜をピクセルアートで表現したデザイン",
+        "ドット調のアートスタイルで、レトロゲーム風のユニークな戦国モチーフ"
+      ],
+      description: "戦国時代の英雄の特徴的な兜を、ポップで懐かしいピクセルアートとしてデザインしました。赤備えと鹿角のシルエットを強調し、現代のファッションに落とし込んだ和風デザインです。戦国ファンやゲーム好きにもおすすめ。"
+    },
+    {
+      id: 22,
+      title: "戦国武将 兜 和風 侍 ピクセルアート #2 Tシャツ",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee22.png",
+      designImage: "/designshelf/images/tee22_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4kr7ZTF",
+      features: [
+        "「愛」の前立てが印象的な戦国武将の兜をピクセルアートで再現",
+        "シンプルな配置で、戦国ファンにもストリートファッションにもマッチ"
+      ],
+      description: "義と愛、戦国時代の名将が着用した兜を、懐かしさ漂うピクセルアートでデザインしました。兜正面には「愛」の文字が力強く表現されており、忠義と信念を象徴します。和風デザインとしてだけでなく、個性的なファッションアイテムとしても映える一枚です。武将ファン、歴史好き、和モチーフ好きにおすすめのデザインです。プレゼントやギフトにも最適です。"
+    },
+    {
+      id: 23,
+      title: "戦国武将 兜 和風 侍 ピクセルアート #3 Tシャツ",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee23.png",
+      designImage: "/designshelf/images/tee23_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/43ML12e",
+      features: [
+        "特徴的な鹿角兜をドット絵で再現したミニマルで印象的なデザイン。",
+        "戦国・武将ファン必見。和風でレトロなピクセルアートが胸元に映える。"
+      ],
+      description: "戦国最強と名高い戦国武将の兜をピクセルアートで表現したグラフィックデザイン。左右対称の鹿角が圧倒的な存在感を放ち、戦国時代の力強さと美しさを現代風にアレンジ。ドット絵のワンポイントデザインは、カジュアルながらも個性を主張し、和風テイストや侍モチーフのアイテムを好む方にぴったりです。戦国武将ファンやレトロゲーマーへのプレゼントやギフトにも最適。"
+    },
+    {
+      id: 1,
+      title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee1.png",
+      designImage: "/designshelf/images/tee1_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3xQZ8Kj",
+      features: [
+        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
+        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
+      ],
+      description: "日本の伝統的な風神・雷神を、現代のポップアートスタイルで可愛くデフォルメしたデザイン。威厳ある神々を親しみやすいキャラクターとして再構築し、和風テイストを保ちながらもモダンなファッションアイテムとして仕上げました。"
+    },
+    {
+      id: 2,
+      title: "デザインTシャツ 2",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee2.png",
+      designImage: "/designshelf/images/tee2_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/45hj1Gl",
+      features: ["商品2の特徴1", "商品2の特徴2"],
+      description: "商品2の詳細説明です。"
+    },
+    {
+      id: 3,
+      title: "デザインTシャツ 3",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee3.png",
+      designImage: "/designshelf/images/tee3_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3YOiNmd",
+      features: ["商品3の特徴1", "商品3の特徴2"],
+      description: "商品3の詳細説明です。"
+    },
+    {
+      id: 4,
+      title: "デザインTシャツ 4",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee4.png",
+      designImage: "/designshelf/images/tee4_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4jV8sNP",
+      features: ["商品4の特徴1", "商品4の特徴2"],
+      description: "商品4の詳細説明です。"
+    },
+    {
+      id: 5,
+      title: "デザインTシャツ 5",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee5.png",
+      designImage: "/designshelf/images/tee5_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/44IDOm1",
+      features: ["商品5の特徴1", "商品5の特徴2"],
+      description: "商品5の詳細説明です。"
+    },
+    {
+      id: 6,
+      title: "デザインTシャツ 6",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee6.png",
+      designImage: "/designshelf/images/tee6_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4kszcVL",
+      features: ["商品6の特徴1", "商品6の特徴2"],
+      description: "商品6の詳細説明です。"
+    },
+    {
+      id: 7,
+      title: "デザインTシャツ 7",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee7.png",
+      designImage: "/designshelf/images/tee7_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3ZorvYq",
+      features: ["商品7の特徴1", "商品7の特徴2"],
+      description: "商品7の詳細説明です。"
+    },
+    {
+      id: 8,
+      title: "デザインTシャツ 8",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/tee8.png",
+      designImage: "/designshelf/images/tee8_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4mmNbOG",
+      features: ["商品8の特徴1", "商品8の特徴2"],
+      description: "商品8の詳細説明です。"
+    },
+    {
+      id: 9,
+      title: "デザインTシャツ 9",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee9.png",
+      designImage: "/designshelf/images/tee9_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/44I7S1h",
+      features: ["商品9の特徴1", "商品9の特徴2"],
+      description: "商品9の詳細説明です。"
+    },
+    {
+      id: 10,
+      title: "デザインTシャツ 10",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee10.png",
+      designImage: "/designshelf/images/tee10_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4mhTnrn",
+      features: ["商品10の特徴1", "商品10の特徴2"],
+      description: "商品10の詳細説明です。"
+    },
+    {
+      id: 11,
+      title: "デザインTシャツ 11",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee11.png",
+      designImage: "/designshelf/images/tee11_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4ktKJUX",
+      features: ["商品11の特徴1", "商品11の特徴2"],
+      description: "商品11の詳細説明です。"
+    },
+    {
+      id: 12,
+      title: "デザインTシャツ 12",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee12.png",
+      designImage: "/designshelf/images/tee12_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4k17XBV",
+      features: ["商品12の特徴1", "商品12の特徴2"],
+      description: "商品12の詳細説明です。"
+    },
+    {
+      id: 13,
+      title: "デザインTシャツ 13",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee13.png",
+      designImage: "/designshelf/images/tee13_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4j90pLY",
+      features: ["商品13の特徴1", "商品13の特徴2"],
+      description: "商品13の詳細説明です。"
+    },
+    {
+      id: 14,
+      title: "デザインTシャツ 14",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee14.png",
+      designImage: "/designshelf/images/tee14_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/43eKqHT",
+      features: ["商品14の特徴1", "商品14の特徴2"],
+      description: "商品14の詳細説明です。"
+    },
+    {
+      id: 15,
+      title: "デザインTシャツ 15",
+      brand: "Japanese Art Studio",
+      image: "/designshelf/images/tee15.png",
+      designImage: "/designshelf/images/tee15_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3HetJDv",
+      features: ["商品15の特徴1", "商品15の特徴2"],
+      description: "商品15の詳細説明です。"
+    },
+    {
+      id: 16,
+      title: "デザインTシャツ 16",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/tee16.png",
+      designImage: "/designshelf/images/tee16_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4j8jHRK",
+      features: ["商品16の特徴1", "商品16の特徴2"],
+      description: "商品16の詳細説明です。"
+    },
+    {
+      id: 17,
+      title: "デザインTシャツ 17",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/tee17.png",
+      designImage: "/designshelf/images/tee17_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/44HqiiF",
+      features: ["商品17の特徴1", "商品17の特徴2"],
+      description: "商品17の詳細説明です。"
+    },
+    {
+      id: 18,
+      title: "デザインTシャツ 18",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/tee18.png",
+      designImage: "/designshelf/images/tee18_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/43Ce8GD",
+      features: ["商品18の特徴1", "商品18の特徴2"],
+      description: "商品18の詳細説明です。"
+    },
+    {
+      id: 19,
+      title: "デザインTシャツ 19",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/tee19.png",
+      designImage: "/designshelf/images/tee19_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3H6FxI1",
+      features: ["商品19の特徴1", "商品19の特徴2"],
+      description: "商品19の詳細説明です。"
+    },
+    {
+      id: 20,
+      title: "デザインTシャツ 20",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/tee20.png",
+      designImage: "/designshelf/images/tee20_design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3H4CHU4",
+      features: ["商品20の特徴1", "商品20の特徴2"],
+      description: "商品20の詳細説明です。"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -150,7 +451,7 @@ export default function DesignShelf() {
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto">
                 <div 
                   className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer"
-                  onClick={() => openImagePopup(product.image, `imagePopup${product.id}`)}
+                  onClick={() => openImagePopup(product.id)}
                 >
                   <Image 
                     src={product.image} 
@@ -213,7 +514,7 @@ export default function DesignShelf() {
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
           onClick={closeImagePopup}
         >
-          <div className="relative max-w-4xl max-h-[90vh] p-4">
+          <div className="relative max-w-4xl max-h-[90vh] p-4" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeImagePopup}
               className="absolute top-2 right-2 bg-white/20 text-white p-2 rounded-full hover:bg-white/30 transition-colors z-10"
@@ -222,25 +523,41 @@ export default function DesignShelf() {
             </button>
             <div className="flex gap-2 mb-4">
               <button
-                onClick={() => setPopupImage(products.find(p => p.id === parseInt(popupId?.replace('imagePopup', '') || '0'))?.image || '')}
-                className="px-4 py-2 bg-white/20 text-white rounded hover:bg-white/30 transition-colors"
+                onClick={() => switchImageType('product')}
+                className={`px-4 py-2 rounded transition-colors ${
+                  currentImageType === 'product' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
               >
-                Tシャツ
+                商品画像
               </button>
               <button
-                onClick={() => setPopupImage(products.find(p => p.id === parseInt(popupId?.replace('imagePopup', '') || '0'))?.designImage || '')}
-                className="px-4 py-2 bg-white/20 text-white rounded hover:bg-white/30 transition-colors"
+                onClick={() => switchImageType('design')}
+                className={`px-4 py-2 rounded transition-colors ${
+                  currentImageType === 'design' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
               >
-                デザイン
+                デザイン画像
               </button>
             </div>
-            <Image
-              src={popupImage}
-              alt="拡大画像"
-              width={800}
-              height={800}
-              className="max-w-full max-h-[70vh] object-contain"
-            />
+            <div className="relative">
+              <Image
+                src={popupImage}
+                alt="拡大画像"
+                width={800}
+                height={800}
+                className={`max-w-full max-h-[70vh] object-contain cursor-pointer transition-transform ${
+                  isZoomed ? 'scale-150' : 'scale-100'
+                }`}
+                onClick={toggleZoom}
+              />
+              <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
+                🔍 クリックでズーム
+              </div>
+            </div>
           </div>
         </div>
       )}
