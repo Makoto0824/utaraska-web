@@ -2,82 +2,60 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function DesignShelf() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
+  const [currentBanner, setCurrentBanner] = useState(0);
+  const [popupImage, setPopupImage] = useState<string | null>(null);
+  const [popupId, setPopupId] = useState<string | null>(null);
+
+  const banners = [
+    { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
+    { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "/designshelf" },
+    { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "/designshelf" },
+    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "/designshelf" }
+  ];
+
+  // バナーカルーセルの自動切り替え
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner((prev) => (prev + 1) % banners.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [banners.length]);
 
   const toggleDetails = (index: number) => {
     setExpandedDetails(expandedDetails === index ? null : index);
   };
 
-  const products = [
-    {
-      id: 24,
-      title: "ゆるい和風ドラゴンのイラストアート 龍デザイン Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee24.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4nN1Zqw",
-      features: [
-        "ユーモラスな表情が魅力の、ゆるくて親しみやすい龍のイラスト",
-        "和風テイストを取り入れたポップで個性的なドラゴンデザイン"
-      ],
-      description: "日本的な龍をモチーフにしながらも、親しみやすくゆるい表情で描かれたイラストが特徴。威圧感のないデフォルメスタイルのドラゴンが、ユーモアと個性を添えます。和風・アジア風のデザインが好きな方や、かわいい系のキャラクターTシャツを探している方におすすめの一枚です。"
-    },
-    {
-      id: 21,
-      title: "戦国武将 兜 和風 侍 ピクセルアート #1 Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee21.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4kmiHeh",
-      features: [
-        "時の天下人が\"日本一の兵\"と称えた、戦国屈指の武将の兜をピクセルアートで表現したデザイン",
-        "ドット調のアートスタイルで、レトロゲーム風のユニークな戦国モチーフ"
-      ],
-      description: "戦国時代の英雄の特徴的な兜を、ポップで懐かしいピクセルアートとしてデザインしました。赤備えと鹿角のシルエットを強調し、現代のファッションに落とし込んだ和風デザインです。戦国ファンやゲーム好きにもおすすめ。"
-    },
-    {
-      id: 22,
-      title: "戦国武将 兜 和風 侍 ピクセルアート #2 Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee22.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4kr7ZTF",
-      features: [
-        "「愛」の前立てが印象的な戦国武将の兜をピクセルアートで再現",
-        "シンプルな配置で、戦国ファンにもストリートファッションにもマッチ"
-      ],
-      description: "義と愛、戦国時代の名将が着用した兜を、懐かしさ漂うピクセルアートでデザインしました。兜正面には「愛」の文字が力強く表現されており、忠義と信念を象徴します。和風デザインとしてだけでなく、個性的なファッションアイテムとしても映える一枚です。武将ファン、歴史好き、和モチーフ好きにおすすめのデザインです。プレゼントやギフトにも最適です。"
-    },
-    {
-      id: 23,
-      title: "戦国武将 兜 和風 侍 ピクセルアート #3 Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee23.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/43ML12e",
-      features: [
-        "特徴的な鹿角兜をドット絵で再現したミニマルで印象的なデザイン。",
-        "戦国・武将ファン必見。和風でレトロなピクセルアートが胸元に映える。"
-      ],
-      description: "戦国最強と名高い戦国武将の兜をピクセルアートで表現したグラフィックデザイン。左右対称の鹿角が圧倒的な存在感を放ち、戦国時代の力強さと美しさを現代風にアレンジ。ドット絵のワンポイントデザインは、カジュアルながらも個性を主張し、和風テイストや侍モチーフのアイテムを好む方にぴったりです。戦国武将ファンやレトロゲーマーへのプレゼントやギフトにも最適。"
-    },
-    {
-      id: 1,
-      title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee1.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3xQZ8Kj",
-      features: [
-        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
-        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
-      ],
-      description: "日本の伝統的な風神・雷神を、現代のポップアートスタイルで可愛くデフォルメしたデザイン。威厳ある神々を親しみやすいキャラクターとして再構築し、和風テイストを保ちながらもモダンなファッションアイテムとして仕上げました。"
-    }
-  ];
+  const openImagePopup = (imageSrc: string, popupId: string) => {
+    setPopupImage(imageSrc);
+    setPopupId(popupId);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeImagePopup = () => {
+    setPopupImage(null);
+    setPopupId(null);
+    document.body.style.overflow = '';
+  };
+
+  // 全24商品のデータ
+  const products = Array.from({ length: 24 }, (_, i) => ({
+    id: i + 1,
+    title: `デザインTシャツ ${i + 1}`,
+    brand: i < 8 ? "ゆるスタイル・ジャパン" : i < 16 ? "Japanese Art Studio" : "ワロタ商店",
+    image: `/designshelf/images/tee${i + 1}.png`,
+    designImage: `/designshelf/images/tee${i + 1}_design.png`,
+    price: "¥2,300",
+    amazonLink: `https://amzn.to/example${i + 1}`,
+    features: [
+      `商品 ${i + 1} の特徴1`,
+      `商品 ${i + 1} の特徴2`
+    ],
+    description: `商品 ${i + 1} の詳細説明です。この商品は高品質なデザインと素材を使用しており、日常使いに最適です。`
+  }));
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -119,22 +97,61 @@ export default function DesignShelf() {
         {/* バナースライドショー */}
         <section className="mb-12">
           <div className="relative w-full h-96 overflow-hidden rounded-lg shadow-lg">
-            <Image 
-              src="/designshelf/images/banner5.jpg" 
-              alt="セールバナー" 
-              fill
-              className="object-cover"
-            />
+            {banners.map((banner, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  index === currentBanner ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <Image 
+                  src={banner.src} 
+                  alt={banner.alt} 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+            
+            {/* バナーインジケーター */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+              {banners.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentBanner(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentBanner ? 'bg-white' : 'bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
+            
+            {/* ナビゲーションボタン */}
+            <button
+              onClick={() => setCurrentBanner((prev) => (prev - 1 + banners.length) % banners.length)}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+            >
+              ❮
+            </button>
+            <button
+              onClick={() => setCurrentBanner((prev) => (prev + 1) % banners.length)}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+            >
+              ❯
+            </button>
           </div>
         </section>
 
         {/* 商品セクション */}
         <section>
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">すべてのデザイン</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {products.map((product, index) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto">
-                <div className="p-4 flex justify-center items-center h-72 bg-white">
+                <div 
+                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer"
+                  onClick={() => openImagePopup(product.image, `imagePopup${product.id}`)}
+                >
                   <Image 
                     src={product.image} 
                     alt={product.title}
@@ -189,6 +206,44 @@ export default function DesignShelf() {
           </div>
         </section>
       </main>
+
+      {/* 画像ポップアップ */}
+      {popupImage && (
+        <div 
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={closeImagePopup}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] p-4">
+            <button
+              onClick={closeImagePopup}
+              className="absolute top-2 right-2 bg-white/20 text-white p-2 rounded-full hover:bg-white/30 transition-colors z-10"
+            >
+              ✕
+            </button>
+            <div className="flex gap-2 mb-4">
+              <button
+                onClick={() => setPopupImage(products.find(p => p.id === parseInt(popupId?.replace('imagePopup', '') || '0'))?.image || '')}
+                className="px-4 py-2 bg-white/20 text-white rounded hover:bg-white/30 transition-colors"
+              >
+                Tシャツ
+              </button>
+              <button
+                onClick={() => setPopupImage(products.find(p => p.id === parseInt(popupId?.replace('imagePopup', '') || '0'))?.designImage || '')}
+                className="px-4 py-2 bg-white/20 text-white rounded hover:bg-white/30 transition-colors"
+              >
+                デザイン
+              </button>
+            </div>
+            <Image
+              src={popupImage}
+              alt="拡大画像"
+              width={800}
+              height={800}
+              className="max-w-full max-h-[70vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       {/* フッター */}
       <footer className="bg-gray-800 text-white py-12 mt-16">
