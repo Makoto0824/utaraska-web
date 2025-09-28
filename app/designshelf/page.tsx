@@ -1,32 +1,12 @@
 // Design Shelf ページ - 新しいサイト（https://www.utaraska.co.jp/）用
 'use client';
 
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function DesignShelf() {
   return (
-    <>
-      <Head>
-        <title>Design Shelf - Amazon Merch Collection | ウタラスカ合同会社</title>
-        <meta name="description" content="Amazon Merch Collection - 高品質なデザインTシャツとグッズのコレクション。ゆるスタイル・ジャパン、Japanese Art Studio、ワロタ商店のブランド展開。" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ECVYESFRPV"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-ECVYESFRPV');
-            `,
-          }}
-        />
-      </Head>
-
+    <main className="min-h-screen bg-gradient-to-br from-yellow-100 via-pink-50 to-cyan-100">
       <div className="designshelf-container">
         {/* ヘッダー */}
         <header className="header">
@@ -47,15 +27,15 @@ export default function DesignShelf() {
                   ブランド
                   <div className="mega-menu">
                     <div className="mega-menu-content">
-                      <Link href="/designshelf/brands/yuru-style-japan" className="mega-menu-item brand">ゆるスタイル・ジャパン</Link>
-                      <Link href="/designshelf/brands/japanese-art-studio" className="mega-menu-item brand">Japanese Art Studio</Link>
-                      <Link href="/designshelf/brands/warota-shoten" className="mega-menu-item brand">ワロタ商店</Link>
-                      <Link href="/designshelf/brands" className="mega-menu-item more">詳しくはこちら</Link>
+                <Link href="/designshelf" className="mega-menu-item brand">ゆるスタイル・ジャパン</Link>
+                <Link href="/designshelf" className="mega-menu-item brand">Japanese Art Studio</Link>
+                <Link href="/designshelf" className="mega-menu-item brand">ワロタ商店</Link>
+                <Link href="/designshelf" className="mega-menu-item more">詳しくはこちら</Link>
                     </div>
                   </div>
                 </div>
-                <Link href="/designshelf/contact" className="nav-link">お問い合わせ</Link>
-                <Link href="/designshelf/about" className="nav-link">運営者情報</Link>
+                <Link href="/" className="nav-link">お問い合わせ</Link>
+                <Link href="/" className="nav-link">運営者情報</Link>
               </div>
             </div>
           </nav>
@@ -98,7 +78,7 @@ export default function DesignShelf() {
                   />
                   <h3 className="brand-name">ゆるスタイル・ジャパン</h3>
                   <p className="brand-description">日本のゆるい文化をテーマにしたデザイン</p>
-                  <Link href="/designshelf/brands/yuru-style-japan" className="brand-link">詳細を見る</Link>
+                  <Link href="/designshelf" className="brand-link">詳細を見る</Link>
                 </div>
                 
                 <div className="brand-card">
@@ -111,7 +91,7 @@ export default function DesignShelf() {
                   />
                   <h3 className="brand-name">Japanese Art Studio</h3>
                   <p className="brand-description">伝統的な日本美術をモダンにアレンジ</p>
-                  <Link href="/designshelf/brands/japanese-art-studio" className="brand-link">詳細を見る</Link>
+                  <Link href="/designshelf" className="brand-link">詳細を見る</Link>
                 </div>
                 
                 <div className="brand-card">
@@ -124,7 +104,7 @@ export default function DesignShelf() {
                   />
                   <h3 className="brand-name">ワロタ商店</h3>
                   <p className="brand-description">笑いをテーマにしたユニークなデザイン</p>
-                  <Link href="/designshelf/brands/warota-shoten" className="brand-link">詳細を見る</Link>
+                  <Link href="/designshelf" className="brand-link">詳細を見る</Link>
                 </div>
               </div>
             </div>
@@ -168,9 +148,9 @@ export default function DesignShelf() {
               <div className="footer-section">
                 <h4>Design Shelf</h4>
                 <ul>
-                  <li><Link href="/designshelf/brands">ブランド一覧</Link></li>
-                  <li><Link href="/designshelf/about">運営者情報</Link></li>
-                  <li><Link href="/designshelf/contact">お問い合わせ</Link></li>
+                  <li><Link href="/designshelf">ブランド一覧</Link></li>
+                  <li><Link href="/">運営者情報</Link></li>
+                  <li><Link href="/">お問い合わせ</Link></li>
                 </ul>
               </div>
             </div>
@@ -184,14 +164,14 @@ export default function DesignShelf() {
       <style jsx>{`
         .designshelf-container {
           min-height: 100vh;
-          background-color: #f3f4f6;
           color: #1f2937;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
           line-height: 1.5;
         }
 
         .header {
-          background-color: #ffffff;
+          background-color: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           position: sticky;
           top: 0;
@@ -344,7 +324,8 @@ export default function DesignShelf() {
 
         .brands-section {
           padding: 4rem 0;
-          background-color: white;
+          background-color: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(10px);
         }
 
         .brands-grid {
@@ -357,6 +338,8 @@ export default function DesignShelf() {
         .brand-card {
           text-align: center;
           padding: 2rem;
+          background-color: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
           border-radius: 12px;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           transition: transform 0.3s ease;
@@ -404,7 +387,8 @@ export default function DesignShelf() {
         }
 
         .product-card {
-          background-color: white;
+          background-color: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
           border-radius: 12px;
           overflow: hidden;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
