@@ -322,7 +322,6 @@ export default function YuruStyleJapan() {
                     <div className="flex items-center gap-2">
                       <span className="text-xl font-bold text-gray-800">{product.price}</span>
                       <span className="text-sm text-gray-500">税込</span>
-                      <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">NEW</span>
                     </div>
                     <a 
                       href={product.amazonLink}
