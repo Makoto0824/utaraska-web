@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function DesignShelf() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-yellow-100 via-pink-50 to-cyan-100">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-pink-50 to-cyan-100">
       <div className="designshelf-container">
         {/* ヘッダー */}
         <header className="header">
@@ -159,6 +159,7 @@ export default function DesignShelf() {
             </div>
           </div>
         </footer>
+      </div>
       </div>
 
       <style jsx>{`
