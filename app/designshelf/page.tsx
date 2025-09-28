@@ -466,7 +466,10 @@ export default function DesignShelf() {
                   <p className="text-blue-600 font-medium mb-4">{product.brand}</p>
                   
                   <button 
-                    onClick={() => toggleDetails(index)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleDetails(index);
+                    }}
                     className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0 after:transition-transform after:duration-300"
                     style={{ 
                       transform: expandedDetails === index ? 'rotate(180deg)' : 'rotate(0deg)' 
@@ -475,9 +478,12 @@ export default function DesignShelf() {
                     商品詳細
                   </button>
                   
-                  <div className={`overflow-hidden transition-all duration-300 ${
-                    expandedDetails === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 ${
+                      expandedDetails === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <div className="mb-4">
                       {product.features.map((feature, idx) => (
                         <p key={idx} className="text-sm text-gray-600 mb-2">{feature}</p>
