@@ -110,14 +110,6 @@ export default function Brands() {
             </div>
             <div className="flex gap-6">
               <a 
-                href="https://x.com/utaraska" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-600 hover:text-gray-800 transition-colors"
-              >
-                X
-              </a>
-              <a 
                 href="https://www.instagram.com/designshelf2025/" 
                 target="_blank" 
                 rel="noopener noreferrer" 

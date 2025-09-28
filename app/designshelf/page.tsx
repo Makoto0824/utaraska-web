@@ -684,9 +684,9 @@ export default function DesignShelf() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
-                <li><Link href="/designshelf" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
-                <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
-                <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link></li>
+                <li><Link href="/designshelf/brands" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
+                <li><Link href="/designshelf/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
+                <li><Link href="/designshelf/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link></li>
               </ul>
             </div>
           </div>
