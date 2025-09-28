@@ -532,10 +532,7 @@ export default function DesignShelf() {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
-                    className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0 after:transition-transform after:duration-300"
-                    style={{ 
-                      transform: expandedDetails === index ? 'rotate(180deg)' : 'rotate(0deg)' 
-                    }}
+                    className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0"
                   >
                     商品詳細
                   </button>
