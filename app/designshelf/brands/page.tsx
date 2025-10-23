@@ -28,7 +28,7 @@ export default function Brands() {
       <header className="bg-white shadow-sm">
         <nav>
           <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
-            <Link href="/designshelf" className="flex items-center">
+            <Link href="/designshelf" className="flex items-center gap-3">
               <Image 
                 src="/designshelf/images/logo.png" 
                 alt="Design Shelf" 
@@ -36,6 +36,7 @@ export default function Brands() {
                 height={60}
                 className="h-15 w-auto hover:scale-105 transition-transform"
               />
+              <span className="inline-block text-xs px-2 py-1 rounded bg-gray-100 text-gray-600 border border-gray-200">v0.1.0</span>
             </Link>
             <div className="flex items-center gap-6">
               <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
