@@ -28,7 +28,7 @@ export default function Brands() {
       <header className="bg-white shadow-sm">
         <nav>
           <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
-            <Link href="/designshelf" className="flex items-center gap-3">
+            <Link href="/designshelf" className="flex items-center">
               <Image 
                 src="/designshelf/images/logo.png" 
                 alt="Design Shelf" 
@@ -36,12 +36,12 @@ export default function Brands() {
                 height={60}
                 className="h-15 w-auto hover:scale-105 transition-transform"
               />
-              <span className="inline-block text-xs px-2 py-1 rounded bg-gray-100 text-gray-600 border border-gray-200">v0.1.0</span>
+              
             </Link>
             <div className="flex items-center gap-6">
               <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
               <div className="relative group">
-                <span className="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">ブランド</span>
+                <Link href="/designshelf/brands" className="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">ブランド</Link>
                 <div className="absolute top-full left-0 bg-white rounded-lg shadow-lg p-4 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                   <div className="flex flex-col gap-2">
                     <Link href="/designshelf/brands/yuru-style-japan" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">ゆるスタイル・ジャパン</Link>
@@ -123,6 +123,7 @@ export default function Brands() {
               </Link>
             </div>
           </div>
+          <div className="mt-2 text-xs text-gray-500">v0.1.0</div>
         </div>
       </footer>
     </div>
