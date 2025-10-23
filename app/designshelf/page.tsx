@@ -430,23 +430,13 @@ export default function DesignShelf() {
                 alt="Design Shelf" 
                 width={120} 
                 height={60}
-                className="h-15 w-auto hover:scale-105 transition-transform"
+                className="w-[100px] sm:w-[120px] h-auto hover:scale-105 transition-transform"
               />
               
             </Link>
             <div className="flex items-center gap-6">
               <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
-              <div className="relative group">
-                <Link href="/designshelf/brands" className="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">ブランド</Link>
-                <div className="absolute top-full left-0 bg-white rounded-lg shadow-lg p-4 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                  <div className="flex flex-col gap-2">
-                    <Link href="/designshelf/brands/yuru-style-japan" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">ゆるスタイル・ジャパン</Link>
-                    <Link href="/designshelf/brands/japanese-art-studio" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">Japanese Art Studio</Link>
-                    <Link href="/designshelf/brands/warota-shoten" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">ワロタ商店</Link>
-                    <Link href="/designshelf/brands" className="text-gray-700 hover:bg-gray-100 p-2 rounded transition-colors">詳しくはこちら</Link>
-                  </div>
-                </div>
-              </div>
+              <Link href="/designshelf/brands" className="text-gray-600 hover:text-gray-900 transition-colors">ブランド</Link>
               <Link href="/designshelf/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/designshelf/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
             </div>
