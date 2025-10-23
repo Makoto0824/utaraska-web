@@ -342,52 +342,70 @@ export default function YuruStyleJapan() {
       {/* 画像ポップアップ */}
       {popupImage && (
         <div 
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
           onClick={closeImagePopup}
         >
-          <div className="relative max-w-4xl max-h-[90vh] p-4" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-w-[90%] max-h-[90%] flex flex-row items-center gap-8" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeImagePopup}
-              className="absolute top-2 right-2 bg-white/20 text-white p-2 rounded-full hover:bg-white/30 transition-colors z-10"
+              className="absolute -top-10 right-0 text-white text-3xl cursor-pointer p-2"
             >
-              ✕
+              &times;
             </button>
-            <div className="flex gap-2 mb-4">
-              <button
-                onClick={() => switchImageType('product')}
-                className={`px-4 py-2 rounded transition-colors ${
-                  currentImageType === 'product' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                商品画像
-              </button>
-              <button
-                onClick={() => switchImageType('design')}
-                className={`px-4 py-2 rounded transition-colors ${
-                  currentImageType === 'design' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                デザイン画像
-              </button>
-            </div>
-            <div className="relative">
+            
+            {/* 画像表示エリア */}
+            <div className="relative max-w-[80vw] max-h-[80vh] bg-black rounded-lg flex justify-center items-center">
               <Image
                 src={popupImage}
                 alt="拡大画像"
                 width={800}
                 height={800}
-                className={`max-w-full max-h-[70vh] object-contain cursor-pointer transition-transform ${
+                className={`max-w-full max-h-[80vh] object-contain cursor-pointer transition-transform ${
                   isZoomed ? 'scale-150' : 'scale-100'
                 }`}
                 onClick={toggleZoom}
               />
               <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
-                🔍 クリックでズーム
+                🔍
               </div>
+            </div>
+            
+            {/* コントロールエリア */}
+            <div className="flex flex-col gap-4 min-w-[200px]">
+              <button
+                onClick={() => switchImageType('product')}
+                className={`flex flex-col items-center p-3 rounded transition-colors ${
+                  currentImageType === 'product' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                <Image
+                  src={popupImage.includes('_design') ? popupImage.replace('_design', '') : popupImage}
+                  alt="商品画像"
+                  width={64}
+                  height={64}
+                  className="object-contain mb-2"
+                />
+                <span className="text-sm">商品画像</span>
+              </button>
+              <button
+                onClick={() => switchImageType('design')}
+                className={`flex flex-col items-center p-3 rounded transition-colors ${
+                  currentImageType === 'design' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                <Image
+                  src={popupImage.includes('_design') ? popupImage : popupImage.replace('.png', '_design.png')}
+                  alt="デザイン画像"
+                  width={64}
+                  height={64}
+                  className="object-contain mb-2"
+                />
+                <span className="text-sm">デザイン画像</span>
+              </button>
             </div>
           </div>
         </div>

@@ -454,7 +454,7 @@ export default function DesignShelf() {
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* バナースライドショー */}
         <section className="mb-12">
-          <div className="relative w-full h-[500px] overflow-hidden rounded-lg shadow-lg">
+          <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-lg shadow-lg">
             {banners.map((banner, index) => (
               <div
                 key={index}
@@ -467,17 +467,18 @@ export default function DesignShelf() {
                   alt={banner.alt} 
                   fill
                   className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
                 />
               </div>
             ))}
             
             {/* バナーインジケーター */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 sm:gap-2">
               {banners.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentBanner(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
                     index === currentBanner ? 'bg-white' : 'bg-white/50'
                   }`}
                 />
@@ -487,13 +488,13 @@ export default function DesignShelf() {
             {/* ナビゲーションボタン */}
             <button
               onClick={() => setCurrentBanner((prev) => (prev - 1 + banners.length) % banners.length)}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1 sm:p-2 rounded-full hover:bg-black/70 transition-colors text-sm sm:text-base"
             >
               ❮
             </button>
             <button
               onClick={() => setCurrentBanner((prev) => (prev + 1) % banners.length)}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1 sm:p-2 rounded-full hover:bg-black/70 transition-colors text-sm sm:text-base"
             >
               ❯
             </button>
@@ -620,52 +621,70 @@ export default function DesignShelf() {
       {/* 画像ポップアップ */}
       {popupImage && (
         <div 
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
           onClick={closeImagePopup}
         >
-          <div className="relative max-w-4xl max-h-[90vh] p-4" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-w-[90%] max-h-[90%] flex flex-row items-center gap-8" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeImagePopup}
-              className="absolute top-2 right-2 bg-white/20 text-white p-2 rounded-full hover:bg-white/30 transition-colors z-10"
+              className="absolute -top-10 right-0 text-white text-3xl cursor-pointer p-2"
             >
-              ✕
+              &times;
             </button>
-            <div className="flex gap-2 mb-4">
-              <button
-                onClick={() => switchImageType('product')}
-                className={`px-4 py-2 rounded transition-colors ${
-                  currentImageType === 'product' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                商品画像
-              </button>
-              <button
-                onClick={() => switchImageType('design')}
-                className={`px-4 py-2 rounded transition-colors ${
-                  currentImageType === 'design' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                デザイン画像
-              </button>
-            </div>
-            <div className="relative">
+            
+            {/* 画像表示エリア */}
+            <div className="relative max-w-[80vw] max-h-[80vh] bg-black rounded-lg flex justify-center items-center">
               <Image
                 src={popupImage}
                 alt="拡大画像"
                 width={800}
                 height={800}
-                className={`max-w-full max-h-[70vh] object-contain cursor-pointer transition-transform ${
+                className={`max-w-full max-h-[80vh] object-contain cursor-pointer transition-transform ${
                   isZoomed ? 'scale-150' : 'scale-100'
                 }`}
                 onClick={toggleZoom}
               />
               <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
-                🔍 クリックでズーム
+                🔍
               </div>
+            </div>
+            
+            {/* コントロールエリア */}
+            <div className="flex flex-col gap-4 min-w-[200px]">
+              <button
+                onClick={() => switchImageType('product')}
+                className={`flex flex-col items-center p-3 rounded transition-colors ${
+                  currentImageType === 'product' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                <Image
+                  src={popupImage.includes('_design') ? popupImage.replace('_design', '') : popupImage}
+                  alt="商品画像"
+                  width={64}
+                  height={64}
+                  className="object-contain mb-2"
+                />
+                <span className="text-sm">商品画像</span>
+              </button>
+              <button
+                onClick={() => switchImageType('design')}
+                className={`flex flex-col items-center p-3 rounded transition-colors ${
+                  currentImageType === 'design' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                <Image
+                  src={popupImage.includes('_design') ? popupImage : popupImage.replace('.png', '_design.png')}
+                  alt="デザイン画像"
+                  width={64}
+                  height={64}
+                  className="object-contain mb-2"
+                />
+                <span className="text-sm">デザイン画像</span>
+              </button>
             </div>
           </div>
         </div>
