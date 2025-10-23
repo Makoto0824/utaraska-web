@@ -19,6 +19,9 @@ export default function DesignShelf() {
     { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "/designshelf" }
   ];
 
+  // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
+  const [bannerRatios, setBannerRatios] = useState<number[]>(() => banners.map(() => 1200 / 500));
+
   // バナーカルーセルの自動切り替え
   useEffect(() => {
     const interval = setInterval(() => {
@@ -452,9 +455,12 @@ export default function DesignShelf() {
 
       {/* メインコンテンツ */}
       <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* バナースライドショー */}
-        <section className="mb-12">
-          <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-lg shadow-lg">
+      {/* バナースライドショー */}
+      <section className="mb-12">
+        <div
+          className="relative w-full overflow-hidden rounded-lg shadow-lg"
+          style={{ aspectRatio: bannerRatios[currentBanner] || 1200 / 500 }}
+        >
             {banners.map((banner, index) => (
               <div
                 key={index}
@@ -462,13 +468,22 @@ export default function DesignShelf() {
                   index === currentBanner ? 'opacity-100' : 'opacity-0'
                 }`}
               >
-                <Image 
-                  src={banner.src} 
-                  alt={banner.alt} 
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                />
+              <Image
+                src={banner.src}
+                alt={banner.alt}
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                onLoadingComplete={(img) => {
+                  const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
+                  if (!ratio) return;
+                  setBannerRatios((prev) => {
+                    const next = [...prev];
+                    next[index] = ratio;
+                    return next;
+                  });
+                }}
+              />
               </div>
             ))}
             
