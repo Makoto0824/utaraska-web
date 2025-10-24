@@ -760,7 +760,7 @@ export default function DesignShelf() {
                 <li><Link href="/designshelf/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
-                  <div className="text-xs text-gray-500 mt-1">v0.1.1</div>
+                  <div className="text-xs text-gray-500 mt-1">v0.1.2</div>
                 </li>
               </ul>
             </div>

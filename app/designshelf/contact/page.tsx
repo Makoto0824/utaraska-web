@@ -94,7 +94,7 @@ export default function Contact() {
               </Link>
             </div>
           </div>
-          <div className="mt-2 text-xs text-gray-500">v0.1.1</div>
+          <div className="mt-2 text-xs text-gray-500">v0.1.2</div>
         </div>
       </footer>
 
