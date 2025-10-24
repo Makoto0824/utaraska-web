@@ -559,7 +559,7 @@ export default function DesignShelf() {
                   onClick={() => openImagePopup(product.id)}
                 >
                   <Image 
-                    src={product.image} 
+                    src={product.modelImage ?? product.image}
                     alt={product.title}
                     width={256}
                     height={256}
