@@ -16,7 +16,8 @@ export default function DesignShelf() {
     { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
     { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "/designshelf" },
     { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "/designshelf" },
-    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "/designshelf" }
+    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "/designshelf" },
+    { src: "/designshelf/images/tee25_model.png", alt: "着用イメージ", link: "/designshelf" }
   ];
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
