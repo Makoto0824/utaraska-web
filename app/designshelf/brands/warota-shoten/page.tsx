@@ -68,7 +68,7 @@ export default function WarotaShoten() {
       image: "/designshelf/images/tee25.png",
       designImage: "/designshelf/images/tee25_design.png",
       price: "¥2,300",
-      amazonLink: "",
+      amazonLink: "https://amzn.to/48L689n",
       features: [
         "胸元に描かれた\"やる気スイッチ\"をモチーフにしたユーモラスなデザイン",
         "ON／OFFの切り替えをモチーフにした、おもしろメッセージアート"

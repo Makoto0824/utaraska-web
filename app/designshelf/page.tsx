@@ -110,7 +110,7 @@ export default function DesignShelf() {
       designImage: "/designshelf/images/tee25_design.png",
       modelImage: "/designshelf/images/tee25_model.png",
       price: "¥2,300",
-      amazonLink: "",
+      amazonLink: "https://amzn.to/48L689n",
       features: [
         "胸元に描かれた\"やる気スイッチ\"をモチーフにしたユーモラスなデザイン",
         "ON／OFFの切り替えをモチーフにした、おもしろメッセージアート"
