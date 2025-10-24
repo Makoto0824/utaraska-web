@@ -81,6 +81,20 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products = [
     {
+      id: 25,
+      title: "やる気スイッチオフ おもしろ 面白い Tシャツ",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/tee25.png",
+      designImage: "/designshelf/images/tee25_design.png",
+      price: "¥2,300",
+      amazonLink: "",
+      features: [
+        "胸元に描かれた\"やる気スイッチ\"をモチーフにしたユーモラスなデザイン",
+        "ON／OFFの切り替えをモチーフにした、おもしろメッセージアート"
+      ],
+      description: "このデザインは『やる気スイッチ』をテーマにしたユーモラスなアート。誰もが共感する“やる気のON・OFF”をシンプルなスイッチで表現し、思わずクスッと笑えるデザインに仕上げました。職場や学校、カジュアルシーンなど、どんな場面でも話題になるおもしろアートです。ユーモアとシンプルデザインを両立した、日常に遊び心を添える一枚。"
+    },
+    {
       id: 24,
       title: "ゆるい和風ドラゴンのイラストアート 龍デザイン Tシャツ",
       brand: "ゆるスタイル・ジャパン",
