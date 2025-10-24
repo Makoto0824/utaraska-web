@@ -93,7 +93,7 @@ export default function About() {
               </Link>
             </div>
           </div>
-          <div className="mt-2 text-xs text-gray-500">v0.1.0</div>
+          <div className="mt-2 text-xs text-gray-500">v0.1.1</div>
         </div>
       </footer>
     </div>
