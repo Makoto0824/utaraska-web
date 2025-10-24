@@ -74,7 +74,7 @@ export default function DesignShelf() {
           ? product.image
           : type === 'design'
             ? product.designImage
-            : (product as any).modelImage || product.image
+            : (product.modelImage ?? product.image)
       );
       setIsZoomed(false);
     }
@@ -87,8 +87,21 @@ export default function DesignShelf() {
     setIsZoomed(!isZoomed);
   };
 
+  type Product = {
+    id: number;
+    title: string;
+    brand: string;
+    image: string;
+    designImage: string;
+    price: string;
+    amazonLink: string;
+    features: string[];
+    description: string;
+    modelImage?: string;
+  };
+
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
-  const products = [
+  const products: Product[] = [
     {
       id: 25,
       title: "やる気スイッチオフ おもしろ 面白い Tシャツ",
@@ -444,7 +457,7 @@ export default function DesignShelf() {
 
   // 現在ポップアップ中の商品（ボタン表示制御用）
   const currentProductId = popupId ? parseInt(popupId.replace('imagePopup', '')) : null;
-  const currentProduct = currentProductId ? products.find(p => p.id === currentProductId) : undefined;
+  const currentProduct: Product | undefined = currentProductId ? products.find(p => p.id === currentProductId) : undefined;
 
   return (
     <div className="min-h-screen bg-gray-100">
