@@ -732,7 +732,7 @@ export default function DesignShelf() {
                 />
                 <span className="text-sm">デザイン画像</span>
               </button>
-              {currentProduct && (currentProduct as any).modelImage && (
+              {currentProduct && currentProduct.modelImage && (
                 <button
                   onClick={() => switchImageType('model')}
                   className={`flex flex-col items-center p-3 rounded transition-colors ${
@@ -742,7 +742,7 @@ export default function DesignShelf() {
                   }`}
                 >
                   <Image
-                    src={(currentProduct as any).modelImage}
+                    src={currentProduct.modelImage}
                     alt="着用イメージ"
                     width={64}
                     height={64}
