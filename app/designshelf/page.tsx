@@ -123,6 +123,7 @@ export default function DesignShelf() {
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee24.png",
       designImage: "/designshelf/images/tee24_design.png",
+      modelImage: "/designshelf/images/tee24_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4nN1Zqw",
       features: [
