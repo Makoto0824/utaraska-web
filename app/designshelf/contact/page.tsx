@@ -93,7 +93,7 @@ export default function Contact() {
               </Link>
             </div>
           </div>
-          <div className="mt-2 text-xs text-gray-500">v0.1.4</div>
+          <div className="mt-2 text-xs text-gray-500">v0.1.3</div>
         </div>
       </footer>
 

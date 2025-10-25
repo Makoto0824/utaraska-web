@@ -176,18 +176,17 @@ export default function DesignShelf() {
     },
     {
       id: 1,
-      title: "風神雷神 ジップパーカー",
+      title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee1.png",
       designImage: "/designshelf/images/tee1_design.png",
-      modelImage: "/designshelf/images/tee1_model.png",
       price: "¥2,300",
-      amazonLink: "https://amzn.to/47HCMYw",
+      amazonLink: "https://amzn.to/45hj1Gl",
       features: [
         "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
         "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
       ],
-      description: "このデザインは、日本の伝統美術に登場する『風神』と『雷神』をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。『風神雷神デザイン』『ポップアートファッション』など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。"
+      description: "日本の伝統的な風神・雷神を、現代のポップアートスタイルで可愛くデフォルメしたデザイン。威厳ある神々を親しみやすいキャラクターとして再構築し、和風テイストを保ちながらもモダンなファッションアイテムとして仕上げました。"
     },
     {
       id: 2,
@@ -774,7 +773,7 @@ export default function DesignShelf() {
                 <li><Link href="/designshelf/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
-                  <div className="text-xs text-gray-500 mt-1">v0.1.4</div>
+                  <div className="text-xs text-gray-500 mt-1">v0.1.3</div>
                 </li>
               </ul>
             </div>
