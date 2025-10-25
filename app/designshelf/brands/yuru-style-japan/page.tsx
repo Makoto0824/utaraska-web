@@ -253,7 +253,7 @@ export default function YuruStyleJapan() {
             {products.map((product, index) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto">
                 <div 
-                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer"
+                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer relative"
                   onClick={() => openImagePopup(product.id)}
                 >
                   <Image 
@@ -263,6 +263,9 @@ export default function YuruStyleJapan() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
+                  {product.id === 101 && (
+                    <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                  )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
@@ -344,7 +347,7 @@ export default function YuruStyleJapan() {
                   
                   <div className="mt-auto pt-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold text-gray-800">{product.price}</span>
+                      <span className="text-xl font-bold text-gray-800">{product.id === 101 ? '¥4,480' : product.price}</span>
                       <span className="text-sm text-gray-500">税込</span>
                     </div>
                     <a 
