@@ -431,13 +431,34 @@ export default function JapaneseArtStudio() {
                 <li><Link href="/designshelf/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
-                  <div className="text-xs text-gray-400 mt-1">v0.1.3</div>
+                  <div className="text-xs text-gray-500 mt-1">v0.1.4</div>
                 </li>
               </ul>
+              <div className="mt-6">
+                <a 
+                  href="https://www.instagram.com/designshelf2025/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+                >
+                  <Image 
+                    src="/designshelf/images/Instagram_logo.png" 
+                    alt="Instagram" 
+                    width={20} 
+                    height={20}
+                    className="w-5 h-5"
+                    unoptimized
+                  />
+                  <span className="text-sm">@designshelf2025</span>
+                </a>
+              </div>
             </div>
           </div>
           <div className="text-center pt-8 border-t border-gray-700">
-            <p className="text-gray-400">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+            <p className="text-gray-400 mb-2">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+            <p className="text-xs text-gray-500 max-w-4xl mx-auto">
+              一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。
+            </p>
           </div>
         </div>
       </footer>
