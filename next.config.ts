@@ -13,7 +13,13 @@ const nextConfig: NextConfig = {
         ]
       }
     ];
-  }
+  },
+  images: {
+    domains: ['www.utaraska.co.jp'],
+    unoptimized: false
+  },
+  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://www.utaraska.co.jp' : '',
+  trailingSlash: false
 };
 
 export default nextConfig;
