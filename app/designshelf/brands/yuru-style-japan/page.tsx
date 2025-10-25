@@ -204,6 +204,10 @@ export default function YuruStyleJapan() {
     }
   ];
 
+  // 現在のポップアップ対象（サムネやタブ表示に使用）
+  const currentProductId = popupId ? parseInt(popupId.replace('imagePopup', '')) : null;
+  const currentProduct: Product | undefined = currentProductId ? products.find(p => p.id === currentProductId) : undefined;
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* ヘッダー */}
@@ -392,40 +396,63 @@ export default function YuruStyleJapan() {
             
             {/* コントロールエリア */}
             <div className="flex flex-col gap-4 min-w-[200px]">
-              <button
-                onClick={() => switchImageType('product')}
-                className={`flex flex-col items-center p-3 rounded transition-colors ${
-                  currentImageType === 'product' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                <Image
-                  src={popupImage.includes('_design') ? popupImage.replace('_design', '') : popupImage}
-                  alt="商品画像"
-                  width={64}
-                  height={64}
-                  className="object-contain mb-2"
-                />
-                <span className="text-sm">商品画像</span>
-              </button>
-              <button
-                onClick={() => switchImageType('design')}
-                className={`flex flex-col items-center p-3 rounded transition-colors ${
-                  currentImageType === 'design' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                <Image
-                  src={popupImage.includes('_design') ? popupImage : popupImage.replace('.png', '_design.png')}
-                  alt="デザイン画像"
-                  width={64}
-                  height={64}
-                  className="object-contain mb-2"
-                />
-                <span className="text-sm">デザイン画像</span>
-              </button>
+              {currentProduct && (
+                <>
+                  <button
+                    onClick={() => switchImageType('product')}
+                    className={`flex flex-col items-center p-3 rounded transition-colors ${
+                      currentImageType === 'product' 
+                        ? 'bg-white text-black' 
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                    }`}
+                  >
+                    <Image
+                      src={currentProduct.image}
+                      alt="商品画像"
+                      width={64}
+                      height={64}
+                      className="object-contain mb-2"
+                    />
+                    <span className="text-sm">商品画像</span>
+                  </button>
+                  <button
+                    onClick={() => switchImageType('design')}
+                    className={`flex flex-col items-center p-3 rounded transition-colors ${
+                      currentImageType === 'design' 
+                        ? 'bg-white text-black' 
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                    }`}
+                  >
+                    <Image
+                      src={currentProduct.designImage}
+                      alt="デザイン画像"
+                      width={64}
+                      height={64}
+                      className="object-contain mb-2"
+                    />
+                    <span className="text-sm">デザイン画像</span>
+                  </button>
+                  {currentProduct.modelImage && (
+                    <button
+                      onClick={() => switchImageType('model')}
+                      className={`flex flex-col items-center p-3 rounded transition-colors ${
+                        currentImageType === 'model' 
+                          ? 'bg-white text-black' 
+                          : 'bg-white/20 text-white hover:bg-white/30'
+                      }`}
+                    >
+                      <Image
+                        src={currentProduct.modelImage}
+                        alt="着用イメージ"
+                        width={64}
+                        height={64}
+                        className="object-contain mb-2"
+                      />
+                      <span className="text-sm">着用イメージ</span>
+                    </button>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
