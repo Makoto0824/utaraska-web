@@ -8,7 +8,7 @@ export default function WarotaShoten() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [popupId, setPopupId] = useState<string | null>(null);
-  const [currentImageType, setCurrentImageType] = useState<'product' | 'design'>('product');
+  const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
 
   // ESCキーでポップアップを閉じる
@@ -44,13 +44,19 @@ export default function WarotaShoten() {
     document.body.style.overflow = '';
   };
 
-  const switchImageType = (type: 'product' | 'design') => {
+  const switchImageType = (type: 'product' | 'design' | 'model') => {
     if (!popupId) return;
     const productId = parseInt(popupId.replace('imagePopup', ''));
     const product = products.find(p => p.id === productId);
     if (product) {
       setCurrentImageType(type);
-      setPopupImage(type === 'product' ? product.image : product.designImage);
+      setPopupImage(
+        type === 'product'
+          ? product.image
+          : type === 'design'
+            ? product.designImage
+            : (product as any).modelImage ?? product.image
+      );
       setIsZoomed(false);
     }
   };
@@ -67,6 +73,7 @@ export default function WarotaShoten() {
       brand: "ワロタ商店",
       image: "/designshelf/images/tee25.png",
       designImage: "/designshelf/images/tee25_design.png",
+      modelImage: "/designshelf/images/tee25_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/48L689n",
       features: [
@@ -240,7 +247,7 @@ export default function WarotaShoten() {
                   onClick={() => openImagePopup(product.id)}
                 >
                   <Image 
-                    src={product.image} 
+                    src={(product as any).modelImage ?? product.image}
                     alt={product.title}
                     width={256}
                     height={256}
@@ -413,6 +420,25 @@ export default function WarotaShoten() {
                 />
                 <span className="text-sm">デザイン画像</span>
               </button>
+              {(products.find(p=>p.id===parseInt((popupId||'').replace('imagePopup',''))) as any)?.modelImage && (
+                <button
+                  onClick={() => switchImageType('model')}
+                  className={`flex flex-col items-center p-3 rounded transition-colors ${
+                    currentImageType === 'model' 
+                      ? 'bg-white text-black' 
+                      : 'bg-white/20 text-white hover:bg-white/30'
+                  }`}
+                >
+                  <Image
+                    src={((products.find(p=>p.id===parseInt((popupId||'').replace('imagePopup',''))) as any).modelImage) ?? ''}
+                    alt="着用イメージ"
+                    width={64}
+                    height={64}
+                    className="object-contain mb-2"
+                  />
+                  <span className="text-sm">着用イメージ</span>
+                </button>
+              )}
             </div>
           </div>
         </div>

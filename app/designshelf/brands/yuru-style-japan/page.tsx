@@ -8,7 +8,7 @@ export default function YuruStyleJapan() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [popupId, setPopupId] = useState<string | null>(null);
-  const [currentImageType, setCurrentImageType] = useState<'product' | 'design'>('product');
+  const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
 
   // ESCキーでポップアップを閉じる
@@ -44,13 +44,19 @@ export default function YuruStyleJapan() {
     document.body.style.overflow = '';
   };
 
-  const switchImageType = (type: 'product' | 'design') => {
+  const switchImageType = (type: 'product' | 'design' | 'model') => {
     if (!popupId) return;
     const productId = parseInt(popupId.replace('imagePopup', ''));
     const product = products.find(p => p.id === productId);
     if (product) {
       setCurrentImageType(type);
-      setPopupImage(type === 'product' ? product.image : product.designImage);
+      setPopupImage(
+        type === 'product'
+          ? product.image
+          : type === 'design'
+            ? product.designImage
+            : (product as any).modelImage ?? product.image
+      );
       setIsZoomed(false);
     }
   };
