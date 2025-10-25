@@ -73,7 +73,7 @@ export default function JapaneseArtStudio() {
   };
 
   // Japanese Art Studioの商品データ
-  const products = [
+  const products: Product[] = [
     {
       id: 21,
       title: "戦国武将 兜 和風 侍 ピクセルアート #1 Tシャツ",
