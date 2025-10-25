@@ -78,9 +78,9 @@ export default function YuruStyleJapan() {
       id: 101,
       title: "風神雷神 ジップパーカー",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee1_zip.png",
-      designImage: "/designshelf/images/tee1_zip_design.png",
-      modelImage: "/designshelf/images/tee1_zip_model.png",
+      image: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie.png",
+      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/47HCMYw",
       features: [
