@@ -811,6 +811,7 @@ export default function DesignShelf() {
                     width={20} 
                     height={20}
                     className="w-5 h-5"
+                    unoptimized
                   />
                   <span className="text-sm">@designshelf2025</span>
                 </a>
