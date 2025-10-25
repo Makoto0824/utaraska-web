@@ -801,7 +801,10 @@ export default function DesignShelf() {
             </div>
           </div>
           <div className="text-center pt-8 border-t border-gray-700">
-            <p className="text-gray-400">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+            <p className="text-gray-400 mb-2">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+            <p className="text-xs text-gray-500 max-w-4xl mx-auto">
+              一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。
+            </p>
           </div>
         </div>
       </footer>
