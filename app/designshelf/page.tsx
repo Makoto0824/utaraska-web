@@ -805,13 +805,12 @@ export default function DesignShelf() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
                 >
-                  <Image 
+                  <img 
                     src="/designshelf/images/Instagram_logo.png" 
                     alt="Instagram" 
                     width={20} 
                     height={20}
                     className="w-5 h-5"
-                    unoptimized
                   />
                   <span className="text-sm">@designshelf2025</span>
                 </a>
