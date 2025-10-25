@@ -798,6 +798,23 @@ export default function DesignShelf() {
                   <div className="text-xs text-gray-500 mt-1">v0.1.4</div>
                 </li>
               </ul>
+              <div className="mt-6">
+                <a 
+                  href="https://www.instagram.com/designshelf2025/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+                >
+                  <Image 
+                    src="/designshelf/images/Instagram_logo.png" 
+                    alt="Instagram" 
+                    width={20} 
+                    height={20}
+                    className="w-5 h-5"
+                  />
+                  <span className="text-sm">@designshelf2025</span>
+                </a>
+              </div>
             </div>
           </div>
           <div className="text-center pt-8 border-t border-gray-700">
