@@ -806,7 +806,7 @@ export default function DesignShelf() {
                   className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
                 >
                   <img 
-                    src="/designshelf/images/Instagram_logo.png" 
+                    src="https://www.utaraska.co.jp/designshelf/images/Instagram_logo.png" 
                     alt="Instagram" 
                     width={20} 
                     height={20}
