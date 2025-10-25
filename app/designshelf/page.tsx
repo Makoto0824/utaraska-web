@@ -103,6 +103,21 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 101,
+      title: "風神雷神 ジップパーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie.png",
+      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie_model.png",
+      price: "¥4,480",
+      amazonLink: "https://amzn.to/47HCMYw",
+      features: [
+        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
+        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
+      ],
+      description: "このデザインは、日本の伝統美術に登場する『風神』と『雷神』をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。『風神雷神デザイン』『ポップアートファッション』など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。"
+    },
+    {
       id: 25,
       title: "やる気スイッチオフ おもしろ 面白い Tシャツ",
       brand: "ワロタ商店",
@@ -556,7 +571,7 @@ export default function DesignShelf() {
             {products.map((product, index) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto">
                 <div 
-                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer"
+                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer relative"
                   onClick={() => openImagePopup(product.id)}
                 >
                   <Image 
@@ -566,6 +581,9 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
+                  {product.id === 101 && (
+                    <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                  )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
@@ -699,58 +717,62 @@ export default function DesignShelf() {
             
             {/* コントロールエリア */}
             <div className="flex flex-col gap-4 min-w-[200px]">
-              <button
-                onClick={() => switchImageType('product')}
-                className={`flex flex-col items-center p-3 rounded transition-colors ${
-                  currentImageType === 'product' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                <Image
-                  src={popupImage.includes('_design') ? popupImage.replace('_design', '') : popupImage}
-                  alt="商品画像"
-                  width={64}
-                  height={64}
-                  className="object-contain mb-2"
-                />
-                <span className="text-sm">商品画像</span>
-              </button>
-              <button
-                onClick={() => switchImageType('design')}
-                className={`flex flex-col items-center p-3 rounded transition-colors ${
-                  currentImageType === 'design' 
-                    ? 'bg-white text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                <Image
-                  src={popupImage.includes('_design') ? popupImage : popupImage.replace('.png', '_design.png')}
-                  alt="デザイン画像"
-                  width={64}
-                  height={64}
-                  className="object-contain mb-2"
-                />
-                <span className="text-sm">デザイン画像</span>
-              </button>
-              {currentProduct && currentProduct.modelImage && (
-                <button
-                  onClick={() => switchImageType('model')}
-                  className={`flex flex-col items-center p-3 rounded transition-colors ${
-                    currentImageType === 'model' 
-                      ? 'bg-white text-black' 
-                      : 'bg-white/20 text-white hover:bg-white/30'
-                  }`}
-                >
-                  <Image
-                    src={currentProduct.modelImage}
-                    alt="着用イメージ"
-                    width={64}
-                    height={64}
-                    className="object-contain mb-2"
-                  />
-                  <span className="text-sm">着用イメージ</span>
-                </button>
+              {currentProduct && (
+                <>
+                  <button
+                    onClick={() => switchImageType('product')}
+                    className={`flex flex-col items-center p-3 rounded transition-colors ${
+                      currentImageType === 'product' 
+                        ? 'bg-white text-black' 
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                    }`}
+                  >
+                    <Image
+                      src={currentProduct.image}
+                      alt="商品画像"
+                      width={64}
+                      height={64}
+                      className="object-contain mb-2"
+                    />
+                    <span className="text-sm">商品画像</span>
+                  </button>
+                  <button
+                    onClick={() => switchImageType('design')}
+                    className={`flex flex-col items-center p-3 rounded transition-colors ${
+                      currentImageType === 'design' 
+                        ? 'bg-white text-black' 
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                    }`}
+                  >
+                    <Image
+                      src={currentProduct.designImage}
+                      alt="デザイン画像"
+                      width={64}
+                      height={64}
+                      className="object-contain mb-2"
+                    />
+                    <span className="text-sm">デザイン画像</span>
+                  </button>
+                  {currentProduct.modelImage && (
+                    <button
+                      onClick={() => switchImageType('model')}
+                      className={`flex flex-col items-center p-3 rounded transition-colors ${
+                        currentImageType === 'model' 
+                          ? 'bg-white text-black' 
+                          : 'bg-white/20 text-white hover:bg-white/30'
+                      }`}
+                    >
+                      <Image
+                        src={currentProduct.modelImage}
+                        alt="着用イメージ"
+                        width={64}
+                        height={64}
+                        className="object-contain mb-2"
+                      />
+                      <span className="text-sm">着用イメージ</span>
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </div>
