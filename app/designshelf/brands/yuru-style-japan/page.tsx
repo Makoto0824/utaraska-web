@@ -11,6 +11,19 @@ export default function YuruStyleJapan() {
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
 
+  type Product = {
+    id: number;
+    title: string;
+    brand: string;
+    image: string;
+    designImage: string;
+    price: string;
+    amazonLink: string;
+    features: string[];
+    description: string;
+    modelImage?: string;
+  };
+
   // ESCキーでポップアップを閉じる
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -50,13 +63,7 @@ export default function YuruStyleJapan() {
     const product = products.find(p => p.id === productId);
     if (product) {
       setCurrentImageType(type);
-      setPopupImage(
-        type === 'product'
-          ? product.image
-          : type === 'design'
-            ? product.designImage
-            : (product as any).modelImage ?? product.image
-      );
+      setPopupImage(type === 'product' ? product.image : type === 'design' ? product.designImage : (product.modelImage ?? product.image));
       setIsZoomed(false);
     }
   };
@@ -66,7 +73,7 @@ export default function YuruStyleJapan() {
   };
 
   // ゆるスタイル・ジャパンの商品データ
-  const products = [
+  const products: Product[] = [
     {
       id: 1,
       title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
@@ -171,6 +178,7 @@ export default function YuruStyleJapan() {
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/tee24.png",
       designImage: "/designshelf/images/tee24_design.png",
+      modelImage: "/designshelf/images/tee24_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4nN1Zqw",
       features: [

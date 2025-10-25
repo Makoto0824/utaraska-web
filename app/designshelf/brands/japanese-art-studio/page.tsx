@@ -11,6 +11,19 @@ export default function JapaneseArtStudio() {
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
 
+  type Product = {
+    id: number;
+    title: string;
+    brand: string;
+    image: string;
+    designImage: string;
+    price: string;
+    amazonLink: string;
+    features: string[];
+    description: string;
+    modelImage?: string;
+  };
+
   // ESCキーでポップアップを閉じる
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -50,13 +63,7 @@ export default function JapaneseArtStudio() {
     const product = products.find(p => p.id === productId);
     if (product) {
       setCurrentImageType(type);
-      setPopupImage(
-        type === 'product'
-          ? product.image
-          : type === 'design'
-            ? product.designImage
-            : (product as any).modelImage ?? product.image
-      );
+      setPopupImage(type === 'product' ? product.image : type === 'design' ? product.designImage : (product.modelImage ?? product.image));
       setIsZoomed(false);
     }
   };

@@ -11,6 +11,19 @@ export default function WarotaShoten() {
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
 
+  type Product = {
+    id: number;
+    title: string;
+    brand: string;
+    image: string;
+    designImage: string;
+    price: string;
+    amazonLink: string;
+    features: string[];
+    description: string;
+    modelImage?: string;
+  };
+
   // ESCキーでポップアップを閉じる
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -50,13 +63,7 @@ export default function WarotaShoten() {
     const product = products.find(p => p.id === productId);
     if (product) {
       setCurrentImageType(type);
-      setPopupImage(
-        type === 'product'
-          ? product.image
-          : type === 'design'
-            ? product.designImage
-            : (product as any).modelImage ?? product.image
-      );
+      setPopupImage(type === 'product' ? product.image : type === 'design' ? product.designImage : (product.modelImage ?? product.image));
       setIsZoomed(false);
     }
   };
@@ -66,7 +73,7 @@ export default function WarotaShoten() {
   };
 
   // ワロタ商店の商品データ
-  const products = [
+  const products: Product[] = [
     {
       id: 25,
       title: "やる気スイッチオフ おもしろ 面白い Tシャツ",
@@ -247,7 +254,7 @@ export default function WarotaShoten() {
                   onClick={() => openImagePopup(product.id)}
                 >
                   <Image 
-                    src={(product as any).modelImage ?? product.image}
+                    src={product.modelImage ?? product.image}
                     alt={product.title}
                     width={256}
                     height={256}
@@ -420,7 +427,12 @@ export default function WarotaShoten() {
                 />
                 <span className="text-sm">デザイン画像</span>
               </button>
-              {(products.find(p=>p.id===parseInt((popupId||'').replace('imagePopup',''))) as any)?.modelImage && (
+              {/* 現在のポップアップ対象（着用イメージタブの表示制御） */}
+              {(() => {
+                const id = popupId ? parseInt(popupId.replace('imagePopup','')) : null;
+                const current: Product | undefined = id ? products.find(p => p.id === id) : undefined;
+                return current?.modelImage;
+              })() && (
                 <button
                   onClick={() => switchImageType('model')}
                   className={`flex flex-col items-center p-3 rounded transition-colors ${
@@ -430,7 +442,11 @@ export default function WarotaShoten() {
                   }`}
                 >
                   <Image
-                    src={((products.find(p=>p.id===parseInt((popupId||'').replace('imagePopup',''))) as any).modelImage) ?? ''}
+                    src={(() => {
+                      const id = popupId ? parseInt(popupId.replace('imagePopup','')) : null;
+                      const current: Product | undefined = id ? products.find(p => p.id === id) : undefined;
+                      return current?.modelImage ?? '';
+                    })()}
                     alt="着用イメージ"
                     width={64}
                     height={64}
