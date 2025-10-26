@@ -90,6 +90,21 @@ export default function YuruStyleJapan() {
       description: "このデザインは、日本の伝統美術に登場する『風神』と『雷神』をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。『風神雷神デザイン』『ポップアートファッション』など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。"
     },
     {
+      id: 102,
+      title: "ゆるい龍と虎",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/5_dragon_tiger/5_dragon_tiger.png",
+      designImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png",
+      modelImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_hoodie_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/3WUYa6i",
+      features: [
+        "伝説の神獣「龍」と猛獣「虎」が向かい合う、力強くもユーモラスな構図。和風×対称構図の王道をポップなイラストで再構築。",
+        "キャラクター調にデフォルメされた表情が印象的。親しみやすさとエネルギーを兼ね備えた現代アジアンアートの一作。"
+      ],
+      description: "このデザインは、東洋の象徴的存在である「龍」と「虎」が向かい合う\"龍虎相対\"の構図を、ポップなテイストとキャラクター風の表現で現代的に再解釈したアートワークです。左右に配置された顔が視線を交わすことで、静的ながらも緊張感のある対峙を演出。伝統的な龍虎モチーフにユーモアと親しみやすさを加えることで、アートファッション・和風ポップ・ストリート系・デフォルメアニマルデザインなど多ジャンルにマッチするビジュアルに仕上がっています。文化的象徴性とデザイン性の両方を兼ね備えた作品です。"
+    },
+    {
       id: 1,
       title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
       brand: "ゆるスタイル・ジャパン",
@@ -263,7 +278,7 @@ export default function YuruStyleJapan() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {product.id === 101 && (
+                  {(product.id === 101 || product.id === 102) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
@@ -347,7 +362,7 @@ export default function YuruStyleJapan() {
                   
                   <div className="mt-auto pt-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold text-gray-800">{product.id === 101 ? '¥4,480' : product.price}</span>
+                      <span className="text-xl font-bold text-gray-800">{product.id === 101 ? '¥4,480' : product.id === 102 ? '¥4,400' : product.price}</span>
                       <span className="text-sm text-gray-500">税込</span>
                     </div>
                     <a 
