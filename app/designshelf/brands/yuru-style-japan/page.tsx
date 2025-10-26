@@ -91,7 +91,7 @@ export default function YuruStyleJapan() {
     },
     {
       id: 102,
-      title: "ゆるい龍と虎",
+      title: "ゆるい龍と虎 パーカー",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/5_dragon_tiger/5_dragon_tiger.png",
       designImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png",
