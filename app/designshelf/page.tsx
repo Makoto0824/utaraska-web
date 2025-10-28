@@ -133,6 +133,21 @@ export default function DesignShelf() {
       description: "このデザインは、東洋の象徴的存在である「龍」と「虎」が向かい合う\"龍虎相対\"の構図を、ポップなテイストとキャラクター風の表現で現代的に再解釈したアートワークです。左右に配置された顔が視線を交わすことで、静的ながらも緊張感のある対峙を演出。伝統的な龍虎モチーフにユーモアと親しみやすさを加えることで、アートファッション・和風ポップ・ストリート系・デフォルメアニマルデザインなど多ジャンルにマッチするビジュアルに仕上がっています。文化的象徴性とデザイン性の両方を兼ね備えた作品です。"
     },
     {
+      id: 103,
+      title: "ゆるい虎と虎",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt.png",
+      designImage: "/designshelf/images/7_tigertiger/7_tigertiger_design.png",
+      modelImage: "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt_model.png",
+      price: "¥3,960",
+      amazonLink: "https://amzn.to/4ocuRrV",
+      features: [
+        "左右対称に配置されたタイガーの顔がユニークな構成。シンプルなデザインに込められたインパクトとバランスが魅力。",
+        "和風アートの虎モチーフに、現代的なポップイラストのテイストを融合。ストリートファッションやアート好きに刺さるキャッチーな表現。"
+      ],
+      description: "このデザインは、虎（タイガー）の顔を左右対称に配置したユーモラスかつ力強いグラフィックアートです。伝統的な日本の動物モチーフに、アメコミ風のポップアートテイストを加えることで、アジアン×モダンな独自の世界観を表現。ミニマルな配置ながら視線を惹きつけるデザインは、和柄、アニマルデザイン、タイガーアート、ストリート系、レトロポップ、アートファッションといったジャンルに幅広く親和性があります。視覚的インパクトと遊び心が共存する、唯一無二のビジュアルです。"
+    },
+    {
       id: 25,
       title: "やる気スイッチオフ おもしろ 面白い Tシャツ",
       brand: "ワロタ商店",
@@ -596,7 +611,7 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
