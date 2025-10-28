@@ -106,7 +106,7 @@ export default function YuruStyleJapan() {
     },
     {
       id: 103,
-      title: "ゆるい虎と虎",
+      title: "ゆるい虎と虎 トレーナー",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt.png",
       designImage: "/designshelf/images/7_tigertiger/7_tigertiger_design.png",
