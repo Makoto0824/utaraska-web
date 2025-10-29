@@ -103,6 +103,21 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 104,
+      title: "ゆるい龍と龍 パーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/6_dragondragon/6_dragondragon.png",
+      designImage: "/designshelf/images/6_dragondragon/6_dragondragon_design.png",
+      modelImage: "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/49tW057",
+      features: [
+        "左右対称に配置されたドラゴンの顔がユニークで目を引くアートデザイン。ミニマルな構成ながらインパクト抜群。",
+        "和風モチーフにポップアートの要素を加えた現代的グラフィック。アジアンテイスト、カジュアルファッション、ストリートアートにマッチ。"
+      ],
+      description: "このデザインは、左右対称に配置された龍（ドラゴン）の顔が特徴の、ポップで遊び心あふれる和風アートです。アート、ストリート系、アジアンモチーフ、和柄ファッション、オリエンタルデザインなど、幅広いジャンルに対応。デフォルメされた龍の表情がキャッチーで、男女問わず着こなしのアクセントとして最適です。個性的なファッションを楽しみたい方、ギフト用途にもおすすめの一着です。"
+    },
+    {
       id: 101,
       title: "風神雷神 ジップパーカー",
       brand: "ゆるスタイル・ジャパン",
@@ -218,21 +233,6 @@ export default function DesignShelf() {
         "戦国・武将ファン必見。和風でレトロなピクセルアートが胸元に映える。"
       ],
       description: "戦国最強と名高い戦国武将の兜をピクセルアートで表現したグラフィックデザイン。左右対称の鹿角が圧倒的な存在感を放ち、戦国時代の力強さと美しさを現代風にアレンジ。ドット絵のワンポイントデザインは、カジュアルながらも個性を主張し、和風テイストや侍モチーフのアイテムを好む方にぴったりです。戦国武将ファンやレトロゲーマーへのプレゼントやギフトにも最適。"
-    },
-    {
-      id: 104,
-      title: "ゆるい龍と龍 パーカー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/6_dragondragon/6_dragondragon.png",
-      designImage: "/designshelf/images/6_dragondragon/6_dragondragon_design.png",
-      modelImage: "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/49tW057",
-      features: [
-        "左右対称に配置されたドラゴンの顔がユニークで目を引くアートデザイン。ミニマルな構成ながらインパクト抜群。",
-        "和風モチーフにポップアートの要素を加えた現代的グラフィック。アジアンテイスト、カジュアルファッション、ストリートアートにマッチ。"
-      ],
-      description: "このデザインは、左右対称に配置された龍（ドラゴン）の顔が特徴の、ポップで遊び心あふれる和風アートです。アート、ストリート系、アジアンモチーフ、和柄ファッション、オリエンタルデザインなど、幅広いジャンルに対応。デフォルメされた龍の表情がキャッチーで、男女問わず着こなしのアクセントとして最適です。個性的なファッションを楽しみたい方、ギフト用途にもおすすめの一着です。"
     },
     {
       id: 1,

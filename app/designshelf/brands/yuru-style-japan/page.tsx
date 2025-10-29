@@ -75,6 +75,21 @@ export default function YuruStyleJapan() {
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
     {
+      id: 104,
+      title: "ゆるい龍と龍 パーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/6_dragondragon/6_dragondragon.png",
+      designImage: "/designshelf/images/6_dragondragon/6_dragondragon_design.png",
+      modelImage: "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/49tW057",
+      features: [
+        "左右対称に配置されたドラゴンの顔がユニークで目を引くアートデザイン。ミニマルな構成ながらインパクト抜群。",
+        "和風モチーフにポップアートの要素を加えた現代的グラフィック。アジアンテイスト、カジュアルファッション、ストリートアートにマッチ。"
+      ],
+      description: "このデザインは、左右対称に配置された龍（ドラゴン）の顔が特徴の、ポップで遊び心あふれる和風アートです。アート、ストリート系、アジアンモチーフ、和柄ファッション、オリエンタルデザインなど、幅広いジャンルに対応。デフォルメされた龍の表情がキャッチーで、男女問わず着こなしのアクセントとして最適です。個性的なファッションを楽しみたい方、ギフト用途にもおすすめの一着です。"
+    },
+    {
       id: 101,
       title: "風神雷神 ジップパーカー",
       brand: "ゆるスタイル・ジャパン",
@@ -118,21 +133,6 @@ export default function YuruStyleJapan() {
         "和風アートの虎モチーフに、現代的なポップイラストのテイストを融合。ストリートファッションやアート好きに刺さるキャッチーな表現。"
       ],
       description: "このデザインは、虎（タイガー）の顔を左右対称に配置したユーモラスかつ力強いグラフィックアートです。伝統的な日本の動物モチーフに、アメコミ風のポップアートテイストを加えることで、アジアン×モダンな独自の世界観を表現。ミニマルな配置ながら視線を惹きつけるデザインは、和柄、アニマルデザイン、タイガーアート、ストリート系、レトロポップ、アートファッションといったジャンルに幅広く親和性があります。視覚的インパクトと遊び心が共存する、唯一無二のビジュアルです。"
-    },
-    {
-      id: 104,
-      title: "ゆるい龍と龍 パーカー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/6_dragondragon/6_dragondragon.png",
-      designImage: "/designshelf/images/6_dragondragon/6_dragondragon_design.png",
-      modelImage: "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/49tW057",
-      features: [
-        "左右対称に配置されたドラゴンの顔がユニークで目を引くアートデザイン。ミニマルな構成ながらインパクト抜群。",
-        "和風モチーフにポップアートの要素を加えた現代的グラフィック。アジアンテイスト、カジュアルファッション、ストリートアートにマッチ。"
-      ],
-      description: "このデザインは、左右対称に配置された龍（ドラゴン）の顔が特徴の、ポップで遊び心あふれる和風アートです。アート、ストリート系、アジアンモチーフ、和柄ファッション、オリエンタルデザインなど、幅広いジャンルに対応。デフォルメされた龍の表情がキャッチーで、男女問わず着こなしのアクセントとして最適です。個性的なファッションを楽しみたい方、ギフト用途にもおすすめの一着です。"
     },
     {
       id: 1,
