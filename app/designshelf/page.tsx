@@ -535,7 +535,7 @@ export default function DesignShelf() {
       <main className="max-w-6xl mx-auto px-4 py-8">
       {/* AI生成画像の注意書き */}
       <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-        <p className="text-sm text-yellow-800">
+        <p className="text-xs text-yellow-800">
           <span className="font-semibold">ご注意：</span>
           一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。
         </p>
