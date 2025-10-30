@@ -103,6 +103,21 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 105,
+      title: "ゆるい虎 パーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/3_tiger/3_tiger_hoodie.png",
+      designImage: "/designshelf/images/3_tiger/3_tiger_design.png",
+      modelImage: "/designshelf/images/3_tiger/3_tiger_hooodie_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/3JuRuZJ",
+      features: [
+        "大胆で印象的な虎の顔を和風テイストで表現した、ユニークで目を引くアートスタイル。",
+        "ゆるキャラ風のかわいらしさと、伝統的なジャパニーズタトゥーアートの要素を融合したポップなデザイン。"
+      ],
+      description: "このデザインは、和風のタトゥーアートから着想を得た虎の顔を、ポップでゆるいキャラクター風にアレンジしたものです。力強さと愛嬌を併せ持つこの虎モチーフは、日本文化やアジアンテイストを好む方におすすめ。個性を演出したいシーンやプレゼントにも最適です。"
+    },
+    {
       id: 104,
       title: "ゆるい龍と龍 パーカー",
       brand: "ゆるスタイル・ジャパン",
@@ -634,7 +649,7 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
