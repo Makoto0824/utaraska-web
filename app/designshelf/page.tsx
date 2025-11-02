@@ -104,7 +104,7 @@ export default function DesignShelf() {
   const products: Product[] = [
     {
       id: 106,
-      title: "ゆるい日本のお面たち",
+      title: "ゆるい日本のお面たち トレーナー",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/2_japanese_masks/japanese_masks_sweat.png",
       designImage: "/designshelf/images/2_japanese_masks/japanese_masks_design.png",
