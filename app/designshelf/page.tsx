@@ -103,6 +103,21 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 106,
+      title: "ゆるい日本のお面たち",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/2_japanese_masks/japanese_masks_sweat.png",
+      designImage: "/designshelf/images/2_japanese_masks/japanese_masks_design.png",
+      modelImage: "/designshelf/images/2_japanese_masks/japanese_masks_sweat_model.png",
+      price: "¥3,960",
+      amazonLink: "https://amzn.to/47lyTbK",
+      features: [
+        "6種類の日本伝統仮面をポップに表現した、視覚的にインパクトのあるデザイン。",
+        "能・狂言・祭りなどに登場する仮面をモチーフに、日本文化の奥深さをユーモラスに表現。"
+      ],
+      description: "「JAPANESE MASKS」の文字の上に、6種類の日本の伝統的な仮面がカラフルに描かれたユニークなデザインです。それぞれの仮面は、能や狂言、祭りなどで使用されるもので、文化的な背景や象徴的な意味を持っています。表情豊かで個性的な仮面が並ぶことで、日本文化の多様性や奥深さをユーモラスかつアーティスティックに表現しています。インパクトのあるビジュアルで、日本文化が好きな方、和モチーフのアートを楽しみたい方、個性的なスタイルを求める方におすすめです。"
+    },
+    {
       id: 105,
       title: "ゆるい虎 パーカー",
       brand: "ゆるスタイル・ジャパン",
@@ -649,7 +664,7 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
