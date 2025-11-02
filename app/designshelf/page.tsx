@@ -103,6 +103,21 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 107,
+      title: "ゆるい阿修羅 パーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/4_ashura/4_ashura_hoodie.png",
+      designImage: "/designshelf/images/4_ashura/4_ashura_design.png",
+      modelImage: "/designshelf/images/4_ashura/4_ashura_hoodie_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/4oIKozG",
+      features: [
+        "阿修羅像をモチーフに、ゆるキャラ風に再構築したユニークなアートデザイン。伝統とユーモアが融合した現代風ミニマル仏像イラスト。",
+        "シンプルながら存在感のある線画スタイルと、和柄をあしらった腰巻がアクセント。仏像ファンや仏教カルチャーに興味のある人にも刺さる個性派グラフィック。"
+      ],
+      description: "このデザインは、日本で広く知られる阿修羅像を、ポップかつユーモラスなタッチで表現した\"ゆるアート\"作品です。宗教的荘厳さよりも、日常に溶け込むかわいさと不思議な存在感を持ち、仏像・仏教カルチャー・和風アート・ご利益デザイン・ゆるキャラ・サブカル・アジアンテイストといった複数のジャンルにアピールします。シンプルな白地に映えるミニマル構成で、老若男女問わず楽しめるデザインです。ユニークなギフトを探している方におすすめ。"
+    },
+    {
       id: 106,
       title: "ゆるい日本のお面たち トレーナー",
       brand: "ゆるスタイル・ジャパン",
@@ -664,7 +679,7 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
