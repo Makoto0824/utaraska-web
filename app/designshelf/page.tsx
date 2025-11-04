@@ -103,6 +103,21 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 108,
+      title: "ゆるいライオン パーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/26_lion/26_lion_hoodie.png",
+      designImage: "/designshelf/images/26_lion/26_lion_design.png",
+      modelImage: "/designshelf/images/26_lion/26_lion_hoodie_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/3JJ4FWX",
+      features: [
+        "ライオンを大胆で印象的なゆるいタッチで表現。ユニークで目を引くアートスタイル",
+        "普段着、カジュアルコーデ、ギフト用途まで幅広く使える汎用性の高いデザイン"
+      ],
+      description: "力強さと愛嬌を併せ持つこのライオンモチーフは、日本文化やアジアンテイストを好む方におすすめ。個性を演出したいシーンやプレゼントにも最適です。単体での着用はもちろん、重ね着やカジュアルな外出着としても使いやすいデザインです。贈り物としても選びやすいデザインで、年代を問わず合わせやすい点が特徴です。"
+    },
+    {
       id: 107,
       title: "ゆるい阿修羅 パーカー",
       brand: "ゆるスタイル・ジャパン",
@@ -679,7 +694,7 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
