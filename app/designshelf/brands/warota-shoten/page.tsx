@@ -75,6 +75,21 @@ export default function WarotaShoten() {
   // ワロタ商店の商品データ
   const products: Product[] = [
     {
+      id: 109,
+      title: "パリピサンタ パーカー",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/27_santa/hoodie/27_santa_hoodie.png",
+      designImage: "/designshelf/images/27_santa/27_santa_design.png",
+      modelImage: "/designshelf/images/27_santa/hoodie/27_santa_hoodie_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/49IhqeX",
+      features: [
+        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
+        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
+      ],
+      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です"
+    },
+    {
       id: 25,
       title: "やる気スイッチオフ おもしろ 面白い Tシャツ",
       brand: "ワロタ商店",
@@ -250,7 +265,7 @@ export default function WarotaShoten() {
             {products.map((product, index) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto">
                 <div 
-                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer"
+                  className="relative p-4 flex justify-center items-center h-72 bg-white cursor-pointer"
                   onClick={() => openImagePopup(product.id)}
                 >
                   <Image 
@@ -260,6 +275,9 @@ export default function WarotaShoten() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
+                  {product.id === 109 && (
+                    <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                  )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
