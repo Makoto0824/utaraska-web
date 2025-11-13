@@ -829,10 +829,11 @@ export default function DesignShelf() {
                     <a 
                       href={product.amazonLink}
                       target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors text-center"
+                      rel="noopener noreferrer nofollow"
+                      className="amazon-btn"
+                      aria-label="Amazonでこの商品を見る"
                     >
-                      Amazon<br />で見る
+                      <span className="label">Amazonで見る</span>
                     </a>
                   </div>
                 </div>
