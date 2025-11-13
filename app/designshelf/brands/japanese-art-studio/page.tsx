@@ -327,15 +327,33 @@ export default function JapaneseArtStudio() {
                       <span className="text-xl font-bold text-gray-800">{product.price}</span>
                       <span className="text-sm text-gray-500">税込</span>
                     </div>
-                    <a 
-                      href={product.amazonLink}
-                      target="_blank"
-                      rel="noopener noreferrer nofollow"
-                      className="amazon-btn"
-                      aria-label="Amazonでこの商品を見る"
-                    >
-                      <span className="label">Amazon<br />で見る</span>
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="https://www.instagram.com/designshelf2025/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center"
+                        aria-label="Instagram"
+                      >
+                        <Image
+                          src="/designshelf/images/Instagram_logo.png"
+                          alt="Instagram"
+                          width={20}
+                          height={20}
+                          className="w-5 h-5"
+                          unoptimized
+                        />
+                      </a>
+                      <a 
+                        href={product.amazonLink}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        className="amazon-btn"
+                        aria-label="Amazonでこの商品を見る"
+                      >
+                        <span className="label">Amazon<br />で見る</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
