@@ -828,7 +828,7 @@ export default function DesignShelf() {
                     </div>
                     <div className="flex items-center gap-2">
                       <a
-                        href="https://www.instagram.com/designshelf2025/"
+                        href={product.id === 111 ? "https://www.instagram.com/reel/DQ_wi85AZ91/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" : "https://www.instagram.com/designshelf2025/"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center"
