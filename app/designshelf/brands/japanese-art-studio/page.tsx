@@ -334,7 +334,7 @@ export default function JapaneseArtStudio() {
                       className="amazon-btn"
                       aria-label="Amazonでこの商品を見る"
                     >
-                      <span className="label">Amazonで見る</span>
+                      <span className="label">Amazon<br />で見る</span>
                     </a>
                   </div>
                 </div>
