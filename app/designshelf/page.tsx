@@ -838,34 +838,15 @@ export default function DesignShelf() {
                       <span className="text-xl font-bold text-gray-800">{product.price}</span>
                       <span className="text-sm text-gray-500">税込</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <a
-                        href={product.id === 111 ? "https://www.instagram.com/reel/DQ_wi85AZ91/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" : "https://www.instagram.com/designshelf2025/"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-800 transition-colors"
-                        aria-label="着用イメージ動画を見る"
-                      >
-                        <Image
-                          src="/designshelf/images/Instagram_logo_black.png"
-                          alt="Instagram"
-                          width={18}
-                          height={18}
-                          className="w-[18px] h-[18px]"
-                          unoptimized
-                        />
-                        <span className="text-xs">着用イメージ動画を見る</span>
-                      </a>
-                      <a 
-                        href={product.amazonLink}
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        className="amazon-btn"
-                        aria-label="Amazonでこの商品を見る"
-                      >
-                        <span className="label">Amazon<br />で見る</span>
-                      </a>
-                    </div>
+                    <a 
+                      href={product.amazonLink}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="amazon-btn"
+                      aria-label="Amazonでこの商品を見る"
+                    >
+                      <span className="label">Amazon<br />で見る</span>
+                    </a>
                   </div>
                 </div>
               </div>
