@@ -464,7 +464,7 @@ export default function YuruStyleJapan() {
                         aria-label="Instagram"
                       >
                         <Image
-                          src="/designshelf/images/Instagram_logo.png"
+                          src="/designshelf/images/Instagram_logo_black.png"
                           alt="Instagram"
                           width={20}
                           height={20}
