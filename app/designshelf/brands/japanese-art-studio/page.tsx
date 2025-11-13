@@ -145,20 +145,6 @@ export default function JapaneseArtStudio() {
       description: "葛飾北斎の「神奈川沖浪裏」をサイケデリックアートで再構築した和風ビジュアル。富士山と波をモチーフにした伝統的な和風要素を現代的にアレンジしました。"
     },
     {
-      id: 10,
-      title: "美人画 茶道 浮世絵風 ネオジャパネスク 和風アートTシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee10.png",
-      designImage: "/designshelf/images/tee10_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4ktKJUX",
-      features: [
-        "浮世絵の美人画をネオジャパネスクスタイルで再構築",
-        "茶道をテーマにした和風アート"
-      ],
-      description: "浮世絵の美人画をネオジャパネスクスタイルで再構築した和風アート。茶道をテーマにした伝統的な和風要素を現代的にアレンジしました。"
-    },
-    {
       id: 11,
       title: "富士山 サイケデリック浮世絵 和風ネオンアート Tシャツ",
       brand: "Japanese Art Studio",
@@ -172,20 +158,6 @@ export default function JapaneseArtStudio() {
       ],
       description: "富士山をサイケデリック浮世絵で表現した和風ネオンアート。伝統的な和風要素を現代的にアレンジし、個性的なファッションアイテムとして仕上げました。"
     },
-    {
-      id: 12,
-      title: "武士 サムライ サイケデリックアート ポップアートファッション 和風",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee12.png",
-      designImage: "/designshelf/images/tee12_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4j90pLY",
-      features: [
-        "武士・サムライをサイケデリックアートで表現",
-        "ポップアートファッションに合う和風デザイン"
-      ],
-      description: "武士・サムライをサイケデリックアートで表現したポップアートファッション。伝統的な和風要素を現代的にアレンジし、個性的なファッションアイテムとして仕上げました。"
-    }
   ];
 
   return (
