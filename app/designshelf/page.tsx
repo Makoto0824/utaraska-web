@@ -9,7 +9,8 @@ export default function DesignShelf() {
   const [currentBanner, setCurrentBanner] = useState(0);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [popupId, setPopupId] = useState<string | null>(null);
-  const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
+  const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model' | 'video'>('product');
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
 
   const banners = [
@@ -52,6 +53,7 @@ export default function DesignShelf() {
       setPopupId(`imagePopup${productId}`);
       setCurrentImageType('product');
       setIsZoomed(false);
+      setVideoLoaded(false);
       document.body.style.overflow = 'hidden';
     }
   };
@@ -63,20 +65,24 @@ export default function DesignShelf() {
     document.body.style.overflow = '';
   };
 
-  const switchImageType = (type: 'product' | 'design' | 'model') => {
+  const switchImageType = (type: 'product' | 'design' | 'model' | 'video') => {
     if (!popupId) return;
     const productId = parseInt(popupId.replace('imagePopup', ''));
     const product = products.find(p => p.id === productId);
     if (product) {
       setCurrentImageType(type);
-      setPopupImage(
-        type === 'product'
-          ? product.image
-          : type === 'design'
-            ? product.designImage
-            : (product.modelImage ?? product.image)
-      );
-      setIsZoomed(false);
+      if (type === 'video') {
+        setVideoLoaded(true);
+      } else {
+        setPopupImage(
+          type === 'product'
+            ? product.image
+            : type === 'design'
+              ? product.designImage
+              : (product.modelImage ?? product.image)
+        );
+        setIsZoomed(false);
+      }
     }
   };
 
@@ -98,6 +104,7 @@ export default function DesignShelf() {
     features: string[];
     description: string;
     modelImage?: string;
+    videoUrl?: string;
   };
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
@@ -115,7 +122,8 @@ export default function DesignShelf() {
         "左右に向かい合うトナカイの顔をワンポイントで配したビジュアル。線は柔らかくゆるいタッチで描かれており、派手になりすぎず日常のコーデに馴染む設計です。胸元に置いたサイズ感で視線を自然に引き、季節商品としての認識を高めます",
         "クリスマスカラー（深緑、白、赤など）と相性が良い配色想定で、ギフトやイベント着にも使いやすい。"
       ],
-      description: "このデザインは、向かい合う二頭のトナカイをゆるいタッチで並べたシンプルなホリデーイラストです。表情は柔らかく親しみやすいため、年齢や性別を問わず着用しやすいのが特徴です。胸元ワンポイントに収めることで日常の着回しに溶け込み、クリスマスシーズンのアクセントとして使いやすく仕上げました。"
+      description: "このデザインは、向かい合う二頭のトナカイをゆるいタッチで並べたシンプルなホリデーイラストです。表情は柔らかく親しみやすいため、年齢や性別を問わず着用しやすいのが特徴です。胸元ワンポイントに収めることで日常の着回しに溶け込み、クリスマスシーズンのアクセントとして使いやすく仕上げました。",
+      videoUrl: "https://www.instagram.com/reel/DQ_wi85AZ91/embed/"
     },
     {
       id: 110,
@@ -886,21 +894,37 @@ export default function DesignShelf() {
               &times;
             </button>
             
-            {/* 画像表示エリア */}
+            {/* 画像/動画表示エリア */}
             <div className="relative max-w-[80vw] max-h-[80vh] bg-black rounded-lg flex justify-center items-center">
-              <Image
-                src={popupImage}
-                alt="拡大画像"
-                width={800}
-                height={800}
-                className={`max-w-full max-h-[80vh] object-contain cursor-pointer transition-transform ${
-                  isZoomed ? 'scale-150' : 'scale-100'
-                }`}
-                onClick={toggleZoom}
-              />
-              <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
-                🔍
-              </div>
+              {currentImageType === 'video' && currentProduct?.videoUrl ? (
+                <div className="w-full max-w-[80vw] max-h-[80vh] aspect-[9/16]">
+                  {videoLoaded && (
+                    <iframe
+                      src={currentProduct.videoUrl}
+                      className="w-full h-full"
+                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                      allowFullScreen
+                      loading="lazy"
+                    />
+                  )}
+                </div>
+              ) : (
+                <>
+                  <Image
+                    src={popupImage || ''}
+                    alt="拡大画像"
+                    width={800}
+                    height={800}
+                    className={`max-w-full max-h-[80vh] object-contain cursor-pointer transition-transform ${
+                      isZoomed ? 'scale-150' : 'scale-100'
+                    }`}
+                    onClick={toggleZoom}
+                  />
+                  <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
+                    🔍
+                  </div>
+                </>
+              )}
             </div>
             
             {/* コントロールエリア */}
@@ -958,6 +982,23 @@ export default function DesignShelf() {
                         className="object-contain mb-2"
                       />
                       <span className="text-sm">着用イメージ</span>
+                    </button>
+                  )}
+                  {currentProduct.videoUrl && (
+                    <button
+                      onClick={() => switchImageType('video')}
+                      className={`flex flex-col items-center p-3 rounded transition-colors ${
+                        currentImageType === 'video' 
+                          ? 'bg-white text-black' 
+                          : 'bg-white/20 text-white hover:bg-white/30'
+                      }`}
+                    >
+                      <div className="w-16 h-16 flex items-center justify-center mb-2">
+                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                      <span className="text-sm">着用動画</span>
                     </button>
                   )}
                 </>
