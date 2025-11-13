@@ -246,7 +246,17 @@ export default function JapaneseArtStudio() {
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
-                  <p className="text-blue-600 font-medium mb-4">{product.brand}</p>
+                  <Link 
+                    href={
+                      product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/brands/yuru-style-japan" :
+                      product.brand === "ワロタ商店" ? "/designshelf/brands/warota-shoten" :
+                      product.brand === "Japanese Art Studio" ? "/designshelf/brands/japanese-art-studio" :
+                      "/designshelf/brands"
+                    }
+                    className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
+                  >
+                    {product.brand}
+                  </Link>
                   
                   <button 
                     onClick={(e) => {
