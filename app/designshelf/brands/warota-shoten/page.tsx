@@ -22,6 +22,7 @@ export default function WarotaShoten() {
     features: string[];
     description: string;
     modelImage?: string;
+    videoUrl?: string;
   };
 
   // ESCキーでポップアップを閉じる
@@ -102,7 +103,8 @@ export default function WarotaShoten() {
         "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
         "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
       ],
-      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です"
+      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
+      videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
       id: 109,
@@ -117,7 +119,8 @@ export default function WarotaShoten() {
         "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
         "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
       ],
-      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です"
+      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
+      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
       id: 25,
@@ -513,6 +516,32 @@ export default function WarotaShoten() {
                   />
                   <span className="text-sm">着用イメージ</span>
                 </button>
+              )}
+              {(() => {
+                const id = popupId ? parseInt(popupId.replace('imagePopup','')) : null;
+                const current: Product | undefined = id ? products.find(p => p.id === id) : undefined;
+                return current?.videoUrl;
+              })() && (
+                <a
+                  href={(() => {
+                    const id = popupId ? parseInt(popupId.replace('imagePopup','')) : null;
+                    const current: Product | undefined = id ? products.find(p => p.id === id) : undefined;
+                    return current?.videoUrl || '';
+                  })()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-3 rounded bg-white/20 text-white hover:bg-white/30 transition-colors mt-2"
+                >
+                  <Image
+                    src="/designshelf/images/Instagram_logo.png"
+                    alt="Instagram"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5"
+                    unoptimized
+                  />
+                  <span className="text-sm">Instagramで動画を見る</span>
+                </a>
               )}
             </div>
           </div>
