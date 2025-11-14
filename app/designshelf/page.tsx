@@ -104,6 +104,22 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 112,
+      title: "ゆるい風神雷神 トレーナー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet.png",
+      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+      price: "¥3,980",
+      amazonLink: "https://amzn.to/4i9oSC7",
+      features: [
+        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン",
+        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適"
+      ],
+      description: "このデザインは、日本の伝統美術に登場する「風神」と「雷神」をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。「風神雷神デザイン」「ポップアートファッション」など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。",
+      videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
       id: 111,
       title: "向かい合うゆるいトナカイ face2face パーカー",
       brand: "ワロタ商店",
@@ -723,7 +739,7 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 109 || product.id === 110 || product.id === 111) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 109 || product.id === 110 || product.id === 111 || product.id === 112) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
