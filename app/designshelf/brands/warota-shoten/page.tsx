@@ -120,7 +120,7 @@ export default function WarotaShoten() {
     }
 
     return (
-      <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4 h-[120px] flex flex-col justify-between overflow-hidden">
+      <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-1 h-[120px] flex flex-col justify-between overflow-hidden">
         <div className="flex-shrink-0">
           <p className="text-orange-800 font-bold text-xs text-center mb-1">期間限定商品</p>
           <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月26日 00:00</p>
@@ -409,7 +409,7 @@ export default function WarotaShoten() {
                   {product.endDate ? (
                     <CountdownTimer endDate={product.endDate} />
                   ) : (
-                    <div className="h-[120px] mb-4"></div>
+                    <div className="h-[120px] mb-1"></div>
                   )}
                   <Link 
                     href={
