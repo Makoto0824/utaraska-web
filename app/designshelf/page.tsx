@@ -133,29 +133,29 @@ export default function DesignShelf() {
     }
 
     return (
-      <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4 h-[120px] flex flex-col justify-between">
-        <div>
+      <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4 h-[120px] flex flex-col justify-between overflow-hidden">
+        <div className="flex-shrink-0">
           <p className="text-orange-800 font-bold text-xs text-center mb-1">期間限定商品</p>
           <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月26日 00:00</p>
         </div>
-        <div className="flex justify-center items-center gap-1 text-center">
-          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
-            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.days).padStart(2, '0')}</div>
+        <div className="flex justify-center items-center gap-1 text-center flex-shrink-0">
+          <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
+            <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.days).padStart(2, '0')}</div>
             <div className="text-orange-600 text-[10px] leading-tight">日</div>
           </div>
-          <div className="text-orange-800 font-bold text-base">:</div>
-          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
-            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.hours).padStart(2, '0')}</div>
+          <div className="text-orange-800 font-bold text-sm">:</div>
+          <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
+            <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.hours).padStart(2, '0')}</div>
             <div className="text-orange-600 text-[10px] leading-tight">時</div>
           </div>
-          <div className="text-orange-800 font-bold text-base">:</div>
-          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
-            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.minutes).padStart(2, '0')}</div>
+          <div className="text-orange-800 font-bold text-sm">:</div>
+          <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
+            <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.minutes).padStart(2, '0')}</div>
             <div className="text-orange-600 text-[10px] leading-tight">分</div>
           </div>
-          <div className="text-orange-800 font-bold text-base">:</div>
-          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
-            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.seconds).padStart(2, '0')}</div>
+          <div className="text-orange-800 font-bold text-sm">:</div>
+          <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
+            <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.seconds).padStart(2, '0')}</div>
             <div className="text-orange-600 text-[10px] leading-tight">秒</div>
           </div>
         </div>
