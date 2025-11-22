@@ -135,26 +135,26 @@ export default function DesignShelf() {
     return (
       <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4">
         <p className="text-orange-800 font-bold text-xs text-center mb-2">期間限定商品</p>
-        <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月25日 23:59</p>
-        <div className="flex justify-center gap-2 text-center">
-          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
-            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.days).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-xs">日</div>
+        <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月26日 00:00</p>
+        <div className="flex justify-center items-center gap-1 text-center">
+          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
+            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.days).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-[10px] leading-tight">日</div>
           </div>
-          <div className="text-orange-800 font-bold text-lg pt-2">:</div>
-          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
-            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.hours).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-xs">時</div>
+          <div className="text-orange-800 font-bold text-base">:</div>
+          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
+            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.hours).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-[10px] leading-tight">時</div>
           </div>
-          <div className="text-orange-800 font-bold text-lg pt-2">:</div>
-          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
-            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.minutes).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-xs">分</div>
+          <div className="text-orange-800 font-bold text-base">:</div>
+          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
+            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.minutes).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-[10px] leading-tight">分</div>
           </div>
-          <div className="text-orange-800 font-bold text-lg pt-2">:</div>
-          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
-            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.seconds).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-xs">秒</div>
+          <div className="text-orange-800 font-bold text-base">:</div>
+          <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
+            <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.seconds).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-[10px] leading-tight">秒</div>
           </div>
         </div>
       </div>
@@ -241,7 +241,7 @@ export default function DesignShelf() {
       ],
       description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
       videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      endDate: "2025-12-25T23:59:59"
+      endDate: "2025-12-26T00:00:00"
     },
     {
       id: 109,
@@ -258,7 +258,7 @@ export default function DesignShelf() {
       ],
       description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
       videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      endDate: "2025-12-25T23:59:59"
+      endDate: "2025-12-26T00:00:00"
     },
     {
       id: 108,
