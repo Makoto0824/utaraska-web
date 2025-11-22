@@ -872,25 +872,25 @@ export default function DesignShelf() {
       {/* 画像ポップアップ */}
       {popupImage && (
         <div 
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
           onClick={closeImagePopup}
         >
-          <div className="relative max-w-[90%] max-h-[90%] flex flex-row items-center gap-8" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] flex flex-col md:flex-row items-center gap-4 md:gap-8" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeImagePopup}
-              className="absolute -top-10 right-0 text-white text-3xl cursor-pointer p-2"
+              className="absolute -top-8 md:-top-10 right-0 text-white text-3xl cursor-pointer p-2 z-10"
             >
               &times;
             </button>
             
             {/* 画像表示エリア */}
-            <div className="relative max-w-[80vw] max-h-[80vh] bg-black rounded-lg flex justify-center items-center">
+            <div className="relative w-full md:max-w-[80vw] h-full md:max-h-[80vh] bg-black rounded-lg flex justify-center items-center flex-1">
               <Image
                 src={popupImage || ''}
                 alt="拡大画像"
                 width={800}
                 height={800}
-                className={`max-w-full max-h-[80vh] object-contain cursor-pointer transition-transform ${
+                className={`w-full h-full max-w-full max-h-[85vh] md:max-h-[80vh] object-contain cursor-pointer transition-transform ${
                   isZoomed ? 'scale-150' : 'scale-100'
                 }`}
                 onClick={toggleZoom}
@@ -901,7 +901,7 @@ export default function DesignShelf() {
             </div>
             
             {/* コントロールエリア */}
-            <div className="flex flex-col gap-4 min-w-[200px]">
+            <div className="flex flex-row md:flex-col gap-2 md:gap-4 md:min-w-[200px] w-full md:w-auto justify-center md:justify-start">
               {currentProduct && (
                 <>
                   <button
