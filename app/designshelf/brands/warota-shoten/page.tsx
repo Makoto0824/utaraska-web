@@ -385,7 +385,7 @@ export default function WarotaShoten() {
               }
               return true;
             }).map((product, index) => (
-              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto self-start">
+              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 w-full self-start">
                 <div 
                   className="relative p-4 flex justify-center items-center h-72 bg-white cursor-pointer"
                   onClick={() => openImagePopup(product.id)}
