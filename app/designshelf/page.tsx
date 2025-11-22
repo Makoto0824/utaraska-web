@@ -87,6 +87,80 @@ export default function DesignShelf() {
     setIsZoomed(!isZoomed);
   };
 
+  // カウントダウンコンポーネント
+  const CountdownTimer = ({ endDate }: { endDate: string }) => {
+    const [timeLeft, setTimeLeft] = useState({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      expired: false
+    });
+
+    useEffect(() => {
+      const calculateTimeLeft = () => {
+        const now = new Date().getTime();
+        const end = new Date(endDate).getTime();
+        const difference = end - now;
+
+        if (difference <= 0) {
+          return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+        }
+
+        return {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+          expired: false
+        };
+      };
+
+      setTimeLeft(calculateTimeLeft());
+      const timer = setInterval(() => {
+        setTimeLeft(calculateTimeLeft());
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }, [endDate]);
+
+    if (timeLeft.expired) {
+      return (
+        <div className="bg-red-100 border border-red-300 rounded-lg p-3 mb-4">
+          <p className="text-red-700 font-bold text-sm text-center">販売終了</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4">
+        <p className="text-orange-800 font-bold text-xs text-center mb-2">期間限定商品</p>
+        <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月25日 23:59</p>
+        <div className="flex justify-center gap-2 text-center">
+          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
+            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.days).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-xs">日</div>
+          </div>
+          <div className="text-orange-800 font-bold text-lg pt-2">:</div>
+          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
+            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.hours).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-xs">時</div>
+          </div>
+          <div className="text-orange-800 font-bold text-lg pt-2">:</div>
+          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
+            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.minutes).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-xs">分</div>
+          </div>
+          <div className="text-orange-800 font-bold text-lg pt-2">:</div>
+          <div className="bg-white rounded px-2 py-1 min-w-[50px]">
+            <div className="text-orange-800 font-bold text-lg">{String(timeLeft.seconds).padStart(2, '0')}</div>
+            <div className="text-orange-600 text-xs">秒</div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   type Product = {
     id: number;
     title: string;
@@ -99,6 +173,7 @@ export default function DesignShelf() {
     description: string;
     modelImage?: string;
     videoUrl?: string;
+    endDate?: string; // ISO形式の日時文字列（例: "2025-12-25T23:59:59"）
   };
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
@@ -165,7 +240,8 @@ export default function DesignShelf() {
         "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
       ],
       description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
-      videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      endDate: "2025-12-25T23:59:59"
     },
     {
       id: 109,
@@ -181,7 +257,8 @@ export default function DesignShelf() {
         "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
       ],
       description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
-      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      endDate: "2025-12-25T23:59:59"
     },
     {
       id: 108,
@@ -700,7 +777,17 @@ export default function DesignShelf() {
         <section>
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">すべてのデザイン</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {products.map((product, index) => (
+            {products.filter(product => {
+              // 期限が設定されている商品で、期限が過ぎている場合は非表示
+              if (product.endDate) {
+                const now = new Date().getTime();
+                const end = new Date(product.endDate).getTime();
+                if (end <= now) {
+                  return false; // 期限切れの商品は非表示
+                }
+              }
+              return true;
+            }).map((product, index) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 max-w-sm mx-auto">
                 <div 
                   className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer relative"
@@ -719,6 +806,7 @@ export default function DesignShelf() {
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
+                  {product.endDate && <CountdownTimer endDate={product.endDate} />}
                   <Link 
                     href={
                       product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/brands/yuru-style-japan" :
