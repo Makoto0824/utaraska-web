@@ -482,48 +482,6 @@ export default function DesignShelf() {
       description: "虎の顔を対称に配置した和風アニマルデザイン。左右対称の配置でバランスが良く、和風テイストを好む方におすすめです。"
     },
     {
-      id: 8,
-      title: "浮世絵 役者絵 サイケデリックアート 和風ビジュアル Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee8.png",
-      designImage: "/designshelf/images/tee8_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/44I7S1h",
-      features: [
-        "浮世絵の役者絵をサイケデリックアートで再構築",
-        "伝統的な和風要素を現代的にアレンジ"
-      ],
-      description: "浮世絵の役者絵をサイケデリックアートで再構築した和風ビジュアル。伝統的な和風要素を現代的にアレンジし、個性的なファッションアイテムとして仕上げました。"
-    },
-    {
-      id: 9,
-      title: "浮世絵 波 富士山 サイケデリックアート 和風ビジュアル Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee9.png",
-      designImage: "/designshelf/images/tee9_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4mhTnrn",
-      features: [
-        "葛飾北斎の「神奈川沖浪裏」をサイケデリックアートで再構築",
-        "富士山と波をモチーフにした和風ビジュアル"
-      ],
-      description: "葛飾北斎の「神奈川沖浪裏」をサイケデリックアートで再構築した和風ビジュアル。富士山と波をモチーフにした伝統的な和風要素を現代的にアレンジしました。"
-    },
-    {
-      id: 11,
-      title: "富士山 サイケデリック浮世絵 和風ネオンアート Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee11.png",
-      designImage: "/designshelf/images/tee11_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4k17XBV",
-      features: [
-        "富士山をサイケデリック浮世絵で表現",
-        "ネオンアートスタイルの和風デザイン"
-      ],
-      description: "富士山をサイケデリック浮世絵で表現した和風ネオンアート。伝統的な和風要素を現代的にアレンジし、個性的なファッションアイテムとして仕上げました。"
-    },
-    {
       id: 13,
       title: "【おもしろ】笑うカバには福きたる 笑う門には福来たるのダジャレ ことわざ×ギャグアート プレゼント・ギフトにも最適",
       brand: "ワロタ商店",
