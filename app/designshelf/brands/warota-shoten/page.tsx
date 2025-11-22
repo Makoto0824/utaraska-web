@@ -153,19 +153,21 @@ export default function WarotaShoten() {
   // ワロタ商店の商品データ
   const products: Product[] = [
     {
-      id: 111,
-      title: "向かい合うゆるいトナカイ face2face パーカー",
+      id: 109,
+      title: "パリピサンタ パーカー",
       brand: "ワロタ商店",
-      image: "/designshelf/images/28_tonakai/hoodie/28_tonakai_hoodie.png",
-      designImage: "/designshelf/images/28_tonakai/28_tonakai_design.png",
-      modelImage: "/designshelf/images/28_tonakai/hoodie/28_tonakai_hoodie_model.png",
+      image: "/designshelf/images/27_santa/hoodie/27_santa_hoodie.png",
+      designImage: "/designshelf/images/27_santa/27_santa_design.png",
+      modelImage: "/designshelf/images/27_santa/hoodie/27_santa_hoodie_model.png",
       price: "¥4,400",
-      amazonLink: "https://amzn.to/4nUNrnw",
+      amazonLink: "https://amzn.to/49IhqeX",
       features: [
-        "左右に向かい合うトナカイの顔をワンポイントで配したビジュアル。線は柔らかくゆるいタッチで描かれており、派手になりすぎず日常のコーデに馴染む設計です。胸元に置いたサイズ感で視線を自然に引き、季節商品としての認識を高めます",
-        "クリスマスカラー（深緑、白、赤など）と相性が良い配色想定で、ギフトやイベント着にも使いやすい。"
+        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
+        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
       ],
-      description: "このデザインは、向かい合う二頭のトナカイをゆるいタッチで並べたシンプルなホリデーイラストです。表情は柔らかく親しみやすいため、年齢や性別を問わず着用しやすいのが特徴です。胸元ワンポイントに収めることで日常の着回しに溶け込み、クリスマスシーズンのアクセントとして使いやすく仕上げました。"
+      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
+      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      endDate: "2025-12-26T00:00:00"
     },
     {
       id: 110,
@@ -185,21 +187,19 @@ export default function WarotaShoten() {
       endDate: "2025-12-26T00:00:00"
     },
     {
-      id: 109,
-      title: "パリピサンタ パーカー",
+      id: 111,
+      title: "向かい合うゆるいトナカイ face2face パーカー",
       brand: "ワロタ商店",
-      image: "/designshelf/images/27_santa/hoodie/27_santa_hoodie.png",
-      designImage: "/designshelf/images/27_santa/27_santa_design.png",
-      modelImage: "/designshelf/images/27_santa/hoodie/27_santa_hoodie_model.png",
+      image: "/designshelf/images/28_tonakai/hoodie/28_tonakai_hoodie.png",
+      designImage: "/designshelf/images/28_tonakai/28_tonakai_design.png",
+      modelImage: "/designshelf/images/28_tonakai/hoodie/28_tonakai_hoodie_model.png",
       price: "¥4,400",
-      amazonLink: "https://amzn.to/49IhqeX",
+      amazonLink: "https://amzn.to/4nUNrnw",
       features: [
-        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
-        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
+        "左右に向かい合うトナカイの顔をワンポイントで配したビジュアル。線は柔らかくゆるいタッチで描かれており、派手になりすぎず日常のコーデに馴染む設計です。胸元に置いたサイズ感で視線を自然に引き、季節商品としての認識を高めます",
+        "クリスマスカラー（深緑、白、赤など）と相性が良い配色想定で、ギフトやイベント着にも使いやすい。"
       ],
-      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
-      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      endDate: "2025-12-26T00:00:00"
+      description: "このデザインは、向かい合う二頭のトナカイをゆるいタッチで並べたシンプルなホリデーイラストです。表情は柔らかく親しみやすいため、年齢や性別を問わず着用しやすいのが特徴です。胸元ワンポイントに収めることで日常の着回しに溶け込み、クリスマスシーズンのアクセントとして使いやすく仕上げました。"
     },
     {
       id: 25,
@@ -397,7 +397,10 @@ export default function WarotaShoten() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 109 || product.id === 110 || product.id === 111) && (
+                  {product.endDate && (
+                    <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded">期間限定</span>
+                  )}
+                  {!product.endDate && (product.id === 111) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>

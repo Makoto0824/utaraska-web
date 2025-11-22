@@ -181,6 +181,40 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 109,
+      title: "パリピサンタ パーカー",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/27_santa/hoodie/27_santa_hoodie.png",
+      designImage: "/designshelf/images/27_santa/27_santa_design.png",
+      modelImage: "/designshelf/images/27_santa/hoodie/27_santa_hoodie_model.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/49IhqeX",
+      features: [
+        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
+        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
+      ],
+      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
+      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      endDate: "2025-12-26T00:00:00"
+    },
+    {
+      id: 110,
+      title: "パリピサンタ Tシャツ",
+      brand: "ワロタ商店",
+      image: "/designshelf/images/27_santa/tshirt/27_santa_tshirt.png",
+      designImage: "/designshelf/images/27_santa/27_santa_design.png",
+      modelImage: "/designshelf/images/27_santa/tshirt/27_santa_tshirt_model.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4qS4f1j",
+      features: [
+        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
+        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
+      ],
+      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
+      videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      endDate: "2025-12-26T00:00:00"
+    },
+    {
       id: 113,
       title: "向かい合うゆるいユニコーン face2face トレーナー",
       brand: "ゆるスタイル・ジャパン",
@@ -227,40 +261,6 @@ export default function DesignShelf() {
       ],
       description: "このデザインは、向かい合う二頭のトナカイをゆるいタッチで並べたシンプルなホリデーイラストです。表情は柔らかく親しみやすいため、年齢や性別を問わず着用しやすいのが特徴です。胸元ワンポイントに収めることで日常の着回しに溶け込み、クリスマスシーズンのアクセントとして使いやすく仕上げました。",
       videoUrl: "https://www.instagram.com/reel/DQ_wi85AZ91/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      id: 110,
-      title: "パリピサンタ Tシャツ",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/27_santa/tshirt/27_santa_tshirt.png",
-      designImage: "/designshelf/images/27_santa/27_santa_design.png",
-      modelImage: "/designshelf/images/27_santa/tshirt/27_santa_tshirt_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4qS4f1j",
-      features: [
-        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
-        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
-      ],
-      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
-      videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      endDate: "2025-12-26T00:00:00"
-    },
-    {
-      id: 109,
-      title: "パリピサンタ パーカー",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/27_santa/hoodie/27_santa_hoodie.png",
-      designImage: "/designshelf/images/27_santa/27_santa_design.png",
-      modelImage: "/designshelf/images/27_santa/hoodie/27_santa_hoodie_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/49IhqeX",
-      features: [
-        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
-        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
-      ],
-      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
-      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      endDate: "2025-12-26T00:00:00"
     },
     {
       id: 108,
@@ -802,7 +802,10 @@ export default function DesignShelf() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 109 || product.id === 110 || product.id === 111 || product.id === 112 || product.id === 113) && (
+                  {product.endDate && (
+                    <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded">期間限定</span>
+                  )}
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
