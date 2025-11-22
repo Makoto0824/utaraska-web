@@ -810,7 +810,7 @@ export default function DesignShelf() {
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1 min-h-[3rem]">{product.title}</h3>
                   {product.endDate ? (
                     <CountdownTimer endDate={product.endDate} />
                   ) : (

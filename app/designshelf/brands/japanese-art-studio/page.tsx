@@ -175,7 +175,7 @@ export default function JapaneseArtStudio() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2 min-h-[3rem]">{product.title}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1 min-h-[3rem]">{product.title}</h3>
                   <Link 
                     href={
                       product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/brands/yuru-style-japan" :
