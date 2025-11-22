@@ -76,6 +76,22 @@ export default function YuruStyleJapan() {
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
     {
+      id: 113,
+      title: "向かい合うゆるいユニコーン face2face トレーナー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/29_unicorn/swet/29_unicorn_swet.png",
+      designImage: "/designshelf/images/29_unicorn/29_unicorn_design.png",
+      modelImage: "/designshelf/images/29_unicorn/swet/29_unicorn_model_swet.png",
+      price: "¥3,960",
+      amazonLink: "https://amzn.to/48kBYYW",
+      features: [
+        "左右に向かい合うユニコーンの顔をこだわりのゆるいタッチで描かれているデザイン。可愛さとユーモアを両立させ、日常のコーデに馴染む見え方を意識しています。",
+        "どんな色でも映える配色設計で、ギフトやプレゼント、季節商品としても扱いやすいです。"
+      ],
+      description: "向かい合う二つのユニコーン顔を中心にしたシンプルなビジュアルデザインです。線を太めにしつつ表情はゆるくまとめているため、子供から大人まで幅広く使いやすいのが特徴です。胸元ワンポイントに収めることで主張が強くなりすぎず、複数の色やアイテムに展開しやすい設計にしています。",
+      videoUrl: "https://www.instagram.com/reel/DRWeWdfgaLw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
       id: 112,
       title: "ゆるい風神雷神 トレーナー",
       brand: "ゆるスタイル・ジャパン",
@@ -393,7 +409,7 @@ export default function YuruStyleJapan() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
