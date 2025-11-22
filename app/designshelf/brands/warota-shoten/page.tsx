@@ -120,9 +120,11 @@ export default function WarotaShoten() {
     }
 
     return (
-      <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4">
-        <p className="text-orange-800 font-bold text-xs text-center mb-2">期間限定商品</p>
-        <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月26日 00:00</p>
+      <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-4 h-[120px] flex flex-col justify-between">
+        <div>
+          <p className="text-orange-800 font-bold text-xs text-center mb-1">期間限定商品</p>
+          <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月26日 00:00</p>
+        </div>
         <div className="flex justify-center items-center gap-1 text-center">
           <div className="bg-white rounded px-2 py-1.5 min-w-[45px]">
             <div className="text-orange-800 font-bold text-base leading-tight">{String(timeLeft.days).padStart(2, '0')}</div>
