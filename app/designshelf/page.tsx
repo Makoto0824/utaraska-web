@@ -188,39 +188,6 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
-      id: 114,
-      title: "向かい合うゆるい般若 face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/30_hannya/hoodie/30_hannya_hoodie.png",
-      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
-      modelImage: "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3JRLlal",
-      features: [
-        "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
-        "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
-      ],
-      description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
-      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/3JRLlal"
-        },
-        {
-          name: "パーカー",
-          price: "¥4,400",
-          amazonLink: "https://amzn.to/4oggGS5"
-        },
-        {
-          name: "ジップパーカー",
-          price: "¥4,600",
-          amazonLink: "https://amzn.to/44mPD03"
-        }
-      ]
-    },
-    {
       id: 109,
       title: "パリピサンタ パーカー",
       brand: "ワロタ商店",
@@ -253,6 +220,39 @@ export default function DesignShelf() {
       description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
       videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       endDate: "2025-12-26T00:00:00"
+    },
+    {
+      id: 114,
+      title: "向かい合うゆるい般若 face2face",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/30_hannya/hoodie/30_hannya_hoodie.png",
+      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
+      modelImage: "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3JRLlal",
+      features: [
+        "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
+        "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
+      ],
+      description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
+      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/3JRLlal"
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.to/4oggGS5"
+        },
+        {
+          name: "ジップパーカー",
+          price: "¥4,600",
+          amazonLink: "https://amzn.to/44mPD03"
+        }
+      ]
     },
     {
       id: 113,
