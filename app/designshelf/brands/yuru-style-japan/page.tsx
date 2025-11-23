@@ -76,6 +76,54 @@ export default function YuruStyleJapan() {
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
     {
+      id: 114,
+      title: "向かい合うゆるい般若 face2face Tシャツ",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/30_hannya/tshirt/30_hannya_tshirt.png",
+      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
+      modelImage: "/designshelf/images/30_hannya/tshirt/30_hannya_tshirt_model.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3JRLlal",
+      features: [
+        "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
+        "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
+      ],
+      description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
+      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+      id: 115,
+      title: "向かい合うゆるい般若 face2face パーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/30_hannya/hoodie/30_hannya_hoodie.png",
+      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
+      modelImage: "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
+      price: "¥4,400",
+      amazonLink: "https://amzn.to/4oggGS5",
+      features: [
+        "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
+        "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
+      ],
+      description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
+      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+      id: 116,
+      title: "向かい合うゆるい般若 face2face ジップパーカー",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/30_hannya/zip_hoodie/30_hannya_zip_hoodie.png",
+      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
+      modelImage: "/designshelf/images/30_hannya/zip_hoodie/30_hannya_zip_hoodie_model.png",
+      price: "¥4,600",
+      amazonLink: "https://amzn.to/44mPD03",
+      features: [
+        "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
+        "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
+      ],
+      description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
+      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
       id: 113,
       title: "向かい合うゆるいユニコーン face2face トレーナー",
       brand: "ゆるスタイル・ジャパン",
@@ -409,7 +457,7 @@ export default function YuruStyleJapan() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
