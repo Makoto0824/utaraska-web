@@ -163,6 +163,12 @@ export default function DesignShelf() {
     );
   };
 
+  type ProductVariation = {
+    name: string;
+    price: string;
+    amazonLink: string;
+  };
+
   type Product = {
     id: number;
     title: string;
@@ -176,17 +182,18 @@ export default function DesignShelf() {
     modelImage?: string;
     videoUrl?: string;
     endDate?: string; // ISO形式の日時文字列（例: "2025-12-25T23:59:59"）
+    variations?: ProductVariation[]; // 商品バリエーション（Tシャツ、パーカーなど）
   };
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
       id: 114,
-      title: "向かい合うゆるい般若 face2face Tシャツ",
+      title: "向かい合うゆるい般若 face2face",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/30_hannya/tshirt/30_hannya_tshirt.png",
+      image: "/designshelf/images/30_hannya/hoodie/30_hannya_hoodie.png",
       designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
-      modelImage: "/designshelf/images/30_hannya/tshirt/30_hannya_tshirt_model.png",
+      modelImage: "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3JRLlal",
       features: [
@@ -194,39 +201,24 @@ export default function DesignShelf() {
         "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
       ],
       description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
-      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      id: 115,
-      title: "向かい合うゆるい般若 face2face パーカー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/30_hannya/hoodie/30_hannya_hoodie.png",
-      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
-      modelImage: "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/4oggGS5",
-      features: [
-        "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
-        "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
-      ],
-      description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
-      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      id: 116,
-      title: "向かい合うゆるい般若 face2face ジップパーカー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/30_hannya/zip_hoodie/30_hannya_zip_hoodie.png",
-      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
-      modelImage: "/designshelf/images/30_hannya/zip_hoodie/30_hannya_zip_hoodie_model.png",
-      price: "¥4,600",
-      amazonLink: "https://amzn.to/44mPD03",
-      features: [
-        "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
-        "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
-      ],
-      description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
-      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/3JRLlal"
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.to/4oggGS5"
+        },
+        {
+          name: "ジップパーカー",
+          price: "¥4,600",
+          amazonLink: "https://amzn.to/44mPD03"
+        }
+      ]
     },
     {
       id: 109,
@@ -853,7 +845,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116) && (
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
@@ -946,21 +938,47 @@ export default function DesignShelf() {
                     </p>
                   </div>
                   
-                  <div className="mt-auto pt-4 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold text-gray-800">{product.price}</span>
-                      <span className="text-sm text-gray-500">税込</span>
+                  {product.variations ? (
+                    <div className="mt-auto pt-4 space-y-3">
+                      {product.variations.map((variation, idx) => (
+                        <div key={idx} className="flex items-center justify-between border-b border-gray-200 pb-2 last:border-b-0">
+                          <div className="flex flex-col">
+                            <span className="text-sm font-medium text-gray-800">{variation.name}</span>
+                            <div className="flex items-center gap-2 mt-1">
+                              <span className="text-lg font-bold text-gray-800">{variation.price}</span>
+                              <span className="text-xs text-gray-500">税込</span>
+                            </div>
+                          </div>
+                          <a 
+                            href={variation.amazonLink}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            className="amazon-btn"
+                            aria-label={`Amazonで${variation.name}を見る`}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <span className="label">Amazon<br />で見る</span>
+                          </a>
+                        </div>
+                      ))}
                     </div>
-                    <a 
-                      href={product.amazonLink}
-                      target="_blank"
-                      rel="noopener noreferrer nofollow"
-                      className="amazon-btn"
-                      aria-label="Amazonでこの商品を見る"
-                    >
-                      <span className="label">Amazon<br />で見る</span>
-                    </a>
-                  </div>
+                  ) : (
+                    <div className="mt-auto pt-4 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl font-bold text-gray-800">{product.price}</span>
+                        <span className="text-sm text-gray-500">税込</span>
+                      </div>
+                      <a 
+                        href={product.amazonLink}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        className="amazon-btn"
+                        aria-label="Amazonでこの商品を見る"
+                      >
+                        <span className="label">Amazon<br />で見る</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
