@@ -83,6 +83,39 @@ export default function YuruStyleJapan() {
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
     {
+      id: 115,
+      title: "向かい合うゆるい天狗 face2face",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/31_tengu/hoodie/31_tengu_hoodie.png",
+      designImage: "/designshelf/images/31_tengu/31_tengu_design.png",
+      modelImage: "/designshelf/images/31_tengu/hoodie/31_tengu_model_hoodie.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4rwVutY",
+      features: [
+        "向かい合う天狗の顔を左右に配したビジュアル。太めの輪郭線と一定の間隔で入ったストライプ調の模様で存在感を出しつつ、表情はゆるく抑えて日常使いしやすくしています。遠目でも目を引く構図です。",
+        "和風の題材をポップに再解釈したデザインで、赤・黒・白のコントラストを効かせ視認性を高めています。ストリート系から和モダンまで幅広い着こなしと相性が良い設計です。"
+      ],
+      description: "向かい合う二つの天狗の顔を中心に据え、太い線とゆるい表情でまとめた和風イラストです。伝統的な天狗モチーフをポップに再構成し、重ね着やジャケットの差し色としても活用しやすいのが特長です。",
+      videoUrl: "https://www.instagram.com/reel/DRbpHY1AcHp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/4rwVutY"
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.to/4pmH4KS"
+        },
+        {
+          name: "トレーナー",
+          price: "¥3,960",
+          amazonLink: "https://amzn.to/3M3s3PH"
+        }
+      ]
+    },
+    {
       id: 114,
       title: "向かい合うゆるい般若 face2face",
       brand: "ゆるスタイル・ジャパン",
@@ -449,7 +482,7 @@ export default function YuruStyleJapan() {
                     height={256}
                     className="object-contain hover:scale-105 transition-transform"
                   />
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
                   )}
                 </div>
