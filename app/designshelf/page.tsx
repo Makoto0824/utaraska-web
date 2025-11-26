@@ -11,6 +11,7 @@ export default function DesignShelf() {
   const [popupId, setPopupId] = useState<string | null>(null);
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
+  const [carouselIndices, setCarouselIndices] = useState<Record<number, number>>({});
 
   const banners = [
     { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
@@ -183,6 +184,7 @@ export default function DesignShelf() {
     videoUrl?: string;
     endDate?: string; // ISO形式の日時文字列（例: "2025-12-25T23:59:59"）
     variations?: ProductVariation[]; // 商品バリエーション（Tシャツ、パーカーなど）
+    carouselImages?: string[]; // カルーセル用の画像配列
   };
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
@@ -220,6 +222,44 @@ export default function DesignShelf() {
       description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
       videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       endDate: "2025-12-26T00:00:00"
+    },
+    {
+      id: 116,
+      title: "向かい合うゆるい赤鬼と青鬼 face2face",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
+      designImage: "/designshelf/images/32_akaoni_aooni/design.png",
+      modelImage: "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4pvwJwj",
+      features: [
+        "向かい合う赤鬼と青鬼をゆるいタッチで描き、顔面に和柄風のテクスチャを重ねたグラフィック。表情は力強さを残しつつゆるく抑え、遠目でも視認しやすいコントラストを意図しています。",
+        "デザイン自体を主役にするワンポイント構成で、背景色やアイテム色によって印象が変わるため展開しやすい。和風モチーフをポップに再解釈しているためストリート、和モダン、ギフト用途いずれにも馴染みやすい設計です。"
+      ],
+      description: "このデザインは、伝統的な鬼のモチーフを現代的に再構成した向かい合いのビジュアルです。赤と青の対比を活かし、顔面には和柄を想起させるテクスチャを入れて表情に奥行きを持たせています。ラインは太くはっきりとしつつ、タッチはゆるく抑えることで日常使いしやすいバランスにしています。ワンポイント配置にすることでジャケットや重ね着との相性が良く、色違いや素材違いでシリーズ展開しやすいのが特徴です。",
+      videoUrl: "https://www.instagram.com/reel/DRgEdbIAThi/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/4pvwJwj"
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.to/4rmVJYo"
+        },
+        {
+          name: "トレーナー",
+          price: "¥3,960",
+          amazonLink: "https://amzn.to/48zJiAZ"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
+        "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
+        "/designshelf/images/32_akaoni_aooni/tshirt/t-shirt.jpg"
+      ]
     },
     {
       id: 115,
@@ -868,18 +908,83 @@ export default function DesignShelf() {
                   className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer relative"
                   onClick={() => openImagePopup(product.id)}
                 >
-                  <Image 
-                    src={product.modelImage ?? product.image}
-                    alt={product.title}
-                    width={256}
-                    height={256}
-                    className="object-contain hover:scale-105 transition-transform"
-                  />
-                  {product.endDate && (
-                    <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded">期間限定</span>
+                  {product.carouselImages && product.carouselImages.length > 0 ? (
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      {product.carouselImages.map((img, imgIndex) => (
+                        <Image
+                          key={imgIndex}
+                          src={img}
+                          alt={`${product.title} - 画像${imgIndex + 1}`}
+                          width={256}
+                          height={256}
+                          className={`object-contain hover:scale-105 transition-opacity duration-300 absolute ${
+                            carouselIndices[product.id] === imgIndex ? 'opacity-100' : 'opacity-0'
+                          }`}
+                        />
+                      ))}
+                      {product.carouselImages.length > 1 && (
+                        <>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCarouselIndices(prev => ({
+                                ...prev,
+                                [product.id]: prev[product.id] === undefined ? product.carouselImages!.length - 1 : (prev[product.id] - 1 + product.carouselImages!.length) % product.carouselImages!.length
+                              }));
+                            }}
+                            className="absolute left-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
+                            aria-label="前の画像"
+                          >
+                            ❮
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCarouselIndices(prev => ({
+                                ...prev,
+                                [product.id]: prev[product.id] === undefined ? 1 : (prev[product.id] + 1) % product.carouselImages!.length
+                              }));
+                            }}
+                            className="absolute right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
+                            aria-label="次の画像"
+                          >
+                            ❯
+                          </button>
+                          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
+                            {product.carouselImages.map((_, dotIndex) => (
+                              <button
+                                key={dotIndex}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCarouselIndices(prev => ({
+                                    ...prev,
+                                    [product.id]: dotIndex
+                                  }));
+                                }}
+                                className={`w-2 h-2 rounded-full transition-colors ${
+                                  (carouselIndices[product.id] ?? 0) === dotIndex ? 'bg-white' : 'bg-white/50'
+                                }`}
+                                aria-label={`画像${dotIndex + 1}に移動`}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  ) : (
+                    <Image 
+                      src={product.modelImage ?? product.image}
+                      alt={product.title}
+                      width={256}
+                      height={256}
+                      className="object-contain hover:scale-105 transition-transform"
+                    />
                   )}
-                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115) && (
-                    <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                  {product.endDate && (
+                    <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
+                  )}
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116) && (
+                    <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
