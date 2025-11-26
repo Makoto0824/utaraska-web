@@ -918,7 +918,7 @@ export default function DesignShelf() {
                           width={256}
                           height={256}
                           className={`object-contain hover:scale-105 transition-opacity duration-300 absolute ${
-                            carouselIndices[product.id] === imgIndex ? 'opacity-100' : 'opacity-0'
+                            (carouselIndices[product.id] ?? 0) === imgIndex ? 'opacity-100' : 'opacity-0'
                           }`}
                         />
                       ))}
