@@ -123,6 +123,44 @@ export default function YuruStyleJapan() {
       ]
     },
     {
+      id: 117,
+      title: "向かい合うゆるいパンダ face2face",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/33_panda/hoodie/hoodie.jpg",
+      designImage: "/designshelf/images/33_panda/design.png",
+      modelImage: "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/442991Y",
+      features: [
+        "左右に向かい合うゆるいタッチのパンダの顔をワンポイントで配したビジュアル。太めの輪郭と点描風の毛並み表現で視認性を高めつつ、表情はゆるく抑えて日常使いしやすい仕上げにしています",
+        "モノトーンを基調に部分的なアクセント色を抑えることで、色違い展開や複数アイテム展開がしやすい構成にしています。胸元ワンポイントのため重ね着やジャケットとの相性が良く、ギフト展開にも適したデザインです"
+      ],
+      description: "このデザインは、向かい合う二つのパンダ顔を中心に据えたシンプルなイラストです。線は太めに取り、顔の輪郭と表情を明確にすることで遠目でも目を引き、点描的な毛並みや手のひらのパーツで細部の親しみやすさを出しています。胸元ワンポイントに収めることで主張が強くなりすぎず、普段着への取り入れやすさを重視しました。",
+      videoUrl: "https://www.instagram.com/reel/DRuPBASgbfU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/442991Y"
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.to/44vV0Kw"
+        },
+        {
+          name: "トレーナー",
+          price: "¥3,960",
+          amazonLink: "https://amzn.to/4oqqnxa"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
+        "/designshelf/images/33_panda/swet/swet.jpg",
+        "/designshelf/images/33_panda/tshirt/tshirt.jpg"
+      ]
+    },
+    {
       id: 115,
       title: "向かい合うゆるい天狗 face2face",
       brand: "ゆるスタイル・ジャパン",
@@ -587,7 +625,7 @@ export default function YuruStyleJapan() {
                       className="object-contain hover:scale-105 transition-transform"
                     />
                   )}
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
