@@ -85,44 +85,6 @@ export default function YuruStyleJapan() {
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
     {
-      id: 116,
-      title: "向かい合うゆるい赤鬼と青鬼 face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
-      designImage: "/designshelf/images/32_akaoni_aooni/design.png",
-      modelImage: "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4pvwJwj",
-      features: [
-        "向かい合う赤鬼と青鬼をゆるいタッチで描き、顔面に和柄風のテクスチャを重ねたグラフィック。表情は力強さを残しつつゆるく抑え、遠目でも視認しやすいコントラストを意図しています。",
-        "デザイン自体を主役にするワンポイント構成で、背景色やアイテム色によって印象が変わるため展開しやすい。和風モチーフをポップに再解釈しているためストリート、和モダン、ギフト用途いずれにも馴染みやすい設計です。"
-      ],
-      description: "このデザインは、伝統的な鬼のモチーフを現代的に再構成した向かい合いのビジュアルです。赤と青の対比を活かし、顔面には和柄を想起させるテクスチャを入れて表情に奥行きを持たせています。ラインは太くはっきりとしつつ、タッチはゆるく抑えることで日常使いしやすいバランスにしています。ワンポイント配置にすることでジャケットや重ね着との相性が良く、色違いや素材違いでシリーズ展開しやすいのが特徴です。",
-      videoUrl: "https://www.instagram.com/reel/DRgEdbIAThi/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/4pvwJwj"
-        },
-        {
-          name: "パーカー",
-          price: "¥4,400",
-          amazonLink: "https://amzn.to/4rmVJYo"
-        },
-        {
-          name: "トレーナー",
-          price: "¥3,960",
-          amazonLink: "https://amzn.to/48zJiAZ"
-        }
-      ],
-      carouselImages: [
-        "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
-        "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
-        "/designshelf/images/32_akaoni_aooni/tshirt/t-shirt.jpg"
-      ]
-    },
-    {
       id: 117,
       title: "向かい合うゆるいパンダ face2face",
       brand: "ゆるスタイル・ジャパン",
@@ -158,6 +120,44 @@ export default function YuruStyleJapan() {
         "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
         "/designshelf/images/33_panda/swet/swet.jpg",
         "/designshelf/images/33_panda/tshirt/tshirt.jpg"
+      ]
+    },
+    {
+      id: 116,
+      title: "向かい合うゆるい赤鬼と青鬼 face2face",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
+      designImage: "/designshelf/images/32_akaoni_aooni/design.png",
+      modelImage: "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4pvwJwj",
+      features: [
+        "向かい合う赤鬼と青鬼をゆるいタッチで描き、顔面に和柄風のテクスチャを重ねたグラフィック。表情は力強さを残しつつゆるく抑え、遠目でも視認しやすいコントラストを意図しています。",
+        "デザイン自体を主役にするワンポイント構成で、背景色やアイテム色によって印象が変わるため展開しやすい。和風モチーフをポップに再解釈しているためストリート、和モダン、ギフト用途いずれにも馴染みやすい設計です。"
+      ],
+      description: "このデザインは、伝統的な鬼のモチーフを現代的に再構成した向かい合いのビジュアルです。赤と青の対比を活かし、顔面には和柄を想起させるテクスチャを入れて表情に奥行きを持たせています。ラインは太くはっきりとしつつ、タッチはゆるく抑えることで日常使いしやすいバランスにしています。ワンポイント配置にすることでジャケットや重ね着との相性が良く、色違いや素材違いでシリーズ展開しやすいのが特徴です。",
+      videoUrl: "https://www.instagram.com/reel/DRgEdbIAThi/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/4pvwJwj"
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.to/4rmVJYo"
+        },
+        {
+          name: "トレーナー",
+          price: "¥3,960",
+          amazonLink: "https://amzn.to/48zJiAZ"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
+        "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
+        "/designshelf/images/32_akaoni_aooni/tshirt/t-shirt.jpg"
       ]
     },
     {
