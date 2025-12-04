@@ -835,7 +835,7 @@ export default function DesignShelf() {
       <header className="bg-white shadow-sm">
         <nav>
           <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
-            <Link href="/designshelf" className="flex items-center">
+            <Link href="/designshelf/jp" className="flex items-center">
               <Image 
                 src="/designshelf/images/logo.png" 
                 alt="Design Shelf" 
@@ -846,11 +846,11 @@ export default function DesignShelf() {
               
             </Link>
             <div className="flex items-center gap-6">
-              <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
-              <Link href="/designshelf/brands" className="text-gray-600 hover:text-gray-900 transition-colors">ブランド</Link>
-              <Link href="/designshelf/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
-              <Link href="/designshelf/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
-              <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">日本語</Link>
+              <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
+              <Link href="/designshelf/jp/brands" className="text-gray-600 hover:text-gray-900 transition-colors">ブランド</Link>
+              <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
+              <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
+              <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">English</Link>
             </div>
           </div>
         </nav>
@@ -1031,10 +1031,10 @@ export default function DesignShelf() {
                   {product.endDate && <CountdownTimer endDate={product.endDate} />}
                   <Link 
                     href={
-                      product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/brands/yuru-style-japan" :
-                      product.brand === "ワロタ商店" ? "/designshelf/brands/warota-shoten" :
-                      product.brand === "Japanese Art Studio" ? "/designshelf/brands/japanese-art-studio" :
-                      "/designshelf/brands"
+                      product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/jp/brands/yuru-style-japan" :
+                      product.brand === "ワロタ商店" ? "/designshelf/jp/brands/warota-shoten" :
+                      product.brand === "Japanese Art Studio" ? "/designshelf/jp/brands/japanese-art-studio" :
+                      "/designshelf/jp/brands"
                     }
                     className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
                   >
@@ -1288,10 +1288,10 @@ export default function DesignShelf() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
-                <li><Link href="/designshelf/brands" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
-                <li><Link href="/designshelf/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
+                <li><Link href="/designshelf/jp/brands" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
+                <li><Link href="/designshelf/jp/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
-                  <Link href="/designshelf/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
+                  <Link href="/designshelf/jp/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
                   <div className="text-xs text-gray-500 mt-1">v0.1.4</div>
                 </li>
               </ul>
