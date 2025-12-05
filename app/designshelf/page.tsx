@@ -740,7 +740,7 @@ export default function DesignShelf() {
           <div className="mb-8">
             <div>
               <h3 className="text-xl font-bold mb-4">Utaraska LLC</h3>
-              <p className="text-gray-300 mb-2">4-18-9 Jingumae, Shibuya-ku, Tokyo 150-0001, Japan</p>
+              <p className="text-gray-300 mb-2">2F-C, Shibuya Dogenzaka Tokyu Building, 1-10-8 Dogenzaka, Shibuya-ku, Tokyo 150-0043, Japan</p>
               <p className="text-gray-300">contact@utaraska.co.jp</p>
             </div>
           </div>

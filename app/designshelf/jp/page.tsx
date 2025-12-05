@@ -1282,7 +1282,7 @@ export default function DesignShelf() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
               <h3 className="text-xl font-bold mb-4">ウタラスカ合同会社</h3>
-              <p className="text-gray-300 mb-2">〒150-0001 東京都渋谷区神宮前4-18-9</p>
+              <p className="text-gray-300 mb-2">〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号渋谷道玄坂東急ビル2F−C</p>
               <p className="text-gray-300">contact@utaraska.co.jp</p>
             </div>
             <div>
