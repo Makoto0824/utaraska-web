@@ -15,10 +15,7 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
-    { src: "/designshelf/images/banner5.jpg", alt: "Sale Banner" },
-    { src: "/designshelf/images/banner2.jpg", alt: "Banner 2", link: "/designshelf" },
-    { src: "/designshelf/images/banner3.jpg", alt: "Banner 3", link: "/designshelf" },
-    { src: "/designshelf/images/banner4.jpg", alt: "Banner 4", link: "/designshelf" }
+    { src: "/designshelf/images/banner_en1.png", alt: "Banner" }
   ];
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
