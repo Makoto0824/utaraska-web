@@ -254,6 +254,7 @@ export default function DesignShelf() {
       ],
       carouselImages: [
         "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
+        "/designshelf/images/34_daruma/en/tshirt_prem/tshirt_prem.jpg",
         "/designshelf/images/34_daruma/design.png"
       ]
     }
@@ -507,7 +508,7 @@ export default function DesignShelf() {
                     }}
                     className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0"
                   >
-                    {product.id === 118 ? "Product Details" : "商品詳細"}
+                    Product Details
                   </button>
                   
                   <div 
