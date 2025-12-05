@@ -15,10 +15,10 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
-    { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
-    { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "/designshelf" },
-    { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "/designshelf" },
-    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "/designshelf" }
+    { src: "/designshelf/images/banner5.jpg", alt: "Sale Banner" },
+    { src: "/designshelf/images/banner2.jpg", alt: "Banner 2", link: "/designshelf" },
+    { src: "/designshelf/images/banner3.jpg", alt: "Banner 3", link: "/designshelf" },
+    { src: "/designshelf/images/banner4.jpg", alt: "Banner 4", link: "/designshelf" }
   ];
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
@@ -144,7 +144,7 @@ export default function DesignShelf() {
     if (timeLeft.expired) {
       return (
         <div className="bg-red-100 border border-red-300 rounded-lg p-3 mb-4">
-          <p className="text-red-700 font-bold text-sm text-center">販売終了</p>
+          <p className="text-red-700 font-bold text-sm text-center">Sale Ended</p>
         </div>
       );
     }
@@ -152,28 +152,28 @@ export default function DesignShelf() {
     return (
       <div className="bg-orange-50 border border-orange-300 rounded-lg p-3 mb-1 h-[120px] flex flex-col justify-between overflow-hidden">
         <div className="flex-shrink-0">
-          <p className="text-orange-800 font-bold text-xs text-center mb-1">期間限定商品</p>
-          <p className="text-orange-700 text-xs text-center mb-2">販売終了: 2025年12月26日 00:00</p>
+          <p className="text-orange-800 font-bold text-xs text-center mb-1">Limited Time Offer</p>
+          <p className="text-orange-700 text-xs text-center mb-2">Sale Ends: December 26, 2025 00:00</p>
         </div>
         <div className="flex justify-center items-center gap-1 text-center flex-shrink-0">
           <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
             <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.days).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-[10px] leading-tight">日</div>
+            <div className="text-orange-600 text-[10px] leading-tight">Days</div>
           </div>
           <div className="text-orange-800 font-bold text-sm">:</div>
           <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
             <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.hours).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-[10px] leading-tight">時</div>
+            <div className="text-orange-600 text-[10px] leading-tight">Hrs</div>
           </div>
           <div className="text-orange-800 font-bold text-sm">:</div>
           <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
             <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.minutes).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-[10px] leading-tight">分</div>
+            <div className="text-orange-600 text-[10px] leading-tight">Min</div>
           </div>
           <div className="text-orange-800 font-bold text-sm">:</div>
           <div className="bg-white rounded px-1.5 py-1 min-w-[40px] max-w-[45px]">
             <div className="text-orange-800 font-bold text-sm leading-tight">{String(timeLeft.seconds).padStart(2, '0')}</div>
-            <div className="text-orange-600 text-[10px] leading-tight">秒</div>
+            <div className="text-orange-600 text-[10px] leading-tight">Sec</div>
           </div>
         </div>
       </div>
@@ -383,7 +383,7 @@ export default function DesignShelf() {
                         <Image
                           key={imgIndex}
                           src={img}
-                          alt={`${product.title} - 画像${imgIndex + 1}`}
+                          alt={`${product.title} - Image ${imgIndex + 1}`}
                           width={256}
                           height={256}
                           className={`object-contain hover:scale-105 transition-opacity duration-300 absolute ${
@@ -402,7 +402,7 @@ export default function DesignShelf() {
                               }));
                             }}
                             className="absolute left-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
-                            aria-label="前の画像"
+                            aria-label="Previous image"
                           >
                             ❮
                           </button>
@@ -415,7 +415,7 @@ export default function DesignShelf() {
                               }));
                             }}
                             className="absolute right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
-                            aria-label="次の画像"
+                            aria-label="Next image"
                           >
                             ❯
                           </button>
@@ -433,7 +433,7 @@ export default function DesignShelf() {
                                 className={`w-2 h-2 rounded-full transition-colors ${
                                   (carouselIndices[product.id] ?? 0) === dotIndex ? 'bg-white' : 'bg-white/50'
                                 }`}
-                                aria-label={`画像${dotIndex + 1}に移動`}
+                                aria-label={`Go to image ${dotIndex + 1}`}
                               />
                             ))}
                           </div>
@@ -450,7 +450,7 @@ export default function DesignShelf() {
                     />
                   )}
                   {product.endDate && (
-                    <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
+                    <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
                   {!product.endDate && (product.id === 118 || product.id === 119) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
@@ -578,7 +578,6 @@ export default function DesignShelf() {
                             <span className="text-sm font-medium text-gray-800">{variation.name}</span>
                             <div className="flex items-center gap-2 mt-1">
                               <span className="text-lg font-bold text-gray-800">{variation.price}</span>
-                              <span className="text-xs text-gray-500">税込</span>
                             </div>
                           </div>
                           <a 
@@ -586,10 +585,10 @@ export default function DesignShelf() {
                             target="_blank"
                             rel="noopener noreferrer nofollow"
                             className="amazon-btn"
-                            aria-label={`Amazonで${variation.name}を見る`}
+                            aria-label={`View ${variation.name} on Amazon`}
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <span className="label">Amazon<br />で見る</span>
+                            <span className="label">View on<br />Amazon</span>
                           </a>
                         </div>
                       ))}
@@ -598,22 +597,17 @@ export default function DesignShelf() {
                     <div className="mt-auto pt-4 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="text-xl font-bold text-gray-800">{product.price}</span>
-                        {product.id !== 118 && <span className="text-sm text-gray-500">税込</span>}
                       </div>
                       <a 
                         href={product.amazonLink}
                         target="_blank"
                         rel="noopener noreferrer nofollow"
                         className="amazon-btn"
-                        aria-label={product.id === 118 ? "View on Amazon" : "Amazonでこの商品を見る"}
+                        aria-label="View on Amazon"
                       >
-                        {product.id === 118 ? (
-                          <span className="label">
-                            View on<br />Amazon
-                          </span>
-                        ) : (
-                          <span className="label">Amazon<br />で見る</span>
-                        )}
+                        <span className="label">
+                          View on<br />Amazon
+                        </span>
                       </a>
                     </div>
                   )}
@@ -642,7 +636,7 @@ export default function DesignShelf() {
             <div className="relative w-full md:max-w-[80vw] h-full md:max-h-[80vh] bg-black rounded-lg flex justify-center items-center flex-1">
               <Image
                 src={popupImage || ''}
-                alt="拡大画像"
+                alt="Enlarged image"
                 width={800}
                 height={800}
                 className={`w-full h-full max-w-full max-h-[85vh] md:max-h-[80vh] object-contain cursor-pointer transition-transform ${
@@ -669,12 +663,12 @@ export default function DesignShelf() {
                   >
                     <Image
                       src={currentProduct.image}
-                      alt="商品画像"
+                      alt="Product image"
                       width={64}
                       height={64}
                       className="object-contain mb-2"
                     />
-                    <span className="text-sm">商品画像</span>
+                    <span className="text-sm">Product</span>
                   </button>
                   <button
                     onClick={() => switchImageType('design')}
@@ -686,12 +680,12 @@ export default function DesignShelf() {
                   >
                     <Image
                       src={currentProduct.designImage}
-                      alt="デザイン画像"
+                      alt="Design image"
                       width={64}
                       height={64}
                       className="object-contain mb-2"
                     />
-                    <span className="text-sm">デザイン画像</span>
+                    <span className="text-sm">Design</span>
                   </button>
                   {currentProduct.modelImage && (
                     <button
@@ -704,12 +698,12 @@ export default function DesignShelf() {
                     >
                       <Image
                         src={currentProduct.modelImage}
-                        alt="着用イメージ"
-                        width={64}
-                        height={64}
-                        className="object-contain mb-2"
-                      />
-                      <span className="text-sm">着用イメージ</span>
+                      alt="Model image"
+                      width={64}
+                      height={64}
+                      className="object-contain mb-2"
+                    />
+                    <span className="text-sm">Model</span>
                     </button>
                   )}
                   {currentProduct.videoUrl && (
@@ -727,7 +721,7 @@ export default function DesignShelf() {
                         className="w-5 h-5"
                         unoptimized
                       />
-                      <span className="text-sm">Instagramで動画を見る</span>
+                      <span className="text-sm">Watch on Instagram</span>
                     </a>
                   )}
                 </>
