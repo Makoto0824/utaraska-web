@@ -190,6 +190,26 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 118,
+      title: "Japanese Fujin & Raijin Art – Wind and Thunder Gods",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
+      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
+      price: "$18.99",
+      amazonLink: "https://www.amazon.com/dp/B0FYR7YBSW?customId=B07537H64L&customizationToken=MC_Assembly_1%23B07537H64L&th=1&psc=1",
+      features: [
+        "Cute, stylized versions of Japan's Wind God (Fujin) and Thunder God (Raijin). The design reimagines classic Japanese mythology into playful character art that keeps the original motifs easy to recognize.",
+        "Bold composition with strong visual balance. Works well for streetwear, casual fashion, and anyone who loves Japanese art or pop-style illustrations."
+      ],
+      description: "This artwork features Fujin (the Wind God) and Raijin (the Thunder God), two iconic figures from Japanese mythology, reinterpreted in a cute and playful style. The characters keep the traditional elements-such as the wind bag and drums-while adding a modern, approachable look. Perfect for fans of Japanese art, mythology, pop-style illustrations, and character-based designs. Easy to match with streetwear outfits, and a fun gift for anyone who enjoys Japanese culture.",
+      videoUrl: "https://www.instagram.com/reel/DRzK1SlE_Ln/?utm_source=ig_web_copy_link",
+      carouselImages: [
+        "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
+        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
+      ]
+    },
+    {
       id: 109,
       title: "パリピサンタ パーカー",
       brand: "ワロタ商店",
@@ -944,8 +964,10 @@ export default function DesignShelf() {
             }).map((product, index) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 w-full self-start">
                 <div 
-                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer relative"
-                  onClick={() => openImagePopup(product.id)}
+                  className={`p-4 flex justify-center items-center h-72 bg-white relative ${
+                    product.id === 118 ? '' : 'cursor-pointer'
+                  }`}
+                  onClick={product.id === 118 ? undefined : () => openImagePopup(product.id)}
                 >
                   {product.carouselImages && product.carouselImages.length > 0 ? (
                     <div className="relative w-full h-full flex items-center justify-center">
@@ -1022,7 +1044,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117) && (
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 118) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -1031,7 +1053,7 @@ export default function DesignShelf() {
                   {product.endDate && <CountdownTimer endDate={product.endDate} />}
                   <Link 
                     href={
-                      product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/brands/yuru-style-japan" :
+                      product.brand === "ゆるスタイル・ジャパン" || product.brand === "Yuru Style Japan" ? "/designshelf/brands/yuru-style-japan" :
                       product.brand === "ワロタ商店" ? "/designshelf/brands/warota-shoten" :
                       product.brand === "Japanese Art Studio" ? "/designshelf/brands/japanese-art-studio" :
                       "/designshelf/brands"
@@ -1040,6 +1062,24 @@ export default function DesignShelf() {
                   >
                     {product.brand}
                   </Link>
+                  {product.id === 118 && product.videoUrl && (
+                    <a
+                      href={product.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 mb-4 text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      <Image
+                        src="/designshelf/images/Instagram_logo_black.png"
+                        alt="Instagram"
+                        width={20}
+                        height={20}
+                        className="w-5 h-5"
+                        unoptimized
+                      />
+                      <span className="text-sm">View on Instagram</span>
+                    </a>
+                  )}
                   
                   <button 
                     onClick={(e) => {
@@ -1053,7 +1093,7 @@ export default function DesignShelf() {
                     }}
                     className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0"
                   >
-                    商品詳細
+                    {product.id === 118 ? "Product Details" : "商品詳細"}
                   </button>
                   
                   <div 
@@ -1143,16 +1183,16 @@ export default function DesignShelf() {
                     <div className="mt-auto pt-4 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="text-xl font-bold text-gray-800">{product.price}</span>
-                        <span className="text-sm text-gray-500">税込</span>
+                        {product.id !== 118 && <span className="text-sm text-gray-500">税込</span>}
                       </div>
                       <a 
                         href={product.amazonLink}
                         target="_blank"
                         rel="noopener noreferrer nofollow"
                         className="amazon-btn"
-                        aria-label="Amazonでこの商品を見る"
+                        aria-label={product.id === 118 ? "View on Amazon" : "Amazonでこの商品を見る"}
                       >
-                        <span className="label">Amazon<br />で見る</span>
+                        <span className="label">{product.id === 118 ? "View on<br />Amazon" : "Amazon<br />で見る"}</span>
                       </a>
                     </div>
                   )}
