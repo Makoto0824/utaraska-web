@@ -327,7 +327,6 @@ export default function DesignShelf() {
 
         {/* 商品セクション */}
         <section>
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">すべてのデザイン</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {products.filter(product => {
               // 期限が設定されている商品で、期限が過ぎている場合は非表示
@@ -740,17 +739,17 @@ export default function DesignShelf() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">ウタラスカ合同会社</h3>
-              <p className="text-gray-300 mb-2">〒150-0001 東京都渋谷区神宮前4-18-9</p>
+              <h3 className="text-xl font-bold mb-4">Utaraska LLC</h3>
+              <p className="text-gray-300 mb-2">4-18-9 Jingumae, Shibuya-ku, Tokyo 150-0001, Japan</p>
               <p className="text-gray-300">contact@utaraska.co.jp</p>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
-                <li><Link href="/designshelf/brands" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
-                <li><Link href="/designshelf/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
+                <li><Link href="/designshelf/brands" className="text-gray-300 hover:text-white transition-colors">Brands</Link></li>
+                <li><Link href="/designshelf/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
                 <li>
-                  <Link href="/designshelf/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
+                  <Link href="/designshelf/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
                   <div className="text-xs text-gray-500 mt-1">v0.1.4</div>
                 </li>
               </ul>
@@ -775,7 +774,7 @@ export default function DesignShelf() {
             </div>
           </div>
           <div className="text-center pt-8 border-t border-gray-700">
-            <p className="text-gray-400 mb-2">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+            <p className="text-gray-400 mb-2">&copy; 2025 Utaraska LLC. All rights reserved.</p>
             <p className="text-xs text-gray-500 max-w-4xl mx-auto">
               Some product images are AI-generated or edited, and colors and details may differ from the actual product. Please check the product description on Amazon before purchasing.
             </p>
