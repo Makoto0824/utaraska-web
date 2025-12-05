@@ -850,7 +850,7 @@ export default function DesignShelf() {
               <Link href="/designshelf/jp/brands" className="text-gray-600 hover:text-gray-900 transition-colors">ブランド</Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
-              <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">English</Link>
+              <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
             </div>
           </div>
         </nav>

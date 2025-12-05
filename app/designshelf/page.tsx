@@ -248,7 +248,7 @@ export default function DesignShelf() {
               
             </Link>
             <div className="flex items-center gap-6">
-              <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">日本語</Link>
+              <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">JP Store</Link>
             </div>
           </div>
         </nav>
