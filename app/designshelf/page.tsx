@@ -248,10 +248,6 @@ export default function DesignShelf() {
               
             </Link>
             <div className="flex items-center gap-6">
-              <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
-              <Link href="/designshelf/brands" className="text-gray-600 hover:text-gray-900 transition-colors">ブランド</Link>
-              <Link href="/designshelf/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
-              <Link href="/designshelf/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
               <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">日本語</Link>
             </div>
           </div>
@@ -263,8 +259,8 @@ export default function DesignShelf() {
       {/* AI生成画像の注意書き */}
       <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
         <p className="text-xs text-yellow-800">
-          <span className="font-semibold">ご注意：</span>
-          一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。
+          <span className="font-semibold">Note: </span>
+          Some product images are AI-generated or edited, and colors and details may differ from the actual product. Please check the product description on Amazon before purchasing.
         </p>
       </div>
       
@@ -781,7 +777,7 @@ export default function DesignShelf() {
           <div className="text-center pt-8 border-t border-gray-700">
             <p className="text-gray-400 mb-2">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
             <p className="text-xs text-gray-500 max-w-4xl mx-auto">
-              一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。
+              Some product images are AI-generated or edited, and colors and details may differ from the actual product. Please check the product description on Amazon before purchasing.
             </p>
           </div>
         </div>
