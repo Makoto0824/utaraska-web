@@ -12,6 +12,7 @@ export default function DesignShelf() {
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
   const [carouselIndices, setCarouselIndices] = useState<Record<number, number>>({});
+  const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
     { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
@@ -34,13 +35,19 @@ export default function DesignShelf() {
   // ESCキーでポップアップを閉じる
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && popupImage) {
-        closeImagePopup();
+      if (e.key === 'Escape') {
+        if (popupImage) {
+          closeImagePopup();
+        }
+        if (simpleImagePopup) {
+          setSimpleImagePopup(null);
+          document.body.style.overflow = '';
+        }
       }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [popupImage]);
+  }, [popupImage, simpleImagePopup]);
 
   const toggleDetails = (index: number) => {
     setExpandedDetails(expandedDetails === index ? null : index);
@@ -49,6 +56,15 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
+      // ID 118の商品の場合はシンプルな画像拡大モーダルを使用
+      if (productId === 118 && product.carouselImages && product.carouselImages.length > 0) {
+        const currentImageIndex = carouselIndices[productId] ?? 0;
+        const currentImage = product.carouselImages[currentImageIndex];
+        setSimpleImagePopup(currentImage);
+        document.body.style.overflow = 'hidden';
+        return;
+      }
+      // その他の商品は既存のモーダルを使用
       setPopupImage(product.image);
       setPopupId(`imagePopup${productId}`);
       setCurrentImageType('product');
@@ -1323,6 +1339,36 @@ export default function DesignShelf() {
                 </>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* シンプルな画像拡大モーダル（ID 118専用） */}
+      {simpleImagePopup && (
+        <div 
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
+          onClick={() => {
+            setSimpleImagePopup(null);
+            document.body.style.overflow = '';
+          }}
+        >
+          <button
+            onClick={() => {
+              setSimpleImagePopup(null);
+              document.body.style.overflow = '';
+            }}
+            className="absolute top-4 right-4 text-white text-4xl cursor-pointer p-2 z-10 hover:bg-white/20 rounded-full transition-colors"
+          >
+            &times;
+          </button>
+          <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={simpleImagePopup}
+              alt="拡大画像"
+              width={1200}
+              height={1200}
+              className="w-full h-full max-w-full max-h-[95vh] object-contain"
+            />
           </div>
         </div>
       )}
