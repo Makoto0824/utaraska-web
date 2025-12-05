@@ -752,7 +752,7 @@ export default function DesignShelf() {
           <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
             <Image
               src={simpleImagePopup}
-              alt="拡大画像"
+              alt="Enlarged image"
               width={1200}
               height={1200}
               className="w-full h-full max-w-full max-h-[95vh] object-contain"
