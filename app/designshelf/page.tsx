@@ -964,10 +964,8 @@ export default function DesignShelf() {
             }).map((product, index) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 w-full self-start">
                 <div 
-                  className={`p-4 flex justify-center items-center h-72 bg-white relative ${
-                    product.id === 118 ? '' : 'cursor-pointer'
-                  }`}
-                  onClick={product.id === 118 ? undefined : () => openImagePopup(product.id)}
+                  className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer relative"
+                  onClick={() => openImagePopup(product.id)}
                 >
                   {product.carouselImages && product.carouselImages.length > 0 ? (
                     <div className="relative w-full h-full flex items-center justify-center">
@@ -1051,17 +1049,24 @@ export default function DesignShelf() {
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-1 min-h-[3rem]">{product.title}</h3>
                   {product.endDate && <CountdownTimer endDate={product.endDate} />}
-                  <Link 
-                    href={
-                      product.brand === "ゆるスタイル・ジャパン" || product.brand === "Yuru Style Japan" ? "/designshelf/brands/yuru-style-japan" :
-                      product.brand === "ワロタ商店" ? "/designshelf/brands/warota-shoten" :
-                      product.brand === "Japanese Art Studio" ? "/designshelf/brands/japanese-art-studio" :
-                      "/designshelf/brands"
-                    }
-                    className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
-                  >
-                    {product.brand}
-                  </Link>
+                  {product.brand !== "Yuru Style Japan" && (
+                    <Link 
+                      href={
+                        product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/brands/yuru-style-japan" :
+                        product.brand === "ワロタ商店" ? "/designshelf/brands/warota-shoten" :
+                        product.brand === "Japanese Art Studio" ? "/designshelf/brands/japanese-art-studio" :
+                        "/designshelf/brands"
+                      }
+                      className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
+                    >
+                      {product.brand}
+                    </Link>
+                  )}
+                  {product.brand === "Yuru Style Japan" && (
+                    <p className="text-blue-600 font-medium mb-4">
+                      {product.brand}
+                    </p>
+                  )}
                   {product.id === 118 && product.videoUrl && (
                     <a
                       href={product.videoUrl}
@@ -1192,7 +1197,13 @@ export default function DesignShelf() {
                         className="amazon-btn"
                         aria-label={product.id === 118 ? "View on Amazon" : "Amazonでこの商品を見る"}
                       >
-                        <span className="label">{product.id === 118 ? "View on<br />Amazon" : "Amazon<br />で見る"}</span>
+                        {product.id === 118 ? (
+                          <span className="label">
+                            View on<br />Amazon
+                          </span>
+                        ) : (
+                          <span className="label">Amazon<br />で見る</span>
+                        )}
                       </a>
                     </div>
                   )}
