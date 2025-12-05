@@ -56,8 +56,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118の商品の場合はシンプルな画像拡大モーダルを使用
-      if (productId === 118 && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118と119の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -223,6 +223,38 @@ export default function DesignShelf() {
       carouselImages: [
         "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
         "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
+      ]
+    },
+    {
+      id: 119,
+      title: "Face-to-Face Daruma Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
+      designImage: "/designshelf/images/34_daruma/design.png",
+      modelImage: "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://www.amazon.com/Daruma-Illustration-Relaxed-Style-T-Shirt/dp/B0G4VXCS9D/ref=sr_1_5?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969541&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-5&customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1",
+      features: [
+        "A pair of daruma faces facing each other, drawn in a relaxed, rounded style. Strong outlines and simple color blocks improve visibility from a distance",
+        "A modern reinterpretation of a traditional good-luck motif, designed to change impact by background and color choice. Chest-centered placement makes it easy to pair with layering and accessories"
+      ],
+      description: "This design places two daruma faces facing one another, rendered in a playful, low-tension illustration style. Bold outlines and restrained facial expressions keep the motif attention-grabbing yet wearable for everyday outfits.",
+      videoUrl: "https://www.instagram.com/reel/DR5T8mME2kQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "T-Shirt",
+          price: "$18.99",
+          amazonLink: "https://www.amazon.com/Daruma-Illustration-Relaxed-Style-T-Shirt/dp/B0G4VXCS9D/ref=sr_1_5?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969541&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-5&customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1"
+        },
+        {
+          name: "Premium T-Shirt",
+          price: "$20.99",
+          amazonLink: "https://www.amazon.com/Illustration-Relaxed-Style-Premium-Tri-Blend/dp/B0G4VWT9M4/ref=sr_1_6?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969704&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-6&customId=B07536XX75&customizationToken=MC_Assembly_1%23B07536XX75&th=1&psc=1"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
+        "/designshelf/images/34_daruma/design.png"
       ]
     }
   ];
@@ -419,7 +451,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && product.id === 118 && (
+                  {!product.endDate && (product.id === 118 || product.id === 119) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -444,7 +476,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {product.id === 118 && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
