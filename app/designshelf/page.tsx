@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118と119の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -254,6 +254,44 @@ export default function DesignShelf() {
         "/designshelf/images/34_daruma/en/tshirt_prem/tshirt_prem.jpg",
         "/designshelf/images/34_daruma/design.png"
       ]
+    },
+    {
+      id: 120,
+      title: "Face-to-Face Tiger Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/7_tigertiger/en/hoodie/model.jpg",
+      designImage: "/designshelf/images/7_tigertiger/7_tigertiger_design.png",
+      modelImage: "/designshelf/images/7_tigertiger/en/hoodie/model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/eyYRrGF",
+      features: [
+        "The symmetrically arranged tiger faces create a unique composition. The impact and balance embedded within the simple design are its appeal.",
+        "Fusion of Japanese-style tiger motifs with contemporary pop illustration aesthetics. Catchy expressions that resonate with street fashion and art enthusiasts."
+      ],
+      description: "This design features a humorous yet powerful graphic art piece with a tiger's face arranged symmetrically on both sides. By blending traditional Japanese animal motifs with an American comic-inspired pop art aesthetic, it creates a unique Asian × Modern worldview. Despite its minimalist composition, the eye-catching design has broad appeal across genres including Japanese patterns, animal designs, tiger art, street style, retro pop, and art fashion. It's a one-of-a-kind visual where visual impact and playfulness coexist.",
+      videoUrl: "https://www.instagram.com/reel/DR9EKaBEykM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "T-Shirt",
+          price: "$18.99",
+          amazonLink: "https://a.co/d/eyYRrGF"
+        },
+        {
+          name: "Pullover Hoodie",
+          price: "$31.99",
+          amazonLink: "https://a.co/d/emf3QBt"
+        },
+        {
+          name: "Zip Hoodie",
+          price: "$33.99",
+          amazonLink: "https://a.co/d/3l5u38p"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/7_tigertiger/en/hoodie/model.jpg",
+        "/designshelf/images/7_tigertiger/tshirt.jpg",
+        "/designshelf/images/7_tigertiger/zip_hoodie.jpg"
+      ]
     }
   ];
 
@@ -449,7 +487,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -474,7 +512,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
