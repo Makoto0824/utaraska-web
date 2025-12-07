@@ -290,7 +290,8 @@ export default function DesignShelf() {
       carouselImages: [
         "/designshelf/images/7_tigertiger/en/hoodie/model.jpg",
         "/designshelf/images/7_tigertiger/tshirt.jpg",
-        "/designshelf/images/7_tigertiger/zip_hoodie.jpg"
+        "/designshelf/images/7_tigertiger/zip_hoodie.jpg",
+        "/designshelf/images/7_tigertiger/7_tigertiger_design.png"
       ]
     }
   ];
