@@ -203,59 +203,6 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
-      id: 118,
-      title: "Japanese Fujin & Raijin Art – Wind and Thunder Gods",
-      brand: "Yuru Style Japan",
-      image: "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
-      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
-      modelImage: "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
-      price: "$18.99",
-      amazonLink: "https://www.amazon.com/dp/B0FYR7YBSW?customId=B07537H64L&customizationToken=MC_Assembly_1%23B07537H64L&th=1&psc=1",
-      features: [
-        "Cute, stylized versions of Japan's Wind God (Fujin) and Thunder God (Raijin). The design reimagines classic Japanese mythology into playful character art that keeps the original motifs easy to recognize.",
-        "Bold composition with strong visual balance. Works well for streetwear, casual fashion, and anyone who loves Japanese art or pop-style illustrations."
-      ],
-      description: "This artwork features Fujin (the Wind God) and Raijin (the Thunder God), two iconic figures from Japanese mythology, reinterpreted in a cute and playful style. The characters keep the traditional elements-such as the wind bag and drums-while adding a modern, approachable look. Perfect for fans of Japanese art, mythology, pop-style illustrations, and character-based designs. Easy to match with streetwear outfits, and a fun gift for anyone who enjoys Japanese culture.",
-      videoUrl: "https://www.instagram.com/reel/DRzK1SlE_Ln/?utm_source=ig_web_copy_link",
-      carouselImages: [
-        "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
-        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
-      ]
-    },
-    {
-      id: 119,
-      title: "Face-to-Face Daruma Illustration (Relaxed Style)",
-      brand: "Yuru Style Japan",
-      image: "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
-      designImage: "/designshelf/images/34_daruma/design.png",
-      modelImage: "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
-      price: "$18.99",
-      amazonLink: "https://www.amazon.com/Daruma-Illustration-Relaxed-Style-T-Shirt/dp/B0G4VXCS9D/ref=sr_1_5?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969541&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-5&customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1",
-      features: [
-        "A pair of daruma faces facing each other, drawn in a relaxed, rounded style. Strong outlines and simple color blocks improve visibility from a distance",
-        "A modern reinterpretation of a traditional good-luck motif, designed to change impact by background and color choice. Chest-centered placement makes it easy to pair with layering and accessories"
-      ],
-      description: "This design places two daruma faces facing one another, rendered in a playful, low-tension illustration style. Bold outlines and restrained facial expressions keep the motif attention-grabbing yet wearable for everyday outfits.",
-      videoUrl: "https://www.instagram.com/reel/DR5T8mME2kQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "T-Shirt",
-          price: "$18.99",
-          amazonLink: "https://www.amazon.com/Daruma-Illustration-Relaxed-Style-T-Shirt/dp/B0G4VXCS9D/ref=sr_1_5?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969541&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-5&customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1"
-        },
-        {
-          name: "Premium T-Shirt",
-          price: "$20.99",
-          amazonLink: "https://www.amazon.com/Illustration-Relaxed-Style-Premium-Tri-Blend/dp/B0G4VWT9M4/ref=sr_1_6?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969704&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-6&customId=B07536XX75&customizationToken=MC_Assembly_1%23B07536XX75&th=1&psc=1"
-        }
-      ],
-      carouselImages: [
-        "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
-        "/designshelf/images/34_daruma/en/tshirt_prem/tshirt_prem.jpg",
-        "/designshelf/images/34_daruma/design.png"
-      ]
-    },
-    {
       id: 120,
       title: "Face-to-Face Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
