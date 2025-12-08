@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -239,6 +239,44 @@ export default function DesignShelf() {
         "/designshelf/images/7_tigertiger/tshirt.jpg",
         "/designshelf/images/7_tigertiger/zip_hoodie.jpg",
         "/designshelf/images/7_tigertiger/7_tigertiger_design.png"
+      ]
+    },
+    {
+      id: 121,
+      title: "Face-to-Face Dragon vs Tiger Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/5_dragon_tiger/zip_hoodie_model_en.jpg",
+      designImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png",
+      modelImage: "/designshelf/images/5_dragon_tiger/zip_hoodie_model_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/0g1Yc8X",
+      features: [
+        "Two simplified heads - a dragon and a tiger - facing each other with bold outlines and flat color fields. The composition emphasizes contrast and legibility so the motif reads clearly at chest distance while keeping a playful, hand-drawn feel.",
+        "Designed as a chest-center point to pair with layers and jackets; the graphic works across item colors and supports a series rollout (colorways or material variants). Visual balance and high contrast improve on-shelf visibility and thumbnail recognition."
+      ],
+      description: "This artwork places a dragon and a tiger head in a face-to-face layout, reinterpreting classic East Asian motifs in a relaxed, contemporary style. Thick linework and simplified shapes create immediate impact from a distance while patterned details reward a closer look. The design is sized to sit at the chest center so it integrates with everyday layering and streetwear silhouettes. Suitable for collections that blend traditional symbolism with modern, casual aesthetics.",
+      videoUrl: "https://www.instagram.com/reel/DSAoW1YE5o4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "T-Shirt",
+          price: "$18.99",
+          amazonLink: "https://a.co/d/0g1Yc8X"
+        },
+        {
+          name: "Pullover Hoodie",
+          price: "$31.99",
+          amazonLink: "https://a.co/d/d6whhIl"
+        },
+        {
+          name: "Zip Hoodie",
+          price: "$33.99",
+          amazonLink: "https://a.co/d/gcIoSdN"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/5_dragon_tiger/zip_hoodie_model_en.jpg",
+        "/designshelf/images/5_dragon_tiger/5_dragon_tiger.png",
+        "/designshelf/images/5_dragon_tiger/tshirt.jpg"
       ]
     },
     {
@@ -488,7 +526,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -513,7 +551,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
