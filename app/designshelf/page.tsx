@@ -276,7 +276,8 @@ export default function DesignShelf() {
       carouselImages: [
         "/designshelf/images/5_dragon_tiger/zip_hoodie_model_en.jpg",
         "/designshelf/images/5_dragon_tiger/5_dragon_tiger.png",
-        "/designshelf/images/5_dragon_tiger/tshirt.jpg"
+        "/designshelf/images/5_dragon_tiger/tshirt.jpg",
+        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png"
       ]
     },
     {
