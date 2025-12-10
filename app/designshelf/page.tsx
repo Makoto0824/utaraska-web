@@ -295,8 +295,27 @@ export default function DesignShelf() {
       ],
       description: "This artwork features Fujin (the Wind God) and Raijin (the Thunder God), two iconic figures from Japanese mythology, reinterpreted in a cute and playful style. The characters keep the traditional elements-such as the wind bag and drums-while adding a modern, approachable look. Perfect for fans of Japanese art, mythology, pop-style illustrations, and character-based designs. Easy to match with streetwear outfits, and a fun gift for anyone who enjoys Japanese culture.",
       videoUrl: "https://www.instagram.com/reel/DRzK1SlE_Ln/?utm_source=ig_web_copy_link",
+      variations: [
+        {
+          name: "T-Shirt",
+          price: "$18.99",
+          amazonLink: "https://www.amazon.com/dp/B0FYR7YBSW?customId=B07537H64L&customizationToken=MC_Assembly_1%23B07537H64L&th=1&psc=1"
+        },
+        {
+          name: "Pullover Hoodie",
+          price: "$31.99",
+          amazonLink: "https://a.co/d/1vOgxO3"
+        },
+        {
+          name: "Zip Hoodie",
+          price: "$33.99",
+          amazonLink: "https://a.co/d/6oGiupf"
+        }
+      ],
       carouselImages: [
         "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
+        "/designshelf/images/1_fujin_raijin/model_hoodie_en.jpg",
+        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie.png",
         "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
       ]
     },
