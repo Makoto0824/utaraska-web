@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120、121の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121、122の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -202,6 +202,45 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 122,
+      title: "Face-Center Tiger Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/3_tiger/hoodie_model_en.jpg",
+      designImage: "/designshelf/images/3_tiger/3_tiger_design.png",
+      modelImage: "/designshelf/images/3_tiger/hoodie_model_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/hQ3qcoy",
+      features: [
+        "Bold, simplified tiger mask with thick outlines and clear flat color areas for legibility at chest-center placement.",
+        "Open-mouth focal area and sparse line strokes create clean negative space and a distinct silhouette against light or dark backgrounds."
+      ],
+      description: "The boldly placed tiger motif achieves both a silhouette easily recognizable from a distance and clear definition in its details. As a focal point on the chest, it pairs well with layered outfits. Its modern interpretation of traditional Japanese elements makes it versatile for a wide range of styles. Its understated yet distinctive appeal makes it an excellent choice for gifts.",
+      videoUrl: "https://www.instagram.com/reel/DSH7hCGE1VO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "T-Shirt",
+          price: "$18.99",
+          amazonLink: "https://a.co/d/hQ3qcoy"
+        },
+        {
+          name: "Pullover Hoodie",
+          price: "$31.99",
+          amazonLink: "https://a.co/d/37NFb6W"
+        },
+        {
+          name: "Long Sleeve",
+          price: "$21.99",
+          amazonLink: "https://a.co/d/4F5O7KP"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/3_tiger/hoodie_model_en.jpg",
+        "/designshelf/images/3_tiger/tshirt.jpg",
+        "/designshelf/images/3_tiger/long_sleeve.jpg",
+        "/designshelf/images/3_tiger/3_tiger_design.png"
+      ]
+    },
     {
       id: 120,
       title: "Face-to-Face Tiger Illustration (Relaxed Style)",
@@ -546,7 +585,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -571,7 +610,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
