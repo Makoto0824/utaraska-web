@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120、121、122の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121、122、123の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -202,6 +202,45 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 123,
+      title: "Face-to-Face Hannya Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/30_hannya/tshirt_std_model_en.jpg",
+      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
+      modelImage: "/designshelf/images/30_hannya/tshirt_std_model_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/aN7hGMy",
+      features: [
+        "Bold hannya faces rendered with thick outlines and clear color blocks for strong chest-center impact.",
+        "Flame-like shapes add motion; open mouth area creates strong focal contrast."
+      ],
+      description: "Relaxed hannya faces in a face-to-face layout. Bold linework and flat color blocks make this a chest-center graphic that reads at a glance.",
+      videoUrl: "https://www.instagram.com/reel/DSKGLh9k_J7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "T-Shirt",
+          price: "$18.99",
+          amazonLink: "https://a.co/d/aN7hGMy"
+        },
+        {
+          name: "Premium T-Shirt",
+          price: "$20.99",
+          amazonLink: "https://a.co/d/581bHuM"
+        },
+        {
+          name: "Long Sleeve",
+          price: "$21.99",
+          amazonLink: "https://a.co/d/ail861u"
+        }
+      ],
+      carouselImages: [
+        "/designshelf/images/30_hannya/tshirt_std_model_en.jpg",
+        "/designshelf/images/30_hannya/tshirt_premium.jpg",
+        "/designshelf/images/30_hannya/long_sleeve.jpg",
+        "/designshelf/images/30_hannya/30_hannya_design.png"
+      ]
+    },
     {
       id: 122,
       title: "Face-Center Tiger Illustration (Relaxed Style)",
@@ -585,7 +624,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -610,7 +649,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
