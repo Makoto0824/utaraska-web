@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120、121、122、123の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121、122、123、124の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -202,6 +202,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 124,
+      title: "Face-to-Face Lion Kanji Katakana (Japanese Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/35_lionlion/model_tshirt_en.jpg",
+      designImage: "/designshelf/images/35_lionlion/design.png",
+      modelImage: "/designshelf/images/35_lionlion/model_tshirt_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/g3Hvn04",
+      features: [
+        "Two stylized lion (shishi) heads flank a central red seal that combines kanji and katakana; bold outlines and clear shapes make the motif instantly recognizable.",
+        "Balanced chest-center composition with open negative space so the artwork reads well on both light and dark backgrounds."
+      ],
+      description: "A modern take on the traditional shishi motif. Two lion heads face each other with a central seal that blends kanji and katakana characters, creating a graphic that references Japanese calligraphic tradition while keeping a playful, contemporary feel. The composition emphasizes clear silhouettes and strong contrast for instant impact at chest scale, with subtle line detail for closer viewing. Ideal for collections that draw on Japan-inspired graphics and typographic accents.",
+      videoUrl: "https://www.instagram.com/reel/DSZ6xRQk2ws/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/35_lionlion/model_tshirt_en.jpg",
+        "/designshelf/images/35_lionlion/design.png"
+      ]
+    },
     {
       id: 123,
       title: "Face-to-Face Hannya Illustration (Relaxed Style)",
@@ -624,7 +644,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -649,7 +669,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
