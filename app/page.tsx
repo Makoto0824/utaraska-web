@@ -915,7 +915,7 @@ export default function HomePage() {
                 </div>
                 <div className="border-b-2 border-gray-300 pb-3">
                   <p className="text-sm font-bold text-gray-600">所在地</p>
-                  <p className="text-lg font-black text-black">東京都渋谷区神宮前4-18-9</p>
+                  <p className="text-lg font-black text-black">〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号<br />渋谷道玄坂東急ビル2F−C</p>
                 </div>
                 <div>
                   <p className="text-sm font-bold text-gray-600">設立日</p>
