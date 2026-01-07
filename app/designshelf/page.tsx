@@ -216,6 +216,7 @@ export default function DesignShelf() {
         "Composed for chest-center placement with balanced spacing and open negative space so the artwork reads clearly on both light and dark backgrounds."
       ],
       description: "A playful, modern take on the unicorn motif. Two unicorn heads face each other in a clean, balanced composition defined by confident linework and flat color blocks. The design reads well at chest scale and offers subtle line detail for a closer look, making it a whimsical addition to casual and streetwear collections.",
+      videoUrl: "https://www.instagram.com/reel/DSaLZ6Zk11n/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       carouselImages: [
         "/designshelf/images/29_unicorn/model_tshirt_en.jpg",
         "/designshelf/images/29_unicorn/29_unicorn_design.png"
