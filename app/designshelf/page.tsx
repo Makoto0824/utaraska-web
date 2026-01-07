@@ -34,7 +34,7 @@ export default function DesignShelf() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (popupImage) {
-          closeImagePopup();
+        closeImagePopup();
         }
         if (simpleImagePopup) {
           setSimpleImagePopup(null);
@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120、121、122、123、124の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121、122、123、124、125の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -202,6 +202,25 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 125,
+      title: "Face-to-Face Unicorn Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/29_unicorn/model_tshirt_en.jpg",
+      designImage: "/designshelf/images/29_unicorn/29_unicorn_design.png",
+      modelImage: "/designshelf/images/29_unicorn/model_tshirt_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/i7eNXdF",
+      features: [
+        "Face-to-face unicorn heads rendered with bold outlines and flat color areas; simplified shapes keep the motif legible at a glance while preserving a hand-drawn charm up close.",
+        "Composed for chest-center placement with balanced spacing and open negative space so the artwork reads clearly on both light and dark backgrounds."
+      ],
+      description: "A playful, modern take on the unicorn motif. Two unicorn heads face each other in a clean, balanced composition defined by confident linework and flat color blocks. The design reads well at chest scale and offers subtle line detail for a closer look, making it a whimsical addition to casual and streetwear collections.",
+      carouselImages: [
+        "/designshelf/images/29_unicorn/model_tshirt_en.jpg",
+        "/designshelf/images/29_unicorn/29_unicorn_design.png"
+      ]
+    },
     {
       id: 124,
       title: "Face-to-Face Lion Kanji Katakana (Japanese Relaxed Style)",
@@ -633,18 +652,18 @@ export default function DesignShelf() {
                       )}
                     </div>
                   ) : (
-                    <Image 
-                      src={product.modelImage ?? product.image}
-                      alt={product.title}
-                      width={256}
-                      height={256}
-                      className="object-contain hover:scale-105 transition-transform"
-                    />
+                  <Image 
+                    src={product.modelImage ?? product.image}
+                    alt={product.title}
+                    width={256}
+                    height={256}
+                    className="object-contain hover:scale-105 transition-transform"
+                  />
                   )}
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -669,7 +688,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
@@ -786,22 +805,22 @@ export default function DesignShelf() {
                       ))}
                     </div>
                   ) : (
-                    <div className="mt-auto pt-4 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold text-gray-800">{product.price}</span>
-                      </div>
-                      <a 
-                        href={product.amazonLink}
-                        target="_blank"
+                  <div className="mt-auto pt-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl font-bold text-gray-800">{product.price}</span>
+                    </div>
+                    <a 
+                      href={product.amazonLink}
+                      target="_blank"
                         rel="noopener noreferrer nofollow"
                         className="amazon-btn"
                         aria-label="View on Amazon"
-                      >
+                    >
                         <span className="label">
                           View on<br />Amazon
                         </span>
-                      </a>
-                    </div>
+                    </a>
+                  </div>
                   )}
                 </div>
               </div>
@@ -845,58 +864,58 @@ export default function DesignShelf() {
             <div className="flex flex-row md:flex-col gap-2 md:gap-4 md:min-w-[200px] w-full md:w-auto justify-center md:justify-start">
               {currentProduct && (
                 <>
-                  <button
-                    onClick={() => switchImageType('product')}
-                    className={`flex flex-col items-center p-3 rounded transition-colors ${
-                      currentImageType === 'product' 
-                        ? 'bg-white text-black' 
-                        : 'bg-white/20 text-white hover:bg-white/30'
-                    }`}
-                  >
-                    <Image
+              <button
+                onClick={() => switchImageType('product')}
+                className={`flex flex-col items-center p-3 rounded transition-colors ${
+                  currentImageType === 'product' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                <Image
                       src={currentProduct.image}
                       alt="Product image"
-                      width={64}
-                      height={64}
-                      className="object-contain mb-2"
-                    />
+                  width={64}
+                  height={64}
+                  className="object-contain mb-2"
+                />
                     <span className="text-sm">Product</span>
-                  </button>
-                  <button
-                    onClick={() => switchImageType('design')}
-                    className={`flex flex-col items-center p-3 rounded transition-colors ${
-                      currentImageType === 'design' 
-                        ? 'bg-white text-black' 
-                        : 'bg-white/20 text-white hover:bg-white/30'
-                    }`}
-                  >
-                    <Image
+              </button>
+              <button
+                onClick={() => switchImageType('design')}
+                className={`flex flex-col items-center p-3 rounded transition-colors ${
+                  currentImageType === 'design' 
+                    ? 'bg-white text-black' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                <Image
                       src={currentProduct.designImage}
                       alt="Design image"
-                      width={64}
-                      height={64}
-                      className="object-contain mb-2"
-                    />
+                  width={64}
+                  height={64}
+                  className="object-contain mb-2"
+                />
                     <span className="text-sm">Design</span>
-                  </button>
+              </button>
                   {currentProduct.modelImage && (
-                    <button
-                      onClick={() => switchImageType('model')}
-                      className={`flex flex-col items-center p-3 rounded transition-colors ${
-                        currentImageType === 'model' 
-                          ? 'bg-white text-black' 
-                          : 'bg-white/20 text-white hover:bg-white/30'
-                      }`}
-                    >
-                      <Image
-                        src={currentProduct.modelImage}
+                <button
+                  onClick={() => switchImageType('model')}
+                  className={`flex flex-col items-center p-3 rounded transition-colors ${
+                    currentImageType === 'model' 
+                      ? 'bg-white text-black' 
+                      : 'bg-white/20 text-white hover:bg-white/30'
+                  }`}
+                >
+                  <Image
+                    src={currentProduct.modelImage}
                       alt="Model image"
-                      width={64}
-                      height={64}
-                      className="object-contain mb-2"
-                    />
+                    width={64}
+                    height={64}
+                    className="object-contain mb-2"
+                  />
                     <span className="text-sm">Model</span>
-                    </button>
+                </button>
                   )}
                   {currentProduct.videoUrl && (
                     <a
