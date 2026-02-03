@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120、121、122、123、124、125の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121、122、123、124、125、126の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125 || productId === 126) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -202,6 +202,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 126,
+      title: "Face-to-Face Sumo Wrestler Kanji Katakana",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/37_yokozuna/model_tshirt_en.jpg",
+      designImage: "/designshelf/images/37_yokozuna/design.png",
+      modelImage: "/designshelf/images/37_yokozuna/model_tshirt_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/07MYyCZu",
+      features: [
+        "A sumo wrestler symbolizing the world of sumo is depicted using Japanese-style graphic elements combining kanji and katakana, reminiscent of traditional Japanese seals.",
+        "A composition centered around a red text motif as the focal point. The balanced design utilizes white space effectively, ensuring text and shapes remain clearly legible even when scaled down."
+      ],
+      description: "This graphic design centers on Japanese characters, featuring sumo and sumo wrestlers-theme of Japan's traditional culture. By combining kanji and katakana in a seal-like style, it achieves an impression blending Japanese authenticity with a playful spirit. Simplifying lines and shapes enhances visibility, creating a composition where the characters themselves stand out. It's a simple yet striking design for those who enjoy Japanese culture and Japanese-language motifs.",
+      videoUrl: "https://www.instagram.com/reel/DUS7L3zk2hp/?utm_source=ig_web_copy_link",
+      carouselImages: [
+        "/designshelf/images/37_yokozuna/model_tshirt_en.jpg",
+        "/designshelf/images/37_yokozuna/design.png"
+      ]
+    },
     {
       id: 125,
       title: "Face-to-Face Unicorn Illustration (Relaxed Style)",
@@ -664,7 +684,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -689,7 +709,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
