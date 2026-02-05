@@ -53,8 +53,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120、121、122、123、124、125、126の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125 || productId === 126) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121、122、123、124、125、126、127の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125 || productId === 126 || productId === 127) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -202,6 +202,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 127,
+      title: "Face-to-Face Dragon Illustration Kanji Katakana",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/39_dragondragon2/model_tshirt_en.jpg",
+      designImage: "/designshelf/images/39_dragondragon2/design.png",
+      modelImage: "/designshelf/images/39_dragondragon2/model_tshirt_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/09cc4T8V",
+      features: [
+        "Two dragons facing each other are rendered with bold lines, flanking a seal-like motif combining kanji and katakana at the center. This composition instantly conveys Japanese strength and symbolism.",
+        "A symmetrical composition that accentuates the dragon's expression and contours. The layout, which makes effective use of negative space, ensures the dragon and text maintain a clear presence even when displayed at reduced size."
+      ],
+      description: "This graphic combines a dragon motif inspired by Japanese folklore and decorative art with a seal design featuring kanji and katakana characters. The composition of dragons facing each other and the central text elements naturally draw the viewer's gaze. Streamlined lines and shapes enhance legibility, achieving a design that balances Japanese authenticity with contemporary graphic expression. It is an ideal piece for collections incorporating Japanese culture and character motifs.",
+      videoUrl: "https://www.instagram.com/reel/DUWAjQvk3UO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/39_dragondragon2/model_tshirt_en.jpg",
+        "/designshelf/images/39_dragondragon2/design.png"
+      ]
+    },
     {
       id: 126,
       title: "Face-to-Face Sumo Wrestler Kanji Katakana",
@@ -684,7 +704,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">Limited</span>
                   )}
-                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126) && (
+                  {!product.endDate && (product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126 || product.id === 127) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -709,7 +729,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126 || product.id === 127) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
