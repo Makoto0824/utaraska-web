@@ -12,6 +12,7 @@ export default function DesignShelf() {
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
   const [carouselIndices, setCarouselIndices] = useState<Record<number, number>>({});
+  const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
     { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
@@ -34,13 +35,19 @@ export default function DesignShelf() {
   // ESCキーでポップアップを閉じる
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && popupImage) {
-        closeImagePopup();
+      if (e.key === 'Escape') {
+        if (popupImage) {
+          closeImagePopup();
+        }
+        if (simpleImagePopup) {
+          setSimpleImagePopup(null);
+          document.body.style.overflow = '';
+        }
       }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [popupImage]);
+  }, [popupImage, simpleImagePopup]);
 
   const toggleDetails = (index: number) => {
     setExpandedDetails(expandedDetails === index ? null : index);
@@ -49,6 +56,15 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
+      // ID 128の商品の場合はシンプルな画像拡大モーダルを使用
+      if (productId === 128 && product.carouselImages && product.carouselImages.length > 0) {
+        const currentImageIndex = carouselIndices[productId] ?? 0;
+        const currentImage = product.carouselImages[currentImageIndex];
+        setSimpleImagePopup(currentImage);
+        document.body.style.overflow = 'hidden';
+        return;
+      }
+      // その他の商品は既存のモーダルを使用
       setPopupImage(product.image);
       setPopupId(`imagePopup${productId}`);
       setCurrentImageType('product');
@@ -189,6 +205,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 128,
+      title: "アフロの青年がにわとりを抱えて叫ぶ",
+      brand: "SHAREZOH",
+      image: "/designshelf/images/sharezoh/1/model_tshirt_jp.jpg",
+      designImage: "/designshelf/images/sharezoh/1/design.png",
+      modelImage: "/designshelf/images/sharezoh/1/model_tshirt_jp.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.asia/d/02TFtwnA",
+      features: [
+        "大きく口を開けた人物と、腕に抱えられたニワトリを組み合わせた、強い表情が印象的なキャラクターイラスト。丸いフレーム構図で視線が自然に中央へ集まります。",
+        "誇張された顔の表情とシンプルな色使いにより、ひと目でユーモラスさが伝わるデザイン。線と形を整理し、縮小表示でもキャラクター性が損なわれない構成です。"
+      ],
+      description: "人物と動物を組み合わせた、コミカルでインパクトのあるキャラクターイラストです。大きく誇張した表情とポーズを中心に構成し、見る側に強い印象を残すようデザインしています。丸いフレーム内にまとめることで全体のバランスを保ち、主役となるキャラクターが際立つよう調整しています。ユーモアのあるイラスト表現や、個性的なキャラクターデザインを好む方に向けた一作です。",
+      videoUrl: "https://www.instagram.com/reel/DUbK3zrgbbc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/sharezoh/1/model_tshirt_jp.jpg",
+        "/designshelf/images/sharezoh/1/design.png"
+      ]
+    },
     {
       id: 109,
       title: "パリピサンタ パーカー",
@@ -1022,7 +1058,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117) && (
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 128) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -1040,6 +1076,24 @@ export default function DesignShelf() {
                   >
                     {product.brand}
                   </Link>
+                  {product.id === 128 && product.videoUrl && (
+                    <a
+                      href={product.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 mb-4 text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      <Image
+                        src="/designshelf/images/Instagram_logo_black.png"
+                        alt="Instagram"
+                        width={20}
+                        height={20}
+                        className="w-5 h-5"
+                        unoptimized
+                      />
+                      <span className="text-sm">Instagramで動画を見る</span>
+                    </a>
+                  )}
                   
                   <button 
                     onClick={(e) => {
@@ -1272,6 +1326,36 @@ export default function DesignShelf() {
                 </>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* シンプルな画像拡大モーダル（ID 128専用） */}
+      {simpleImagePopup && (
+        <div 
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
+          onClick={() => {
+            setSimpleImagePopup(null);
+            document.body.style.overflow = '';
+          }}
+        >
+          <button
+            onClick={() => {
+              setSimpleImagePopup(null);
+              document.body.style.overflow = '';
+            }}
+            className="absolute top-4 right-4 text-white text-4xl cursor-pointer p-2 z-10 hover:bg-white/20 rounded-full transition-colors"
+          >
+            &times;
+          </button>
+          <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={simpleImagePopup}
+              alt="拡大画像"
+              width={1200}
+              height={1200}
+              className="w-full h-full max-w-full max-h-[95vh] object-contain"
+            />
           </div>
         </div>
       )}
