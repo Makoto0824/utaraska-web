@@ -483,21 +483,6 @@ export default function YuruStyleJapan() {
         "左右対称の配置でバランスの取れた構図"
       ],
       description: "虎の顔を対称に配置した和風アニマルデザイン。左右対称の配置でバランスが良く、和風テイストを好む方におすすめです。"
-    },
-    {
-      id: 24,
-      title: "ゆるい和風ドラゴンのイラストアート 龍デザイン Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee24.png",
-      designImage: "/designshelf/images/tee24_design.png",
-      modelImage: "/designshelf/images/tee24_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4nN1Zqw",
-      features: [
-        "ユーモラスな表情が魅力の、ゆるくて親しみやすい龍のイラスト",
-        "和風テイストを取り入れたポップで個性的なドラゴンデザイン"
-      ],
-      description: "日本的な龍をモチーフにしながらも、親しみやすくゆるい表情で描かれたイラストが特徴。威圧感のないデフォルメスタイルのドラゴンが、ユーモアと個性を添えます。和風・アジア風のデザインが好きな方や、かわいい系のキャラクターTシャツを探している方におすすめの一枚です。"
     }
   ];
 
