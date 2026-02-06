@@ -9,16 +9,6 @@ export default function Brands() {
       name: "ゆるスタイル・ジャパン",
       description: "伝統的な日本のモチーフを、かわいくデフォルメしたポップアートデザインを展開するブランド。和風キャラクターアートの新しい表現を追求します。",
       link: "/designshelf/brands/yuru-style-japan"
-    },
-    {
-      name: "Japanese Art Studio",
-      description: "浮世絵や日本画の伝統を現代的なアート表現で再構築。サイケデリックな色彩と幻想的な世界観が特徴のブランドです。",
-      link: "/designshelf/brands/japanese-art-studio"
-    },
-    {
-      name: "ワロタ商店",
-      description: "「おもしろ」「ギャグ」「ことわざ逆」「パロディ」「ユーモア」「遊び心」をテーマにした、オリジナルグッズブランドです。",
-      link: "/designshelf/brands/warota-shoten"
     }
   ];
 
@@ -55,7 +45,7 @@ export default function Brands() {
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">ブランド一覧</h1>
             <p className="text-lg text-center text-gray-600 max-w-4xl mx-auto">
-              Design Shelfでは、3つの個性的なブランドが展開されています。それぞれ異なるコンセプトで、日本の文化を現代的に表現したデザインを提供しています。
+              Design Shelfでは、個性的なブランドが展開されています。日本の文化を現代的に表現したデザインを提供しています。
             </p>
           </div>
         </section>

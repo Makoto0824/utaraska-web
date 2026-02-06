@@ -714,9 +714,7 @@ export default function DesignShelf() {
                   {product.brand !== "Yuru Style Japan" && (
                     <Link 
                       href={
-                        product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/brands/yuru-style-japan" :
-                        product.brand === "ワロタ商店" ? "/designshelf/brands/warota-shoten" :
-                        product.brand === "Japanese Art Studio" ? "/designshelf/brands/japanese-art-studio" :
+                        product.brand === "Yuru Style Japan" ? "/designshelf/brands/yuru-style-japan" :
                         "/designshelf/brands"
                       }
                       className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"

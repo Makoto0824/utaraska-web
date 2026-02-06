@@ -226,40 +226,6 @@ export default function DesignShelf() {
       ]
     },
     {
-      id: 109,
-      title: "パリピサンタ パーカー",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/27_santa/hoodie/27_santa_hoodie.png",
-      designImage: "/designshelf/images/27_santa/27_santa_design.png",
-      modelImage: "/designshelf/images/27_santa/hoodie/27_santa_hoodie_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/49IhqeX",
-      features: [
-        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
-        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
-      ],
-      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
-      videoUrl: "https://www.instagram.com/reel/DQ6h8WhAVQo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      endDate: "2025-12-26T00:00:00"
-    },
-    {
-      id: 110,
-      title: "パリピサンタ Tシャツ",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/27_santa/tshirt/27_santa_tshirt.png",
-      designImage: "/designshelf/images/27_santa/27_santa_design.png",
-      modelImage: "/designshelf/images/27_santa/tshirt/27_santa_tshirt_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4qS4f1j",
-      features: [
-        "胸元に左右並べたサンタ顔のワンポイントデザイン。ゆるいタッチで親しみやすく、主張しすぎないため普段着に合わせやすい。",
-        "シーズンのギフトやイベント着として目を引きやすく、年代・性別を問わず使いやすいビジュアルを意識"
-      ],
-      description: "胸元に並んだサンタ顔のイラストが、さりげないホリデームードを作るデザインです。線は柔らかく、顔の表情は遊び心を残したまま落ち着いた印象にまとめています。深緑や冬色の背景でよく映える配色に調整しているため、季節のコーデの差し込みとして使いやすい作りです。ギフトとして渡しやすいよう、主張しすぎない大きさに収めている点も特徴です",
-      videoUrl: "https://www.instagram.com/reel/DQ6iV2DAYVA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      endDate: "2025-12-26T00:00:00"
-    },
-    {
       id: 117,
       title: "向かい合うゆるいパンダ face2face",
       brand: "ゆるスタイル・ジャパン",
@@ -434,22 +400,6 @@ export default function DesignShelf() {
       videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-      id: 111,
-      title: "向かい合うゆるいトナカイ face2face パーカー",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/28_tonakai/hoodie/28_tonakai_hoodie.png",
-      designImage: "/designshelf/images/28_tonakai/28_tonakai_design.png",
-      modelImage: "/designshelf/images/28_tonakai/hoodie/28_tonakai_hoodie_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/4nUNrnw",
-      features: [
-        "左右に向かい合うトナカイの顔をワンポイントで配したビジュアル。線は柔らかくゆるいタッチで描かれており、派手になりすぎず日常のコーデに馴染む設計です。胸元に置いたサイズ感で視線を自然に引き、季節商品としての認識を高めます",
-        "クリスマスカラー（深緑、白、赤など）と相性が良い配色想定で、ギフトやイベント着にも使いやすい。"
-      ],
-      description: "このデザインは、向かい合う二頭のトナカイをゆるいタッチで並べたシンプルなホリデーイラストです。表情は柔らかく親しみやすいため、年齢や性別を問わず着用しやすいのが特徴です。胸元ワンポイントに収めることで日常の着回しに溶け込み、クリスマスシーズンのアクセントとして使いやすく仕上げました。",
-      videoUrl: "https://www.instagram.com/reel/DQ_wi85AZ91/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA=="
-    },
-    {
       id: 108,
       title: "ゆるいライオン パーカー",
       brand: "ゆるスタイル・ジャパン",
@@ -608,48 +558,6 @@ export default function DesignShelf() {
       description: "日本的な龍をモチーフにしながらも、親しみやすくゆるい表情で描かれたイラストが特徴。威圧感のないデフォルメスタイルのドラゴンが、ユーモアと個性を添えます。和風・アジア風のデザインが好きな方や、かわいい系のキャラクターTシャツを探している方におすすめの一枚です。"
     },
     {
-      id: 21,
-      title: "戦国武将 兜 和風 侍 ピクセルアート #1 Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee21.png",
-      designImage: "/designshelf/images/tee21_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4kmiHeh",
-      features: [
-        "時の天下人が\"日本一の兵\"と称えた、戦国屈指の武将の兜をピクセルアートで表現したデザイン",
-        "ドット調のアートスタイルで、レトロゲーム風のユニークな戦国モチーフ"
-      ],
-      description: "戦国時代の英雄の特徴的な兜を、ポップで懐かしいピクセルアートとしてデザインしました。赤備えと鹿角のシルエットを強調し、現代のファッションに落とし込んだ和風デザインです。戦国ファンやゲーム好きにもおすすめ。"
-    },
-    {
-      id: 22,
-      title: "戦国武将 兜 和風 侍 ピクセルアート #2 Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee22.png",
-      designImage: "/designshelf/images/tee22_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4kr7ZTF",
-      features: [
-        "「愛」の前立てが印象的な戦国武将の兜をピクセルアートで再現",
-        "シンプルな配置で、戦国ファンにもストリートファッションにもマッチ"
-      ],
-      description: "義と愛、戦国時代の名将が着用した兜を、懐かしさ漂うピクセルアートでデザインしました。兜正面には「愛」の文字が力強く表現されており、忠義と信念を象徴します。和風デザインとしてだけでなく、個性的なファッションアイテムとしても映える一枚です。武将ファン、歴史好き、和モチーフ好きにおすすめのデザインです。プレゼントやギフトにも最適です。"
-    },
-    {
-      id: 23,
-      title: "戦国武将 兜 和風 侍 ピクセルアート #3 Tシャツ",
-      brand: "Japanese Art Studio",
-      image: "/designshelf/images/tee23.png",
-      designImage: "/designshelf/images/tee23_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/43ML12e",
-      features: [
-        "特徴的な鹿角兜をドット絵で再現したミニマルで印象的なデザイン。",
-        "戦国・武将ファン必見。和風でレトロなピクセルアートが胸元に映える。"
-      ],
-      description: "戦国最強と名高い戦国武将の兜をピクセルアートで表現したグラフィックデザイン。左右対称の鹿角が圧倒的な存在感を放ち、戦国時代の力強さと美しさを現代風にアレンジ。ドット絵のワンポイントデザインは、カジュアルながらも個性を主張し、和風テイストや侍モチーフのアイテムを好む方にぴったりです。戦国武将ファンやレトロゲーマーへのプレゼントやギフトにも最適。"
-    },
-    {
       id: 1,
       title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
       brand: "ゆるスタイル・ジャパン",
@@ -747,118 +655,6 @@ export default function DesignShelf() {
       ],
       description: "虎の顔を対称に配置した和風アニマルデザイン。左右対称の配置でバランスが良く、和風テイストを好む方におすすめです。"
     },
-    {
-      id: 13,
-      title: "【おもしろ】笑うカバには福きたる 笑う門には福来たるのダジャレ ことわざ×ギャグアート プレゼント・ギフトにも最適",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee13.png",
-      designImage: "/designshelf/images/tee13_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/43eKqHT",
-      features: [
-        "「笑う門には福来たる」を「笑うカバには福きたる」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「笑う門には福来たる」を「笑うカバには福きたる」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
-    },
-    {
-      id: 14,
-      title: "【おもしろ】二兎を追うものはワンダフル 二兎を追うものは一兎をも得ずのダジャレデザイン ことわざ×ギャグアート",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee14.png",
-      designImage: "/designshelf/images/tee14_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3HetJDv",
-      features: [
-        "「二兎を追うものは一兎をも得ず」を「二兎を追うものはワンダフル」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「二兎を追うものは一兎をも得ず」を「二兎を追うものはワンダフル」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインです。"
-    },
-    {
-      id: 15,
-      title: "【おもしろ】犬も歩けばカーニバル 犬の歩けば棒に当たるのダジャレデザイン ことわざ×ギャグ アート プレゼントに最適",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee15.png",
-      designImage: "/designshelf/images/tee15_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4j8jHRK",
-      features: [
-        "「犬も歩けば棒に当たる」を「犬も歩けばカーニバル」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「犬も歩けば棒に当たる」を「犬も歩けばカーニバル」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントに最適です。"
-    },
-    {
-      id: 16,
-      title: "【おもしろ】棚から豚キムチ 棚からぼたもちのダジャレデザイン ことわざ×ギャグアート プレゼント・ギフトにも最適",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee16.png",
-      designImage: "/designshelf/images/tee16_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/44HqiiF",
-      features: [
-        "「棚からぼたもち」を「棚から豚キムチ」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「棚からぼたもち」を「棚から豚キムチ」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
-    },
-    {
-      id: 17,
-      title: "【おもしろ】塵も積もれば筋肉になる 塵も積もれば山となるのダジャレデザイン ことわざ×ギャグアート プレゼントに最適",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee17.png",
-      designImage: "/designshelf/images/tee17_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/43Ce8GD",
-      features: [
-        "「塵も積もれば山となる」を「塵も積もれば筋肉になる」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「塵も積もれば山となる」を「塵も積もれば筋肉になる」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントに最適です。"
-    },
-    {
-      id: 18,
-      title: "【おもしろ】花より男子 花より団子のダジャレデザイン ことわざ×ギャグアートプレゼント・ギフトにも最適",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee18.png",
-      designImage: "/designshelf/images/tee18_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3H6FxI1",
-      features: [
-        "「花より団子」を「花より男子」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「花より団子」を「花より男子」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
-    },
-    {
-      id: 19,
-      title: "【おもしろ】泣きっつらにポチっとな 泣きっ面に蜂のダジャレデザイン ことわざ×ギャグアート プレゼント・ギフトにも最適",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee19.png",
-      designImage: "/designshelf/images/tee19_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3H4CHU4",
-      features: [
-        "「泣きっ面に蜂」を「泣きっつらにポチっとな」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「泣きっ面に蜂」を「泣きっつらにポチっとな」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
-    },
-    {
-      id: 20,
-      title: "【おもしろ】知らぬが日焼け 知らぬが仏のダジャレデザイン ことわざ×ギャグアート プレゼント・ギフトにも最適",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee20.png",
-      designImage: "/designshelf/images/tee20_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4dqyHcx",
-      features: [
-        "「知らぬが仏」を「知らぬが日焼け」にダジャレ化",
-        "ことわざ×ギャグアートのユニークなデザイン"
-      ],
-      description: "「知らぬが仏」を「知らぬが日焼け」にダジャレ化したことわざ×ギャグアート。ユニークで面白いデザインで、プレゼントやギフトにも最適です。"
-    }
   ];
 
   // 現在ポップアップ中の商品（ボタン表示制御用）
@@ -1068,8 +864,6 @@ export default function DesignShelf() {
                   <Link 
                     href={
                       product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/jp/brands/yuru-style-japan" :
-                      product.brand === "ワロタ商店" ? "/designshelf/jp/brands/warota-shoten" :
-                      product.brand === "Japanese Art Studio" ? "/designshelf/jp/brands/japanese-art-studio" :
                       "/designshelf/jp/brands"
                     }
                     className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"

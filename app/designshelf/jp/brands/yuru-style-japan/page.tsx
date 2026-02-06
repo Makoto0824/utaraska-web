@@ -635,8 +635,6 @@ export default function YuruStyleJapan() {
                   <Link 
                     href={
                       product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/jp/brands/yuru-style-japan" :
-                      product.brand === "ワロタ商店" ? "/designshelf/jp/brands/warota-shoten" :
-                      product.brand === "Japanese Art Studio" ? "/designshelf/jp/brands/japanese-art-studio" :
                       "/designshelf/jp/brands"
                     }
                     className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
