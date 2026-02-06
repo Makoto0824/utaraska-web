@@ -528,36 +528,6 @@ export default function DesignShelf() {
       videoUrl: "https://www.instagram.com/reel/DQX05pPASTA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-      id: 25,
-      title: "やる気スイッチオフ おもしろ 面白い Tシャツ",
-      brand: "ワロタ商店",
-      image: "/designshelf/images/tee25.png",
-      designImage: "/designshelf/images/tee25_design.png",
-      modelImage: "/designshelf/images/tee25_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/48L689n",
-      features: [
-        "胸元に描かれた\"やる気スイッチ\"をモチーフにしたユーモラスなデザイン",
-        "ON／OFFの切り替えをモチーフにした、おもしろメッセージアート"
-      ],
-      description: "このデザインは『やる気スイッチ』をテーマにしたユーモラスなアート。誰もが共感する“やる気のON・OFF”をシンプルなスイッチで表現し、思わずクスッと笑えるデザインに仕上げました。職場や学校、カジュアルシーンなど、どんな場面でも話題になるおもしろアートです。ユーモアとシンプルデザインを両立した、日常に遊び心を添える一枚。"
-    },
-    {
-      id: 24,
-      title: "ゆるい和風ドラゴンのイラストアート 龍デザイン Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee24.png",
-      designImage: "/designshelf/images/tee24_design.png",
-      modelImage: "/designshelf/images/tee24_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4nN1Zqw",
-      features: [
-        "ユーモラスな表情が魅力の、ゆるくて親しみやすい龍のイラスト",
-        "和風テイストを取り入れたポップで個性的なドラゴンデザイン"
-      ],
-      description: "日本的な龍をモチーフにしながらも、親しみやすくゆるい表情で描かれたイラストが特徴。威圧感のないデフォルメスタイルのドラゴンが、ユーモアと個性を添えます。和風・アジア風のデザインが好きな方や、かわいい系のキャラクターTシャツを探している方におすすめの一枚です。"
-    },
-    {
       id: 1,
       title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
       brand: "ゆるスタイル・ジャパン",
