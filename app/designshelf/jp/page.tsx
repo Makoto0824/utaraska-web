@@ -56,8 +56,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 128の商品の場合はシンプルな画像拡大モーダルを使用
-      if (productId === 128 && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 128, 129の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 128 || productId === 129) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -205,6 +205,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 129,
+      title: "ゴーグルを着用した金髪の青年 子虎を抱いてリュックを背負う",
+      brand: "SHAREZOH",
+      image: "/designshelf/images/sharezoh/2/model_tshirt_jp.jpg",
+      designImage: "/designshelf/images/sharezoh/2/design.png",
+      modelImage: "/designshelf/images/sharezoh/2/model_tshirt_jp.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.asia/d/0a5Ld3Tv",
+      features: [
+        "ゴーグルをかけた人物と、腕に抱えられた小さな虎を組み合わせたキャラクターイラスト。丸いフレーム構図が全体をまとめ、視線が自然に中心へ集まります。",
+        "誇張された表情とシンプルな色使いで、ひと目で物語性が伝わるデザイン。線と形を整理し、縮小表示でもキャラクターの関係性が分かりやすい構成です。"
+      ],
+      description: "人物と動物を組み合わせた、親しみやすく個性的なキャラクターイラストです。ゴーグル姿の人物と寄り添う虎を一つの円形フレームに収め、表情や仕草から想像が広がるようデザインしています。線と色をシンプルにまとめることで、主役となるキャラクターが際立ち、見る人に印象を残す構成に仕上げています。ストーリー性のあるイラストや、ユーモアを感じさせるキャラクターデザインを好む方に向けた一作です。",
+      videoUrl: "https://www.instagram.com/reel/DUcXhdXAa0V/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/sharezoh/2/model_tshirt_jp.jpg",
+        "/designshelf/images/sharezoh/2/design.png"
+      ]
+    },
     {
       id: 128,
       title: "アフロの青年がにわとりを抱えて叫ぶ",
@@ -824,7 +844,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 128) && (
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 128 || product.id === 129) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -840,7 +860,7 @@ export default function DesignShelf() {
                   >
                     {product.brand}
                   </Link>
-                  {product.id === 128 && product.videoUrl && (
+                  {(product.id === 128 || product.id === 129) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
