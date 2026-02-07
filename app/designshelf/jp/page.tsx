@@ -1103,15 +1103,14 @@ export default function DesignShelf() {
           onClick={closeImagePopup}
         >
           <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] flex flex-col md:flex-row items-center gap-4 md:gap-8" onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={closeImagePopup}
-              className="absolute -top-8 md:-top-10 right-0 text-white text-3xl cursor-pointer p-2 z-10"
-            >
-              &times;
-            </button>
-            
             {/* 画像表示エリア */}
             <div className="relative w-full md:max-w-[80vw] h-full md:max-h-[80vh] bg-black rounded-lg flex justify-center items-center flex-1">
+              <button
+                onClick={closeImagePopup}
+                className="absolute -top-3 -right-3 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
+              >
+                &times;
+              </button>
               <Image
                 src={popupImage || ''}
                 alt="拡大画像"
@@ -1218,17 +1217,17 @@ export default function DesignShelf() {
             document.body.style.overflow = '';
           }}
         >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setSimpleImagePopup(null);
-              document.body.style.overflow = '';
-            }}
-            className="absolute top-4 right-4 text-white text-4xl cursor-pointer p-2 z-10 hover:bg-white/20 rounded-full transition-colors"
-          >
-            &times;
-          </button>
           <div className="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSimpleImagePopup(null);
+                document.body.style.overflow = '';
+              }}
+              className="absolute -top-3 -right-3 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
+            >
+              &times;
+            </button>
             <Image
               src={simpleImagePopup}
               alt="拡大画像"
