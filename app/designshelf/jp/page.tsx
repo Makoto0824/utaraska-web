@@ -206,6 +206,53 @@ export default function DesignShelf() {
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
     {
+      id: 132,
+      title: "向かい合う 龍（ドラゴン） face2face",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/39_dragondragon2/jp/model_hoodie_jp.png",
+      designImage: "/designshelf/images/39_dragondragon2/design.png",
+      modelImage: "/designshelf/images/39_dragondragon2/jp/model_hoodie_jp.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.asia/d/077ee9fx",
+      features: [
+        "左右に向かい合う二体の龍を大胆な線で描き、中央に漢字とカタカナを組み合わせた判子風モチーフを配置。日本的な力強さと象徴性が一目で伝わる構成です。",
+        "龍の表情と輪郭を際立たせたシンメトリー構図。余白を活かした配置により、縮小表示でも龍と文字の存在感が明確に伝わります。"
+      ],
+      description: "日本の伝承や装飾表現に着想を得た龍（ドラゴン）モチーフを、漢字とカタカナの判子デザインと組み合わせたグラフィックです。左右に向かい合う龍の構図と中央の文字要素によって、視線が自然に集まるよう設計しています。線と形を整理することで視認性を高め、日本らしさと現代的なグラフィック表現を両立させたデザインに仕上げています。日本文化や文字モチーフを取り入れたコレクションに適した一枚です。",
+      videoUrl: "https://www.instagram.com/reel/DUeRgZpAf35/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/39_dragondragon2/jp/model_hoodie_jp.png",
+        "/designshelf/images/39_dragondragon2/design.png"
+      ],
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.asia/d/077ee9fx"
+        },
+        {
+          name: "長袖Tシャツ",
+          price: "¥2,750",
+          amazonLink: "https://amzn.asia/d/0b9YfOhr"
+        },
+        {
+          name: "トレーナー",
+          price: "¥3,960",
+          amazonLink: "https://amzn.asia/d/03sJmi7d"
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.asia/d/0a8Sumzr"
+        },
+        {
+          name: "ジップパーカー",
+          price: "¥4,600",
+          amazonLink: "https://amzn.asia/d/0eN9r7P5"
+        }
+      ]
+    },
+    {
       id: 131,
       title: "赤ちゃんをおんぶしたファンキー男 ハート型のサングラス ミニダルマ ヒゲ ファイヤーパターンのヘルメット",
       brand: "SHAREZOH",
