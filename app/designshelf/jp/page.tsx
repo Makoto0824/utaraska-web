@@ -782,53 +782,24 @@ export default function DesignShelf() {
           className="relative w-full overflow-hidden rounded-lg shadow-lg"
           style={{ aspectRatio: bannerRatios[currentBanner] || 1200 / 500 }}
         >
-            {banners.map((banner, index) => {
-              const bannerLinks = [
-                "https://amzn.to/4azSuGy",
-                "https://amzn.to/4tjnulH",
-                "https://amzn.to/46Eh46L",
-                "https://amzn.to/4bHeLmY",
-                "https://amzn.to/4ajqRQW"
-              ];
-              const link = bannerLinks[index];
-              
-              return (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentBanner ? 'opacity-100' : 'opacity-0'
-                  }`}
+            {banners.map((banner, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  index === currentBanner ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <a
+                  href={banner.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full"
                 >
-                {link ? (
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full h-full"
-                  >
-                    <Image
-                      src={banner.src}
-                      alt={banner.alt}
-                      fill
-                      className="object-contain cursor-pointer"
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                      onLoadingComplete={(img) => {
-                        const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
-                        if (!ratio) return;
-                        setBannerRatios((prev) => {
-                          const next = [...prev];
-                          next[index] = ratio;
-                          return next;
-                        });
-                      }}
-                    />
-                  </a>
-                ) : (
                   <Image
                     src={banner.src}
                     alt={banner.alt}
                     fill
-                    className="object-contain"
+                    className="object-contain cursor-pointer"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
                     onLoadingComplete={(img) => {
                       const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
@@ -840,10 +811,9 @@ export default function DesignShelf() {
                       });
                     }}
                   />
-                )}
-                </div>
-              );
-            })}
+                </a>
+              </div>
+            ))}
             
             {/* バナーインジケーター */}
             <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 sm:gap-2">
