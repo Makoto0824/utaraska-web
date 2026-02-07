@@ -15,10 +15,11 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
-    { src: "/designshelf/images/banner5.jpg", alt: "セールバナー" },
-    { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "/designshelf" },
-    { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "/designshelf" },
-    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "/designshelf" }
+    { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4azSuGy" },
+    { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "https://amzn.to/4tjnulH" },
+    { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
+    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "https://amzn.to/4bHeLmY" },
+    { src: "/designshelf/images/banner5.jpg", alt: "セールバナー", link: "https://amzn.to/4ajqRQW" }
   ];
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
@@ -788,22 +789,48 @@ export default function DesignShelf() {
                   index === currentBanner ? 'opacity-100' : 'opacity-0'
                 }`}
               >
-              <Image
-                src={banner.src}
-                alt={banner.alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                onLoadingComplete={(img) => {
-                  const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
-                  if (!ratio) return;
-                  setBannerRatios((prev) => {
-                    const next = [...prev];
-                    next[index] = ratio;
-                    return next;
-                  });
-                }}
-              />
+              {banner.link ? (
+                <a
+                  href={banner.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full"
+                >
+                  <Image
+                    src={banner.src}
+                    alt={banner.alt}
+                    fill
+                    className="object-contain cursor-pointer"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                    onLoadingComplete={(img) => {
+                      const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
+                      if (!ratio) return;
+                      setBannerRatios((prev) => {
+                        const next = [...prev];
+                        next[index] = ratio;
+                        return next;
+                      });
+                    }}
+                  />
+                </a>
+              ) : (
+                <Image
+                  src={banner.src}
+                  alt={banner.alt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                  onLoadingComplete={(img) => {
+                    const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
+                    if (!ratio) return;
+                    setBannerRatios((prev) => {
+                      const next = [...prev];
+                      next[index] = ratio;
+                      return next;
+                    });
+                  }}
+                />
+              )}
               </div>
             ))}
             
