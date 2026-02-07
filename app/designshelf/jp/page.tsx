@@ -57,8 +57,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 128, 129, 130, 131の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 128 || productId === 129 || productId === 130 || productId === 131) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 128, 129, 130, 131, 132の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -974,7 +974,7 @@ export default function DesignShelf() {
                   >
                     {product.brand}
                   </Link>
-                  {(product.id === 128 || product.id === 129 || product.id === 130 || product.id === 131) && product.videoUrl && (
+                  {(product.id === 128 || product.id === 129 || product.id === 130 || product.id === 131 || product.id === 132) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
