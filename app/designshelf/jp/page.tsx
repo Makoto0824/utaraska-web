@@ -15,10 +15,10 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
-    { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4azSuGy" },
-    { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "https://amzn.to/4tjnulH" },
-    { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
-    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "https://amzn.to/4bHeLmY" },
+    { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4ajqRQW" },
+    { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "https://amzn.to/4ajqRQW" },
+    { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/4ajqRQW" },
+    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "https://amzn.to/4ajqRQW" },
     { src: "/designshelf/images/banner5.jpg", alt: "セールバナー", link: "https://amzn.to/4ajqRQW" }
   ];
 
