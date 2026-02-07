@@ -56,8 +56,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 128, 129, 130の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 128 || productId === 129 || productId === 130) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 128, 129, 130, 131の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 128 || productId === 129 || productId === 130 || productId === 131) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -205,6 +205,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 131,
+      title: "赤ちゃんをおんぶしたファンキー男 ハート型のサングラス ミニダルマ ヒゲ ファイヤーパターンのヘルメット",
+      brand: "SHAREZOH",
+      image: "/designshelf/images/sharezoh/4/model_tshirt_jp.jpg",
+      designImage: "/designshelf/images/sharezoh/4/design.png",
+      modelImage: "/designshelf/images/sharezoh/4/model_tshirt_jp.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.asia/d/0eh3vlJ4",
+      features: [
+        "ヘルメットをかぶった男を中心に、子どもとペンギンを組み合わせたキャラクター構成。異なる存在を一つの円形フレームにまとめ、視線が自然と中央に集まるデザインです。",
+        "表情や小物に個性を持たせつつ、全体をシンプルな形で整理。登場人物それぞれの関係性が一目で伝わる、ストーリー性のある構図になっています。"
+      ],
+      description: "ヘルメットをかぶったファンキーな男を主役に、寄り添う子どもとペンギンを描いたキャラクターイラストです。異なる立場や雰囲気の存在を同じ画面に配置することで、不思議な一体感と物語性を生み出しています。円形のフレーム構成により全体のバランスを保ち、細かな表情や仕草が自然と目に入るよう設計されています。ユーモアと想像の余地を残した、印象に残るキャラクターデザインです。",
+      videoUrl: "https://www.instagram.com/reel/DUcaL6ygU1P/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
+      carouselImages: [
+        "/designshelf/images/sharezoh/4/model_tshirt_jp.jpg",
+        "/designshelf/images/sharezoh/4/design.png"
+      ]
+    },
     {
       id: 130,
       title: "耳付きニットキャップを被った青年 河童の子を抱きながらガムを膨らます",
@@ -864,7 +884,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 128 || product.id === 129 || product.id === 130) && (
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 128 || product.id === 129 || product.id === 130 || product.id === 131) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -880,7 +900,7 @@ export default function DesignShelf() {
                   >
                     {product.brand}
                   </Link>
-                  {(product.id === 128 || product.id === 129 || product.id === 130) && product.videoUrl && (
+                  {(product.id === 128 || product.id === 129 || product.id === 130 || product.id === 131) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
