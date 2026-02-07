@@ -879,7 +879,7 @@ export default function DesignShelf() {
             <div className="relative w-full md:max-w-[80vw] h-full md:max-h-[80vh] bg-black rounded-lg flex justify-center items-center flex-1">
               <button
                 onClick={closeImagePopup}
-                className="absolute -top-3 -right-3 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
+                className="absolute top-2 right-2 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
               >
                 &times;
               </button>
@@ -989,23 +989,23 @@ export default function DesignShelf() {
             document.body.style.overflow = '';
           }}
         >
-          <div className="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+          <div className="relative flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSimpleImagePopup(null);
                 document.body.style.overflow = '';
               }}
-              className="absolute -top-3 -right-3 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
+              className="absolute top-2 right-2 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
             >
               &times;
             </button>
             <Image
               src={simpleImagePopup}
               alt="Enlarged image"
-              width={1200}
-              height={1200}
-              className="max-w-full max-h-[95vh] object-contain"
+              width={640}
+              height={720}
+              className="max-w-[90vw] max-h-[90vh] object-contain"
             />
           </div>
         </div>
