@@ -56,8 +56,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 128, 129の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 128 || productId === 129) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 128, 129, 130の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 128 || productId === 129 || productId === 130) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -205,6 +205,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 130,
+      title: "耳付きニットキャップを被った青年 河童の子を抱きながらガムを膨らます",
+      brand: "SHAREZOH",
+      image: "/designshelf/images/sharezoh/3/model_tshirt_jp.jpg",
+      designImage: "/designshelf/images/sharezoh/3/design.png",
+      modelImage: "/designshelf/images/sharezoh/3/model_tshirt_jp.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.asia/d/09UmYsvS",
+      features: [
+        "ガムを大きく膨らませた人物を主役に、河童の子供のキャラクターを組み合わせたイラスト。丸いフレーム構図が視線を中央に集め、表情の対比が印象に残ります。",
+        "抑えた線の情報量と分かりやすい配色で、人物と河童それぞれの個性を明確に表現。シンプルな形で構成され、ひと目で関係性が伝わるデザインです。"
+      ],
+      description: "ガムを膨らませる人物と、寄り添うように描かれた河童の子供を組み合わせたキャラクターイラストです。余裕のある表情の人物と、感情の伝わる河童の仕草を対比させることで、見る人が自然と物語を想像できる構成にしています。全体を円形のフレームに収めることで画面がまとまり、キャラクターの存在感が際立つデザインに仕上げています。ユーモアと個性を感じさせるイラスト表現を好む方に向けた一作です。",
+      videoUrl: "https://www.instagram.com/reel/DUcYvGLAV52/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/sharezoh/3/model_tshirt_jp.jpg",
+        "/designshelf/images/sharezoh/3/design.png"
+      ]
+    },
     {
       id: 129,
       title: "ゴーグルを着用した金髪の青年 子虎を抱いてリュックを背負う",
@@ -844,7 +864,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 128 || product.id === 129) && (
+                  {!product.endDate && (product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 111 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117 || product.id === 128 || product.id === 129 || product.id === 130) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -860,7 +880,7 @@ export default function DesignShelf() {
                   >
                     {product.brand}
                   </Link>
-                  {(product.id === 128 || product.id === 129) && product.videoUrl && (
+                  {(product.id === 128 || product.id === 129 || product.id === 130) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
