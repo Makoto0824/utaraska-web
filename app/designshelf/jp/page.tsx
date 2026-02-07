@@ -19,7 +19,7 @@ export default function DesignShelf() {
     { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "https://amzn.to/4tjnulH" },
     { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
     { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "https://amzn.to/4bHeLmY" },
-    { src: "/designshelf/images/banner5.jpg", alt: "セールバナー", link: "https://amzn.to/4ajqRQW" }
+    { src: "/designshelf/images/banner5.jpg", alt: "セールバナー", link: "https://example.com" }
   ];
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
@@ -786,7 +786,7 @@ export default function DesignShelf() {
               <div
                 key={index}
                 className={`absolute inset-0 transition-opacity duration-500 ${
-                  index === currentBanner ? 'opacity-100' : 'opacity-0'
+                  index === currentBanner ? 'opacity-100' : 'opacity-0 pointer-events-none'
                 }`}
               >
                 <a
@@ -1232,7 +1232,7 @@ export default function DesignShelf() {
               src={simpleImagePopup}
               alt="拡大画像"
               width={640}
-              height={720}
+              height={768}
               className="max-w-[90vw] max-h-[90vh] object-contain"
             />
           </div>

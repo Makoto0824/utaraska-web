@@ -1004,7 +1004,7 @@ export default function DesignShelf() {
               src={simpleImagePopup}
               alt="Enlarged image"
               width={640}
-              height={720}
+              height={768}
               className="max-w-[90vw] max-h-[90vh] object-contain"
             />
           </div>
