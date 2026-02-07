@@ -1249,7 +1249,8 @@ export default function DesignShelf() {
           }}
         >
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setSimpleImagePopup(null);
               document.body.style.overflow = '';
             }}
@@ -1257,13 +1258,13 @@ export default function DesignShelf() {
           >
             &times;
           </button>
-          <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
             <Image
               src={simpleImagePopup}
               alt="拡大画像"
               width={1200}
               height={1200}
-              className="w-full h-full max-w-full max-h-[95vh] object-contain"
+              className="max-w-full max-h-[95vh] object-contain"
             />
           </div>
         </div>
