@@ -58,7 +58,7 @@ export default function DesignShelf() {
     const product = products.find(p => p.id === productId);
     if (product) {
       // ID 128, 129, 130, 131, 132の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132) && product.carouselImages && product.carouselImages.length > 0) {
+      if ((productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132 || productId === 133) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -206,6 +206,38 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 133,
+      title: "ドクロ カラベラ 漢字 カタカナ アヒル",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/40_skull/jp/model_tshirt_jp.jpg",
+      designImage: "/designshelf/images/40_skull/design.png",
+      modelImage: "/designshelf/images/40_skull/jp/model_tshirt_jp.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/472hYKy",
+      features: [
+        "装飾的な模様で描かれたドクロを主役に、花や植物の要素を組み合わせた構成。カラベラ風。",
+        "漢字の「骨」と「ホネ」を組みわせて、判子風にデザイン。"
+      ],
+      description: "装飾模様をまとったカラベラ風ドクロを中心に、花や曲線的な要素を組み合わせたイラストデザインです。ドクロは怖さよりも親しみやすさを意識した表情で描かれ、全体を明るくポップな印象にまとめています。横に配置された漢字モチーフは印章を思わせる形で、日本らしい視覚的アクセントとして機能します。ドクロ、漢字、カタカナといった要素を組み合わせ、日本文化とイラスト表現を楽しめるデザインです。",
+      videoUrl: "https://www.instagram.com/reel/DVS3Lj5AR4C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/40_skull/jp/model_tshirt_jp.jpg",
+        "/designshelf/images/40_skull/design.png"
+      ],
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/472hYKy"
+        },
+        {
+          name: "長袖Tシャツ",
+          price: "¥2,750",
+          amazonLink: "https://amzn.to/4bgaE0g"
+        }
+      ]
+    },
     {
       id: 132,
       title: "向かい合う 龍（ドラゴン） face2face",
@@ -955,7 +987,7 @@ export default function DesignShelf() {
                   >
                     {product.brand}
                   </Link>
-                  {(product.id === 128 || product.id === 129 || product.id === 130 || product.id === 131 || product.id === 132) && product.videoUrl && (
+                  {(product.id === 128 || product.id === 129 || product.id === 130 || product.id === 131 || product.id === 132 || product.id === 133) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
