@@ -971,7 +971,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.brand === "SHAREZOH" || product.id === 132) && (
+                  {!product.endDate && (product.brand === "SHAREZOH" || product.id === 132 || product.id === 133) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
