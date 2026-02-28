@@ -54,7 +54,7 @@ export default function DesignShelf() {
     const product = products.find(p => p.id === productId);
     if (product) {
       // ID 118、119、120、121、122、123、124、125、126、127の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125 || productId === 126 || productId === 127) && product.carouselImages && product.carouselImages.length > 0) {
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125 || productId === 126 || productId === 127 || productId === 128) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -202,6 +202,26 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 128,
+      title: "Skull Calavera Kanji Katakana Duck",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/40_skull/en/model_tshirt_en.jpg",
+      designImage: "/designshelf/images/40_skull/design.png",
+      modelImage: "/designshelf/images/40_skull/en/model_tshirt_en.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/05Uvxwcj",
+      features: [
+        "A composition featuring a skull rendered in decorative patterns as the central element, combined with floral and botanical motifs. Calavera style.",
+        "A symmetrical composition that accentuates the dragon's expression and contours. The layout, which makes effective use of negative space, ensures the dragon and text maintain a clear presence even when displayed at reduced size."
+      ],
+      description: "Combining the kanji for 'bone' and the word 'bone' to create a seal-like design.",
+      videoUrl: "https://www.instagram.com/reel/DVS3Lj5AR4C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/40_skull/en/model_tshirt_en.jpg",
+        "/designshelf/images/40_skull/design.png"
+      ]
+    },
     {
       id: 127,
       title: "Face-to-Face Dragon Illustration Kanji Katakana",
@@ -727,7 +747,7 @@ export default function DesignShelf() {
                       {product.brand}
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126 || product.id === 127) && product.videoUrl && (
+                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126 || product.id === 127 || product.id === 128) && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
