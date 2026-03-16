@@ -776,7 +776,7 @@ export default function DesignShelf() {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
-                    className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0"
+                    className={`text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:absolute after:right-0 ${expandedDetails === index ? "after:content-['−']" : "after:content-['+']"}`}
                   >
                     Product Details
                   </button>

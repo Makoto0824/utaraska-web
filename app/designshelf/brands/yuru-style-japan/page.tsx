@@ -638,7 +638,7 @@ export default function YuruStyleJapan() {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
-                    className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0"
+                    className={`text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:absolute after:right-0 ${expandedDetails === index ? "after:content-['−']" : "after:content-['+']"}`}
                   >
                     商品詳細
                   </button>
@@ -853,7 +853,7 @@ export default function YuruStyleJapan() {
                         className="w-5 h-5"
                         unoptimized
                       />
-                      <span className="text-sm">Instagramで動画を見る</span>
+                      <span className="text-sm">Instagramで見る</span>
                     </a>
                   )}
                 </>

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 
 export default function DesignShelf() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
+  const [expandedProductList, setExpandedProductList] = useState<number | null>(null);
   const [currentBanner, setCurrentBanner] = useState(0);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [popupId, setPopupId] = useState<string | null>(null);
@@ -54,11 +55,15 @@ export default function DesignShelf() {
     setExpandedDetails(expandedDetails === index ? null : index);
   };
 
+  const toggleProductList = (index: number) => {
+    setExpandedProductList(expandedProductList === index ? null : index);
+  };
+
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
       // ID 128, 129, 130, 131, 132の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132 || productId === 133) && product.carouselImages && product.carouselImages.length > 0) {
+      if ((productId === 102 || productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132 || productId === 133) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -185,6 +190,7 @@ export default function DesignShelf() {
     name: string;
     price: string;
     amazonLink: string;
+    videoUrl?: string;
   };
 
   type Product = {
@@ -206,6 +212,36 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 102,
+      title: "向かい合うゆるい龍と虎 face2face",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_tshirt_model.jpg",
+      designImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png",
+      modelImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_hoodie_model.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4dqUmmN",
+      features: [
+        "伝説の神獣「龍」と猛獣「虎」が向かい合う、力強くもユーモラスな構図。和風×対称構図の王道をポップなイラストで再構築。",
+        "キャラクター調にデフォルメされた表情が印象的。親しみやすさとエネルギーを兼ね備えた現代アジアンアートの一作。"
+      ],
+      description: "このデザインは、東洋の象徴的存在である「龍」と「虎」が向かい合う\"龍虎相対\"の構図を、ポップなテイストとキャラクター風の表現で現代的に再解釈したアートワークです。左右に配置された顔が視線を交わすことで、静的ながらも緊張感のある対峙を演出。伝統的な龍虎モチーフにユーモアと親しみやすさを加えることで、アートファッション・和風ポップ・ストリート系・デフォルメアニマルデザインなど多ジャンルにマッチするビジュアルに仕上がっています。文化的象徴性とデザイン性の両方を兼ね備えた作品です。",
+      videoUrl: "https://www.instagram.com/reel/DV9MgQ-gXH5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4dqUmmN", videoUrl: "https://www.instagram.com/reel/DV9MgQ-gXH5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "長袖Tシャツ", price: "¥2,750", amazonLink: "https://amzn.to/4dqUmmN" },
+        { name: "トレーナー", price: "¥3,960", amazonLink: "https://amzn.asia/d/09qsugXb" },
+        { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/4uuJOJy", videoUrl: "https://www.instagram.com/reel/DQSnANAgZiM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "ジップパーカー", price: "¥4,600", amazonLink: "https://amzn.to/4cQtX1I" }
+      ],
+      carouselImages: [
+        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_tshirt_model.jpg",
+        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_hoodie_model.png",
+        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_sweat.jpg",
+        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_ziphoodie.jpg",
+        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png"
+      ]
+    },
     {
       id: 133,
       title: "ドクロ カラベラ 漢字 カタカナ アヒル",
@@ -636,22 +672,6 @@ export default function DesignShelf() {
       videoUrl: "https://www.instagram.com/reel/DQOlTdWAWx8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-      id: 102,
-      title: "ゆるい龍と虎 パーカー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/5_dragon_tiger/5_dragon_tiger.png",
-      designImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png",
-      modelImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_hoodie_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/3WUYa6i",
-      features: [
-        "伝説の神獣「龍」と猛獣「虎」が向かい合う、力強くもユーモラスな構図。和風×対称構図の王道をポップなイラストで再構築。",
-        "キャラクター調にデフォルメされた表情が印象的。親しみやすさとエネルギーを兼ね備えた現代アジアンアートの一作。"
-      ],
-      description: "このデザインは、東洋の象徴的存在である「龍」と「虎」が向かい合う\"龍虎相対\"の構図を、ポップなテイストとキャラクター風の表現で現代的に再解釈したアートワークです。左右に配置された顔が視線を交わすことで、静的ながらも緊張感のある対峙を演出。伝統的な龍虎モチーフにユーモアと親しみやすさを加えることで、アートファッション・和風ポップ・ストリート系・デフォルメアニマルデザインなど多ジャンルにマッチするビジュアルに仕上がっています。文化的象徴性とデザイン性の両方を兼ね備えた作品です。",
-      videoUrl: "https://www.instagram.com/reel/DQSnANAgZiM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
       id: 103,
       title: "ゆるい虎と虎 トレーナー",
       brand: "ゆるスタイル・ジャパン",
@@ -971,7 +991,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.brand === "SHAREZOH" || product.id === 132 || product.id === 133) && (
+                  {!product.endDate && (product.brand === "SHAREZOH" || product.id === 102 || product.id === 132 || product.id === 133) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -1002,7 +1022,7 @@ export default function DesignShelf() {
                         className="w-5 h-5"
                         unoptimized
                       />
-                      <span className="text-sm">Instagramで動画を見る</span>
+                      <span className="text-sm">Instagramで見る</span>
                     </a>
                   )}
                   
@@ -1010,79 +1030,24 @@ export default function DesignShelf() {
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      toggleDetails(index);
+                      toggleProductList(index);
                     }}
                     onMouseDown={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
-                    className="text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:content-['▼'] after:absolute after:right-0"
+                    className={`text-gray-600 hover:text-gray-900 mb-2 text-left transition-colors relative after:absolute after:right-0 ${expandedProductList === index ? "after:content-['−']" : "after:content-['+']"}`}
                   >
-                    商品詳細
+                    商品一覧
                   </button>
-                  
                   <div 
                     className={`overflow-hidden transition-all duration-300 ${
-                      expandedDetails === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                      expandedProductList === index ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
-                    style={{ pointerEvents: 'none' }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onMouseUp={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onTouchStart={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onTouchEnd={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
+                    style={{ pointerEvents: expandedProductList === index ? 'auto' : 'none' }}
                   >
-                    <div className="mb-4">
-                      {product.features.map((feature, idx) => (
-                        <p 
-                          key={idx} 
-                          className="text-sm text-gray-600 mb-2"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                          }}
-                          onMouseDown={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                          }}
-                        >
-                          {feature}
-                        </p>
-                      ))}
-                    </div>
-                    <p 
-                      className="text-sm text-gray-700 leading-relaxed"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                      }}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                      }}
-                    >
-                      {product.description}
-                    </p>
-                  </div>
-                  
-                  {product.variations ? (
-                    <div className="mt-auto pt-4 space-y-3">
-                      {product.variations.map((variation, idx) => (
+                    <div className="mb-4 space-y-3">
+                      {(product.variations ? product.variations : [{ name: '商品', price: product.price, amazonLink: product.amazonLink, videoUrl: product.videoUrl }]).map((variation, idx) => (
                         <div key={idx} className="flex items-center justify-between border-b border-gray-200 pb-2 last:border-b-0">
                           <div className="flex flex-col">
                             <span className="text-sm font-medium text-gray-800">{variation.name}</span>
@@ -1090,8 +1055,27 @@ export default function DesignShelf() {
                               <span className="text-lg font-bold text-gray-800">{variation.price}</span>
                               <span className="text-xs text-gray-500">税込</span>
                             </div>
+                            {variation.videoUrl && (
+                              <a
+                                href={variation.videoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1 mt-2 text-blue-600 hover:text-blue-800 text-sm transition-colors"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <Image
+                                  src="/designshelf/images/Instagram_logo_black.png"
+                                  alt="Instagram"
+                                  width={16}
+                                  height={16}
+                                  className="w-4 h-4"
+                                  unoptimized
+                                />
+                                <span>Instagramで見る</span>
+                              </a>
+                            )}
                           </div>
-                          <a 
+                          <a
                             href={variation.amazonLink}
                             target="_blank"
                             rel="noopener noreferrer nofollow"
@@ -1104,23 +1088,31 @@ export default function DesignShelf() {
                         </div>
                       ))}
                     </div>
-                  ) : (
-                    <div className="mt-auto pt-4 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold text-gray-800">{product.price}</span>
-                        <span className="text-sm text-gray-500">税込</span>
-                      </div>
-                      <a 
-                        href={product.amazonLink}
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        className="amazon-btn"
-                        aria-label="Amazonでこの商品を見る"
-                      >
-                        <span className="label">Amazon<br />で見る</span>
-                      </a>
-                    </div>
-                  )}
+                  </div>
+                  <button 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleDetails(index);
+                    }}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    className={`text-gray-600 hover:text-gray-900 mb-4 text-left transition-colors relative after:absolute after:right-0 ${expandedDetails === index ? "after:content-['−']" : "after:content-['+']"}`}
+                  >
+                    商品詳細
+                  </button>
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 ${
+                      expandedDetails === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                    style={{ pointerEvents: expandedDetails === index ? 'auto' : 'none' }}
+                  >
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {product.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1230,7 +1222,7 @@ export default function DesignShelf() {
                         className="w-5 h-5"
                         unoptimized
                       />
-                      <span className="text-sm">Instagramで動画を見る</span>
+                      <span className="text-sm">Instagramで見る</span>
                     </a>
                   )}
                 </>
