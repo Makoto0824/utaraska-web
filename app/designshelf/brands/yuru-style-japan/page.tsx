@@ -244,7 +244,7 @@ export default function YuruStyleJapan() {
     },
     {
       id: 112,
-      title: "ゆるい風神雷神 トレーナー",
+      title: "ゆるい風神雷神",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet.png",
       designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",

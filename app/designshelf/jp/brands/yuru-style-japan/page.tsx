@@ -91,6 +91,31 @@ export default function YuruStyleJapan() {
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
     {
+      id: 112,
+      title: "ゆるい風神雷神",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
+      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4bklZwI",
+      features: [
+        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン",
+        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適"
+      ],
+      description: "このデザインは、日本の伝統美術に登場する「風神」と「雷神」をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。「風神雷神デザイン」「ポップアートファッション」など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。",
+      videoUrl: "https://www.instagram.com/reel/DWCClKQgdg2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4bklZwI", videoUrl: "https://www.instagram.com/reel/DWCClKQgdg2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "トレーナー", price: "¥3,980", amazonLink: "https://amzn.to/4i9oSC7", videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
+        "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
+      ]
+    },
+    {
       id: 102,
       title: "向かい合うゆるい龍と虎 face2face",
       brand: "ゆるスタイル・ジャパン",
@@ -277,22 +302,6 @@ export default function YuruStyleJapan() {
       ],
       description: "向かい合う二つのユニコーン顔を中心にしたシンプルなビジュアルデザインです。線を太めにしつつ表情はゆるくまとめているため、子供から大人まで幅広く使いやすいのが特徴です。胸元ワンポイントに収めることで主張が強くなりすぎず、複数の色やアイテムに展開しやすい設計にしています。",
       videoUrl: "https://www.instagram.com/reel/DRWeWdfgaLw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      id: 112,
-      title: "ゆるい風神雷神 トレーナー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet.png",
-      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
-      modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
-      price: "¥3,980",
-      amazonLink: "https://amzn.to/4i9oSC7",
-      features: [
-        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン",
-        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適"
-      ],
-      description: "このデザインは、日本の伝統美術に登場する「風神」と「雷神」をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。「風神雷神デザイン」「ポップアートファッション」など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。",
-      videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
       id: 108,

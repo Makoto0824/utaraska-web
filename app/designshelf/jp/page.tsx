@@ -63,7 +63,7 @@ export default function DesignShelf() {
     const product = products.find(p => p.id === productId);
     if (product) {
       // ID 128, 129, 130, 131, 132の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 102 || productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132 || productId === 133) && product.carouselImages && product.carouselImages.length > 0) {
+      if ((productId === 102 || productId === 112 || productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132 || productId === 133) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -212,6 +212,31 @@ export default function DesignShelf() {
 
   // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 112,
+      title: "ゆるい風神雷神",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
+      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4bklZwI",
+      features: [
+        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン",
+        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適"
+      ],
+      description: "このデザインは、日本の伝統美術に登場する「風神」と「雷神」をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。「風神雷神デザイン」「ポップアートファッション」など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。",
+      videoUrl: "https://www.instagram.com/reel/DWCClKQgdg2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4bklZwI", videoUrl: "https://www.instagram.com/reel/DWCClKQgdg2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "トレーナー", price: "¥3,980", amazonLink: "https://amzn.to/4i9oSC7", videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
+        "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
+      ]
+    },
     {
       id: 102,
       title: "向かい合うゆるい龍と虎 face2face",
@@ -558,22 +583,6 @@ export default function DesignShelf() {
       ],
       description: "向かい合う二つのユニコーン顔を中心にしたシンプルなビジュアルデザインです。線を太めにしつつ表情はゆるくまとめているため、子供から大人まで幅広く使いやすいのが特徴です。胸元ワンポイントに収めることで主張が強くなりすぎず、複数の色やアイテムに展開しやすい設計にしています。",
       videoUrl: "https://www.instagram.com/reel/DRWeWdfgaLw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      id: 112,
-      title: "ゆるい風神雷神 トレーナー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet.png",
-      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
-      modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
-      price: "¥3,980",
-      amazonLink: "https://amzn.to/4i9oSC7",
-      features: [
-        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン",
-        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適"
-      ],
-      description: "このデザインは、日本の伝統美術に登場する「風神」と「雷神」をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。「風神雷神デザイン」「ポップアートファッション」など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。",
-      videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
       id: 108,
@@ -991,7 +1000,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.brand === "SHAREZOH" || product.id === 102 || product.id === 132 || product.id === 133) && (
+                  {!product.endDate && (product.brand === "SHAREZOH" || product.id === 102 || product.id === 112 || product.id === 132 || product.id === 133) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
