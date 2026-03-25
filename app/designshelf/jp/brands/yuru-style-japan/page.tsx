@@ -91,6 +91,31 @@ export default function YuruStyleJapan() {
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
     {
+      id: 103,
+      title: "ゆるい虎と虎",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/7_tigertiger/jp/7_tigertiger_tshirt_model_jp.jpg",
+      designImage: "/designshelf/images/7_tigertiger/7_tigertiger_design.png",
+      modelImage: "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt_model.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4mmNbOG",
+      features: [
+        "左右対称に配置されたタイガーの顔がユニークな構成。シンプルなデザインに込められたインパクトとバランスが魅力。",
+        "和風アートの虎モチーフに、現代的なポップイラストのテイストを融合。ストリートファッションやアート好きに刺さるキャッチーな表現。"
+      ],
+      description: "このデザインは、虎（タイガー）の顔を左右対称に配置したユーモラスかつ力強いグラフィックアートです。伝統的な日本の動物モチーフに、アメコミ風のポップアートテイストを加えることで、アジアン×モダンな独自の世界観を表現。ミニマルな配置ながら視線を惹きつけるデザインは、和柄、アニマルデザイン、タイガーアート、ストリート系、レトロポップ、アートファッションといったジャンルに幅広く親和性があります。視覚的インパクトと遊び心が共存する、唯一無二のビジュアルです。",
+      videoUrl: "https://www.instagram.com/reel/DWT8nuqgQuS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4mmNbOG", videoUrl: "https://www.instagram.com/reel/DWT8nuqgQuS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "トレーナー", price: "¥3,960", amazonLink: "https://amzn.to/4ocuRrV", videoUrl: "https://www.instagram.com/reel/DQX05pPASTA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/7_tigertiger/jp/7_tigertiger_tshirt_model_jp.jpg",
+        "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt_model.png",
+        "/designshelf/images/7_tigertiger/7_tigertiger_design.png"
+      ]
+    },
+    {
       id: 112,
       title: "ゆるい風神雷神",
       brand: "ゆるスタイル・ジャパン",
@@ -181,44 +206,6 @@ export default function YuruStyleJapan() {
         "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
         "/designshelf/images/33_panda/swet/swet.jpg",
         "/designshelf/images/33_panda/tshirt/tshirt.jpg"
-      ]
-    },
-    {
-      id: 116,
-      title: "向かい合うゆるい赤鬼と青鬼 face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
-      designImage: "/designshelf/images/32_akaoni_aooni/design.png",
-      modelImage: "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4pvwJwj",
-      features: [
-        "向かい合う赤鬼と青鬼をゆるいタッチで描き、顔面に和柄風のテクスチャを重ねたグラフィック。表情は力強さを残しつつゆるく抑え、遠目でも視認しやすいコントラストを意図しています。",
-        "デザイン自体を主役にするワンポイント構成で、背景色やアイテム色によって印象が変わるため展開しやすい。和風モチーフをポップに再解釈しているためストリート、和モダン、ギフト用途いずれにも馴染みやすい設計です。"
-      ],
-      description: "このデザインは、伝統的な鬼のモチーフを現代的に再構成した向かい合いのビジュアルです。赤と青の対比を活かし、顔面には和柄を想起させるテクスチャを入れて表情に奥行きを持たせています。ラインは太くはっきりとしつつ、タッチはゆるく抑えることで日常使いしやすいバランスにしています。ワンポイント配置にすることでジャケットや重ね着との相性が良く、色違いや素材違いでシリーズ展開しやすいのが特徴です。",
-      videoUrl: "https://www.instagram.com/reel/DRgEdbIAThi/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/4pvwJwj"
-        },
-        {
-          name: "パーカー",
-          price: "¥4,400",
-          amazonLink: "https://amzn.to/4rmVJYo"
-        },
-        {
-          name: "トレーナー",
-          price: "¥3,960",
-          amazonLink: "https://amzn.to/48zJiAZ"
-        }
-      ],
-      carouselImages: [
-        "/designshelf/images/32_akaoni_aooni/swet/model_swet.jpg",
-        "/designshelf/images/32_akaoni_aooni/hoodie/hoodie.jpg",
-        "/designshelf/images/32_akaoni_aooni/tshirt/t-shirt.jpg"
       ]
     },
     {
@@ -400,22 +387,6 @@ export default function YuruStyleJapan() {
       videoUrl: "https://www.instagram.com/reel/DQOlTdWAWx8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-      id: 103,
-      title: "ゆるい虎と虎 トレーナー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt.png",
-      designImage: "/designshelf/images/7_tigertiger/7_tigertiger_design.png",
-      modelImage: "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt_model.png",
-      price: "¥3,960",
-      amazonLink: "https://amzn.to/4ocuRrV",
-      features: [
-        "左右対称に配置されたタイガーの顔がユニークな構成。シンプルなデザインに込められたインパクトとバランスが魅力。",
-        "和風アートの虎モチーフに、現代的なポップイラストのテイストを融合。ストリートファッションやアート好きに刺さるキャッチーな表現。"
-      ],
-      description: "このデザインは、虎（タイガー）の顔を左右対称に配置したユーモラスかつ力強いグラフィックアートです。伝統的な日本の動物モチーフに、アメコミ風のポップアートテイストを加えることで、アジアン×モダンな独自の世界観を表現。ミニマルな配置ながら視線を惹きつけるデザインは、和柄、アニマルデザイン、タイガーアート、ストリート系、レトロポップ、アートファッションといったジャンルに幅広く親和性があります。視覚的インパクトと遊び心が共存する、唯一無二のビジュアルです。",
-      videoUrl: "https://www.instagram.com/reel/DQX05pPASTA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
       id: 1,
       title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
       brand: "ゆるスタイル・ジャパン",
@@ -499,20 +470,6 @@ export default function YuruStyleJapan() {
       ],
       description: "龍の顔を対称に配置した和風ポップアート。ミニマルで印象的なデザインで、和風テイストを好む方におすすめです。"
     },
-    {
-      id: 7,
-      title: "虎 タイガー 顔 対称 ポップアート 和風アニマルデザイン Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee7.png",
-      designImage: "/designshelf/images/tee7_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4mmNbOG",
-      features: [
-        "虎の顔を対称に配置した和風アニマルデザイン",
-        "左右対称の配置でバランスの取れた構図"
-      ],
-      description: "虎の顔を対称に配置した和風アニマルデザイン。左右対称の配置でバランスが良く、和風テイストを好む方におすすめです。"
-    }
   ];
 
   // 現在のポップアップ対象（サムネやタブ表示に使用）
@@ -640,7 +597,7 @@ export default function YuruStyleJapan() {
                       className="object-contain hover:scale-105 transition-transform"
                     />
                   )}
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 116 || product.id === 117) && (
+                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 117) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
