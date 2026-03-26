@@ -234,17 +234,28 @@ export default function YuruStyleJapan() {
       id: 112,
       title: "ゆるい風神雷神",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet.png",
+      image: "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
       designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
       modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
-      price: "¥3,980",
-      amazonLink: "https://amzn.to/4i9oSC7",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4bklZwI",
       features: [
         "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン",
         "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適"
       ],
       description: "このデザインは、日本の伝統美術に登場する「風神」と「雷神」をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。「風神雷神デザイン」「ポップアートファッション」など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。",
-      videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DWCClKQgdg2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4bklZwI", videoUrl: "https://www.instagram.com/reel/DWCClKQgdg2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "トレーナー", price: "¥3,980", amazonLink: "https://amzn.to/4i9oSC7", videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "ジップパーカー", price: "¥4,480", amazonLink: "https://amzn.to/47HCMYw", videoUrl: "https://www.instagram.com/reel/DQOlTdWAWx8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
+        "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie_model.png",
+        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
+      ]
     },
     {
       id: 108,
@@ -280,19 +291,28 @@ export default function YuruStyleJapan() {
     },
     {
       id: 106,
-      title: "ゆるい日本のお面たち トレーナー",
+      title: "ゆるい日本のお面たち",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/2_japanese_masks/japanese_masks_sweat.png",
+      image: "/designshelf/images/2_japanese_masks/jp/japanese_masks_tshirt_model_jp.jpg",
       designImage: "/designshelf/images/2_japanese_masks/japanese_masks_design.png",
       modelImage: "/designshelf/images/2_japanese_masks/japanese_masks_sweat_model.png",
-      price: "¥3,960",
-      amazonLink: "https://amzn.to/47lyTbK",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3YOiNmd",
       features: [
         "6種類の日本伝統仮面をポップに表現した、視覚的にインパクトのあるデザイン。",
         "能・狂言・祭りなどに登場する仮面をモチーフに、日本文化の奥深さをユーモラスに表現。"
       ],
       description: "「JAPANESE MASKS」の文字の上に、6種類の日本の伝統的な仮面がカラフルに描かれたユニークなデザインです。それぞれの仮面は、能や狂言、祭りなどで使用されるもので、文化的な背景や象徴的な意味を持っています。表情豊かで個性的な仮面が並ぶことで、日本文化の多様性や奥深さをユーモラスかつアーティスティックに表現しています。インパクトのあるビジュアルで、日本文化が好きな方、和モチーフのアートを楽しみたい方、個性的なスタイルを求める方におすすめです。",
-      videoUrl: "https://www.instagram.com/reel/DQiwNd3gWcj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DWWOXW5gTSY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/3YOiNmd", videoUrl: "https://www.instagram.com/reel/DWWOXW5gTSY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "トレーナー", price: "¥3,960", amazonLink: "https://amzn.to/47lyTbK", videoUrl: "https://www.instagram.com/reel/DWWOXW5gTSY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/2_japanese_masks/jp/japanese_masks_tshirt_model_jp.jpg",
+        "/designshelf/images/2_japanese_masks/japanese_masks_sweat_model.png",
+        "/designshelf/images/2_japanese_masks/japanese_masks_design.png"
+      ]
     },
     {
       id: 105,
@@ -327,22 +347,6 @@ export default function YuruStyleJapan() {
       videoUrl: "https://www.instagram.com/reel/DQaXIDAgQbC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-      id: 101,
-      title: "風神雷神 ジップパーカー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie.png",
-      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
-      modelImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/47HCMYw",
-      features: [
-        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
-        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
-      ],
-      description: "このデザインは、日本の伝統美術に登場する『風神』と『雷神』をベースに、親しみやすいデフォルメキャラクターとして表現した和風ポップアートです。軽妙な表情とポップな色使いが特徴で、古典的な神話モチーフを現代的なスタイルへと再解釈しています。『風神雷神デザイン』『ポップアートファッション』など複数のキーワードに親和性が高く、日常着としてもギフトとしても魅力的なビジュアルアートです。",
-      videoUrl: "https://www.instagram.com/reel/DQOlTdWAWx8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
       id: 102,
       title: "ゆるい龍と虎 パーカー",
       brand: "ゆるスタイル・ジャパン",
@@ -357,34 +361,6 @@ export default function YuruStyleJapan() {
       ],
       description: "このデザインは、東洋の象徴的存在である「龍」と「虎」が向かい合う\"龍虎相対\"の構図を、ポップなテイストとキャラクター風の表現で現代的に再解釈したアートワークです。左右に配置された顔が視線を交わすことで、静的ながらも緊張感のある対峙を演出。伝統的な龍虎モチーフにユーモアと親しみやすさを加えることで、アートファッション・和風ポップ・ストリート系・デフォルメアニマルデザインなど多ジャンルにマッチするビジュアルに仕上がっています。文化的象徴性とデザイン性の両方を兼ね備えた作品です。",
       videoUrl: "https://www.instagram.com/reel/DQSnANAgZiM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      id: 1,
-      title: "風神雷神 デフォルメ神キャラ ポップアートファッションデザイン 和風",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee1.png",
-      designImage: "/designshelf/images/tee1_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/45hj1Gl",
-      features: [
-        "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン。",
-        "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適。"
-      ],
-      description: "日本の伝統的な風神・雷神を、現代のポップアートスタイルで可愛くデフォルメしたデザイン。威厳ある神々を親しみやすいキャラクターとして再構築し、和風テイストを保ちながらもモダンなファッションアイテムとして仕上げました。"
-    },
-    {
-      id: 2,
-      title: "日本のお面 デフォルメ イラスト 和風ポップデザイン JAPANESE MASKS アート Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee2.png",
-      designImage: "/designshelf/images/tee2_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3YOiNmd",
-      features: [
-        "日本の伝統的なお面を可愛くデフォルメしたキャラクターアート",
-        "能面や歌舞伎の面をモチーフにした和風ポップデザイン"
-      ],
-      description: "日本の伝統芸能に欠かせないお面を、現代のファッションに合うよう可愛くデフォルメしたデザイン。能面や歌舞伎の面の特徴を活かしながらも、親しみやすいキャラクターとして再構築しました。"
     },
     {
       id: 3,
@@ -568,7 +544,7 @@ export default function YuruStyleJapan() {
                       className="object-contain hover:scale-105 transition-transform"
                     />
                   )}
-                  {(product.id === 101 || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 117) && (
+                  {(product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 117) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -687,7 +663,7 @@ export default function YuruStyleJapan() {
                   ) : (
                     <div className="mt-auto pt-4 flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold text-gray-800">{product.id === 101 ? '¥4,480' : product.id === 102 ? '¥4,400' : product.id === 103 ? '¥3,960' : product.price}</span>
+                        <span className="text-xl font-bold text-gray-800">{product.id === 102 ? '¥4,400' : product.id === 103 ? '¥3,960' : product.price}</span>
                         <span className="text-sm text-gray-500">税込</span>
                       </div>
                       <a 
