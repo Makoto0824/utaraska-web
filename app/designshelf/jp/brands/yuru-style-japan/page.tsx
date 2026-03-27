@@ -410,20 +410,6 @@ export default function YuruStyleJapan() {
       description: "仏教の阿修羅像を、現代のファッションに合うよう可愛くデフォルメしたユニークなデザイン。伝統的な仏像の特徴を保ちながらも、親しみやすいキャラクターとして再構築しました。"
     },
     {
-      id: 5,
-      title: "龍 虎 対決 和風キャラクターアート デフォルメポップデザイン Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee5.png",
-      designImage: "/designshelf/images/tee5_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4kszcVL",
-      features: [
-        "龍と虎の対決をテーマにした和風キャラクターアート",
-        "左右対称の配置でバランスの取れた構図"
-      ],
-      description: "龍と虎の対決をテーマにした和風キャラクターアート。左右対称の配置でバランスが良く、和風テイストを好む方におすすめのデザインです。"
-    },
-    {
       id: 6,
       title: "龍 ドラゴン 顔 対称 ポップアート 和風ユニークデザイン Tシャツ",
       brand: "ゆるスタイル・ジャパン",
