@@ -34,6 +34,7 @@ export default function YuruStyleJapan() {
     videoUrl?: string;
     variations?: ProductVariation[]; // 商品バリエーション（Tシャツ、パーカーなど）
     carouselImages?: string[]; // カルーセル用の画像配列
+    isNew?: boolean;
   };
 
   // ESCキーでポップアップを閉じる
@@ -90,6 +91,29 @@ export default function YuruStyleJapan() {
 
   // ゆるスタイル・ジャパンの商品データ
   const products: Product[] = [
+    {
+      id: 141,
+      title: "ゆるい虎と虎（ドット）",
+      brand: "ゆるスタイル・ジャパン",
+      image: "/designshelf/images/41_tigertiger_pixel/tshirt_model.jpg",
+      designImage: "/designshelf/images/41_tigertiger_pixel/design.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4lXg9Vy",
+      features: [
+        "左右対称に配置されたドット絵タイガーの顔がユニークな構成。シンプルなデザインに込められたインパクトとバランスが魅力。",
+        "和風アートのドット絵の虎をモチーフに、現代的なポップイラストのテイストを融合。ストリートファッションやアート好きに刺さるキャッチーな表現。"
+      ],
+      description: "このデザインは、虎（タイガー）の顔を左右対称に配置したユーモラスかつ力強いグラフィックアートです。伝統的な日本の動物モチーフに、アメコミ風のポップアートテイストを加えることで、アジアン×モダンな独自の世界観を表現。ミニマルな配置ながら視線を惹きつけるデザインは、和柄、アニマルデザイン、タイガーアート、ストリート系、レトロポップ、アートファッションといったジャンルに幅広く親和性があります。視覚的インパクトと遊び心が共存する、唯一無二のビジュアルです。",
+      videoUrl: "https://www.instagram.com/reel/DWY-Ystgf-3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      isNew: true,
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4lXg9Vy", videoUrl: "https://www.instagram.com/reel/DWY-Ystgf-3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/41_tigertiger_pixel/tshirt_model.jpg",
+        "/designshelf/images/41_tigertiger_pixel/design.jpg"
+      ]
+    },
     {
       id: 103,
       title: "ゆるい虎と虎",
@@ -310,19 +334,28 @@ export default function YuruStyleJapan() {
     },
     {
       id: 107,
-      title: "ゆるい阿修羅 パーカー",
+      title: "ゆるい阿修羅",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/4_ashura/4_ashura_hoodie.png",
+      image: "/designshelf/images/4_ashura/tshirt_model.jpg",
       designImage: "/designshelf/images/4_ashura/4_ashura_design.png",
       modelImage: "/designshelf/images/4_ashura/4_ashura_hoodie_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/4oIKozG",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4rWJgtm",
       features: [
         "阿修羅像をモチーフに、ゆるキャラ風に再構築したユニークなアートデザイン。伝統とユーモアが融合した現代風ミニマル仏像イラスト。",
         "シンプルながら存在感のある線画スタイルと、和柄をあしらった腰巻がアクセント。仏像ファンや仏教カルチャーに興味のある人にも刺さる個性派グラフィック。"
       ],
       description: "このデザインは、日本で広く知られる阿修羅像を、ポップかつユーモラスなタッチで表現した\"ゆるアート\"作品です。宗教的荘厳さよりも、日常に溶け込むかわいさと不思議な存在感を持ち、仏像・仏教カルチャー・和風アート・ご利益デザイン・ゆるキャラ・サブカル・アジアンテイストといった複数のジャンルにアピールします。シンプルな白地に映えるミニマル構成で、老若男女問わず楽しめるデザインです。ユニークなギフトを探している方におすすめ。",
-      videoUrl: "https://www.instagram.com/reel/DQi8IRygWyW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DWY3QEmgS7C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4rWJgtm", videoUrl: "https://www.instagram.com/reel/DWY3QEmgS7C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/4oIKozG", videoUrl: "https://www.instagram.com/reel/DQi8IRygWyW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/4_ashura/tshirt_model.jpg",
+        "/designshelf/images/4_ashura/4_ashura_hoodie_model.png",
+        "/designshelf/images/4_ashura/4_ashura_design.png"
+      ]
     },
     {
       id: 106,
@@ -351,77 +384,53 @@ export default function YuruStyleJapan() {
     },
     {
       id: 105,
-      title: "ゆるい虎 パーカー",
+      title: "ゆるい虎",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/3_tiger/3_tiger_hoodie.png",
+      image: "/designshelf/images/3_tiger/3_tiger_tshirt_model_jp.jpg",
       designImage: "/designshelf/images/3_tiger/3_tiger_design.png",
       modelImage: "/designshelf/images/3_tiger/3_tiger_hooodie_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/3JuRuZJ",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/41xKuk2",
       features: [
         "大胆で印象的な虎の顔を和風テイストで表現した、ユニークで目を引くアートスタイル。",
         "ゆるキャラ風のかわいらしさと、伝統的なジャパニーズタトゥーアートの要素を融合したポップなデザイン。"
       ],
       description: "このデザインは、和風のタトゥーアートから着想を得た虎の顔を、ポップでゆるいキャラクター風にアレンジしたものです。力強さと愛嬌を併せ持つこの虎モチーフは、日本文化やアジアンテイストを好む方におすすめ。個性を演出したいシーンやプレゼントにも最適です。",
-      videoUrl: "https://www.instagram.com/reel/DQc5u-SgTfA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DWXiuyAAeuG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/41xKuk2", videoUrl: "https://www.instagram.com/reel/DWXiuyAAeuG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/3JuRuZJ", videoUrl: "https://www.instagram.com/reel/DQc5u-SgTfA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+      ],
+      carouselImages: [
+        "/designshelf/images/3_tiger/3_tiger_tshirt_model_jp.jpg",
+        "/designshelf/images/3_tiger/3_tiger_hooodie_model.png",
+        "/designshelf/images/3_tiger/3_tiger_design.png"
+      ]
     },
     {
       id: 104,
-      title: "ゆるい龍と龍 パーカー",
+      title: "ゆるい龍と龍",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/6_dragondragon/6_dragondragon.png",
+      image: "/designshelf/images/6_dragondragon/6_dragondragon_tshirt_model.jpg",
       designImage: "/designshelf/images/6_dragondragon/6_dragondragon_design.png",
       modelImage: "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/49tW057",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4uVfaJu",
       features: [
         "左右対称に配置されたドラゴンの顔がユニークで目を引くアートデザイン。ミニマルな構成ながらインパクト抜群。",
         "和風モチーフにポップアートの要素を加えた現代的グラフィック。アジアンテイスト、カジュアルファッション、ストリートアートにマッチ。"
       ],
       description: "このデザインは、左右対称に配置された龍（ドラゴン）の顔が特徴の、ポップで遊び心あふれる和風アートです。アート、ストリート系、アジアンモチーフ、和柄ファッション、オリエンタルデザインなど、幅広いジャンルに対応。デフォルメされた龍の表情がキャッチーで、男女問わず着こなしのアクセントとして最適です。個性的なファッションを楽しみたい方、ギフト用途にもおすすめの一着です。",
-      videoUrl: "https://www.instagram.com/reel/DQaXIDAgQbC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      id: 3,
-      title: "和風タイガーフェイス – ゆるかわ虎デザイン Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee3.png",
-      designImage: "/designshelf/images/tee3_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4jV8sNP",
-      features: [
-        "威厳ある虎を可愛くデフォルメした和風デザイン",
-        "左右対称の配置でバランスの取れた構図"
+      videoUrl: "https://www.instagram.com/reel/DWYyGmEgUvG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4uVfaJu", videoUrl: "https://www.instagram.com/reel/DWYyGmEgUvG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/49tW057", videoUrl: "https://www.instagram.com/reel/DQaXIDAgQbC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      description: "虎の威厳と美しさを保ちながらも、親しみやすい表情でデフォルメした和風デザイン。左右対称の配置でバランスが良く、和風テイストを好む方におすすめです。"
-    },
-    {
-      id: 4,
-      title: "阿修羅 ゆるキャラ風 仏像イラスト 和風ユニーク Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee4.png",
-      designImage: "/designshelf/images/tee4_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/44IDOm1",
-      features: [
-        "仏教の阿修羅を可愛くデフォルメしたユニークなデザイン",
-        "伝統的な仏像の特徴を活かした和風アート"
-      ],
-      description: "仏教の阿修羅像を、現代のファッションに合うよう可愛くデフォルメしたユニークなデザイン。伝統的な仏像の特徴を保ちながらも、親しみやすいキャラクターとして再構築しました。"
-    },
-    {
-      id: 6,
-      title: "龍 ドラゴン 顔 対称 ポップアート 和風ユニークデザイン Tシャツ",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/tee6.png",
-      designImage: "/designshelf/images/tee6_design.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3ZorvYq",
-      features: [
-        "龍の顔を対称に配置した和風ポップアート",
-        "ミニマルで印象的なデザイン"
-      ],
-      description: "龍の顔を対称に配置した和風ポップアート。ミニマルで印象的なデザインで、和風テイストを好む方におすすめです。"
+      carouselImages: [
+        "/designshelf/images/6_dragondragon/6_dragondragon_tshirt_model.jpg",
+        "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
+        "/designshelf/images/6_dragondragon/6_dragondragon_design.png"
+      ]
     },
   ];
 
@@ -550,7 +559,7 @@ export default function YuruStyleJapan() {
                       className="object-contain hover:scale-105 transition-transform"
                     />
                   )}
-                  {(product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 117) && (
+                  {(product.isNew || product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 117) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
