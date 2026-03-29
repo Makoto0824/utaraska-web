@@ -4,6 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+/** JPストアと同じ: タップでカルーセル表示中の画像をシンプル拡大 */
+const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
+  102, 103, 104, 105, 106, 107, 112, 114, 117, 128, 129, 130, 131, 132, 133, 141,
+]);
+
 export default function YuruStyleJapan() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
   const [expandedProductList, setExpandedProductList] = useState<number | null>(null);
@@ -12,6 +17,7 @@ export default function YuruStyleJapan() {
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
   const [carouselIndices, setCarouselIndices] = useState<Record<number, number>>({});
+  const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   type ProductVariation = {
     name: string;
@@ -40,13 +46,19 @@ export default function YuruStyleJapan() {
   // ESCキーでポップアップを閉じる
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && popupImage) {
+      if (e.key !== 'Escape') return;
+      if (simpleImagePopup) {
+        setSimpleImagePopup(null);
+        document.body.style.overflow = '';
+        return;
+      }
+      if (popupImage) {
         closeImagePopup();
       }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [popupImage]);
+  }, [popupImage, simpleImagePopup]);
 
   const toggleDetails = (index: number) => {
     setExpandedDetails(expandedDetails === index ? null : index);
@@ -59,6 +71,13 @@ export default function YuruStyleJapan() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
+      if (SIMPLE_IMAGE_POPUP_PRODUCT_IDS.has(productId) && product.carouselImages && product.carouselImages.length > 0) {
+        const currentImageIndex = carouselIndices[productId] ?? 0;
+        const currentImage = product.carouselImages[currentImageIndex];
+        setSimpleImagePopup(currentImage);
+        document.body.style.overflow = 'hidden';
+        return;
+      }
       setPopupImage(product.image);
       setPopupId(`imagePopup${productId}`);
       setCurrentImageType('product');
@@ -676,6 +695,37 @@ export default function YuruStyleJapan() {
           </div>
         </section>
       </main>
+
+      {simpleImagePopup && (
+        <div
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
+          onClick={() => {
+            setSimpleImagePopup(null);
+            document.body.style.overflow = '';
+          }}
+        >
+          <div className="relative flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSimpleImagePopup(null);
+                document.body.style.overflow = '';
+              }}
+              className="absolute top-2 right-2 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
+            >
+              &times;
+            </button>
+            <Image
+              src={simpleImagePopup}
+              alt="拡大画像"
+              width={640}
+              height={768}
+              className="max-w-[90vw] max-h-[90vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       {/* 画像ポップアップ */}
       {popupImage && (

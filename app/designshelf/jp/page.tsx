@@ -4,6 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+/** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
+const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
+  102, 103, 104, 105, 106, 107, 112, 114, 117, 128, 129, 130, 131, 132, 133, 141,
+]);
+
 export default function DesignShelf() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
   const [expandedProductList, setExpandedProductList] = useState<number | null>(null);
@@ -62,8 +67,7 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 128, 129, 130, 131, 132の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 102 || productId === 103 || productId === 106 || productId === 112 || productId === 128 || productId === 129 || productId === 130 || productId === 131 || productId === 132 || productId === 133) && product.carouselImages && product.carouselImages.length > 0) {
+      if (SIMPLE_IMAGE_POPUP_PRODUCT_IDS.has(productId) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -1168,7 +1172,7 @@ export default function DesignShelf() {
         </div>
       )}
 
-      {/* シンプルな画像拡大モーダル（ID 128専用） */}
+      {/* シンプルな画像拡大モーダル（カルーセル商品の一部） */}
       {simpleImagePopup && (
         <div 
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
