@@ -552,7 +552,7 @@ export default function DesignShelf() {
       id: 114,
       title: "向かい合うゆるい般若 face2face",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/30_hannya/hoodie/30_hannya_hoodie.png",
+      image: "/designshelf/images/30_hannya/jp/30_tshirt_model_jp.jpg",
       designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
       modelImage: "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
       price: "¥2,300",
@@ -562,23 +562,31 @@ export default function DesignShelf() {
         "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
       ],
       description: "向かい合う二つの般若の顔を、炎のモチーフで包んだ和風イラストです。線は柔らかめにしつつ表情の輪郭を強調することで、和の雰囲気を保ちながら日常使いしやすいデザインに仕上げています。胸元ワンポイントに収めることで主張が強くなりすぎず、ジャケットや重ね着とも相性が良くなります。",
-      videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      videoUrl: "https://www.instagram.com/reel/DWeHNH6AS2_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       variations: [
         {
           name: "Tシャツ",
           price: "¥2,300",
-          amazonLink: "https://amzn.to/3JRLlal"
+          amazonLink: "https://amzn.to/3JRLlal",
+          videoUrl: "https://www.instagram.com/reel/DWeHNH6AS2_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         },
         {
           name: "パーカー",
           price: "¥4,400",
-          amazonLink: "https://amzn.to/4oggGS5"
+          amazonLink: "https://amzn.to/4oggGS5",
+          videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         },
         {
           name: "ジップパーカー",
           price: "¥4,600",
-          amazonLink: "https://amzn.to/44mPD03"
+          amazonLink: "https://amzn.to/44mPD03",
+          videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         }
+      ],
+      carouselImages: [
+        "/designshelf/images/30_hannya/jp/30_tshirt_model_jp.jpg",
+        "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
+        "/designshelf/images/30_hannya/30_hannya_design.png"
       ]
     },
     {
