@@ -6,10 +6,157 @@ import { useState, useEffect } from 'react';
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 112, 114, 117, 128, 129, 130, 131, 132, 133, 141,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142,
 ]);
 
+/** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
+const PRODUCT_REEL_FALLBACK_IDS = new Set([128, 129, 130, 131, 132, 133]);
+
+/** 長袖Tシャツ3商品（102・132・133）。長袖フィルタ時は一覧末尾の共有リールを出さない（132・133でフォールバックが出ていた） */
+const NO_SHARED_REEL_WHEN_LONGSLEEVE_FILTER_IDS = new Set([102, 132, 133]);
+
+/** トレーナーフィルタ時は一覧末尾の共有リールを出さない（132 はトレーナー行に video がなくフォールバックで出ていた） */
+const NO_SHARED_REEL_WHEN_SWEAT_FILTER_IDS = new Set([132]);
+
+type WearFilterId = 'all' | 'tshirt' | 'longsleeve' | 'sweat' | 'hoodie' | 'ziphoodie';
+
+type JpWearSlot = Exclude<WearFilterId, 'all'>;
+
+/** public/designshelf/images 配下の統一構成: root + design + jp/slots */
+type JpAssetsConfig = {
+  root: string;
+  design: string;
+  slots: Partial<Record<JpWearSlot, string>>;
+};
+
+const JP_SLOT_ORDER: JpWearSlot[] = ['tshirt', 'longsleeve', 'sweat', 'hoodie', 'ziphoodie'];
+
+const WEAR_FILTER_OPTIONS: { id: WearFilterId; label: string }[] = [
+  { id: 'all', label: 'すべて' },
+  { id: 'tshirt', label: 'Tシャツ' },
+  { id: 'longsleeve', label: '長袖Tシャツ' },
+  { id: 'sweat', label: 'トレーナー' },
+  { id: 'hoodie', label: 'パーカー' },
+  { id: 'ziphoodie', label: 'ジップパーカー' },
+];
+
+type WearTagSource = {
+  title: string;
+  variations?: { name: string }[];
+};
+
+function getProductWearTags(product: WearTagSource): Set<WearFilterId> {
+  const tags = new Set<WearFilterId>();
+  const vars = product.variations;
+  if (vars && vars.length > 0) {
+    for (const v of vars) {
+      const n = v.name;
+      if (n === 'Tシャツ') tags.add('tshirt');
+      if (n.includes('長袖')) tags.add('longsleeve');
+      if (n === 'トレーナー') tags.add('sweat');
+      if (n === 'パーカー') tags.add('hoodie');
+      if (n === 'ジップパーカー') tags.add('ziphoodie');
+    }
+    return tags;
+  }
+  const t = product.title;
+  if (t.includes('トレーナー')) {
+    tags.add('sweat');
+    return tags;
+  }
+  if (t.includes('パーカー') || t.includes('パーカ')) {
+    tags.add('hoodie');
+    return tags;
+  }
+  tags.add('tshirt');
+  return tags;
+}
+
+function matchesWearFilter(tags: Set<WearFilterId>, filter: WearFilterId): boolean {
+  if (filter === 'all') return true;
+  return tags.has(filter);
+}
+
+function getResolvedCarouselImages(
+  product: { carouselImages?: string[]; jpAssets?: JpAssetsConfig },
+  wearFilter: WearFilterId
+): string[] {
+  const fallback = product.carouselImages ?? [];
+  const jp = product.jpAssets;
+  if (!jp?.slots || !jp.design) return fallback;
+  const designUrl = `${jp.root}/${jp.design}`;
+  const slotUrl = (s: JpWearSlot) => (jp.slots[s] ? `${jp.root}/${jp.slots[s]}` : null);
+  if (wearFilter === 'all') {
+    const chain = JP_SLOT_ORDER.flatMap((s) => {
+      const u = slotUrl(s);
+      return u ? [u] : [];
+    });
+    if (chain.length === 0) return fallback;
+    return [...chain, designUrl];
+  }
+  const one = slotUrl(wearFilter);
+  if (one) return [one, designUrl];
+  return fallback;
+}
+
+function variationNameToWearFilter(name: string): WearFilterId | null {
+  if (name === 'Tシャツ') return 'tshirt';
+  if (name.includes('長袖')) return 'longsleeve';
+  if (name === 'トレーナー') return 'sweat';
+  if (name === 'パーカー') return 'hoodie';
+  if (name === 'ジップパーカー') return 'ziphoodie';
+  return null;
+}
+
+const FILTER_LABEL_BY_WEAR: Record<Exclude<WearFilterId, 'all'>, string> = {
+  tshirt: 'Tシャツ',
+  longsleeve: '長袖Tシャツ',
+  sweat: 'トレーナー',
+  hoodie: 'パーカー',
+  ziphoodie: 'ジップパーカー',
+};
+
+type ProductListRow = {
+  name: string;
+  price: string;
+  amazonLink: string;
+  videoUrl?: string;
+};
+
+type ProductListSource = {
+  title: string;
+  price: string;
+  amazonLink: string;
+  videoUrl?: string;
+  variations?: ProductListRow[];
+};
+
+/** 商品一覧アコーディオン用。フィルタ時は該当バリエーションのみ */
+function getProductListRows(product: ProductListSource, filter: WearFilterId): ProductListRow[] {
+  if (filter === 'all') {
+    if (product.variations && product.variations.length > 0) {
+      return product.variations;
+    }
+    return [{ name: '商品', price: product.price, amazonLink: product.amazonLink, videoUrl: product.videoUrl }];
+  }
+
+  if (!product.variations || product.variations.length === 0) {
+    if (!getProductWearTags({ title: product.title, variations: product.variations }).has(filter)) return [];
+    return [
+      {
+        name: FILTER_LABEL_BY_WEAR[filter],
+        price: product.price,
+        amazonLink: product.amazonLink,
+        videoUrl: product.videoUrl,
+      },
+    ];
+  }
+
+  return product.variations.filter((v) => variationNameToWearFilter(v.name) === filter);
+}
+
 export default function DesignShelf() {
+  const [wearFilter, setWearFilter] = useState<WearFilterId>('all');
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
   const [expandedProductList, setExpandedProductList] = useState<number | null>(null);
   const [currentBanner, setCurrentBanner] = useState(0);
@@ -67,9 +214,10 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      if (SIMPLE_IMAGE_POPUP_PRODUCT_IDS.has(productId) && product.carouselImages && product.carouselImages.length > 0) {
+      const carouselSlides = getResolvedCarouselImages(product, wearFilter);
+      if (SIMPLE_IMAGE_POPUP_PRODUCT_IDS.has(productId) && carouselSlides.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
-        const currentImage = product.carouselImages[currentImageIndex];
+        const currentImage = carouselSlides[currentImageIndex] ?? carouselSlides[0];
         setSimpleImagePopup(currentImage);
         document.body.style.overflow = 'hidden';
         return;
@@ -200,7 +348,6 @@ export default function DesignShelf() {
   type Product = {
     id: number;
     title: string;
-    brand: string;
     image: string;
     designImage: string;
     price: string;
@@ -211,42 +358,79 @@ export default function DesignShelf() {
     videoUrl?: string;
     endDate?: string; // ISO形式の日時文字列（例: "2025-12-25T23:59:59"）
     variations?: ProductVariation[]; // 商品バリエーション（Tシャツ、パーカーなど）
-    carouselImages?: string[]; // カルーセル用の画像配列
-    isNew?: boolean;
+    carouselImages?: string[]; // jpAssets で足りないスロット時のフォールバック
+    jpAssets?: JpAssetsConfig;
   };
 
-  // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
+  // 商品データ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 142,
+      title: "ゆるいライオンとライオン",
+      image: "/designshelf/images/35_lionlion/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/35_lionlion/design.png",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/4d0lj00",
+      jpAssets: {
+        root: "/designshelf/images/35_lionlion",
+        design: "design.png",
+        slots: { tshirt: "jp/tshirt_model.jpg" },
+      },
+      features: [
+        "左右に並ぶ二つの獅子の顔と、中央に配した赤い印章（漢字とカタカナを組み合わせた意匠）。太い輪郭と明快な形で一目で判るモチーフにしています。",
+        "胸中央を想定したバランス設計。余白を活かした構図により、明るい背景・暗い背景のいずれでも判別しやすく表示されます。",
+      ],
+      description:
+        "伝統的な獅子（シシ）モチーフを現代的にアレンジしたデザインです。二つの獅子が向かい合い、中央の印章が和の書表現を想起させるアクセントになっています。シルエットの明瞭さとコントラストを重視しているため、胸元での視認性に優れ、近くで見ると線の表情も楽しめます。日本的なグラフィックや文字モチーフを取り入れたコレクションに適した一枚です。",
+      videoUrl:
+        "https://www.instagram.com/reel/DXcVSp5AcIW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/4d0lj00",
+          videoUrl:
+            "https://www.instagram.com/reel/DXcVSp5AcIW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        },
+      ],
+    },
     {
       id: 141,
       title: "ゆるい虎と虎（ドット）",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/41_tigertiger_pixel/tshirt_model.jpg",
+      image: "/designshelf/images/41_tigertiger_pixel/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/41_tigertiger_pixel/design.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4lXg9Vy",
+      jpAssets: {
+        root: "/designshelf/images/41_tigertiger_pixel",
+        design: "design.jpg",
+        slots: { tshirt: "jp/tshirt_model.jpg" },
+      },
       features: [
         "左右対称に配置されたドット絵タイガーの顔がユニークな構成。シンプルなデザインに込められたインパクトとバランスが魅力。",
         "和風アートのドット絵の虎をモチーフに、現代的なポップイラストのテイストを融合。ストリートファッションやアート好きに刺さるキャッチーな表現。"
       ],
       description: "このデザインは、虎（タイガー）の顔を左右対称に配置したユーモラスかつ力強いグラフィックアートです。伝統的な日本の動物モチーフに、アメコミ風のポップアートテイストを加えることで、アジアン×モダンな独自の世界観を表現。ミニマルな配置ながら視線を惹きつけるデザインは、和柄、アニマルデザイン、タイガーアート、ストリート系、レトロポップ、アートファッションといったジャンルに幅広く親和性があります。視覚的インパクトと遊び心が共存する、唯一無二のビジュアルです。",
       videoUrl: "https://www.instagram.com/reel/DWY-Ystgf-3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      isNew: true,
       variations: [
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4lXg9Vy", videoUrl: "https://www.instagram.com/reel/DWY-Ystgf-3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      carouselImages: [
-        "/designshelf/images/41_tigertiger_pixel/tshirt_model.jpg",
-        "/designshelf/images/41_tigertiger_pixel/design.jpg"
-      ]
     },
     {
       id: 103,
       title: "ゆるい虎と虎",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/7_tigertiger/jp/7_tigertiger_tshirt_model_jp.jpg",
-      designImage: "/designshelf/images/7_tigertiger/7_tigertiger_design.png",
-      modelImage: "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt_model.png",
+      image: "/designshelf/images/7_tigertiger/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/7_tigertiger/design.png",
+      modelImage: "/designshelf/images/7_tigertiger/jp/sweat_model.png",
+      jpAssets: {
+        root: "/designshelf/images/7_tigertiger",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          sweat: "jp/sweat_model.png",
+          ziphoodie: "jp/zip_hoodie.jpg",
+        },
+      },
       price: "¥2,300",
       amazonLink: "https://amzn.to/4mmNbOG",
       features: [
@@ -259,21 +443,24 @@ export default function DesignShelf() {
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4mmNbOG", videoUrl: "https://www.instagram.com/reel/DWT8nuqgQuS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "トレーナー", price: "¥3,960", amazonLink: "https://amzn.to/4ocuRrV", videoUrl: "https://www.instagram.com/reel/DQX05pPASTA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      carouselImages: [
-        "/designshelf/images/7_tigertiger/jp/7_tigertiger_tshirt_model_jp.jpg",
-        "/designshelf/images/7_tigertiger/7_tigertiger_sweatshirt_model.png",
-        "/designshelf/images/7_tigertiger/7_tigertiger_design.png"
-      ]
     },
     {
       id: 112,
       title: "ゆるい風神雷神",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
-      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
-      modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+      image: "/designshelf/images/1_fujin_raijin/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/1_fujin_raijin/design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/jp/sweat_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4bklZwI",
+      jpAssets: {
+        root: "/designshelf/images/1_fujin_raijin",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          sweat: "jp/sweat_model.png",
+          ziphoodie: "jp/zip_hoodie_model.png",
+        },
+      },
       features: [
         "風神と雷神を可愛くデフォルメしたキャラクターアート。伝統モチーフをユーモラスに再構築した現代和風デザイン",
         "左右対称の配置とコンパクトな構図が印象的。ミニマルながらアート性が高く、ストリート系やポップアートファッションに最適"
@@ -285,22 +472,26 @@ export default function DesignShelf() {
         { name: "トレーナー", price: "¥3,980", amazonLink: "https://amzn.to/4i9oSC7", videoUrl: "https://www.instagram.com/reel/DRBGUjCgQZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "ジップパーカー", price: "¥4,480", amazonLink: "https://amzn.to/47HCMYw", videoUrl: "https://www.instagram.com/reel/DQOlTdWAWx8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      carouselImages: [
-        "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
-        "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
-        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie_model.png",
-        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
-      ]
     },
     {
       id: 102,
-      title: "向かい合うゆるい龍と虎 face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_tshirt_model.jpg",
-      designImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png",
-      modelImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_hoodie_model.png",
+      title: "ゆるい龍と虎",
+      image: "/designshelf/images/5_dragon_tiger/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/5_dragon_tiger/design.png",
+      modelImage: "/designshelf/images/5_dragon_tiger/jp/hoodie_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4dqUmmN",
+      jpAssets: {
+        root: "/designshelf/images/5_dragon_tiger",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          longsleeve: "jp/long_sleeve.jpg",
+          sweat: "jp/sweat.jpg",
+          hoodie: "jp/hoodie_model.png",
+          ziphoodie: "jp/zip_hoodie.jpg",
+        },
+      },
       features: [
         "伝説の神獣「龍」と猛獣「虎」が向かい合う、力強くもユーモラスな構図。和風×対称構図の王道をポップなイラストで再構築。",
         "キャラクター調にデフォルメされた表情が印象的。親しみやすさとエネルギーを兼ね備えた現代アジアンアートの一作。"
@@ -314,33 +505,29 @@ export default function DesignShelf() {
         { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/4uuJOJy", videoUrl: "https://www.instagram.com/reel/DQSnANAgZiM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "ジップパーカー", price: "¥4,600", amazonLink: "https://amzn.to/4cQtX1I" }
       ],
-      carouselImages: [
-        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_tshirt_model.jpg",
-        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_hoodie_model.png",
-        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_sweat.jpg",
-        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_ziphoodie.jpg",
-        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png"
-      ]
     },
     {
       id: 133,
-      title: "ドクロ カラベラ 漢字 カタカナ アヒル",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/40_skull/jp/model_tshirt_jp.jpg",
+      title: "カラベラドクロと漢字",
+      image: "/designshelf/images/40_skull/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/40_skull/design.png",
-      modelImage: "/designshelf/images/40_skull/jp/model_tshirt_jp.jpg",
+      modelImage: "/designshelf/images/40_skull/jp/tshirt_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.to/472hYKy",
+      jpAssets: {
+        root: "/designshelf/images/40_skull",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          longsleeve: "jp/long_sleeve.jpg",
+        },
+      },
       features: [
         "装飾的な模様で描かれたドクロを主役に、花や植物の要素を組み合わせた構成。カラベラ風。",
         "漢字の「骨」と「ホネ」を組みわせて、判子風にデザイン。"
       ],
       description: "装飾模様をまとったカラベラ風ドクロを中心に、花や曲線的な要素を組み合わせたイラストデザインです。ドクロは怖さよりも親しみやすさを意識した表情で描かれ、全体を明るくポップな印象にまとめています。横に配置された漢字モチーフは印章を思わせる形で、日本らしい視覚的アクセントとして機能します。ドクロ、漢字、カタカナといった要素を組み合わせ、日本文化とイラスト表現を楽しめるデザインです。",
       videoUrl: "https://www.instagram.com/reel/DVS3Lj5AR4C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      carouselImages: [
-        "/designshelf/images/40_skull/jp/model_tshirt_jp.jpg",
-        "/designshelf/images/40_skull/design.png"
-      ],
       variations: [
         {
           name: "Tシャツ",
@@ -352,27 +539,32 @@ export default function DesignShelf() {
           price: "¥2,750",
           amazonLink: "https://amzn.to/4bgaE0g"
         }
-      ]
+      ],
     },
     {
       id: 132,
-      title: "向かい合う 龍（ドラゴン） face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/39_dragondragon2/jp/model_hoodie_jp.png",
+      title: "ゆるい龍と漢字と龍",
+      image: "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/39_dragondragon2/design.png",
-      modelImage: "/designshelf/images/39_dragondragon2/jp/model_hoodie_jp.png",
+      modelImage: "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.asia/d/077ee9fx",
+      jpAssets: {
+        root: "/designshelf/images/39_dragondragon2",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          longsleeve: "jp/long_sleeve.jpg",
+          sweat: "jp/sweat.jpg",
+          hoodie: "jp/hoodie_model.png",
+        },
+      },
       features: [
         "左右に向かい合う二体の龍を大胆な線で描き、中央に漢字とカタカナを組み合わせた判子風モチーフを配置。日本的な力強さと象徴性が一目で伝わる構成です。",
         "龍の表情と輪郭を際立たせたシンメトリー構図。余白を活かした配置により、縮小表示でも龍と文字の存在感が明確に伝わります。"
       ],
       description: "日本の伝承や装飾表現に着想を得た龍（ドラゴン）モチーフを、漢字とカタカナの判子デザインと組み合わせたグラフィックです。左右に向かい合う龍の構図と中央の文字要素によって、視線が自然に集まるよう設計しています。線と形を整理することで視認性を高め、日本らしさと現代的なグラフィック表現を両立させたデザインに仕上げています。日本文化や文字モチーフを取り入れたコレクションに適した一枚です。",
       videoUrl: "https://www.instagram.com/reel/DUeRgZpAf35/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      carouselImages: [
-        "/designshelf/images/39_dragondragon2/jp/model_hoodie_jp.png",
-        "/designshelf/images/39_dragondragon2/design.png"
-      ],
       variations: [
         {
           name: "Tシャツ",
@@ -393,103 +585,110 @@ export default function DesignShelf() {
           name: "パーカー",
           price: "¥4,400",
           amazonLink: "https://amzn.asia/d/0a8Sumzr"
-        },
-        {
-          name: "ジップパーカー",
-          price: "¥4,600",
-          amazonLink: "https://amzn.asia/d/0eN9r7P5"
         }
-      ]
+      ],
+      carouselImages: [
+        "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
+        "/designshelf/images/39_dragondragon2/design.png",
+      ],
     },
     {
       id: 131,
-      title: "赤ちゃんをおんぶしたファンキー男 ハート型のサングラス ミニダルマ ヒゲ ファイヤーパターンのヘルメット",
-      brand: "SHAREZOH",
-      image: "/designshelf/images/sharezoh/4/model_tshirt_jp.jpg",
+      title: "ファンキーヒゲダルマ",
+      image: "/designshelf/images/sharezoh/4/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/sharezoh/4/design.png",
-      modelImage: "/designshelf/images/sharezoh/4/model_tshirt_jp.jpg",
+      modelImage: "/designshelf/images/sharezoh/4/jp/tshirt_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.asia/d/0eh3vlJ4",
+      jpAssets: {
+        root: "/designshelf/images/sharezoh/4",
+        design: "design.png",
+        slots: { tshirt: "jp/tshirt_model.jpg" },
+      },
       features: [
         "ヘルメットをかぶった男を中心に、子どもとペンギンを組み合わせたキャラクター構成。異なる存在を一つの円形フレームにまとめ、視線が自然と中央に集まるデザインです。",
         "表情や小物に個性を持たせつつ、全体をシンプルな形で整理。登場人物それぞれの関係性が一目で伝わる、ストーリー性のある構図になっています。"
       ],
       description: "ヘルメットをかぶったファンキーな男を主役に、寄り添う子どもとペンギンを描いたキャラクターイラストです。異なる立場や雰囲気の存在を同じ画面に配置することで、不思議な一体感と物語性を生み出しています。円形のフレーム構成により全体のバランスを保ち、細かな表情や仕草が自然と目に入るよう設計されています。ユーモアと想像の余地を残した、印象に残るキャラクターデザインです。",
       videoUrl: "https://www.instagram.com/reel/DUcaL6ygU1P/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
-      carouselImages: [
-        "/designshelf/images/sharezoh/4/model_tshirt_jp.jpg",
-        "/designshelf/images/sharezoh/4/design.png"
-      ]
     },
     {
       id: 130,
-      title: "耳付きニットキャップを被った青年 河童の子を抱きながらガムを膨らます",
-      brand: "SHAREZOH",
-      image: "/designshelf/images/sharezoh/3/model_tshirt_jp.jpg",
+      title: "ネコ耳ニットキャップ青年",
+      image: "/designshelf/images/sharezoh/3/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/sharezoh/3/design.png",
-      modelImage: "/designshelf/images/sharezoh/3/model_tshirt_jp.jpg",
+      modelImage: "/designshelf/images/sharezoh/3/jp/tshirt_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.asia/d/09UmYsvS",
+      jpAssets: {
+        root: "/designshelf/images/sharezoh/3",
+        design: "design.png",
+        slots: { tshirt: "jp/tshirt_model.jpg" },
+      },
       features: [
         "ガムを大きく膨らませた人物を主役に、河童の子供のキャラクターを組み合わせたイラスト。丸いフレーム構図が視線を中央に集め、表情の対比が印象に残ります。",
         "抑えた線の情報量と分かりやすい配色で、人物と河童それぞれの個性を明確に表現。シンプルな形で構成され、ひと目で関係性が伝わるデザインです。"
       ],
       description: "ガムを膨らませる人物と、寄り添うように描かれた河童の子供を組み合わせたキャラクターイラストです。余裕のある表情の人物と、感情の伝わる河童の仕草を対比させることで、見る人が自然と物語を想像できる構成にしています。全体を円形のフレームに収めることで画面がまとまり、キャラクターの存在感が際立つデザインに仕上げています。ユーモアと個性を感じさせるイラスト表現を好む方に向けた一作です。",
       videoUrl: "https://www.instagram.com/reel/DUcYvGLAV52/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      carouselImages: [
-        "/designshelf/images/sharezoh/3/model_tshirt_jp.jpg",
-        "/designshelf/images/sharezoh/3/design.png"
-      ]
     },
     {
       id: 129,
-      title: "ゴーグルを着用した金髪の青年 子虎を抱いてリュックを背負う",
-      brand: "SHAREZOH",
-      image: "/designshelf/images/sharezoh/2/model_tshirt_jp.jpg",
+      title: "子虎に好かれたライダー",
+      image: "/designshelf/images/sharezoh/2/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/sharezoh/2/design.png",
-      modelImage: "/designshelf/images/sharezoh/2/model_tshirt_jp.jpg",
+      modelImage: "/designshelf/images/sharezoh/2/jp/tshirt_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.asia/d/0a5Ld3Tv",
+      jpAssets: {
+        root: "/designshelf/images/sharezoh/2",
+        design: "design.png",
+        slots: { tshirt: "jp/tshirt_model.jpg" },
+      },
       features: [
         "ゴーグルをかけた人物と、腕に抱えられた小さな虎を組み合わせたキャラクターイラスト。丸いフレーム構図が全体をまとめ、視線が自然に中心へ集まります。",
         "誇張された表情とシンプルな色使いで、ひと目で物語性が伝わるデザイン。線と形を整理し、縮小表示でもキャラクターの関係性が分かりやすい構成です。"
       ],
       description: "人物と動物を組み合わせた、親しみやすく個性的なキャラクターイラストです。ゴーグル姿の人物と寄り添う虎を一つの円形フレームに収め、表情や仕草から想像が広がるようデザインしています。線と色をシンプルにまとめることで、主役となるキャラクターが際立ち、見る人に印象を残す構成に仕上げています。ストーリー性のあるイラストや、ユーモアを感じさせるキャラクターデザインを好む方に向けた一作です。",
       videoUrl: "https://www.instagram.com/reel/DUcXhdXAa0V/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      carouselImages: [
-        "/designshelf/images/sharezoh/2/model_tshirt_jp.jpg",
-        "/designshelf/images/sharezoh/2/design.png"
-      ]
     },
     {
       id: 128,
-      title: "アフロの青年がにわとりを抱えて叫ぶ",
-      brand: "SHAREZOH",
-      image: "/designshelf/images/sharezoh/1/model_tshirt_jp.jpg",
+      title: "愛を叫ぶアフロ青年",
+      image: "/designshelf/images/sharezoh/1/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/sharezoh/1/design.png",
-      modelImage: "/designshelf/images/sharezoh/1/model_tshirt_jp.jpg",
+      modelImage: "/designshelf/images/sharezoh/1/jp/tshirt_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.asia/d/02TFtwnA",
+      jpAssets: {
+        root: "/designshelf/images/sharezoh/1",
+        design: "design.png",
+        slots: { tshirt: "jp/tshirt_model.jpg" },
+      },
       features: [
         "大きく口を開けた人物と、腕に抱えられたニワトリを組み合わせた、強い表情が印象的なキャラクターイラスト。丸いフレーム構図で視線が自然に中央へ集まります。",
         "誇張された顔の表情とシンプルな色使いにより、ひと目でユーモラスさが伝わるデザイン。線と形を整理し、縮小表示でもキャラクター性が損なわれない構成です。"
       ],
       description: "人物と動物を組み合わせた、コミカルでインパクトのあるキャラクターイラストです。大きく誇張した表情とポーズを中心に構成し、見る側に強い印象を残すようデザインしています。丸いフレーム内にまとめることで全体のバランスを保ち、主役となるキャラクターが際立つよう調整しています。ユーモアのあるイラスト表現や、個性的なキャラクターデザインを好む方に向けた一作です。",
       videoUrl: "https://www.instagram.com/reel/DUbK3zrgbbc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      carouselImages: [
-        "/designshelf/images/sharezoh/1/model_tshirt_jp.jpg",
-        "/designshelf/images/sharezoh/1/design.png"
-      ]
     },
     {
       id: 117,
-      title: "向かい合うゆるいパンダ face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/33_panda/hoodie/hoodie.jpg",
+      title: "ゆるいパンダとパンダ",
+      image: "/designshelf/images/33_panda/jp/tshirt.jpg",
       designImage: "/designshelf/images/33_panda/design.png",
-      modelImage: "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
+      modelImage: "/designshelf/images/33_panda/jp/hoodie_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.to/442991Y",
+      jpAssets: {
+        root: "/designshelf/images/33_panda",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt.jpg",
+          sweat: "jp/swet.jpg",
+          hoodie: "jp/hoodie_model.jpg",
+        },
+      },
       features: [
         "左右に向かい合うゆるいタッチのパンダの顔をワンポイントで配したビジュアル。太めの輪郭と点描風の毛並み表現で視認性を高めつつ、表情はゆるく抑えて日常使いしやすい仕上げにしています",
         "モノトーンを基調に部分的なアクセント色を抑えることで、色違い展開や複数アイテム展開がしやすい構成にしています。胸元ワンポイントのため重ね着やジャケットとの相性が良く、ギフト展開にも適したデザインです"
@@ -513,54 +712,25 @@ export default function DesignShelf() {
           amazonLink: "https://amzn.to/4oqqnxa"
         }
       ],
-      carouselImages: [
-        "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
-        "/designshelf/images/33_panda/swet/swet.jpg",
-        "/designshelf/images/33_panda/tshirt/tshirt.jpg"
-      ]
-    },
-    {
-      id: 115,
-      title: "向かい合うゆるい天狗 face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/31_tengu/hoodie/31_tengu_hoodie.png",
-      designImage: "/designshelf/images/31_tengu/31_tengu_design.png",
-      modelImage: "/designshelf/images/31_tengu/hoodie/31_tengu_model_hoodie.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4rwVutY",
-      features: [
-        "向かい合う天狗の顔を左右に配したビジュアル。太めの輪郭線と一定の間隔で入ったストライプ調の模様で存在感を出しつつ、表情はゆるく抑えて日常使いしやすくしています。遠目でも目を引く構図です。",
-        "和風の題材をポップに再解釈したデザインで、赤・黒・白のコントラストを効かせ視認性を高めています。ストリート系から和モダンまで幅広い着こなしと相性が良い設計です。"
-      ],
-      description: "向かい合う二つの天狗の顔を中心に据え、太い線とゆるい表情でまとめた和風イラストです。伝統的な天狗モチーフをポップに再構成し、重ね着やジャケットの差し色としても活用しやすいのが特長です。",
-      videoUrl: "https://www.instagram.com/reel/DRbpHY1AcHp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/4rwVutY"
-        },
-        {
-          name: "パーカー",
-          price: "¥4,400",
-          amazonLink: "https://amzn.to/4pmH4KS"
-        },
-        {
-          name: "トレーナー",
-          price: "¥3,960",
-          amazonLink: "https://amzn.to/3M3s3PH"
-        }
-      ]
     },
     {
       id: 114,
-      title: "向かい合うゆるい般若 face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/30_hannya/jp/30_tshirt_model_jp.jpg",
-      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
-      modelImage: "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
+      title: "ゆるい般若と般若",
+      image: "/designshelf/images/30_hannya/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/30_hannya/design.png",
+      modelImage: "/designshelf/images/30_hannya/jp/hoodie_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3JRLlal",
+      jpAssets: {
+        root: "/designshelf/images/30_hannya",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          longsleeve: "jp/long_sleeve.jpg",
+          hoodie: "jp/hoodie_model.png",
+          ziphoodie: "jp/zip_hoodie.jpg",
+        },
+      },
       features: [
         "向かい合う般若の顔を炎で囲んだ和風モチーフ。輪郭は太めでゆるいタッチにまとめ、強すぎない存在感を狙ったビジュアル設計。",
         "デザインを主役にするワンポイント配置。和の伝統要素とポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい見え方を意識している。"
@@ -583,25 +753,27 @@ export default function DesignShelf() {
         {
           name: "ジップパーカー",
           price: "¥4,600",
-          amazonLink: "https://amzn.to/44mPD03",
-          videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+          amazonLink: "https://amzn.to/44mPD03"
         }
       ],
       carouselImages: [
-        "/designshelf/images/30_hannya/jp/30_tshirt_model_jp.jpg",
-        "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
-        "/designshelf/images/30_hannya/30_hannya_design.png"
-      ]
+        "/designshelf/images/30_hannya/jp/hoodie_model.png",
+        "/designshelf/images/30_hannya/design.png",
+      ],
     },
     {
       id: 113,
-      title: "向かい合うゆるいユニコーン face2face トレーナー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/29_unicorn/swet/29_unicorn_swet.png",
-      designImage: "/designshelf/images/29_unicorn/29_unicorn_design.png",
-      modelImage: "/designshelf/images/29_unicorn/swet/29_unicorn_model_swet.png",
+      title: "ゆるいユニコーンとユニコーン",
+      image: "/designshelf/images/29_unicorn/jp/sweat_model.png",
+      designImage: "/designshelf/images/29_unicorn/design.png",
+      modelImage: "/designshelf/images/29_unicorn/jp/sweat_model.png",
       price: "¥3,960",
       amazonLink: "https://amzn.to/48kBYYW",
+      jpAssets: {
+        root: "/designshelf/images/29_unicorn",
+        design: "design.png",
+        slots: { sweat: "jp/sweat_model.png" },
+      },
       features: [
         "左右に向かい合うユニコーンの顔をこだわりのゆるいタッチで描かれているデザイン。可愛さとユーモアを両立させ、日常のコーデに馴染む見え方を意識しています。",
         "どんな色でも映える配色設計で、ギフトやプレゼント、季節商品としても扱いやすいです。"
@@ -611,13 +783,17 @@ export default function DesignShelf() {
     },
     {
       id: 108,
-      title: "ゆるいライオン パーカー",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/26_lion/26_lion_hoodie.png",
-      designImage: "/designshelf/images/26_lion/26_lion_design.png",
-      modelImage: "/designshelf/images/26_lion/26_lion_hoodie_model.png",
+      title: "ゆるいライオン",
+      image: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/26_lion/design.png",
+      modelImage: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
       price: "¥4,400",
       amazonLink: "https://amzn.to/3JJ4FWX",
+      jpAssets: {
+        root: "/designshelf/images/26_lion",
+        design: "design.png",
+        slots: { tshirt: "jp/tshirt_model.jpg", hoodie: "jp/hoodie_model.png" },
+      },
       features: [
         "ライオンを大胆で印象的なゆるいタッチで表現。ユニークで目を引くアートスタイル",
         "普段着、カジュアルコーデ、ギフト用途まで幅広く使える汎用性の高いデザイン"
@@ -628,12 +804,19 @@ export default function DesignShelf() {
     {
       id: 107,
       title: "ゆるい阿修羅",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/4_ashura/tshirt_model.jpg",
-      designImage: "/designshelf/images/4_ashura/4_ashura_design.png",
-      modelImage: "/designshelf/images/4_ashura/4_ashura_hoodie_model.png",
+      image: "/designshelf/images/4_ashura/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/4_ashura/design.png",
+      modelImage: "/designshelf/images/4_ashura/jp/hoodie_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4rWJgtm",
+      jpAssets: {
+        root: "/designshelf/images/4_ashura",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          hoodie: "jp/hoodie_model.png",
+        },
+      },
       features: [
         "阿修羅像をモチーフに、ゆるキャラ風に再構築したユニークなアートデザイン。伝統とユーモアが融合した現代風ミニマル仏像イラスト。",
         "シンプルながら存在感のある線画スタイルと、和柄をあしらった腰巻がアクセント。仏像ファンや仏教カルチャーに興味のある人にも刺さる個性派グラフィック。"
@@ -644,21 +827,23 @@ export default function DesignShelf() {
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4rWJgtm", videoUrl: "https://www.instagram.com/reel/DWY3QEmgS7C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/4oIKozG", videoUrl: "https://www.instagram.com/reel/DQi8IRygWyW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      carouselImages: [
-        "/designshelf/images/4_ashura/tshirt_model.jpg",
-        "/designshelf/images/4_ashura/4_ashura_hoodie_model.png",
-        "/designshelf/images/4_ashura/4_ashura_design.png"
-      ]
     },
     {
       id: 106,
       title: "ゆるい日本のお面たち",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/2_japanese_masks/jp/japanese_masks_tshirt_model_jp.jpg",
-      designImage: "/designshelf/images/2_japanese_masks/japanese_masks_design.png",
-      modelImage: "/designshelf/images/2_japanese_masks/japanese_masks_sweat_model.png",
+      image: "/designshelf/images/2_japanese_masks/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/2_japanese_masks/design.png",
+      modelImage: "/designshelf/images/2_japanese_masks/jp/sweat_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/3YOiNmd",
+      jpAssets: {
+        root: "/designshelf/images/2_japanese_masks",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          sweat: "jp/sweat_model.png",
+        },
+      },
       features: [
         "6種類の日本伝統仮面をポップに表現した、視覚的にインパクトのあるデザイン。",
         "能・狂言・祭りなどに登場する仮面をモチーフに、日本文化の奥深さをユーモラスに表現。"
@@ -669,21 +854,23 @@ export default function DesignShelf() {
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/3YOiNmd", videoUrl: "https://www.instagram.com/reel/DWWOXW5gTSY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "トレーナー", price: "¥3,960", amazonLink: "https://amzn.to/47lyTbK", videoUrl: "https://www.instagram.com/reel/DWWOXW5gTSY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      carouselImages: [
-        "/designshelf/images/2_japanese_masks/jp/japanese_masks_tshirt_model_jp.jpg",
-        "/designshelf/images/2_japanese_masks/japanese_masks_sweat_model.png",
-        "/designshelf/images/2_japanese_masks/japanese_masks_design.png"
-      ]
     },
     {
       id: 105,
       title: "ゆるい虎",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/3_tiger/3_tiger_tshirt_model_jp.jpg",
-      designImage: "/designshelf/images/3_tiger/3_tiger_design.png",
-      modelImage: "/designshelf/images/3_tiger/3_tiger_hooodie_model.png",
+      image: "/designshelf/images/3_tiger/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/3_tiger/design.png",
+      modelImage: "/designshelf/images/3_tiger/jp/hoodie_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/41xKuk2",
+      jpAssets: {
+        root: "/designshelf/images/3_tiger",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          hoodie: "jp/hoodie_model.png",
+        },
+      },
       features: [
         "大胆で印象的な虎の顔を和風テイストで表現した、ユニークで目を引くアートスタイル。",
         "ゆるキャラ風のかわいらしさと、伝統的なジャパニーズタトゥーアートの要素を融合したポップなデザイン。"
@@ -694,21 +881,23 @@ export default function DesignShelf() {
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/41xKuk2", videoUrl: "https://www.instagram.com/reel/DWXiuyAAeuG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/3JuRuZJ", videoUrl: "https://www.instagram.com/reel/DQc5u-SgTfA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      carouselImages: [
-        "/designshelf/images/3_tiger/3_tiger_tshirt_model_jp.jpg",
-        "/designshelf/images/3_tiger/3_tiger_hooodie_model.png",
-        "/designshelf/images/3_tiger/3_tiger_design.png"
-      ]
     },
     {
       id: 104,
       title: "ゆるい龍と龍",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/6_dragondragon/6_dragondragon_tshirt_model.jpg",
-      designImage: "/designshelf/images/6_dragondragon/6_dragondragon_design.png",
-      modelImage: "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
+      image: "/designshelf/images/6_dragondragon/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/6_dragondragon/design.png",
+      modelImage: "/designshelf/images/6_dragondragon/jp/hoodie_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4uVfaJu",
+      jpAssets: {
+        root: "/designshelf/images/6_dragondragon",
+        design: "design.png",
+        slots: {
+          tshirt: "jp/tshirt_model.jpg",
+          hoodie: "jp/hoodie_model.png",
+        },
+      },
       features: [
         "左右対称に配置されたドラゴンの顔がユニークで目を引くアートデザイン。ミニマルな構成ながらインパクト抜群。",
         "和風モチーフにポップアートの要素を加えた現代的グラフィック。アジアンテイスト、カジュアルファッション、ストリートアートにマッチ。"
@@ -719,17 +908,27 @@ export default function DesignShelf() {
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4uVfaJu", videoUrl: "https://www.instagram.com/reel/DWYyGmEgUvG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/49tW057", videoUrl: "https://www.instagram.com/reel/DQaXIDAgQbC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
-      carouselImages: [
-        "/designshelf/images/6_dragondragon/6_dragondragon_tshirt_model.jpg",
-        "/designshelf/images/6_dragondragon/6_dragondragon_model.png",
-        "/designshelf/images/6_dragondragon/6_dragondragon_design.png"
-      ]
     },
   ];
 
   // 現在ポップアップ中の商品（ボタン表示制御用）
   const currentProductId = popupId ? parseInt(popupId.replace('imagePopup', '')) : null;
   const currentProduct: Product | undefined = currentProductId ? products.find(p => p.id === currentProductId) : undefined;
+
+  const catalogProducts = products
+    .filter((product) => {
+      if (product.endDate) {
+        const now = new Date().getTime();
+        const end = new Date(product.endDate).getTime();
+        if (end <= now) return false;
+      }
+      return true;
+    })
+    .filter((product) => matchesWearFilter(getProductWearTags(product), wearFilter));
+
+  useEffect(() => {
+    setCarouselIndices({});
+  }, [wearFilter]);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -749,7 +948,6 @@ export default function DesignShelf() {
             </Link>
             <div className="flex items-center gap-6">
               <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
-              <Link href="/designshelf/jp/brands" className="text-gray-600 hover:text-gray-900 transition-colors">ブランド</Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
               <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
@@ -806,6 +1004,20 @@ export default function DesignShelf() {
                 </a>
               </div>
             ))}
+
+            <div
+              className="absolute top-4 left-4 sm:top-6 sm:left-6 z-[5] pointer-events-none max-w-[min(92%,18rem)] sm:max-w-none"
+              aria-hidden
+            >
+              <div className="rounded-lg bg-black/50 backdrop-blur-[2px] px-3 py-2 sm:px-4 sm:py-3 border border-white/15 shadow-lg">
+                <p className="text-white text-base sm:text-xl font-bold leading-snug tracking-tight">
+                  日本文化×遊び心
+                </p>
+                <p className="text-white/95 text-xs sm:text-base font-medium mt-1 sm:mt-1.5 leading-snug">
+                  二度見されがちなTシャツ
+                </p>
+              </div>
+            </div>
             
             {/* バナーインジケーター */}
             <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 sm:gap-2">
@@ -838,27 +1050,42 @@ export default function DesignShelf() {
 
         {/* 商品セクション */}
         <section>
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">すべてのデザイン</h2>
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+            <p className="text-sm font-medium text-gray-700 shrink-0 pt-0.5">アイテムで絞り込み</p>
+            <div className="flex flex-wrap gap-2">
+              {WEAR_FILTER_OPTIONS.map(({ id, label }) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => setWearFilter(id)}
+                  className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                    wearFilter === id
+                      ? 'bg-gray-900 text-white shadow-sm'
+                      : 'border border-gray-300 bg-white text-gray-700 hover:border-gray-500 hover:bg-gray-50'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+          {catalogProducts.length === 0 ? (
+            <p className="rounded-lg border border-dashed border-gray-300 bg-gray-50 py-12 text-center text-sm text-gray-600">
+              この条件の商品はありません。「すべて」に戻すか、別のアイテムをお試しください。
+            </p>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {products.filter(product => {
-              // 期限が設定されている商品で、期限が過ぎている場合は非表示
-              if (product.endDate) {
-                const now = new Date().getTime();
-                const end = new Date(product.endDate).getTime();
-                if (end <= now) {
-                  return false; // 期限切れの商品は非表示
-                }
-              }
-              return true;
-            }).map((product, index) => (
+            {catalogProducts.map((product, index) => {
+              const carouselSlides = getResolvedCarouselImages(product, wearFilter);
+              return (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 w-full self-start">
                 <div 
                   className="p-4 flex justify-center items-center h-72 bg-white cursor-pointer relative"
                   onClick={() => openImagePopup(product.id)}
                 >
-                  {product.carouselImages && product.carouselImages.length > 0 ? (
+                  {carouselSlides.length > 0 ? (
                     <div className="relative w-full h-full flex items-center justify-center">
-                      {product.carouselImages.map((img, imgIndex) => (
+                      {carouselSlides.map((img, imgIndex) => (
                         <Image
                           key={imgIndex}
                           src={img}
@@ -870,14 +1097,17 @@ export default function DesignShelf() {
                           }`}
                         />
                       ))}
-                      {product.carouselImages.length > 1 && (
+                      {carouselSlides.length > 1 && (
                         <>
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              setCarouselIndices(prev => ({
+                              setCarouselIndices((prev) => ({
                                 ...prev,
-                                [product.id]: prev[product.id] === undefined ? product.carouselImages!.length - 1 : (prev[product.id] - 1 + product.carouselImages!.length) % product.carouselImages!.length
+                                [product.id]:
+                                  prev[product.id] === undefined
+                                    ? carouselSlides.length - 1
+                                    : (prev[product.id] - 1 + carouselSlides.length) % carouselSlides.length,
                               }));
                             }}
                             className="absolute left-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
@@ -888,9 +1118,10 @@ export default function DesignShelf() {
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              setCarouselIndices(prev => ({
+                              setCarouselIndices((prev) => ({
                                 ...prev,
-                                [product.id]: prev[product.id] === undefined ? 1 : (prev[product.id] + 1) % product.carouselImages!.length
+                                [product.id]:
+                                  prev[product.id] === undefined ? 1 : (prev[product.id] + 1) % carouselSlides.length,
                               }));
                             }}
                             className="absolute right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
@@ -899,14 +1130,14 @@ export default function DesignShelf() {
                             ❯
                           </button>
                           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
-                            {product.carouselImages.map((_, dotIndex) => (
+                            {carouselSlides.map((_, dotIndex) => (
                               <button
                                 key={dotIndex}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  setCarouselIndices(prev => ({
+                                  setCarouselIndices((prev) => ({
                                     ...prev,
-                                    [product.id]: dotIndex
+                                    [product.id]: dotIndex,
                                   }));
                                 }}
                                 className={`w-2 h-2 rounded-full transition-colors ${
@@ -931,104 +1162,127 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.isNew || product.brand === "SHAREZOH" || product.id === 102 || product.id === 103 || product.id === 112 || product.id === 132 || product.id === 133) && (
+                  {!product.endDate && (product.id === 105 || product.id === 141 || product.id === 142) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1 min-h-[3rem]">{product.title}</h3>
+                  <h3 className="mb-1 line-clamp-2 h-14 text-lg font-semibold leading-7 text-gray-800">{product.title}</h3>
                   {product.endDate && <CountdownTimer endDate={product.endDate} />}
-                  <Link 
-                    href={
-                      product.brand === "ゆるスタイル・ジャパン" ? "/designshelf/jp/brands/yuru-style-japan" :
-                      "/designshelf/jp/brands"
-                    }
-                    className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
-                  >
-                    {product.brand}
-                  </Link>
-                  {(product.id === 128 || product.id === 129 || product.id === 130 || product.id === 131 || product.id === 132 || product.id === 133) && product.videoUrl && (
-                    <a
-                      href={product.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 mb-4 text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      <Image
-                        src="/designshelf/images/Instagram_logo_black.png"
-                        alt="Instagram"
-                        width={20}
-                        height={20}
-                        className="w-5 h-5"
-                        unoptimized
-                      />
-                      <span className="text-sm">Instagramで見る</span>
-                    </a>
-                  )}
-                  
-                  <button 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      toggleProductList(index);
-                    }}
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    className={`text-gray-600 hover:text-gray-900 mb-2 text-left transition-colors relative after:absolute after:right-0 ${expandedProductList === index ? "after:content-['−']" : "after:content-['+']"}`}
-                  >
-                    商品一覧
-                  </button>
-                  <div 
-                    className={`overflow-hidden transition-all duration-300 ${
-                      expandedProductList === index ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                    }`}
-                    style={{ pointerEvents: expandedProductList === index ? 'auto' : 'none' }}
-                  >
-                    <div className="mb-4 space-y-3">
-                      {(product.variations ? product.variations : [{ name: '商品', price: product.price, amazonLink: product.amazonLink, videoUrl: product.videoUrl }]).map((variation, idx) => (
-                        <div key={idx} className="flex items-center justify-between border-b border-gray-200 pb-2 last:border-b-0">
-                          <div className="flex flex-col">
-                            <span className="text-sm font-medium text-gray-800">{variation.name}</span>
-                            <div className="flex items-center gap-2 mt-1">
-                              <span className="text-lg font-bold text-gray-800">{variation.price}</span>
-                              <span className="text-xs text-gray-500">税込</span>
+                  {(() => {
+                    const listRows = getProductListRows(product, wearFilter);
+                    const sharedReelAfterList =
+                      product.videoUrl &&
+                      PRODUCT_REEL_FALLBACK_IDS.has(product.id) &&
+                      !(
+                        wearFilter === 'longsleeve' &&
+                        NO_SHARED_REEL_WHEN_LONGSLEEVE_FILTER_IDS.has(product.id)
+                      ) &&
+                      !(
+                        wearFilter === 'sweat' &&
+                        NO_SHARED_REEL_WHEN_SWEAT_FILTER_IDS.has(product.id)
+                      ) &&
+                      listRows.length > 0 &&
+                      listRows.every((r) => !r.videoUrl);
+                    const listBody = (
+                      <div className="mb-4 space-y-3">
+                        {listRows.map((variation, idx) => (
+                          <div
+                            key={`${product.id}-${variation.name}-${idx}`}
+                            className="flex flex-col gap-2 border-b border-gray-200 pb-3 last:border-b-0"
+                          >
+                            <div className="flex items-center justify-between gap-3">
+                              <div className="flex min-w-0 flex-col">
+                                <span className="text-sm font-medium text-gray-800">{variation.name}</span>
+                                <div className="mt-1 flex items-center gap-2">
+                                  <span className="text-lg font-bold text-gray-800">{variation.price}</span>
+                                  <span className="text-xs text-gray-500">税込</span>
+                                </div>
+                              </div>
+                              <a
+                                href={variation.amazonLink}
+                                target="_blank"
+                                rel="noopener noreferrer nofollow"
+                                className="amazon-btn shrink-0"
+                                aria-label={`Amazonで${variation.name}を見る`}
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <span className="label">Amazon<br />で見る</span>
+                              </a>
                             </div>
                             {variation.videoUrl && (
                               <a
                                 href={variation.videoUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-1 mt-2 text-blue-600 hover:text-blue-800 text-sm transition-colors"
+                                className="flex items-center gap-2 text-sm text-blue-600 transition-colors hover:text-blue-800"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 <Image
                                   src="/designshelf/images/Instagram_logo_black.png"
                                   alt="Instagram"
-                                  width={16}
-                                  height={16}
-                                  className="w-4 h-4"
+                                  width={20}
+                                  height={20}
+                                  className="h-5 w-5 shrink-0"
                                   unoptimized
                                 />
                                 <span>Instagramで見る</span>
                               </a>
                             )}
                           </div>
+                        ))}
+                        {sharedReelAfterList && (
                           <a
-                            href={variation.amazonLink}
+                            href={product.videoUrl}
                             target="_blank"
-                            rel="noopener noreferrer nofollow"
-                            className="amazon-btn"
-                            aria-label={`Amazonで${variation.name}を見る`}
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm text-blue-600 transition-colors hover:text-blue-800"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <span className="label">Amazon<br />で見る</span>
+                            <Image
+                              src="/designshelf/images/Instagram_logo_black.png"
+                              alt="Instagram"
+                              width={20}
+                              height={20}
+                              className="h-5 w-5 shrink-0"
+                              unoptimized
+                            />
+                            <span>Instagramで見る</span>
                           </a>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                        )}
+                      </div>
+                    );
+                    if (wearFilter === 'all') {
+                      return (
+                        <>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleProductList(index);
+                            }}
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                            }}
+                            className={`text-gray-600 hover:text-gray-900 mb-2 text-left transition-colors relative after:absolute after:right-0 ${expandedProductList === index ? "after:content-['−']" : "after:content-['+']"}`}
+                          >
+                            商品一覧
+                          </button>
+                          <div
+                            className={`overflow-hidden transition-all duration-300 ${
+                              expandedProductList === index ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                            }`}
+                            style={{ pointerEvents: expandedProductList === index ? 'auto' : 'none' }}
+                          >
+                            {listBody}
+                          </div>
+                        </>
+                      );
+                    }
+                    return listBody;
+                  })()}
                   <button 
                     onClick={(e) => {
                       e.preventDefault();
@@ -1055,8 +1309,10 @@ export default function DesignShelf() {
                   </div>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
+          )}
         </section>
       </main>
 
@@ -1215,7 +1471,6 @@ export default function DesignShelf() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
-                <li><Link href="/designshelf/jp/brands" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
                 <li><Link href="/designshelf/jp/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/jp/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>

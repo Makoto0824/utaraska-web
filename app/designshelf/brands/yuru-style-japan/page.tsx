@@ -112,7 +112,7 @@ export default function YuruStyleJapan() {
     },
     {
       id: 117,
-      title: "向かい合うゆるいパンダ face2face",
+      title: "ゆるいパンダとパンダ",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/33_panda/hoodie/hoodie.jpg",
       designImage: "/designshelf/images/33_panda/design.png",
@@ -149,41 +149,8 @@ export default function YuruStyleJapan() {
       ]
     },
     {
-      id: 115,
-      title: "向かい合うゆるい天狗 face2face",
-      brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/31_tengu/hoodie/31_tengu_hoodie.png",
-      designImage: "/designshelf/images/31_tengu/31_tengu_design.png",
-      modelImage: "/designshelf/images/31_tengu/hoodie/31_tengu_model_hoodie.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4rwVutY",
-      features: [
-        "向かい合う天狗の顔を左右に配したビジュアル。太めの輪郭線と一定の間隔で入ったストライプ調の模様で存在感を出しつつ、表情はゆるく抑えて日常使いしやすくしています。遠目でも目を引く構図です。",
-        "和風の題材をポップに再解釈したデザインで、赤・黒・白のコントラストを効かせ視認性を高めています。ストリート系から和モダンまで幅広い着こなしと相性が良い設計です。"
-      ],
-      description: "向かい合う二つの天狗の顔を中心に据え、太い線とゆるい表情でまとめた和風イラストです。伝統的な天狗モチーフをポップに再構成し、重ね着やジャケットの差し色としても活用しやすいのが特長です。",
-      videoUrl: "https://www.instagram.com/reel/DRbpHY1AcHp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/4rwVutY"
-        },
-        {
-          name: "パーカー",
-          price: "¥4,400",
-          amazonLink: "https://amzn.to/4pmH4KS"
-        },
-        {
-          name: "トレーナー",
-          price: "¥3,960",
-          amazonLink: "https://amzn.to/3M3s3PH"
-        }
-      ]
-    },
-    {
       id: 114,
-      title: "向かい合うゆるい般若 face2face",
+      title: "ゆるい般若と般若",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/30_hannya/jp/30_tshirt_model_jp.jpg",
       designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
@@ -212,19 +179,19 @@ export default function YuruStyleJapan() {
         {
           name: "ジップパーカー",
           price: "¥4,600",
-          amazonLink: "https://amzn.to/44mPD03",
-          videoUrl: "https://www.instagram.com/reel/DRZ2iqDAfIj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+          amazonLink: "https://amzn.to/44mPD03"
         }
       ],
       carouselImages: [
         "/designshelf/images/30_hannya/jp/30_tshirt_model_jp.jpg",
         "/designshelf/images/30_hannya/hoodie/30_hannya_model_hoodie.png",
+        "/designshelf/images/30_hannya/jp/zip_hoodie.jpg",
         "/designshelf/images/30_hannya/30_hannya_design.png"
       ]
     },
     {
       id: 113,
-      title: "向かい合うゆるいユニコーン face2face トレーナー",
+      title: "ゆるいユニコーンとユニコーン",
       brand: "ゆるスタイル・ジャパン",
       image: "/designshelf/images/29_unicorn/swet/29_unicorn_swet.png",
       designImage: "/designshelf/images/29_unicorn/29_unicorn_design.png",
@@ -242,9 +209,9 @@ export default function YuruStyleJapan() {
       id: 112,
       title: "ゆるい風神雷神",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
-      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
-      modelImage: "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
+      image: "/designshelf/images/1_fujin_raijin/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/1_fujin_raijin/design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/jp/sweat_model.png",
       price: "¥2,300",
       amazonLink: "https://amzn.to/4bklZwI",
       features: [
@@ -259,19 +226,19 @@ export default function YuruStyleJapan() {
         { name: "ジップパーカー", price: "¥4,480", amazonLink: "https://amzn.to/47HCMYw", videoUrl: "https://www.instagram.com/reel/DQOlTdWAWx8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
       carouselImages: [
-        "/designshelf/images/1_fujin_raijin/jp/1_fujin_raijin_tshirt_model.jpg",
-        "/designshelf/images/1_fujin_raijin/swet/1_fujin_raijin_swet_model.png",
-        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie_model.png",
-        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
+        "/designshelf/images/1_fujin_raijin/jp/tshirt_model.jpg",
+        "/designshelf/images/1_fujin_raijin/jp/sweat_model.png",
+        "/designshelf/images/1_fujin_raijin/jp/zip_hoodie_model.png",
+        "/designshelf/images/1_fujin_raijin/design.png"
       ]
     },
     {
       id: 108,
-      title: "ゆるいライオン パーカー",
+      title: "ゆるいライオン",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/26_lion/26_lion_hoodie.png",
-      designImage: "/designshelf/images/26_lion/26_lion_design.png",
-      modelImage: "/designshelf/images/26_lion/26_lion_hoodie_model.png",
+      image: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/26_lion/design.png",
+      modelImage: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
       price: "¥4,400",
       amazonLink: "https://amzn.to/3JJ4FWX",
       features: [
@@ -523,7 +490,7 @@ export default function YuruStyleJapan() {
                       className="object-contain hover:scale-105 transition-transform"
                     />
                   )}
-                  {(product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 115 || product.id === 117) && (
+                  {(product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 117) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>

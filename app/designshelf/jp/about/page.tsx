@@ -22,7 +22,6 @@ export default function About() {
             </Link>
             <div className="flex items-center gap-6">
               <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
-              <Link href="/designshelf/jp/brands" className="text-gray-600 hover:text-gray-900 transition-colors">ブランド</Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
               <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
@@ -84,7 +83,6 @@ export default function About() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
-                <li><Link href="/designshelf/jp/brands" className="text-gray-300 hover:text-white transition-colors">ブランド一覧</Link></li>
                 <li><Link href="/designshelf/jp/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/jp/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>

@@ -226,9 +226,9 @@ export default function DesignShelf() {
       id: 127,
       title: "Face-to-Face Dragon Illustration Kanji Katakana",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/39_dragondragon2/model_tshirt_en.jpg",
+      image: "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/39_dragondragon2/design.png",
-      modelImage: "/designshelf/images/39_dragondragon2/model_tshirt_en.jpg",
+      modelImage: "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/09cc4T8V",
       features: [
@@ -238,7 +238,7 @@ export default function DesignShelf() {
       description: "This graphic combines a dragon motif inspired by Japanese folklore and decorative art with a seal design featuring kanji and katakana characters. The composition of dragons facing each other and the central text elements naturally draw the viewer's gaze. Streamlined lines and shapes enhance legibility, achieving a design that balances Japanese authenticity with contemporary graphic expression. It is an ideal piece for collections incorporating Japanese culture and character motifs.",
       videoUrl: "https://www.instagram.com/reel/DUWAjQvk3UO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       carouselImages: [
-        "/designshelf/images/39_dragondragon2/model_tshirt_en.jpg",
+        "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
         "/designshelf/images/39_dragondragon2/design.png"
       ]
     },
@@ -462,9 +462,9 @@ export default function DesignShelf() {
       id: 118,
       title: "Japanese Fujin & Raijin Art – Wind and Thunder Gods",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
-      designImage: "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png",
-      modelImage: "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
+      image: "/designshelf/images/1_fujin_raijin/en/tshirt_model.jpg",
+      designImage: "/designshelf/images/1_fujin_raijin/design.png",
+      modelImage: "/designshelf/images/1_fujin_raijin/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://www.amazon.com/dp/B0FYR7YBSW?customId=B07537H64L&customizationToken=MC_Assembly_1%23B07537H64L&th=1&psc=1",
       features: [
@@ -491,10 +491,10 @@ export default function DesignShelf() {
         }
       ],
       carouselImages: [
-        "/designshelf/images/1_fujin_raijin/en/tshirt_std/model.jpg",
-        "/designshelf/images/1_fujin_raijin/model_hoodie_en.jpg",
-        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_zip_hoodie.png",
-        "/designshelf/images/1_fujin_raijin/1_fujin_raijin_design.png"
+        "/designshelf/images/1_fujin_raijin/en/tshirt_model.jpg",
+        "/designshelf/images/1_fujin_raijin/en/hoodie_model.jpg",
+        "/designshelf/images/1_fujin_raijin/jp/zip_hoodie_model.png",
+        "/designshelf/images/1_fujin_raijin/design.png"
       ]
     },
     {
