@@ -239,14 +239,28 @@ export default function YuruStyleJapan() {
       image: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/26_lion/design.png",
       modelImage: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
-      price: "¥4,400",
-      amazonLink: "https://amzn.to/3JJ4FWX",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/3OkHvbZ",
       features: [
         "ライオンを大胆で印象的なゆるいタッチで表現。ユニークで目を引くアートスタイル",
         "普段着、カジュアルコーデ、ギフト用途まで幅広く使える汎用性の高いデザイン"
       ],
       description: "力強さと愛嬌を併せ持つこのライオンモチーフは、日本文化やアジアンテイストを好む方におすすめ。個性を演出したいシーンやプレゼントにも最適です。単体での着用はもちろん、重ね着やカジュアルな外出着としても使いやすいデザインです。贈り物としても選びやすいデザインで、年代を問わず合わせやすい点が特徴です。",
-      videoUrl: "https://www.instagram.com/reel/DQon0paAUwP/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      videoUrl: "https://www.instagram.com/reel/DXe0xx5AXm0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/3OkHvbZ",
+          videoUrl: "https://www.instagram.com/reel/DXe0xx5AXm0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink: "https://amzn.to/3JJ4FWX",
+          videoUrl: "https://www.instagram.com/reel/DQon0paAUwP/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        },
+      ],
     },
     {
       id: 107,
@@ -490,7 +504,7 @@ export default function YuruStyleJapan() {
                       className="object-contain hover:scale-105 transition-transform"
                     />
                   )}
-                  {(product.id === 102 || product.id === 103 || product.id === 104 || product.id === 105 || product.id === 106 || product.id === 107 || product.id === 108 || product.id === 112 || product.id === 113 || product.id === 114 || product.id === 117) && (
+                  {(product.id === 141 || product.id === 142) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
