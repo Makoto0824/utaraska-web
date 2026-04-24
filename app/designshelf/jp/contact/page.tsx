@@ -34,8 +34,9 @@ export default function Contact() {
               />
               
             </Link>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 sm:gap-6">
               <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
+              <Link href="/designshelf/jp/amazon" className="text-gray-600 hover:text-gray-900 transition-colors">Amazonおすすめ</Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
               <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
@@ -83,6 +84,7 @@ export default function Contact() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
+                <li><Link href="/designshelf/jp/amazon" className="text-gray-300 hover:text-white transition-colors">AmazonおすすめTシャツ</Link></li>
                 <li><Link href="/designshelf/jp/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/jp/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
