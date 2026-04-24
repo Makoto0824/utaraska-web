@@ -121,6 +121,8 @@ type ProductListRow = {
   price: string;
   amazonLink: string;
   videoUrl?: string;
+  /** true のとき「Instagramで見る」の代わりに準備中表示 */
+  instagramPreparing?: boolean;
 };
 
 type ProductListSource = {
@@ -343,6 +345,7 @@ export default function DesignShelf() {
     price: string;
     amazonLink: string;
     videoUrl?: string;
+    instagramPreparing?: boolean;
   };
 
   type Product = {
@@ -764,22 +767,35 @@ export default function DesignShelf() {
     {
       id: 113,
       title: "ゆるいユニコーンとユニコーン",
-      image: "/designshelf/images/29_unicorn/jp/sweat_model.png",
+      image: "/designshelf/images/29_unicorn/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/29_unicorn/design.png",
-      modelImage: "/designshelf/images/29_unicorn/jp/sweat_model.png",
-      price: "¥3,960",
-      amazonLink: "https://amzn.to/48kBYYW",
+      modelImage: "/designshelf/images/29_unicorn/jp/tshirt_model.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/41T5WQM",
       jpAssets: {
         root: "/designshelf/images/29_unicorn",
         design: "design.png",
-        slots: { sweat: "jp/sweat_model.png" },
+        slots: { tshirt: "jp/tshirt_model.jpg", sweat: "jp/sweat_model.png" },
       },
       features: [
         "左右に向かい合うユニコーンの顔をこだわりのゆるいタッチで描かれているデザイン。可愛さとユーモアを両立させ、日常のコーデに馴染む見え方を意識しています。",
         "どんな色でも映える配色設計で、ギフトやプレゼント、季節商品としても扱いやすいです。"
       ],
       description: "向かい合う二つのユニコーン顔を中心にしたシンプルなビジュアルデザインです。線を太めにしつつ表情はゆるくまとめているため、子供から大人まで幅広く使いやすいのが特徴です。胸元ワンポイントに収めることで主張が強くなりすぎず、複数の色やアイテムに展開しやすい設計にしています。",
-      videoUrl: "https://www.instagram.com/reel/DRWeWdfgaLw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/41T5WQM",
+          instagramPreparing: true,
+        },
+        {
+          name: "トレーナー",
+          price: "¥3,960",
+          amazonLink: "https://amzn.to/48kBYYW",
+          videoUrl: "https://www.instagram.com/reel/DRWeWdfgaLw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        },
+      ],
     },
     {
       id: 108,
@@ -1242,6 +1258,9 @@ export default function DesignShelf() {
                                 />
                                 <span>Instagramで見る</span>
                               </a>
+                            )}
+                            {variation.instagramPreparing && (
+                              <p className="text-sm text-gray-500">Instagram：準備中</p>
                             )}
                           </div>
                         ))}

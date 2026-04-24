@@ -17,6 +17,7 @@ export default function YuruStyleJapan() {
     price: string;
     amazonLink: string;
     videoUrl?: string;
+    instagramPreparing?: boolean;
   };
 
   type Product = {
@@ -193,17 +194,30 @@ export default function YuruStyleJapan() {
       id: 113,
       title: "ゆるいユニコーンとユニコーン",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/29_unicorn/swet/29_unicorn_swet.png",
-      designImage: "/designshelf/images/29_unicorn/29_unicorn_design.png",
-      modelImage: "/designshelf/images/29_unicorn/swet/29_unicorn_model_swet.png",
-      price: "¥3,960",
-      amazonLink: "https://amzn.to/48kBYYW",
+      image: "/designshelf/images/29_unicorn/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/29_unicorn/design.png",
+      modelImage: "/designshelf/images/29_unicorn/jp/tshirt_model.jpg",
+      price: "¥2,300",
+      amazonLink: "https://amzn.to/41T5WQM",
       features: [
         "左右に向かい合うユニコーンの顔をこだわりのゆるいタッチで描かれているデザイン。可愛さとユーモアを両立させ、日常のコーデに馴染む見え方を意識しています。",
         "どんな色でも映える配色設計で、ギフトやプレゼント、季節商品としても扱いやすいです。"
       ],
       description: "向かい合う二つのユニコーン顔を中心にしたシンプルなビジュアルデザインです。線を太めにしつつ表情はゆるくまとめているため、子供から大人まで幅広く使いやすいのが特徴です。胸元ワンポイントに収めることで主張が強くなりすぎず、複数の色やアイテムに展開しやすい設計にしています。",
-      videoUrl: "https://www.instagram.com/reel/DRWeWdfgaLw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      variations: [
+        {
+          name: "Tシャツ",
+          price: "¥2,300",
+          amazonLink: "https://amzn.to/41T5WQM",
+          instagramPreparing: true,
+        },
+        {
+          name: "トレーナー",
+          price: "¥3,960",
+          amazonLink: "https://amzn.to/48kBYYW",
+          videoUrl: "https://www.instagram.com/reel/DRWeWdfgaLw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        },
+      ],
     },
     {
       id: 112,
@@ -599,24 +613,29 @@ export default function YuruStyleJapan() {
                   {product.variations ? (
                     <div className="mt-auto pt-4 space-y-3">
                       {product.variations.map((variation, idx) => (
-                        <div key={idx} className="flex items-center justify-between border-b border-gray-200 pb-2 last:border-b-0">
-                          <div className="flex flex-col">
-                            <span className="text-sm font-medium text-gray-800">{variation.name}</span>
-                            <div className="flex items-center gap-2 mt-1">
-                              <span className="text-lg font-bold text-gray-800">{variation.price}</span>
-                              <span className="text-xs text-gray-500">税込</span>
+                        <div key={idx} className="flex flex-col gap-1 border-b border-gray-200 pb-2 last:border-b-0">
+                          <div className="flex items-center justify-between">
+                            <div className="flex flex-col">
+                              <span className="text-sm font-medium text-gray-800">{variation.name}</span>
+                              <div className="flex items-center gap-2 mt-1">
+                                <span className="text-lg font-bold text-gray-800">{variation.price}</span>
+                                <span className="text-xs text-gray-500">税込</span>
+                              </div>
                             </div>
+                            <a
+                              href={variation.amazonLink}
+                              target="_blank"
+                              rel="noopener noreferrer nofollow"
+                              className="amazon-btn"
+                              aria-label={`Amazonで${variation.name}を見る`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span className="label">Amazon<br />で見る</span>
+                            </a>
                           </div>
-                          <a 
-                            href={variation.amazonLink}
-                            target="_blank"
-                            rel="noopener noreferrer nofollow"
-                            className="amazon-btn"
-                            aria-label={`Amazonで${variation.name}を見る`}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <span className="label">Amazon<br />で見る</span>
-                          </a>
+                          {variation.instagramPreparing && (
+                            <p className="text-xs text-gray-500">Instagram：準備中</p>
+                          )}
                         </div>
                       ))}
                     </div>
