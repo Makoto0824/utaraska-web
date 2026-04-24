@@ -6,6 +6,6 @@ export const metadata: Metadata = {
     'DesignShelfがAmazonで見つけた気になるTシャツをThreadsの公式埋め込みで紹介するページです。オリジナル商品ではありません。Amazonアソシエイトリンクが含まれる場合があります。',
 };
 
-export default function AmazonPicksLayout({ children }: { children: React.ReactNode }) {
+export default function JpPicksLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

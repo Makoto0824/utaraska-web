@@ -1,5 +1,5 @@
 /**
- * DesignShelf「AmazonおすすめTシャツ」用の Threads 埋め込み投稿データ。
+ * DesignShelf JP「/designshelf/jp/picks」用の Threads 埋め込み投稿データ。
  * 将来 Amazon Creators API でカード表示する場合は、別型を union で追加する想定。
  */
 

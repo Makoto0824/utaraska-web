@@ -10,6 +10,8 @@ import {
   extractThreadsBlockquoteHtml,
 } from '@/lib/designshelf/amazonThreadsPicks';
 
+const PICKS_PATH = '/designshelf/jp/picks';
+
 type CategoryFilter = 'all' | AmazonPickCategory;
 
 const FILTER_TABS: { id: CategoryFilter; label: string }[] = [
@@ -28,7 +30,7 @@ function reinjectThreadsEmbedScript() {
   document.body.appendChild(s);
 }
 
-export default function AmazonTShirtPicksPage() {
+export default function JpPicksPage() {
   const [category, setCategory] = useState<CategoryFilter>('all');
 
   const filtered = useMemo(() => {
@@ -64,7 +66,7 @@ export default function AmazonTShirtPicksPage() {
               <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">
                 ホーム
               </Link>
-              <Link href="/designshelf/jp/amazon" className="text-gray-900 font-medium">
+              <Link href={PICKS_PATH} className="text-gray-900 font-medium">
                 Amazonおすすめ
               </Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
@@ -172,7 +174,7 @@ export default function AmazonTShirtPicksPage() {
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/designshelf/jp/amazon" className="text-gray-300 hover:text-white transition-colors">
+                  <Link href={PICKS_PATH} className="text-gray-300 hover:text-white transition-colors">
                     AmazonおすすめTシャツ
                   </Link>
                 </li>
