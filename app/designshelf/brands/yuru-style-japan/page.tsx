@@ -209,7 +209,7 @@ export default function YuruStyleJapan() {
           name: "Tシャツ",
           price: "¥2,300",
           amazonLink: "https://amzn.to/41T5WQM",
-          instagramPreparing: true,
+          videoUrl: "https://www.instagram.com/reel/DXh4T-aAdV4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
         },
         {
           name: "トレーナー",
