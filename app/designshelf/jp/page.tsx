@@ -567,12 +567,13 @@ export default function DesignShelf() {
         "龍の表情と輪郭を際立たせたシンメトリー構図。余白を活かした配置により、縮小表示でも龍と文字の存在感が明確に伝わります。"
       ],
       description: "日本の伝承や装飾表現に着想を得た龍（ドラゴン）モチーフを、漢字とカタカナの判子デザインと組み合わせたグラフィックです。左右に向かい合う龍の構図と中央の文字要素によって、視線が自然に集まるよう設計しています。線と形を整理することで視認性を高め、日本らしさと現代的なグラフィック表現を両立させたデザインに仕上げています。日本文化や文字モチーフを取り入れたコレクションに適した一枚です。",
-      videoUrl: "https://www.instagram.com/reel/DUeRgZpAf35/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      videoUrl: "https://www.instagram.com/reel/DXj8AXgARbT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       variations: [
         {
           name: "Tシャツ",
           price: "¥2,300",
-          amazonLink: "https://amzn.asia/d/077ee9fx"
+          amazonLink: "https://amzn.asia/d/077ee9fx",
+          videoUrl: "https://www.instagram.com/reel/DXj8AXgARbT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
         },
         {
           name: "長袖Tシャツ",

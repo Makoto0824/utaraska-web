@@ -236,7 +236,7 @@ export default function DesignShelf() {
         "A symmetrical composition that accentuates the dragon's expression and contours. The layout, which makes effective use of negative space, ensures the dragon and text maintain a clear presence even when displayed at reduced size."
       ],
       description: "This graphic combines a dragon motif inspired by Japanese folklore and decorative art with a seal design featuring kanji and katakana characters. The composition of dragons facing each other and the central text elements naturally draw the viewer's gaze. Streamlined lines and shapes enhance legibility, achieving a design that balances Japanese authenticity with contemporary graphic expression. It is an ideal piece for collections incorporating Japanese culture and character motifs.",
-      videoUrl: "https://www.instagram.com/reel/DUWAjQvk3UO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      videoUrl: "https://www.instagram.com/reel/DXj8AXgARbT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       carouselImages: [
         "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
         "/designshelf/images/39_dragondragon2/design.png"
