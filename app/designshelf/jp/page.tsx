@@ -588,7 +588,8 @@ export default function DesignShelf() {
         {
           name: "パーカー",
           price: "¥4,400",
-          amazonLink: "https://amzn.asia/d/0a8Sumzr"
+          amazonLink: "https://amzn.asia/d/0a8Sumzr",
+          videoUrl: "https://www.instagram.com/reel/DUeRgZpAf35/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
         }
       ],
       carouselImages: [
