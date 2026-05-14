@@ -2,6 +2,7 @@
 
 // app/page.tsx
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -50,7 +51,7 @@ export default function HomePage() {
           <div className="mb-8">
             <div className="bg-white px-6 py-3 rounded-full border-4 border-black transform rotate-1 inline-block">
               <span className="text-lg font-black text-black">
-                🏆 大手放送局実績 | 🎯 多数番組担当 | ⭐ 放送品質のイラスト
+                イラスト制作（放映・プロモ） | ゲーム開発・自社リリース
               </span>
             </div>
           </div>
@@ -82,11 +83,19 @@ export default function HomePage() {
             {/* 解決する課題を明確化 */}
             <div className="space-y-4">
               <p className="text-xl md:text-2xl text-black font-black max-w-3xl mx-auto bg-cyan-300 px-6 py-4 rounded-none transform -rotate-1 shadow-xl border-4 border-black">
-                ブランディングで差別化できない？<br />
-                技術力不足でプロジェクトが停滞？
+                イラストで世界観を固め、<br />
+                ゲームで「あそび」を届ける。
               </p>
               <p className="text-lg md:text-xl lg:text-2xl text-gray-800 font-bold max-w-3xl mx-auto leading-relaxed bg-yellow-200 px-6 py-4 rounded-3xl transform rotate-1 shadow-2xl border-4 border-black">
-                クリエイティブから最先端テクノロジーまで、<br className="hidden md:block" />幅広い領域でビジョンを実現
+                受託のイラスト制作と、企画からリリースまでのゲーム開発。<br className="hidden md:block" />
+                2本柱で、伝えたい体験を形にします。
+              </p>
+              <p className="text-base md:text-lg text-black font-bold max-w-3xl mx-auto leading-relaxed bg-lime-200 px-6 py-4 rounded-3xl border-4 border-black shadow-xl transform -rotate-1">
+                イラスト・キャラクターデザインから、AIを活用したアプリ・ゲーム開発まで
+                <strong className="text-black">一気通貫</strong>
+                で対応。モダンな開発（バイブコーディング等）で工程を効率化し、
+                <strong className="text-black">他社に比べて抑えたお見積り</strong>
+                を実現しやすいのが強みです。
               </p>
             </div>
           </div>
@@ -109,10 +118,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-black text-black mb-4 bg-yellow-300 px-6 py-3 rounded-full border-4 border-black transform rotate-1 inline-block">
-              信頼できるパートナー企業
+              イラスト・ゲームでお世話になったパートナー
             </h2>
             <p className="text-lg text-black font-bold bg-cyan-200 px-4 py-2 rounded-full border-4 border-black transform -rotate-1 inline-block">
-              大手企業との実績多数
+              放映局・ゲーム配信で培った実績
             </p>
           </div>
           
@@ -204,10 +213,14 @@ export default function HomePage() {
             <div className="order-1 lg:order-2 space-y-6 relative">
               <div className="bg-cyan-300 p-8 rounded-none border-4 border-black transform rotate-1 shadow-xl">
                 <h2 className="text-3xl md:text-4xl font-black text-black mb-4 transform -rotate-1">
-                  革新的なソリューションで<br />お客様の成功を支援
+                  イラスト × ゲームの<br />専業スタジオ
                 </h2>
                 <p className="text-lg text-black font-bold leading-relaxed">
-                  私たちは最新のテクノロジーとクリエイティブな発想を組み合わせ、お客様のビジネス課題を解決します。
+                  番組やキャンペーン向けのイラスト・キャラクターデザインから、モバイルやブラウザのゲーム・アプリまで
+                  <strong className="text-black">ワンストップ</strong>
+                  で相談いただけます。制作フローにAIやバイブコーディングを組み合わせ、外注の段階を減らすことで
+                  <strong className="text-black">コストを抑えたご提案</strong>
+                  が可能です。
                 </p>
               </div>
               
@@ -217,8 +230,8 @@ export default function HomePage() {
                   <div className="text-sm font-bold text-black">プロジェクト実績</div>
                 </div>
                 <div className="text-center p-6 bg-pink-300 border-4 border-black transform rotate-2 hover:-rotate-2 transition-transform">
-                  <div className="text-3xl font-black text-black mb-2">4分野</div>
-                  <div className="text-sm font-bold text-black">専門技術領域</div>
+                  <div className="text-3xl font-black text-black mb-2">2本柱</div>
+                  <div className="text-sm font-bold text-black">イラストとゲーム</div>
                 </div>
               </div>
             </div>
@@ -236,78 +249,61 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-black mb-6 transform -rotate-1 bg-pink-300 inline-block px-8 py-4 border-4 border-black">
-              あなたのビジネスが得られるメリット
+              イラストとゲームで叶えること
             </h2>
             <p className="text-xl text-black font-bold max-w-2xl mx-auto bg-cyan-200 px-6 py-3 rounded-full border-4 border-black">
-              機能ではなく、成果にフォーカスしたソリューション
+              ビジュアルとプレイ体験の両方から、ブランドの「あそび」を届けます
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="group p-8 bg-pink-400 rounded-none border-4 border-black hover:bg-yellow-400 transition-all duration-300 hover:-translate-y-3 hover:rotate-2 transform">
               <div className="w-16 h-16 bg-white rounded-full mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-black text-2xl font-black">🎨</span>
+                <span className="text-black text-2xl font-black">絵</span>
               </div>
-              <h3 className="text-2xl font-black text-black mb-4">イラスト・動画制作</h3>
+              <h3 className="text-2xl font-black text-black mb-4">イラスト・キャラデザイン</h3>
               <p className="text-black font-bold text-sm leading-relaxed">
-                プロ品質のイラスト・動画で<br />
-                <span className="text-lg">ブランド価値を向上</span>
+                番組・映像・プロモーション向けの<br />
+                <span className="text-lg">イラスト・キャラクター制作（放送運用品質）</span>
               </p>
             </div>
             
-            <div className="group p-8 bg-cyan-400 rounded-none border-4 border-black hover:bg-pink-400 transition-all duration-300 hover:-translate-y-3 hover:-rotate-1 transform rotate-1">
+            <div className="group p-8 bg-cyan-400 rounded-none border-4 border-black transition-all duration-300 hover:-translate-y-3 hover:-rotate-1 hover:bg-pink-400 transform rotate-1">
               <div className="w-16 h-16 bg-white rounded-full mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-black text-2xl font-black">🎮</span>
+                <span className="text-black text-2xl font-black">遊</span>
               </div>
               <h3 className="text-2xl font-black text-black mb-4">ゲーム開発</h3>
               <p className="text-black font-bold text-sm leading-relaxed">
-                Unity・HTML5ゲームで<br />
-                <span className="text-lg">エンターテイメント体験を提供</span>
+                企画からリリースまで、自社タイトルと受託の両方で<br />
+                <span className="text-lg">プレイ体験を設計</span>
               </p>
-            </div>
-            
-            <div className="group p-8 bg-yellow-400 rounded-none border-4 border-black hover:bg-cyan-400 transition-all duration-300 hover:-translate-y-3 hover:rotate-3 transform -rotate-1">
-              <div className="w-16 h-16 bg-white rounded-full mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-black text-2xl font-black">🤖</span>
-              </div>
-              <h3 className="text-2xl font-black text-black mb-4">AI技術活用</h3>
-              <p className="text-black font-bold text-sm leading-relaxed">
-                AI画像・動画・楽曲生成で<br />
-                <span className="text-lg">制作効率を大幅向上</span>
-              </p>
-            </div>
-            
-            <div className="group p-8 bg-green-400 rounded-none border-4 border-black hover:bg-yellow-400 transition-all duration-300 hover:-translate-y-3 hover:-rotate-2 transform rotate-2">
-              <div className="w-16 h-16 bg-white rounded-full mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-black text-2xl font-black">📱</span>
-              </div>
-              <h3 className="text-2xl font-black text-black mb-4">LINE・Web3開発</h3>
-              <p className="text-black font-bold text-sm leading-relaxed">
-                LINE LIFF・Web3アプリで<br />
-                <span className="text-lg">次世代プラットフォーム構築</span><br />
-                <span className="text-sm">NFT・ブロックチェーン技術活用</span>
+              <p className="mt-4 text-xs font-bold text-gray-900">
+                公開タイトル一覧は、このページの<strong>制作実績エリア</strong>
+                （ゲーム作品・公開一覧）からご覧ください。
               </p>
             </div>
             
             <div className="group p-8 bg-purple-400 rounded-none border-4 border-black hover:bg-green-400 transition-all duration-300 hover:-translate-y-3 hover:rotate-1 transform -rotate-2">
               <div className="w-16 h-16 bg-white rounded-full mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-black text-2xl font-black">🏆</span>
+                <span className="text-black text-2xl font-black">映</span>
               </div>
-              <h3 className="text-2xl font-black text-black mb-4">大手メディア実績</h3>
+              <h3 className="text-2xl font-black text-black mb-4">放映・メディア実績</h3>
               <p className="text-black font-bold text-sm leading-relaxed">
-                BSフジ・日本テレビ・TBSなど<br />
-                <span className="text-lg">大手メディアとの実績多数</span>
+                BSフジ・日本テレビ・TBS・テレビ朝日など<br />
+                <span className="text-lg">イラスト制作の豊富な番組経験</span>
               </p>
             </div>
             
-            <div className="group p-8 bg-red-400 rounded-none border-4 border-black hover:bg-purple-400 transition-all duration-300 hover:-translate-y-3 hover:-rotate-3 transform rotate-3">
+            <div className="group p-8 bg-green-400 rounded-none border-4 border-black hover:bg-red-400 transition-all duration-300 hover:-translate-y-3 hover:-rotate-2 transform rotate-2">
               <div className="w-16 h-16 bg-white rounded-full mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-black text-2xl font-black">🚀</span>
+                <span className="text-black text-2xl font-black">貫</span>
               </div>
-              <h3 className="text-2xl font-black text-black mb-4">総合ソリューション</h3>
+              <h3 className="text-2xl font-black text-black mb-4">一気通貫 × コスト優位</h3>
               <p className="text-black font-bold text-sm leading-relaxed">
-                受託から個人開発まで<br />
-                <span className="text-lg">ワンストップでサポート</span>
+                ビジュアル制作から、AIを活用したアプリ・ゲーム実装まで一つの窓口で。<br />
+                <span className="text-lg">バイブコーディング等で実装を加速し、イラストから実装まで一体で進められる体制のため、多段階の外注に比べて</span>
+                <span className="text-lg">お見積りを抑えやすい</span>
+                のが強みです。
               </p>
             </div>
           </div>
@@ -323,10 +319,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-black mb-6 transform rotate-1 bg-yellow-300 inline-block px-8 py-4 border-4 border-black">
-              たった3ステップで始められる
+              ご相談からの流れ
             </h2>
             <p className="text-xl text-black font-bold max-w-2xl mx-auto bg-pink-200 px-6 py-3 rounded-full border-4 border-black">
-              シンプルで分かりやすいプロセス
+              イラスト・ゲーム、どちらでもシンプルに
             </p>
           </div>
           
@@ -339,8 +335,8 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-2xl font-black text-black mb-4 text-center">お問い合わせ</h3>
                 <p className="text-black font-bold text-center leading-relaxed">
-                  まずは気軽にご相談ください<br />
-                  <span className="text-lg">無料で現状分析いたします</span>
+                  イラスト・ゲームのご要件を<br />
+                  <span className="text-lg">お気軽にお寄せください</span>
                 </p>
               </div>
               {/* Arrow */}
@@ -357,8 +353,8 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-2xl font-black text-black mb-4 text-center">プラン提案</h3>
                 <p className="text-black font-bold text-center leading-relaxed">
-                  最適なソリューションを<br />
-                  <span className="text-lg">カスタマイズしてご提案</span>
+                  内容に沿ったスケジュール・お見積りを<br />
+                  <span className="text-lg">ご提案します</span>
                 </p>
               </div>
               {/* Arrow */}
@@ -373,10 +369,10 @@ export default function HomePage() {
                 <div className="w-20 h-20 bg-white rounded-full mb-6 flex items-center justify-center border-4 border-black mx-auto">
                   <span className="text-black text-3xl font-black">3</span>
                 </div>
-                <h3 className="text-2xl font-black text-black mb-4 text-center">実装・運用</h3>
+                <h3 className="text-2xl font-black text-black mb-4 text-center">制作・リリース</h3>
                 <p className="text-black font-bold text-center leading-relaxed">
-                  迅速な実装と<br />
-                  <span className="text-lg">継続的なサポート</span>
+                  イラストは納品、ゲームはテストプレイを経て<br />
+                  <span className="text-lg">リリースまで伴走します</span>
                 </p>
               </div>
             </div>
@@ -394,20 +390,39 @@ export default function HomePage() {
       {/* Works Section */}
       <section className="px-4 py-20 bg-gradient-to-br from-red-200 to-purple-200 relative">
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-8 transform rotate-1 bg-yellow-300 inline-block px-8 py-4 border-4 border-black">
-              制作実績
-            </h2>
-            <p className="text-xl text-black font-bold bg-pink-200 px-6 py-3 rounded-full border-4 border-black transform -rotate-1 inline-block">
-              大手メディアでの豊富な実績
-            </p>
+          <div className="mb-16 grid gap-12 md:grid-cols-2 md:items-start md:gap-10">
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-black text-black mb-8 transform rotate-1 bg-yellow-300 inline-block px-8 py-4 border-4 border-black">
+                イラスト制作実績
+              </h2>
+              <p className="text-xl text-black font-bold bg-pink-200 px-6 py-3 rounded-full border-4 border-black transform -rotate-1 inline-block">
+                放映局・番組向けの担当事例（抜粋）
+              </p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-4xl md:text-5xl font-black text-black mb-8 transform -rotate-1 bg-cyan-300 inline-block px-8 py-4 border-4 border-black shadow-[8px_8px_0_0_rgb(0,0,0)]">
+                ゲーム作品・公開一覧
+              </h2>
+              <p className="mb-8 text-xl text-black font-bold bg-lime-200 px-6 py-3 rounded-full border-4 border-black transform rotate-1 inline-block">
+                App Store・ブラウザ（かんたんゲームボックス掲載）
+              </p>
+              <Link
+                href="/games"
+                className="inline-block border-4 border-black bg-black px-10 py-5 text-xl font-black text-white shadow-[8px_8px_0_0_rgb(0,0,0)] transition-colors hover:bg-gray-800 md:text-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2"
+              >
+                /games で詳細を見る →
+              </Link>
+              <p className="mx-auto mt-6 max-w-md text-sm font-bold leading-relaxed text-gray-900">
+                自社モバイルタイトル・ブラウザ向けカジュアルゲームの紹介、ストア・プレイリンクは専用ページに集約しています。
+              </p>
+            </div>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* BSフジ */}
             <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-2 transition-transform">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">📺</span>
+                <span className="text-2xl font-black text-white">BS</span>
               </div>
               <h3 className="text-xl font-black text-black mb-4 text-center">BSフジ</h3>
               <div className="space-y-2 mb-6">
@@ -494,7 +509,7 @@ export default function HomePage() {
             {/* TBS */}
             <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-1 transition-transform">
               <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🎬</span>
+                <span className="text-2xl font-black text-white">TB</span>
               </div>
               <h3 className="text-xl font-black text-black mb-4 text-center">TBS</h3>
               <div className="space-y-2 mb-6">
@@ -565,7 +580,7 @@ export default function HomePage() {
             {/* 日本テレビ */}
             <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-1 transition-transform">
               <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">📡</span>
+                <span className="text-2xl font-black text-white">NT</span>
               </div>
               <h3 className="text-xl font-black text-black mb-4 text-center">日本テレビ</h3>
               <div className="space-y-2 mb-6">
@@ -608,7 +623,7 @@ export default function HomePage() {
             {/* テレビ朝日 */}
             <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-2 transition-transform">
               <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🌟</span>
+                <span className="text-2xl font-black text-white">TA</span>
               </div>
               <h3 className="text-xl font-black text-black mb-4 text-center">テレビ朝日</h3>
               <div className="space-y-2 mb-6">
@@ -640,45 +655,21 @@ export default function HomePage() {
               </div>
             </div>
             
-            {/* GMOメディア */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-1 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🎮</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">GMOメディア</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">かんたんゲームボックス</p>
-                <p className="text-xs text-gray-600 text-center">ポイントタウンなど複数のプラットフォーム</p>
-                <p className="text-sm font-bold text-black text-center">カジュアルゲーム提供</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-orange-300 to-red-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">GMO作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-orange-300 to-red-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">GMO作品</span>
-                </div>
-              </div>
-            </div>
-            
             {/* 実績サマリー */}
             <div className="bg-gradient-to-r from-pink-400 to-yellow-400 rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-1 transition-transform">
               <div className="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-black">🏆</span>
+                <span className="text-2xl font-black text-black">要</span>
               </div>
               <h3 className="text-xl font-black text-black mb-4 text-center">実績サマリー</h3>
               <div className="space-y-2">
-                <p className="text-sm font-bold text-black text-center">大手放送局との実績</p>
+                <p className="text-sm font-bold text-black text-center">放映局とのイラスト実績</p>
                 <p className="text-xs text-black text-center">BSフジ・TBS・日本テレビ・テレビ朝日</p>
-                <p className="text-sm font-bold text-black text-center">大手メディア企業との実績</p>
-                <p className="text-xs text-black text-center">GMOメディア・ゲームプラットフォーム</p>
-                <p className="text-sm font-bold text-black text-center">多数の番組実績</p>
-                <p className="text-xs text-black text-center">長期的な信頼関係を構築</p>
-                <p className="text-sm font-bold text-black text-center">高品質なイラスト・ゲーム</p>
-                <p className="text-xs text-black text-center">放送品質・ゲーム品質に耐えるクオリティ</p>
-                <p className="text-sm font-bold text-black text-center">継続的なパートナーシップ</p>
-                <p className="text-xs text-black text-center">大手メディアからの信頼</p>
+                <p className="text-sm font-bold text-black text-center">ブラウザゲームの提供</p>
+                <p className="text-xs text-black text-center">ゲーム配信プラットフォーム向け</p>
+                <p className="text-sm font-bold text-black text-center">自社ゲームのリリース</p>
+                <p className="text-xs text-black text-center">モバイルアプリ・Web（詳細はゲームページ）</p>
+                <p className="text-sm font-bold text-black text-center">高品質なイラスト・ゲーム表現</p>
+                <p className="text-xs text-black text-center">オンエア・配信に耐えるクオリティ</p>
               </div>
             </div>
           </div>
@@ -686,203 +677,6 @@ export default function HomePage() {
         
         <div className="absolute top-10 right-20 w-16 h-16 bg-cyan-400 transform rotate-12"></div>
         <div className="absolute bottom-20 left-20 w-12 h-24 bg-green-400 transform -rotate-45"></div>
-      </section>
-
-      {/* 自社開発エリア */}
-      <section className="px-4 py-20 bg-gradient-to-br from-blue-200 to-indigo-200 relative">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-8 transform -rotate-1 bg-cyan-300 inline-block px-8 py-4 border-4 border-black">
-              自社開発
-            </h2>
-            <p className="text-xl text-black font-bold bg-blue-200 px-6 py-3 rounded-full border-4 border-black transform rotate-1 inline-block">
-              最先端テクノロジーで創造する未来
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Unityゲーム開発 */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-2 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🎮</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">Unityゲーム開発</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">モバイル・PCゲーム</p>
-                <p className="text-xs text-gray-600 text-center">3D・2Dゲーム開発</p>
-                <p className="text-sm font-bold text-black text-center">VR・AR対応</p>
-                <p className="text-xs text-gray-600 text-center">最新技術を活用</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-purple-300 to-pink-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">Unity作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-purple-300 to-pink-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">Unity作品</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* HTML5ゲーム開発 */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-1 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🌐</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">HTML5ゲーム開発</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">ブラウザゲーム</p>
-                <p className="text-xs text-gray-600 text-center">クロスプラットフォーム</p>
-                <p className="text-sm font-bold text-black text-center">スマホ対応</p>
-                <p className="text-xs text-gray-600 text-center">即座にプレイ可能</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-green-300 to-blue-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">HTML5作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-green-300 to-blue-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">HTML5作品</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* SNS運用 */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-1 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">📱</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">SNS運用</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">TikTok・Instagram</p>
-                <p className="text-xs text-gray-600 text-center">動画・画像制作</p>
-                <p className="text-sm font-bold text-black text-center">コンテンツ企画</p>
-                <p className="text-xs text-gray-600 text-center">エンゲージメント向上</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-pink-300 to-red-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">SNS作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-pink-300 to-red-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">SNS作品</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* 動画編集 */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-2 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🎬</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">動画編集</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">プロ品質編集</p>
-                <p className="text-xs text-gray-600 text-center">エフェクト・アニメーション</p>
-                <p className="text-sm font-bold text-black text-center">マルチプラットフォーム</p>
-                <p className="text-xs text-gray-600 text-center">高品質出力</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-yellow-300 to-orange-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">動画作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-yellow-300 to-orange-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">動画作品</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* AI生成 */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-3 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🤖</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">AI生成</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">画像・動画・音楽</p>
-                <p className="text-xs text-gray-600 text-center">最新AI技術活用</p>
-                <p className="text-sm font-bold text-black text-center">高品質生成</p>
-                <p className="text-xs text-gray-600 text-center">カスタマイズ可能</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-cyan-300 to-blue-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">AI作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-cyan-300 to-blue-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">AI作品</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* NFT制作 */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-3 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🖼️</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">NFT制作</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">デジタルアート</p>
-                <p className="text-xs text-gray-600 text-center">ブロックチェーン対応</p>
-                <p className="text-sm font-bold text-black text-center">コレクション制作</p>
-                <p className="text-xs text-gray-600 text-center">マーケットプレイス対応</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-indigo-300 to-purple-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">NFT作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-indigo-300 to-purple-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">NFT作品</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Web3関連アプリ開発 */}
-            <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-1 transition-transform">
-              <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🔗</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">Web3関連アプリ開発</h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-sm font-bold text-black text-center">ブロックチェーン</p>
-                <p className="text-xs text-gray-600 text-center">DeFi・DApp開発</p>
-                <p className="text-sm font-bold text-black text-center">スマートコントラクト</p>
-                <p className="text-xs text-gray-600 text-center">次世代Webアプリ</p>
-              </div>
-              {/* プレースホルダー画像 */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="w-full h-20 bg-gradient-to-r from-emerald-300 to-teal-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">Web3作品</span>
-                </div>
-                <div className="w-full h-20 bg-gradient-to-r from-emerald-300 to-teal-300 border-2 border-black flex items-center justify-center">
-                  <span className="text-xs font-black text-black">Web3作品</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* 自社開発サマリー */}
-            <div className="bg-gradient-to-r from-blue-400 to-indigo-400 rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-1 transition-transform">
-              <div className="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-black">🚀</span>
-              </div>
-              <h3 className="text-xl font-black text-black mb-4 text-center">自社開発サマリー</h3>
-              <div className="space-y-2">
-                <p className="text-sm font-bold text-black text-center">7つの技術領域</p>
-                <p className="text-xs text-black text-center">Unity・HTML5・SNS・動画・AI・NFT・Web3</p>
-                <p className="text-sm font-bold text-black text-center">最先端技術</p>
-                <p className="text-xs text-black text-center">常に最新トレンドをキャッチ</p>
-                <p className="text-sm font-bold text-black text-center">総合ソリューション</p>
-                <p className="text-xs text-black text-center">ワンストップで開発サポート</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="absolute top-10 left-20 w-16 h-16 bg-indigo-400 transform rotate-45"></div>
-        <div className="absolute bottom-20 right-20 w-12 h-24 bg-blue-400 transform -rotate-12"></div>
-        <div className="absolute top-1/2 right-10 w-8 h-32 bg-purple-400 transform rotate-30"></div>
       </section>
 
       {/* 会社概要 Section */}
@@ -893,7 +687,7 @@ export default function HomePage() {
               会社概要
             </h2>
             <p className="text-xl text-black font-bold bg-pink-200 px-6 py-3 rounded-full border-4 border-black transform -rotate-1 inline-block">
-              ウタラスカ合同会社について
+              イラスト制作とゲーム開発を軸にしたクリエイティブスタジオ
             </p>
           </div>
           
@@ -901,7 +695,7 @@ export default function HomePage() {
             {/* 会社情報 */}
             <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:rotate-2 transition-transform">
               <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">🏢</span>
+                <span className="text-2xl font-black text-white">社</span>
               </div>
               <h3 className="text-2xl font-black text-black mb-6 text-center">会社情報</h3>
               <div className="space-y-4">
@@ -927,28 +721,24 @@ export default function HomePage() {
             {/* 事業内容 */}
             <div className="bg-white rounded-none p-8 shadow-xl border-4 border-black transform hover:-rotate-1 transition-transform">
               <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-black">
-                <span className="text-2xl font-black text-white">💼</span>
+                <span className="text-2xl font-black text-white">業</span>
               </div>
               <h3 className="text-2xl font-black text-black mb-6 text-center">事業内容</h3>
               <div className="space-y-4">
                 <div className="bg-yellow-200 p-4 rounded-none border-2 border-black">
-                  <h4 className="text-lg font-black text-black mb-2">受託事業</h4>
+                  <h4 className="text-lg font-black text-black mb-2">受託（イラスト・ビジュアル）</h4>
                   <ul className="text-sm font-bold text-black space-y-1">
-                    <li>• イラスト制作</li>
-                    <li>• Unityアニメーション制作</li>
-                    <li>• AI画像生成</li>
-                    <li>• 動画編集</li>
+                    <li>• イラスト・キャラクターデザイン（テレビ・映像・プロモーション等）</li>
+                    <li>• 番組内ビジュアル・クイズ・解説用イラスト</li>
                   </ul>
                 </div>
                 <div className="bg-cyan-200 p-4 rounded-none border-2 border-black">
-                  <h4 className="text-lg font-black text-black mb-2">個人開発</h4>
+                  <h4 className="text-lg font-black text-black mb-2">ゲーム・アプリ開発</h4>
                   <ul className="text-sm font-bold text-black space-y-1">
-                    <li>• Unityゲーム開発</li>
-                    <li>• HTML5ゲーム開発</li>
-                    <li>• LINE LIFF開発</li>
-                    <li>• AI画像・動画・楽曲生成</li>
-                    <li>• NFT制作</li>
-                    <li>• Web3関連アプリ開発</li>
+                    <li>• ゲーム・アプリの企画・開発（モバイル・ブラウザ等）</li>
+                    <li>• キャラクター・イラスト資産から実装まで一気通貫でのご相談</li>
+                    <li>• AI活用・バイブコーディングによる効率化で、コストを抑えた開発支援</li>
+                    <li>• 自社タイトルの企画・リリース・運営</li>
                   </ul>
                 </div>
               </div>
@@ -968,7 +758,7 @@ export default function HomePage() {
             お問い合わせ
           </h2>
           <p className="text-xl text-yellow-300 font-bold mb-12 max-w-2xl mx-auto bg-purple-600 px-6 py-4 rounded-full border-4 border-white transform rotate-1">
-            プロジェクトのご相談やお見積もりなど、お気軽にお声がけください
+            イラスト・ゲームのご相談、お見積りはお気軽にどうぞ
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -978,7 +768,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-400 to-pink-400 text-black rounded-full hover:from-yellow-400 hover:to-green-400 transition-all duration-300 hover:scale-110 border-4 border-white font-black transform hover:rotate-2"
             >
-              <span className="text-2xl">𝕏</span>
+              <span className="font-black">X</span>
               <span className="font-black">@utaraska</span>
             </a>
             
@@ -986,8 +776,7 @@ export default function HomePage() {
               onClick={() => copyToClipboard('contact@utaraska.co.jp')}
               className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-green-400 text-black rounded-full hover:from-pink-400 hover:to-cyan-400 transition-all duration-300 hover:scale-110 border-4 border-white font-black transform hover:-rotate-2 cursor-pointer"
             >
-              <span className="text-2xl">{copied ? '✅' : '📧'}</span>
-              <span className="font-black">{copied ? 'コピー完了！' : 'contact@utaraska.co.jp'}</span>
+              <span className="font-black">{copied ? 'コピー完了' : 'contact@utaraska.co.jp'}</span>
             </button>
           </div>
         </div>
@@ -1003,7 +792,7 @@ export default function HomePage() {
       <footer className="px-4 py-8 bg-gradient-to-r from-pink-500 via-yellow-500 to-cyan-500 border-t-8 border-black relative">
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <p className="text-black font-black text-lg bg-white px-6 py-3 rounded-full border-4 border-black inline-block transform -rotate-1">
-            © 2025 ウタラスカ合同会社. All rights reserved.
+            © {new Date().getFullYear()} ウタラスカ合同会社. All rights reserved.
           </p>
         </div>
         <div className="absolute top-2 left-10 w-8 h-8 bg-red-500 rounded-full"></div>

@@ -1070,13 +1070,13 @@ export default function DesignShelf() {
               onClick={() => setCurrentBanner((prev) => (prev - 1 + banners.length) % banners.length)}
               className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1 sm:p-2 rounded-full hover:bg-black/70 transition-colors text-sm sm:text-base"
             >
-              ❮
+              ‹
             </button>
             <button
               onClick={() => setCurrentBanner((prev) => (prev + 1) % banners.length)}
               className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1 sm:p-2 rounded-full hover:bg-black/70 transition-colors text-sm sm:text-base"
             >
-              ❯
+              ›
             </button>
           </div>
         </section>
@@ -1146,7 +1146,7 @@ export default function DesignShelf() {
                             className="absolute left-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
                             aria-label="前の画像"
                           >
-                            ❮
+                            ‹
                           </button>
                           <button
                             onClick={(e) => {
@@ -1160,7 +1160,7 @@ export default function DesignShelf() {
                             className="absolute right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
                             aria-label="次の画像"
                           >
-                            ❯
+                            ›
                           </button>
                           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
                             {carouselSlides.map((_, dotIndex) => (
@@ -1378,7 +1378,7 @@ export default function DesignShelf() {
                 onClick={toggleZoom}
               />
               <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
-                🔍
+                拡大
               </div>
             </div>
             

@@ -206,9 +206,9 @@ export default function DesignShelf() {
       id: 128,
       title: "Skull Calavera Kanji Katakana Duck",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/40_skull/en/model_tshirt_en.jpg",
+      image: "/designshelf/images/40_skull/en/tshirt_model.jpg",
       designImage: "/designshelf/images/40_skull/design.png",
-      modelImage: "/designshelf/images/40_skull/en/model_tshirt_en.jpg",
+      modelImage: "/designshelf/images/40_skull/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/05Uvxwcj",
       features: [
@@ -218,7 +218,7 @@ export default function DesignShelf() {
       description: "Combining the kanji for 'bone' and the word 'bone' to create a seal-like design.",
       videoUrl: "https://www.instagram.com/reel/DVS3Lj5AR4C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       carouselImages: [
-        "/designshelf/images/40_skull/en/model_tshirt_en.jpg",
+        "/designshelf/images/40_skull/en/tshirt_model.jpg",
         "/designshelf/images/40_skull/design.png"
       ]
     },
@@ -246,9 +246,9 @@ export default function DesignShelf() {
       id: 126,
       title: "Face-to-Face Sumo Wrestler Kanji Katakana",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/37_yokozuna/model_tshirt_en.jpg",
+      image: "/designshelf/images/37_yokozuna/en/tshirt_model.jpg",
       designImage: "/designshelf/images/37_yokozuna/design.png",
-      modelImage: "/designshelf/images/37_yokozuna/model_tshirt_en.jpg",
+      modelImage: "/designshelf/images/37_yokozuna/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/07MYyCZu",
       features: [
@@ -258,7 +258,7 @@ export default function DesignShelf() {
       description: "This graphic design centers on Japanese characters, featuring sumo and sumo wrestlers-theme of Japan's traditional culture. By combining kanji and katakana in a seal-like style, it achieves an impression blending Japanese authenticity with a playful spirit. Simplifying lines and shapes enhances visibility, creating a composition where the characters themselves stand out. It's a simple yet striking design for those who enjoy Japanese culture and Japanese-language motifs.",
       videoUrl: "https://www.instagram.com/reel/DUS7L3zk2hp/?utm_source=ig_web_copy_link",
       carouselImages: [
-        "/designshelf/images/37_yokozuna/model_tshirt_en.jpg",
+        "/designshelf/images/37_yokozuna/en/tshirt_model.jpg",
         "/designshelf/images/37_yokozuna/design.png"
       ]
     },
@@ -266,9 +266,9 @@ export default function DesignShelf() {
       id: 125,
       title: "Face-to-Face Unicorn Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/29_unicorn/jp/tshirt_model.jpg",
+      image: "/designshelf/images/29_unicorn/en/tshirt_model.jpg",
       designImage: "/designshelf/images/29_unicorn/design.png",
-      modelImage: "/designshelf/images/29_unicorn/jp/tshirt_model.jpg",
+      modelImage: "/designshelf/images/29_unicorn/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/i7eNXdF",
       features: [
@@ -278,7 +278,7 @@ export default function DesignShelf() {
       description: "A playful, modern take on the unicorn motif. Two unicorn heads face each other in a clean, balanced composition defined by confident linework and flat color blocks. The design reads well at chest scale and offers subtle line detail for a closer look, making it a whimsical addition to casual and streetwear collections.",
       videoUrl: "https://www.instagram.com/reel/DXh4T-aAdV4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       carouselImages: [
-        "/designshelf/images/29_unicorn/jp/tshirt_model.jpg",
+        "/designshelf/images/29_unicorn/en/tshirt_model.jpg",
         "/designshelf/images/29_unicorn/design.png"
       ]
     },
@@ -286,9 +286,9 @@ export default function DesignShelf() {
       id: 124,
       title: "Face-to-Face Lion Kanji Katakana (Japanese Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/35_lionlion/model_tshirt_en.jpg",
+      image: "/designshelf/images/35_lionlion/en/tshirt_model.jpg",
       designImage: "/designshelf/images/35_lionlion/design.png",
-      modelImage: "/designshelf/images/35_lionlion/model_tshirt_en.jpg",
+      modelImage: "/designshelf/images/35_lionlion/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/g3Hvn04",
       features: [
@@ -298,7 +298,7 @@ export default function DesignShelf() {
       description: "A modern take on the traditional shishi motif. Two lion heads face each other with a central seal that blends kanji and katakana characters, creating a graphic that references Japanese calligraphic tradition while keeping a playful, contemporary feel. The composition emphasizes clear silhouettes and strong contrast for instant impact at chest scale, with subtle line detail for closer viewing. Ideal for collections that draw on Japan-inspired graphics and typographic accents.",
       videoUrl: "https://www.instagram.com/reel/DSZ6xRQk2ws/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       carouselImages: [
-        "/designshelf/images/35_lionlion/model_tshirt_en.jpg",
+        "/designshelf/images/35_lionlion/en/tshirt_model.jpg",
         "/designshelf/images/35_lionlion/design.png"
       ]
     },
@@ -306,9 +306,9 @@ export default function DesignShelf() {
       id: 123,
       title: "Face-to-Face Hannya Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/30_hannya/tshirt_std_model_en.jpg",
-      designImage: "/designshelf/images/30_hannya/30_hannya_design.png",
-      modelImage: "/designshelf/images/30_hannya/tshirt_std_model_en.jpg",
+      image: "/designshelf/images/30_hannya/en/tshirt_model.jpg",
+      designImage: "/designshelf/images/30_hannya/design.png",
+      modelImage: "/designshelf/images/30_hannya/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/aN7hGMy",
       features: [
@@ -335,19 +335,19 @@ export default function DesignShelf() {
         }
       ],
       carouselImages: [
-        "/designshelf/images/30_hannya/tshirt_std_model_en.jpg",
-        "/designshelf/images/30_hannya/tshirt_premium.jpg",
-        "/designshelf/images/30_hannya/long_sleeve.jpg",
-        "/designshelf/images/30_hannya/30_hannya_design.png"
+        "/designshelf/images/30_hannya/en/tshirt_model.jpg",
+        "/designshelf/images/30_hannya/jp/tshirt_model.jpg",
+        "/designshelf/images/30_hannya/jp/long_sleeve.jpg",
+        "/designshelf/images/30_hannya/design.png"
       ]
     },
     {
       id: 122,
       title: "Face-Center Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/3_tiger/hoodie_model_en.jpg",
-      designImage: "/designshelf/images/3_tiger/3_tiger_design.png",
-      modelImage: "/designshelf/images/3_tiger/hoodie_model_en.jpg",
+      image: "/designshelf/images/3_tiger/en/hoodie_model.jpg",
+      designImage: "/designshelf/images/3_tiger/design.png",
+      modelImage: "/designshelf/images/3_tiger/en/hoodie_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/hQ3qcoy",
       features: [
@@ -374,19 +374,19 @@ export default function DesignShelf() {
         }
       ],
       carouselImages: [
-        "/designshelf/images/3_tiger/hoodie_model_en.jpg",
-        "/designshelf/images/3_tiger/tshirt.jpg",
-        "/designshelf/images/3_tiger/long_sleeve.jpg",
-        "/designshelf/images/3_tiger/3_tiger_design.png"
+        "/designshelf/images/3_tiger/en/hoodie_model.jpg",
+        "/designshelf/images/3_tiger/jp/tshirt_model.jpg",
+        "/designshelf/images/3_tiger/jp/long_sleeve.jpg",
+        "/designshelf/images/3_tiger/design.png"
       ]
     },
     {
       id: 120,
       title: "Face-to-Face Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/7_tigertiger/en/hoodie/model.jpg",
-      designImage: "/designshelf/images/7_tigertiger/7_tigertiger_design.png",
-      modelImage: "/designshelf/images/7_tigertiger/en/hoodie/model.jpg",
+      image: "/designshelf/images/7_tigertiger/en/hoodie_model.jpg",
+      designImage: "/designshelf/images/7_tigertiger/design.png",
+      modelImage: "/designshelf/images/7_tigertiger/en/hoodie_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/eyYRrGF",
       features: [
@@ -413,19 +413,19 @@ export default function DesignShelf() {
         }
       ],
       carouselImages: [
-        "/designshelf/images/7_tigertiger/en/hoodie/model.jpg",
-        "/designshelf/images/7_tigertiger/tshirt.jpg",
-        "/designshelf/images/7_tigertiger/zip_hoodie.jpg",
-        "/designshelf/images/7_tigertiger/7_tigertiger_design.png"
+        "/designshelf/images/7_tigertiger/en/hoodie_model.jpg",
+        "/designshelf/images/7_tigertiger/jp/tshirt_model.jpg",
+        "/designshelf/images/7_tigertiger/jp/zip_hoodie.jpg",
+        "/designshelf/images/7_tigertiger/design.png"
       ]
     },
     {
       id: 121,
       title: "Face-to-Face Dragon vs Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/5_dragon_tiger/zip_hoodie_model_en.jpg",
-      designImage: "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png",
-      modelImage: "/designshelf/images/5_dragon_tiger/zip_hoodie_model_en.jpg",
+      image: "/designshelf/images/5_dragon_tiger/en/zip_hoodie_model.jpg",
+      designImage: "/designshelf/images/5_dragon_tiger/design.png",
+      modelImage: "/designshelf/images/5_dragon_tiger/en/zip_hoodie_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/0g1Yc8X",
       features: [
@@ -452,10 +452,10 @@ export default function DesignShelf() {
         }
       ],
       carouselImages: [
-        "/designshelf/images/5_dragon_tiger/zip_hoodie_model_en.jpg",
-        "/designshelf/images/5_dragon_tiger/5_dragon_tiger.png",
-        "/designshelf/images/5_dragon_tiger/tshirt.jpg",
-        "/designshelf/images/5_dragon_tiger/5_dragon_tiger_design.png"
+        "/designshelf/images/5_dragon_tiger/en/zip_hoodie_model.jpg",
+        "/designshelf/images/5_dragon_tiger/jp/tshirt_model.jpg",
+        "/designshelf/images/5_dragon_tiger/jp/hoodie_model.png",
+        "/designshelf/images/5_dragon_tiger/design.png"
       ]
     },
     {
@@ -501,9 +501,9 @@ export default function DesignShelf() {
       id: 119,
       title: "Face-to-Face Daruma Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
+      image: "/designshelf/images/34_daruma/en/tshirt_model.jpg",
       designImage: "/designshelf/images/34_daruma/design.png",
-      modelImage: "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
+      modelImage: "/designshelf/images/34_daruma/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://www.amazon.com/Daruma-Illustration-Relaxed-Style-T-Shirt/dp/B0G4VXCS9D/ref=sr_1_5?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969541&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-5&customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1",
       features: [
@@ -525,8 +525,8 @@ export default function DesignShelf() {
         }
       ],
       carouselImages: [
-        "/designshelf/images/34_daruma/en/tshirt_std/tshirt_std_model.jpg",
-        "/designshelf/images/34_daruma/en/tshirt_prem/tshirt_prem.jpg",
+        "/designshelf/images/34_daruma/en/tshirt_model.jpg",
+        "/designshelf/images/34_daruma/en/tshirt_prem.jpg",
         "/designshelf/images/34_daruma/design.png"
       ]
     }
@@ -619,13 +619,13 @@ export default function DesignShelf() {
               onClick={() => setCurrentBanner((prev) => (prev - 1 + banners.length) % banners.length)}
               className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1 sm:p-2 rounded-full hover:bg-black/70 transition-colors text-sm sm:text-base"
             >
-              ❮
+              ‹
             </button>
             <button
               onClick={() => setCurrentBanner((prev) => (prev + 1) % banners.length)}
               className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1 sm:p-2 rounded-full hover:bg-black/70 transition-colors text-sm sm:text-base"
             >
-              ❯
+              ›
             </button>
           </div>
         </section>
@@ -676,7 +676,7 @@ export default function DesignShelf() {
                             className="absolute left-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
                             aria-label="Previous image"
                           >
-                            ❮
+                            ‹
                           </button>
                           <button
                             onClick={(e) => {
@@ -689,7 +689,7 @@ export default function DesignShelf() {
                             className="absolute right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-10 transition-colors"
                             aria-label="Next image"
                           >
-                            ❯
+                            ›
                           </button>
                           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
                             {product.carouselImages.map((_, dotIndex) => (
@@ -914,7 +914,7 @@ export default function DesignShelf() {
                 onClick={toggleZoom}
               />
               <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
-                🔍
+                拡大
               </div>
             </div>
             

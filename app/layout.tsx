@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: "ウタラスカ合同会社 - あそびゴコロ至上主義",
-  description: "クリエイティブから最先端テクノロジーまで、幅広い領域でビジョンを実現",
+  title: "ウタラスカ合同会社 - イラスト × ゲーム",
+  description:
+    "イラスト・キャラクターデザインからAI活用のアプリ・ゲーム開発まで一気通貫。バイブコーディング等で工程を効率化し、抑えたお見積りが可能なクリエイティブスタジオ。番組向けイラスト実績多数。",
 };
 
 export default function RootLayout({
