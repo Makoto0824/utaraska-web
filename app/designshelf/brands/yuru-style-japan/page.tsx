@@ -115,9 +115,9 @@ export default function YuruStyleJapan() {
       id: 117,
       title: "ゆるいパンダとパンダ",
       brand: "ゆるスタイル・ジャパン",
-      image: "/designshelf/images/33_panda/hoodie/hoodie.jpg",
+      image: "/designshelf/images/33_panda/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/33_panda/design.png",
-      modelImage: "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
+      modelImage: "/designshelf/images/33_panda/jp/hoodie_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.to/442991Y",
       features: [
@@ -144,9 +144,9 @@ export default function YuruStyleJapan() {
         }
       ],
       carouselImages: [
-        "/designshelf/images/33_panda/hoodie/model_hoodie.jpg",
-        "/designshelf/images/33_panda/swet/swet.jpg",
-        "/designshelf/images/33_panda/tshirt/tshirt.jpg"
+        "/designshelf/images/33_panda/jp/tshirt_model.jpg",
+        "/designshelf/images/33_panda/jp/swet.jpg",
+        "/designshelf/images/33_panda/jp/hoodie_model.jpg"
       ]
     },
     {
