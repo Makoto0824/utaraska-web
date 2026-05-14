@@ -680,7 +680,7 @@ export default function DesignShelf() {
     {
       id: 117,
       title: "ゆるいパンダとパンダ",
-      image: "/designshelf/images/33_panda/jp/tshirt_model.png",
+      image: "/designshelf/images/33_panda/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/33_panda/design.png",
       modelImage: "/designshelf/images/33_panda/jp/hoodie_model.jpg",
       price: "¥2,300",
@@ -689,7 +689,7 @@ export default function DesignShelf() {
         root: "/designshelf/images/33_panda",
         design: "design.png",
         slots: {
-          tshirt: "jp/tshirt_model.png",
+          tshirt: "jp/tshirt_model.jpg",
           sweat: "jp/swet.jpg",
           hoodie: "jp/hoodie_model.jpg",
         },
