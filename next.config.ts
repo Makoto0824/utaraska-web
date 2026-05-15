@@ -23,8 +23,15 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    domains: ['www.utaraska.co.jp'],
-    unoptimized: false
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.utaraska.co.jp',
+      },
+    ],
+    unoptimized: false,
+    /** 同一パスで画像を差し替えたとき、最適化キャッシュが古いままになるのを短く抑える */
+    minimumCacheTTL: 0,
   },
   assetPrefix: process.env.NODE_ENV === 'production' ? 'https://www.utaraska.co.jp' : '',
   trailingSlash: false

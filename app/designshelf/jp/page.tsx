@@ -370,6 +370,8 @@ export default function DesignShelf() {
     variations?: ProductVariation[]; // 商品バリエーション（Tシャツ、パーカーなど）
     carouselImages?: string[]; // jpAssets で足りないスロット時のフォールバック
     jpAssets?: JpAssetsConfig;
+    /** 設定時、商品名がこの内部パスへリンク（特設LPなど） */
+    featurePageHref?: string;
   };
 
   // 商品データ（完全な商品説明付き）
@@ -524,6 +526,7 @@ export default function DesignShelf() {
       modelImage: "/designshelf/images/40_skull/jp/tshirt_model.jpg",
       price: "¥2,300",
       amazonLink: "https://amzn.to/472hYKy",
+      featurePageHref: '/designshelf/jp/calavera-kanji',
       jpAssets: {
         root: "/designshelf/images/40_skull",
         design: "design.png",
@@ -1032,7 +1035,8 @@ export default function DesignShelf() {
                     fill
                     className="object-contain cursor-pointer"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                    onLoadingComplete={(img) => {
+                    onLoad={(e) => {
+                      const img = e.currentTarget;
                       const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
                       if (!ratio) return;
                       setBannerRatios((prev) => {
@@ -1208,7 +1212,19 @@ export default function DesignShelf() {
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="mb-1 line-clamp-2 h-14 text-lg font-semibold leading-7 text-gray-800">{product.title}</h3>
+                  <h3 className="mb-1 line-clamp-2 h-14 text-lg font-semibold leading-7 text-gray-800">
+                    {product.featurePageHref ? (
+                      <Link
+                        href={product.featurePageHref}
+                        className="text-gray-800 transition-colors hover:text-blue-700 hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {product.title}
+                      </Link>
+                    ) : (
+                      product.title
+                    )}
+                  </h3>
                   {product.endDate && <CountdownTimer endDate={product.endDate} />}
                   {(() => {
                     const listRows = getProductListRows(product, wearFilter);

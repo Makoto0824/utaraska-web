@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { CALAVERA_KANJI_CAMPAIGN } from '@/lib/designshelf/calaveraKanjiCampaign';
+import { CALAVERA_KANJI } from '@/lib/designshelf/calaveraKanji';
 
-const title = 'カラベラドクロと漢字｜AIシンガーSAKI着用Tシャツ';
+const title = 'カラベラドクロと漢字';
 const description =
-  'AIシンガーSAKI（仮名）がデビュー曲「骨まで笑え」で着用した、カラベラモチーフの黒Tシャツ。カラフルなドクロ、花、漢字を組み合わせた、今を楽しむためのグラフィックTシャツです。';
+  '名前募集中のAIシンガーがデビュー曲「骨まで笑え」で着用した、カラベラモチーフのTシャツ。カラフルなドクロ、花、漢字を組み合わせた今を楽しむためのグラフィックデザイン。メンズ・レディース・キッズ対応、複数カラー展開。';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.utaraska.co.jp'),
@@ -11,23 +11,23 @@ export const metadata: Metadata = {
   description,
   openGraph: {
     title,
-    description: 'デビュー曲「骨まで笑え」で着用した、カラベラモチーフの黒Tシャツ。',
+    description: 'デビュー曲「骨まで笑え」で着用した、カラベラモチーフのTシャツ。メンズ・レディース・キッズ、複数カラー展開。',
     type: 'website',
     locale: 'ja_JP',
     images: [
       {
-        url: CALAVERA_KANJI_CAMPAIGN.openGraphImageSrc,
+        url: CALAVERA_KANJI.openGraphImageSrc,
         width: 1200,
         height: 1200,
-        alt: 'カラベラドクロと漢字 Tシャツ（AIシンガーSAKI着用イメージ）',
+        alt: 'カラベラドクロと漢字 Tシャツ（AIシンガー着用イメージ）',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title,
-    description: 'デビュー曲「骨まで笑え」で着用した、カラベラモチーフの黒Tシャツ。',
-    images: [CALAVERA_KANJI_CAMPAIGN.openGraphImageSrc],
+    description: 'デビュー曲「骨まで笑え」で着用した、カラベラモチーフのTシャツ。メンズ・レディース・キッズ、複数カラー展開。',
+    images: [CALAVERA_KANJI.openGraphImageSrc],
   },
 };
 

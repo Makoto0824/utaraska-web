@@ -588,7 +588,8 @@ export default function DesignShelf() {
                 fill
                 className="object-contain"
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                onLoadingComplete={(img) => {
+                onLoad={(e) => {
+                  const img = e.currentTarget;
                   const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
                   if (!ratio) return;
                   setBannerRatios((prev) => {
