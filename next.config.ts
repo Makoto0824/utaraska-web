@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
+import path from "path";
+import { fileURLToPath } from "url";
+
+/** 親ディレクトリの lockfile により Turbopack が誤ったルートを採るのを防ぐ（ローカルで一部ルートが 404 になる対策） */
+const turbopackRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: turbopackRoot,
+  },
   async headers() {
     return [
       {
