@@ -177,11 +177,15 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
+    {
+      src: "/designshelf/images/40_skull/jp/banner6.jpg",
+      alt: "カラベラドクロと漢字 特設ページ",
+      link: "/designshelf/jp/calavera-kanji",
+    },
     { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4azSuGy" },
     { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "https://amzn.to/4tjnulH" },
     { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
     { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "https://amzn.to/4bHeLmY" },
-    { src: "/designshelf/images/banner5.jpg", alt: "セールバナー", link: "https://amzn.to/4ajqRQW" }
   ];
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
@@ -1016,39 +1020,50 @@ export default function DesignShelf() {
           className="relative w-full overflow-hidden rounded-lg shadow-lg"
           style={{ aspectRatio: bannerRatios[currentBanner] || 1200 / 500 }}
         >
-            {banners.map((banner, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-500 ${
-                  index === currentBanner ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                }`}
-              >
-                <a
-                  href={banner.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full h-full"
+            {banners.map((banner, index) => {
+              const bannerImage = (
+                <Image
+                  src={banner.src}
+                  alt={banner.alt}
+                  fill
+                  className="object-contain cursor-pointer"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                  onLoad={(e) => {
+                    const img = e.currentTarget;
+                    const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
+                    if (!ratio) return;
+                    setBannerRatios((prev) => {
+                      const next = [...prev];
+                      next[index] = ratio;
+                      return next;
+                    });
+                  }}
+                />
+              );
+              return (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    index === currentBanner ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
                 >
-                  <Image
-                    src={banner.src}
-                    alt={banner.alt}
-                    fill
-                    className="object-contain cursor-pointer"
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
-                    onLoad={(e) => {
-                      const img = e.currentTarget;
-                      const ratio = img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : undefined;
-                      if (!ratio) return;
-                      setBannerRatios((prev) => {
-                        const next = [...prev];
-                        next[index] = ratio;
-                        return next;
-                      });
-                    }}
-                  />
-                </a>
-              </div>
-            ))}
+                  {/^https?:\/\//i.test(banner.link) ? (
+                    <a
+                      href={banner.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full"
+                    >
+                      {bannerImage}
+                    </a>
+                  ) : (
+                    <Link href={banner.link} className="block w-full h-full">
+                      {bannerImage}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
 
             <div
               className="absolute top-4 left-4 sm:top-6 sm:left-6 z-[5] pointer-events-none max-w-[min(92%,18rem)] sm:max-w-none"
@@ -1216,7 +1231,7 @@ export default function DesignShelf() {
                     {product.featurePageHref ? (
                       <Link
                         href={product.featurePageHref}
-                        className="text-gray-800 transition-colors hover:text-blue-700 hover:underline"
+                        className="text-gray-800 underline decoration-gray-400 underline-offset-2 transition-colors hover:text-blue-700 hover:decoration-blue-700"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {product.title}
