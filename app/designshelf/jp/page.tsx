@@ -27,6 +27,8 @@ type JpAssetsConfig = {
   root: string;
   design: string;
   slots: Partial<Record<JpWearSlot, string>>;
+  /** 「すべて」絞り込み時、スロット画像より前に挿入する URL（サイトルートからの絶対パス） */
+  carouselPrefix?: string[];
 };
 
 const JP_SLOT_ORDER: JpWearSlot[] = ['tshirt', 'longsleeve', 'sweat', 'hoodie', 'ziphoodie'];
@@ -87,15 +89,20 @@ function getResolvedCarouselImages(
   const designUrl = `${jp.root}/${jp.design}`;
   const slotUrl = (s: JpWearSlot) => (jp.slots[s] ? `${jp.root}/${jp.slots[s]}` : null);
   if (wearFilter === 'all') {
+    const prefix = jp.carouselPrefix ?? [];
     const chain = JP_SLOT_ORDER.flatMap((s) => {
       const u = slotUrl(s);
       return u ? [u] : [];
     });
-    if (chain.length === 0) return fallback;
-    return [...chain, designUrl];
+    if (chain.length === 0 && prefix.length === 0) return fallback;
+    return [...prefix, ...chain, designUrl];
   }
   const one = slotUrl(wearFilter);
-  if (one) return [one, designUrl];
+  if (one) {
+    const prefix =
+      wearFilter === 'tshirt' ? (jp.carouselPrefix ?? []) : [];
+    return [...prefix, one, designUrl];
+  }
   return fallback;
 }
 
@@ -520,6 +527,7 @@ export default function DesignShelf() {
       jpAssets: {
         root: "/designshelf/images/40_skull",
         design: "design.png",
+        carouselPrefix: ["/designshelf/images/40_skull/jp/tshirt_model2.jpg"],
         slots: {
           tshirt: "jp/tshirt_model.jpg",
           longsleeve: "jp/long_sleeve.jpg",
