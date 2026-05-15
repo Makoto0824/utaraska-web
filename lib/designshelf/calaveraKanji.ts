@@ -5,12 +5,12 @@
 export const CALAVERA_KANJI = {
   /** Amazon 商品ページ（カラベラドクロと漢字・JP ストアと同系統の短縮 URL） */
   amazonProductUrl: 'https://amzn.to/472hYKy',
-  /** AIシンガー関連 / Instagram（コメント誘導先） */
-  instagramUrl: 'https://www.instagram.com/utaraska/',
+  /** AIシンガー関連 / Instagram（コメント誘導先・着用リールと同一） */
+  instagramUrl: 'https://www.instagram.com/reel/DYXP6bvBFWl/',
   /**
-   * Instagram 着用イメージ（リール・投稿等）※仮URL。本番は差し替え
+   * Instagram 着用イメージ（リール）
    */
-  instagramWearImageUrl: 'https://www.instagram.com/',
+  instagramWearImageUrl: 'https://www.instagram.com/reel/DYXP6bvBFWl/',
   /**
    * 自己ホスト音源（MP3 / OGG 等）
    * 配置先: `public/designshelf/calavera-kanji/audio/`
