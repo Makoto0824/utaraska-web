@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap");
+
+:root {
+  --accent: #065f46;
+  --accent-light: #d1fae5;
+  --ink: #1f2937;
+  --muted: #4b5563;
+  --card-bg: #f9fafb;
+  --card-border: #e5e7eb;
+}
+
+.reveal {
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--ink);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  height: 100%;
+  padding: 0.35em 0.95em 1.35em;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.reveal h1 {
+  font-size: 2em;
+  line-height: 1.15;
+}
+
+.reveal h2 {
+  font-size: 1.28em;
+  margin: 0 0 0.4em;
+  padding-bottom: 0.18em;
+  border-bottom: 3px solid var(--accent);
+}
+
+.reveal h3 {
+  font-size: 0.92em;
+  color: var(--accent);
+  margin: 0.2em 0 0.15em;
+}
+
+.reveal p,
+.reveal li {
+  font-size: 0.68em;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.reveal p {
+  margin: 0.28em 0;
+}
+
+.reveal ul {
+  margin: 0.15em 0 0.2em;
+}
+
+.reveal li {
+  margin-bottom: 0.18em;
+}
+
+.reveal strong {
+  color: var(--ink);
+}
+
+.reveal .quote {
+  margin: 0.35em 0;
+  padding: 0.45em 0.75em;
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.74em;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.4;
+}
+
+.reveal .flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  font-size: 0.62em;
+  color: var(--muted);
+  margin: 0.25em 0 0;
+  line-height: 1.35;
+}
+
+.reveal .flow span {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 0.22em 0.55em;
+}
+
+.reveal .flow .arrow {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 0;
+}
+
+.reveal .grid-2,
+.reveal .grid-3,
+.reveal .grid-4 {
+  margin-top: 0.2em;
+}
+
+.reveal .grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.reveal .grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45em;
+}
+
+.reveal .grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45em;
+}
+
+.reveal .card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.45em 0.55em;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.reveal .card h3 {
+  margin-top: 0;
+  font-size: 0.82em;
+  line-height: 1.25;
+}
+
+.reveal .card ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+.reveal .card li {
+  font-size: 0.58em;
+  margin-bottom: 0.12em;
+  line-height: 1.35;
+}
+
+.reveal .card p {
+  font-size: 0.58em;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.reveal .card .price {
+  display: inline-block;
+  margin-bottom: 0.2em;
+  padding: 0.1em 0.45em;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.62em;
+  font-weight: 700;
+}
+
+/* 情報量の多いスライド */
+.reveal .slides section.dense h2 {
+  font-size: 1.15em;
+  margin-bottom: 0.28em;
+}
+
+.reveal .slides section.dense .grid-2,
+.reveal .slides section.dense .grid-3,
+.reveal .slides section.dense .grid-4 {
+  gap: 0.35em;
+}
+
+.reveal .slides section.dense .card {
+  padding: 0.38em 0.48em;
+}
+
+.reveal .slides section.dense .card h3 {
+  font-size: 0.76em;
+}
+
+.reveal .slides section.dense .card li {
+  font-size: 0.54em;
+  margin-bottom: 0.08em;
+}
+
+.reveal .slides section.dense .quote {
+  margin: 0.25em 0;
+  padding: 0.35em 0.6em;
+  font-size: 0.68em;
+}
+
+.reveal .slides section.dense p {
+  margin: 0.2em 0;
+}
+
+.reveal .title-slide {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 45%, #f0fdf4 100%);
+}
+
+.reveal .title-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--accent);
+}
+
+.reveal .title-slide h1 {
+  font-size: 2.1em;
+  margin-bottom: 0.1em;
+}
+
+.reveal .title-slide .subtitle {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0.25em 0 0.9em;
+}
+
+.reveal .title-slide .meta {
+  font-size: 0.85em;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.reveal .contact-slide {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reveal .contact-slide h2 {
+  border: none;
+  font-size: 1.55em;
+}
+
+.reveal .contact-slide p {
+  font-size: 0.85em;
+  margin: 0.25em 0;
+}
+
+.reveal .contact-slide .cta {
+  margin-top: 0.65em;
+  font-size: 0.82em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.reveal .progress {
+  color: var(--accent);
+  height: 4px;
+}
+
+.reveal .slide-number {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+}

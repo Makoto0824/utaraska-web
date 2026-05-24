@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deck:shimokitazawa-jpyc:html": "open docs/business/decks/shimokitazawa_jpyc_sponsor_2026/index.html",
+    "deck:shimokitazawa-jpyc:pdf": "marp docs/business/decks/shimokitazawa_jpyc_sponsor_2026/deck.marp.md --theme-set docs/business/decks/shimokitazawa_jpyc_sponsor_2026/marp-theme.css --pdf --allow-local-files --no-stdin -o docs/business/decks/shimokitazawa_jpyc_sponsor_2026/shimokitazawa_jpyc_sponsor_2026.pdf"
   },
   "dependencies": {
     "next": "^16.0.10",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@marp-team/marp-cli": "^4.4.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -1,0 +1,222 @@
+/* @theme utaraska-sponsor */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap");
+
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #1f2937;
+  --color-accent: #065f46;
+  --color-muted: #4b5563;
+  --color-card: #f9fafb;
+  --color-border: #e5e7eb;
+}
+
+section {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 20px;
+  color: var(--color-foreground);
+  padding: 34px 46px 54px;
+  background: var(--color-background);
+  justify-content: flex-start;
+}
+
+section::after {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+h1 {
+  color: var(--color-foreground);
+  font-size: 1.45em;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  color: var(--color-foreground);
+  font-size: 1.05em;
+  font-weight: 700;
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: 0.12em;
+  margin: 0 0 0.4em;
+}
+
+h3 {
+  color: var(--color-accent);
+  font-size: 0.78em;
+  font-weight: 700;
+  margin: 0.15em 0 0.12em;
+  line-height: 1.25;
+}
+
+p,
+li {
+  color: var(--color-muted);
+  line-height: 1.4;
+  font-size: 0.72em;
+}
+
+p {
+  margin: 0.2em 0;
+}
+
+ul {
+  margin: 0.1em 0;
+  padding-left: 1.15em;
+}
+
+li {
+  margin-bottom: 0.1em;
+}
+
+strong {
+  color: var(--color-foreground);
+}
+
+section.title {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 45%, #f0fdf4 100%);
+}
+
+section.title h1 {
+  font-size: 1.55em;
+}
+
+section.title h2 {
+  border: none;
+  color: var(--color-accent);
+  font-size: 0.95em;
+  margin-top: 0.15em;
+}
+
+section.title p {
+  font-size: 0.78em;
+  margin-top: 0.9em;
+}
+
+section.contact {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section.contact h2 {
+  border: none;
+  font-size: 1.25em;
+}
+
+section.contact p {
+  font-size: 0.82em;
+}
+
+section.dense {
+  font-size: 18px;
+  padding: 30px 42px 50px;
+}
+
+section.dense h2 {
+  font-size: 0.98em;
+  margin-bottom: 0.28em;
+}
+
+section.dense h3 {
+  font-size: 0.72em;
+}
+
+section.dense p,
+section.dense li {
+  font-size: 0.68em;
+}
+
+section.dense .card li {
+  font-size: 0.62em;
+  margin-bottom: 0.06em;
+}
+
+section.dense .card {
+  padding: 0.38em 0.48em;
+}
+
+section.dense .quote {
+  margin: 0.2em 0;
+  padding: 0.35em 0.55em;
+  font-size: 0.72em;
+}
+
+.quote {
+  background: #d1fae5;
+  border-left: 4px solid var(--color-accent);
+  padding: 0.4em 0.65em;
+  border-radius: 0 8px 8px 0;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.74em;
+  margin: 0.25em 0;
+  line-height: 1.35;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.columns-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.42em;
+}
+
+.columns-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.42em;
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.42em 0.5em;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card ul {
+  padding-left: 1em;
+  margin: 0;
+}
+
+.card li {
+  font-size: 0.64em;
+  line-height: 1.32;
+}
+
+.card p {
+  font-size: 0.64em;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.price {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.08em 0.4em;
+  font-size: 0.64em;
+  font-weight: 700;
+  margin-bottom: 0.15em;
+}
+
+.flow {
+  font-size: 0.62em;
+  color: var(--color-muted);
+  line-height: 1.35;
+}
