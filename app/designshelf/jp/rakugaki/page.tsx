@@ -312,7 +312,7 @@ export default function RakugakiLandingPage() {
         <section className="rakugaki-hero rakugaki-notebook relative mb-10 overflow-x-hidden p-6 sm:p-10 lg:p-12">
           <HeroDecorations />
           <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr,auto] lg:items-center lg:gap-12">
-            <div className="order-2 lg:order-1">
+            <div>
               <p className="rakugaki-badge mb-5 -rotate-1">Design Shelf 投稿企画</p>
               <h1 className="rakugaki-title mb-5 text-5xl font-black tracking-tight text-slate-800 sm:text-6xl lg:text-7xl">
                 らくがきT
@@ -327,7 +327,7 @@ export default function RakugakiLandingPage() {
               </p>
               <CtaBand />
             </div>
-            <div className="relative z-10 order-1 mx-auto w-full lg:order-2">
+            <div className="relative z-10 mx-auto w-full">
               <HeroTshirtCarousel large />
             </div>
           </div>
