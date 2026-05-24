@@ -135,7 +135,7 @@ function SalesFlowDiagram() {
   return (
     <div
       className="rakugaki-flow-diagram"
-      aria-label="販売の流れ：Amazon Merch On Demand から UP-T / BASE へ移行する場合があります"
+      aria-label="販売の流れ：Amazon Merch On Demand からその他の販売場所へ移行する場合があります"
     >
       <div className="rakugaki-flow-node">
         <p className="text-xs font-bold text-slate-500">まず</p>
@@ -147,7 +147,7 @@ function SalesFlowDiagram() {
       </div>
       <div className="rakugaki-flow-node rakugaki-flow-node--alt">
         <p className="text-xs font-bold text-slate-500">必要に応じて</p>
-        <p className="mt-1 text-sm font-bold text-slate-800">UP-T / BASE</p>
+        <p className="mt-1 text-sm font-bold text-slate-800">その他の販売場所</p>
         <p className="mt-1 text-xs text-slate-500">へ移行する場合あり</p>
       </div>
     </div>
@@ -163,7 +163,7 @@ const FLOW_STEPS = [
     calm: false,
   },
   { title: 'Amazonで販売', body: '採用作品はまず Amazon Merch On Demand で一定期間販売します。', calm: true },
-  { title: '掲載期間後の移行', body: '販売状況や掲載枠の都合により、UP-T / BASE へ移行する場合があります。', calm: true },
+  { title: '掲載期間後の移行', body: '販売状況や掲載枠の都合により、当社が指定するその他の販売場所へ移行する場合があります。', calm: true },
 ] as const;
 
 const OK_EXAMPLES = [
@@ -204,7 +204,7 @@ const FAQ = [
   { q: '自分で描いた大人のらくがきでも応募できますか？', a: 'はい。大人のらくがきも歓迎します。' },
   { q: 'AIで作った画像は応募できますか？', a: '現時点では受け付けていません。手描きの作品のみ対象です。' },
   { q: '採用後に売上報告はありますか？', a: 'ありません。謝礼は一回限りで、売上に応じた追加報酬はありません。' },
-  { q: 'Amazonで販売終了したらどうなりますか？', a: '販売状況に応じて、UP-T / BASE へ移行する場合があります。' },
+  { q: 'Amazonで販売終了したらどうなりますか？', a: '販売状況に応じて、当社が指定するその他の販売場所へ移行する場合があります。' },
 ] as const;
 
 function SiteHeader() {
@@ -480,7 +480,7 @@ export default function RakugakiLandingPage() {
               <p>
                 採用作品は、まず Amazon Merch On Demand で販売します。
                 Amazonの掲載枠には限りがあるため、一定期間販売実績がない作品や、掲載枠の整理が必要な作品は、
-                UP-T / BASE へ移行する場合があります。
+                当社が指定するその他の販売場所へ移行する場合があります。
               </p>
               <p>
                 販売場所、販売期間、販売価格、商品種類は運営側で決定します。
@@ -490,7 +490,7 @@ export default function RakugakiLandingPage() {
                 <p className="font-bold text-amber-950">保護者の方へ</p>
                 <p className="mt-1 font-semibold text-amber-900">採用＝Amazonで永久販売ではありません。</p>
                 <p className="mt-2 text-sm text-amber-900/90">
-                  掲載期間の終了後、UP-T や BASE など別の販売先へ移行する場合があります。
+                  掲載期間の終了後、当社が指定する別の販売先へ移行する場合があります。
                 </p>
               </div>
             </div>

@@ -147,8 +147,7 @@ export default function RakugakiTermsPage() {
             <TermsSection id="section-1" title="1. らくがきTについて">
               <p>
                 らくがきTは、子どもの絵や手描きのらくがきなどを募集し、採用作品をDesign ShelfのTシャツとして商品化する投稿企画です。
-                採用作品は、ウタラスカ合同会社がTシャツ用に加工・編集し、Amazon Merch On Demand、UP-T /
-                BASE、その他当社が指定する販売場所で販売する場合があります。
+                採用作品は、ウタラスカ合同会社がTシャツ用に加工・編集し、Amazon Merch On Demand、その他当社が指定する販売場所で販売する場合があります。
               </p>
             </TermsSection>
 
@@ -208,7 +207,7 @@ export default function RakugakiTermsPage() {
               </p>
               <ul className="rakugaki-terms-list">
                 <li>Tシャツその他の商品への使用</li>
-                <li>Amazon Merch On Demand、UP-T / BASE、その他販売サイトでの販売</li>
+                <li>Amazon Merch On Demand、その他当社が指定する販売サイトでの販売</li>
                 <li>Design Shelfおよび当社サイトへの掲載</li>
                 <li>SNS、広告、告知、実績紹介での使用</li>
                 <li>商品画像、販売ページ、バナー、サムネイル等への使用</li>
@@ -224,8 +223,7 @@ export default function RakugakiTermsPage() {
             <TermsSection id="section-8" title="8. 商品化と販売場所について" highlight>
               <p className="mb-4">
                 採用作品は、まずAmazon Merch On Demandで販売する場合があります。
-                ただし、Amazonの掲載枠や販売状況により、一定期間後にUP-T /
-                BASE、その他の販売場所へ移行する場合があります。
+                ただし、Amazonの掲載枠や販売状況により、一定期間後に当社が指定するその他の販売場所へ移行する場合があります。
                 販売場所、販売期間、販売価格、商品種類、掲載終了の判断は、当社が決定します。
               </p>
               <p className="rakugaki-terms-emphasis">

@@ -3,8 +3,9 @@
  * フォームURL・規約URL・謝礼金額・OGP画像はこのファイルのみ差し替えればよいです。
  */
 export const RAKUGAKI_T = {
-  /** 応募フォーム（Googleフォーム等）— 未設定時は # */
-  applicationFormUrl: '#',
+  /** 応募フォーム（Googleフォーム） */
+  applicationFormUrl:
+    'https://docs.google.com/forms/d/e/1FAIpQLScx_1Zm4FcaKnkveXv3sdyiDsV6GlYyUOtisrU5A79IoqP8gQ/viewform?usp=dialog',
   /** 利用規約ページ */
   termsUrl: '/designshelf/jp/rakugaki/terms',
   /** 採用謝礼（Amazonギフト券・円） */
