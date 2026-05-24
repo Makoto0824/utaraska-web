@@ -7,7 +7,7 @@ import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143,
 ]);
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -367,6 +367,7 @@ export default function DesignShelf() {
     designImage: string;
     price: string;
     amazonLink: string;
+    brand?: string;
     features: string[];
     description: string;
     modelImage?: string;
@@ -381,6 +382,52 @@ export default function DesignShelf() {
 
   // 商品データ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 143,
+      title: '4歳の娘が描いた ひよこ',
+      brand: 'AJIARIE',
+      image: '/designshelf/images/rakugaki/1/tshirt.jpg',
+      designImage: '/designshelf/images/rakugaki/1/design.jpg',
+      modelImage: '/designshelf/images/rakugaki/1/hoodie.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://amzn.to/4dDby75',
+      jpAssets: {
+        root: '/designshelf/images/rakugaki/1',
+        design: 'design.jpg',
+        slots: {
+          tshirt: 'tshirt.jpg',
+          sweat: 'sweat.jpg',
+          hoodie: 'hoodie.jpg',
+        },
+      },
+      features: [
+        '4歳の娘が描いたひよこのラクガキを、そのままの愛らしさで商品化した一着。らくがきT 採用作品です。',
+        '長いまつ毛のお目々と、なんとも言えないくちばし、ボディライン、足——すべてが愛しいらくがき作品です。',
+      ],
+      description:
+        '4歳の娘が描いたひよこ。長いまつ毛のお目々と、なんとも言えないくちばし、ボディライン、足全てが最高に愛しい作品です。',
+      videoUrl:
+        'https://www.instagram.com/p/DYuH-75EyN8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://amzn.to/4dDby75',
+          videoUrl:
+            'https://www.instagram.com/p/DYuH-75EyN8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+        },
+        {
+          name: 'トレーナー',
+          price: '¥3,960',
+          amazonLink: 'https://amzn.to/3Q0WRD4',
+        },
+        {
+          name: 'パーカー',
+          price: '¥4,400',
+          amazonLink: 'https://amzn.to/43q3sdg',
+        },
+      ],
+    },
     {
       id: 142,
       title: "ゆるいライオンとライオン",
@@ -1224,7 +1271,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -1242,6 +1289,9 @@ export default function DesignShelf() {
                       product.title
                     )}
                   </h3>
+                  {product.brand && (
+                    <p className="mb-2 text-xs font-medium tracking-wide text-gray-500">{product.brand}</p>
+                  )}
                   {product.endDate && <CountdownTimer endDate={product.endDate} />}
                   {(() => {
                     const listRows = getProductListRows(product, wearFilter);

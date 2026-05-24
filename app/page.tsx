@@ -160,24 +160,9 @@ export default function HomePage() {
           <div className="ut-container">
             <p className="ut-kicker">Works</p>
             <h2 className="ut-heading ut-heading-lg">実績・事例</h2>
-
-            <div className="ut-works-intro">
-              <div>
-                <h3 className="ut-heading ut-heading-md">イラスト制作実績</h3>
-                <p className="ut-lead" style={{ fontSize: '0.9375rem', marginTop: '0.5rem' }}>
-                  放映局・番組向けの担当事例（抜粋）。ギャラリーではなく、どんな価値を提供したかが伝わる構成にしています。
-                </p>
-              </div>
-              <div className="ut-games-panel">
-                <h3 className="ut-heading ut-heading-md">ゲーム作品・公開一覧</h3>
-                <p>
-                  自社モバイルタイトル・ブラウザ向けカジュアルゲームの紹介、ストア・プレイリンクは専用ページに集約しています。
-                </p>
-                <Link href="/games" className="ut-btn ut-btn--primary">
-                  ゲーム一覧を見る
-                </Link>
-              </div>
-            </div>
+            <p className="ut-lead" style={{ maxWidth: '40rem', marginTop: '0.75rem', marginBottom: '2.5rem' }}>
+              放映局・番組向けのイラスト制作と、自社ゲームの公開タイトル。ギャラリーではなく、どんな価値を提供したかが伝わる構成にしています。
+            </p>
 
             {WORK_CASES.map((work) => (
               <article key={work.id} className="ut-work-article">
@@ -205,6 +190,22 @@ export default function HomePage() {
                 </div>
               </article>
             ))}
+
+            <article className="ut-work-article">
+              <div className="ut-work-header">
+                <h3 className="ut-work-client">ゲーム作品・公開一覧</h3>
+                <span className="ut-kicker" style={{ margin: 0 }}>
+                  Games
+                </span>
+              </div>
+              <p className="ut-work-value">
+                自社モバイルタイトル（App Store）と、ブラウザ向けカジュアルゲームの紹介。
+                ストア・プレイリンクは専用ページに集約しています。
+              </p>
+              <Link href="/games" className="ut-btn ut-btn--primary">
+                ゲーム一覧を見る
+              </Link>
+            </article>
 
             <article className="ut-work-article">
               <div className="ut-work-header">

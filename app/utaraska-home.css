@@ -368,19 +368,6 @@
   filter: grayscale(0%);
 }
 
-.ut-works-intro {
-  display: grid;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-@media (min-width: 768px) {
-  .ut-works-intro {
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-}
-
 .ut-work-article {
   border-top: 2px solid var(--ut-ink);
   padding-top: 1.5rem;
@@ -460,18 +447,6 @@
 
 .ut-work-gallery figure:hover img {
   transform: scale(1.03);
-}
-
-.ut-games-panel {
-  border: 1px solid var(--ut-line);
-  background: #fff;
-  padding: 1.75rem;
-}
-
-.ut-games-panel p {
-  font-size: 0.9375rem;
-  color: var(--ut-muted);
-  margin-bottom: 1.25rem;
 }
 
 .ut-process-list {
