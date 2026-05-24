@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { RAKUGAKI_T } from '@/lib/designshelf/rakugakiT';
+import { HeroStickers } from './HeroStickers';
 
 const ALT_TEXTS = [
   '胸元にらくがきを配置したTシャツの着用イメージ（1）',
@@ -25,7 +26,9 @@ export function HeroTshirtCarousel({ large = false }: { large?: boolean }) {
 
   return (
     <div className={`relative z-10 mx-auto w-full ${sizeClass}`}>
-      <div className="relative aspect-[3/4]">
+      <div className="relative">
+        <HeroStickers />
+        <div className="relative aspect-[3/4]">
         <div className="absolute inset-0 overflow-hidden rounded-2xl bg-white shadow-[0_8px_28px_rgb(15_23_42/0.08)] ring-1 ring-amber-100/70">
           <div className="absolute inset-0 p-4 sm:p-5">
             {images.map((src, index) => (
@@ -82,6 +85,7 @@ export function HeroTshirtCarousel({ large = false }: { large?: boolean }) {
               </div>
             </>
           )}
+        </div>
         </div>
       </div>
       <p className="mt-4 text-center text-xs leading-relaxed text-slate-500 sm:text-sm">

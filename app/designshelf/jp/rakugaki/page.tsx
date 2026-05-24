@@ -5,6 +5,21 @@ import { RAKUGAKI_T } from '@/lib/designshelf/rakugakiT';
 import { FaqList } from './FaqList';
 import { HeroDecorations } from './HeroDecorations';
 import { HeroTshirtCarousel } from './HeroTshirtCarousel';
+import {
+  IconArrowRight,
+  IconCheck,
+  IconCross,
+  IconDoodleCircle,
+  IconDoodleStar,
+  IconGift,
+  IconNote,
+  IconPen,
+  IconShop,
+  IconSpark,
+  IconTshirt,
+  OkExampleIcon,
+  STEP_ICONS,
+} from './RakugakiIcons';
 
 function ApplyCta({
   className = '',
@@ -50,19 +65,22 @@ function SectionCard({
   children,
   className = '',
   tint = 'white',
+  icon,
 }: {
   id?: string;
   title: string;
   lead?: string;
   children: ReactNode;
   className?: string;
-  tint?: 'white' | 'sky' | 'mint' | 'blush';
+  tint?: 'white' | 'sky' | 'mint' | 'blush' | 'cream';
+  icon?: ReactNode;
 }) {
   const tints = {
     white: 'bg-white/95 border-orange-100/60',
     sky: 'bg-sky-50/80 border-sky-100',
     mint: 'bg-emerald-50/50 border-emerald-100/80',
     blush: 'bg-pink-50/40 border-pink-100/80',
+    cream: 'bg-amber-50/30 border-amber-100/50',
   };
 
   return (
@@ -70,9 +88,15 @@ function SectionCard({
       id={id}
       className={`rakugaki-card scroll-mt-24 border p-6 sm:p-8 lg:p-10 ${tints[tint]} ${className}`}
     >
-      <h2 className="rakugaki-section-title mb-1 text-xl font-bold text-slate-800 sm:text-2xl">{title}</h2>
-      {lead ? <p className="mb-5 mt-4 text-sm font-medium leading-relaxed text-orange-700/90 sm:text-base">{lead}</p> : null}
-      {!lead ? <div className="mb-5" /> : null}
+      <h2 className="rakugaki-section-title mb-1 text-xl font-bold text-slate-800 sm:text-2xl">
+        {icon ? <span className="rakugaki-section-icon">{icon}</span> : null}
+        <span className="rakugaki-section-title-text">{title}</span>
+      </h2>
+      {lead ? (
+        <p className="mb-6 mt-4 text-sm font-medium leading-relaxed text-orange-700/90 sm:text-base">{lead}</p>
+      ) : (
+        <div className="mb-6" />
+      )}
       {children}
     </section>
   );
@@ -89,29 +113,20 @@ function StepCard({
   children: ReactNode;
   calm?: boolean;
 }) {
+  const StepIcon = STEP_ICONS[stepNum - 1];
+
   return (
-    <div
-      className={`flex gap-4 rounded-2xl border p-4 sm:p-5 ${
-        calm
-          ? 'border-slate-200 bg-slate-50/90'
-          : 'border-dashed border-amber-200/90 bg-gradient-to-br from-amber-50/80 to-white'
-      }`}
-    >
-      <div
-        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg font-bold ${
-          calm ? 'bg-slate-200 text-slate-700' : 'bg-orange-400 text-white shadow-sm'
-        }`}
-        aria-hidden
-      >
-        {stepNum}
-      </div>
-      <div className="min-w-0 flex-1">
-        <p className={`mb-0.5 text-xs font-bold uppercase tracking-wide ${calm ? 'text-slate-500' : 'text-orange-600'}`}>
+    <div className={`rakugaki-step-card ${calm ? 'rakugaki-step-card--calm' : ''}`}>
+      <div className="flex items-center justify-between gap-2">
+        <div className="rakugaki-step-icon-wrap">
+          <StepIcon className="h-5 w-5" />
+        </div>
+        <span className="text-xs font-bold uppercase tracking-wide text-orange-600/80">
           STEP {stepNum}
-        </p>
-        <h3 className="mb-2 text-base font-bold text-slate-800">{title}</h3>
-        <p className="text-sm leading-relaxed text-slate-600">{children}</p>
+        </span>
       </div>
+      <h3 className="text-base font-bold text-slate-800">{title}</h3>
+      <p className="text-sm leading-relaxed text-slate-600">{children}</p>
     </div>
   );
 }
@@ -119,18 +134,18 @@ function StepCard({
 function SalesFlowDiagram() {
   return (
     <div
-      className="my-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-2"
+      className="rakugaki-flow-diagram"
       aria-label="販売の流れ：Amazon Merch On Demand から UP-T / BASE へ移行する場合があります"
     >
-      <div className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center sm:max-w-[220px]">
+      <div className="rakugaki-flow-node">
         <p className="text-xs font-bold text-slate-500">まず</p>
         <p className="mt-1 text-sm font-bold text-slate-800">Amazon Merch On Demand</p>
-        <p className="mt-1 text-xs text-slate-500">一定期間販売</p>
+        <p className="mt-1 text-xs text-slate-500">一定期間、Amazonで掲載</p>
       </div>
-      <div className="flex items-center justify-center text-2xl text-slate-400 sm:px-1" aria-hidden>
-        →
+      <div className="rakugaki-flow-arrow" aria-hidden>
+        <IconArrowRight className="h-5 w-10" />
       </div>
-      <div className="flex-1 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-4 text-center sm:max-w-[220px]">
+      <div className="rakugaki-flow-node rakugaki-flow-node--alt">
         <p className="text-xs font-bold text-slate-500">必要に応じて</p>
         <p className="mt-1 text-sm font-bold text-slate-800">UP-T / BASE</p>
         <p className="mt-1 text-xs text-slate-500">へ移行する場合あり</p>
@@ -333,16 +348,24 @@ export default function RakugakiLandingPage() {
           </div>
         </section>
 
-        <div className="flex flex-col gap-8 sm:gap-10">
+        <div className="flex flex-col gap-10 sm:gap-12">
           {/* らくがきTとは */}
-          <SectionCard id="about" title="らくがきTとは" lead="上手い絵より、なぜか気になる絵を探しています。">
+          <SectionCard id="about" title="らくがきTとは" icon={<IconSpark className="h-5 w-5" />} tint="cream">
+            <div className="rakugaki-memo mb-6">
+              <p className="text-base font-bold leading-relaxed text-amber-900 sm:text-lg">
+                上手い絵より、なぜか気になる絵を探しています。
+              </p>
+            </div>
             <div className="space-y-5 text-sm leading-relaxed text-slate-700 sm:text-base">
               <p>
                 らくがきTは、みなさんから届いた手描きの絵を、ウタラスカがTシャツ用に少しだけ整えて販売する投稿企画です。
                 きれいに描かれた絵よりも、線のゆれ、変な形、よくわからない表情など、その人にしか描けない味を大切にします。
               </p>
-              <div className="rounded-2xl border-2 border-amber-300/70 bg-gradient-to-br from-amber-50 to-yellow-50/80 p-5 shadow-sm sm:p-6">
-                <p className="mb-2 text-base font-bold text-amber-900">大切にしていること</p>
+              <div className="rakugaki-highlight-card">
+                <div className="mb-2 flex items-center gap-2">
+                  <IconPen className="h-5 w-5 text-amber-600" />
+                  <p className="text-base font-bold text-amber-900">大切にしていること</p>
+                </div>
                 <p className="font-semibold text-slate-800">清書しすぎず、元のらくがきらしさを残します。</p>
                 <p className="mt-2 text-sm text-slate-600">
                   胸元に小さく載せることが多いですが、作品によっては中央寄りなど配置も変えます。サイズや位置はウタラスカがデザインに合わせて決めます。
@@ -352,8 +375,8 @@ export default function RakugakiLandingPage() {
           </SectionCard>
 
           {/* 応募から販売まで */}
-          <SectionCard id="flow" title="応募から販売まで">
-            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+          <SectionCard id="flow" title="応募から販売まで" icon={<IconNote className="h-5 w-5" />}>
+            <div className="rakugaki-step-grid">
               {FLOW_STEPS.map((item, index) => (
                 <StepCard key={item.title} stepNum={index + 1} title={item.title} calm={item.calm}>
                   {item.body}
@@ -363,55 +386,44 @@ export default function RakugakiLandingPage() {
           </SectionCard>
 
           {/* 募集しているらくがき / NG作品 */}
-          <SectionCard id="examples" title="募集しているらくがき" lead="「なぜか気になる」——それが一番の条件です。" tint="mint">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="rounded-2xl border-2 border-emerald-200/80 bg-white p-5 sm:p-6">
+          <SectionCard
+            id="examples"
+            title="募集しているらくがき"
+            lead="「なぜか気になる」——それが一番の条件です。"
+            tint="mint"
+            icon={<IconSpark className="h-5 w-5" />}
+          >
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="rounded-2xl border-2 border-emerald-200/70 bg-white/90 p-5 sm:p-6">
                 <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-emerald-800 sm:text-lg">
-                  <span
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-sm"
-                    aria-hidden
-                  >
-                    ○
+                  <span className="rakugaki-icon-badge">
+                    <IconCheck className="h-3.5 w-3.5" />
                   </span>
                   こんな絵、大歓迎
                 </h3>
-                <ul className="space-y-2.5">
-                  {OK_EXAMPLES.map((item) => (
-                    <li
-                      key={item}
-                      className="flex gap-2.5 rounded-xl bg-emerald-50/50 px-3 py-2 text-sm text-slate-700"
-                    >
-                      <span className="shrink-0 font-bold text-emerald-500" aria-hidden>
-                        ✓
-                      </span>
-                      <span>{item}</span>
-                    </li>
+                <div className="rakugaki-tag-cloud">
+                  {OK_EXAMPLES.map((item, index) => (
+                    <span key={item} className="rakugaki-tag">
+                      <OkExampleIcon index={index} />
+                      {item}
+                    </span>
                   ))}
-                </ul>
+                </div>
               </div>
-              <div className="rounded-2xl border-2 border-rose-200/70 bg-rose-50/40 p-5 sm:p-6">
+              <div className="rounded-2xl border-2 border-rose-200/60 bg-rose-50/30 p-5 sm:p-6">
                 <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-rose-800 sm:text-lg">
-                  <span
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-sm"
-                    aria-hidden
-                  >
-                    ×
+                  <span className="rakugaki-icon-badge rakugaki-icon-badge--ng">
+                    <IconCross className="h-3.5 w-3.5" />
                   </span>
-                  NG作品
+                  応募できないもの
                 </h3>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2">
                   {NG_EXAMPLES.map((item) => (
                     <li
                       key={item.text}
-                      className={`flex gap-2.5 text-sm ${
-                        item.highlight
-                          ? 'rounded-xl border border-rose-200 bg-white/90 px-3 py-2 font-medium text-rose-900'
-                          : 'rounded-xl bg-white/60 px-3 py-2 text-slate-700'
-                      }`}
+                      className={`rakugaki-ng-tag ${item.highlight ? 'rakugaki-ng-tag--warn' : 'rakugaki-ng-tag--plain'}`}
                     >
-                      <span className="shrink-0 font-bold text-rose-400" aria-hidden>
-                        ×
-                      </span>
+                      <IconCross className="mt-0.5 h-3.5 w-3.5 shrink-0 text-rose-400" />
                       <span>{item.text}</span>
                     </li>
                   ))}
@@ -436,28 +448,33 @@ export default function RakugakiLandingPage() {
           {/* 採用謝礼 */}
           <section
             id="reward"
-            className="scroll-mt-24 overflow-hidden rounded-3xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 via-yellow-50/80 to-orange-50/60 p-6 shadow-md sm:p-10 lg:p-12"
+            className="rakugaki-section-band--cream scroll-mt-24 border border-amber-100/60 p-6 sm:p-10 lg:p-12"
           >
-            <h2 className="rakugaki-section-title mb-2 text-center text-lg font-bold text-slate-800 sm:text-xl">
-              採用謝礼
+            <h2 className="rakugaki-section-title mb-2 flex justify-center text-center text-lg font-bold text-slate-800 sm:text-xl">
+              <span className="rakugaki-section-icon">
+                <IconGift className="h-5 w-5" />
+              </span>
+              <span className="rakugaki-section-title-text">採用謝礼</span>
             </h2>
             <p className="mx-auto mb-8 max-w-lg text-center text-sm leading-relaxed text-slate-600 sm:text-base">
               採用された方には、謝礼として Amazonギフト券をメールでお送りします。
-              売上に応じた追加報酬はありません（一回限りのお礼です）。
             </p>
-            <div className="rakugaki-trust-panel mx-auto max-w-md p-6 text-center sm:p-8">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">Adoption reward</p>
+            <div className="rakugaki-gift-card mx-auto max-w-md">
+              <p className="mb-1 pt-2 text-xs font-bold tracking-wider text-slate-500">採用謝礼</p>
               <p className="text-2xl font-black text-orange-600 sm:text-3xl">
                 Amazonギフト券 {rewardLabel}円分
               </p>
-              <p className="mt-4 text-xs leading-relaxed text-slate-500 sm:text-sm">
+              <p className="mt-5 text-sm leading-relaxed text-slate-600">
+                謝礼は一回限りです。販売数や売上に応じた追加報酬はありません。
+              </p>
+              <p className="mt-3 text-xs text-slate-500">
                 金額は運用状況により変更される場合があります。最新の金額は本ページをご確認ください。
               </p>
             </div>
           </section>
 
           {/* 販売場所と掲載期間 */}
-          <SectionCard id="sales" title="販売場所と掲載期間" tint="sky">
+          <SectionCard id="sales" title="販売場所と掲載期間" tint="sky" icon={<IconShop className="h-5 w-5" />}>
             <SalesFlowDiagram />
             <div className="space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base">
               <p>
@@ -469,7 +486,7 @@ export default function RakugakiLandingPage() {
                 販売場所、販売期間、販売価格、商品種類は運営側で決定します。
                 採用が Amazon での販売開始を保証するものではありません。
               </p>
-              <div className="rounded-2xl border-l-4 border-amber-500 bg-amber-50/90 px-5 py-4">
+              <div className="rakugaki-notice-card">
                 <p className="font-bold text-amber-950">保護者の方へ</p>
                 <p className="mt-1 font-semibold text-amber-900">採用＝Amazonで永久販売ではありません。</p>
                 <p className="mt-2 text-sm text-amber-900/90">
@@ -480,19 +497,22 @@ export default function RakugakiLandingPage() {
           </SectionCard>
 
           {/* 応募前の確認 */}
-          <SectionCard id="before-apply" title="応募前の確認">
-            <ul className="space-y-4">
-              {CHECKLIST.map((item) => (
-                <li key={item} className="flex gap-3 rounded-xl bg-slate-50/80 px-4 py-3 text-sm leading-relaxed text-slate-700 sm:text-base">
-                  <span
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-white"
-                    aria-hidden
+          <SectionCard id="before-apply" title="応募前の確認" icon={<IconCheck className="h-5 w-5" />}>
+            <ul className="space-y-3">
+              {CHECKLIST.map((item) => {
+                const isGuardian = item.includes('保護者が応募');
+                return (
+                  <li
+                    key={item}
+                    className={`rakugaki-check-item bg-slate-50/70 text-sm text-slate-700 sm:text-base ${isGuardian ? 'rakugaki-check-item--highlight' : ''}`}
                   >
-                    ✓
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
+                    <span className="rakugaki-check-icon">
+                      <IconCheck className="h-3.5 w-3.5" />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                );
+              })}
             </ul>
             <p className="mt-6 rounded-2xl bg-slate-50 px-4 py-4 text-xs leading-relaxed text-slate-500 sm:text-sm">
               詳細な条件・権利関係については、
@@ -507,25 +527,22 @@ export default function RakugakiLandingPage() {
           </SectionCard>
 
           {/* よくある質問 */}
-          <SectionCard id="faq" title="よくある質問" tint="blush">
+          <SectionCard id="faq" title="よくある質問" tint="blush" icon={<IconNote className="h-5 w-5" />}>
             <FaqList items={FAQ} />
           </SectionCard>
 
           {/* 最終CTA */}
-          <section
-            id="apply"
-            className="rakugaki-notebook scroll-mt-24 overflow-hidden rounded-3xl border-2 border-dashed border-amber-300/80 p-6 text-center shadow-md sm:p-12"
-          >
-            <h2 className="mb-4 text-xl font-bold text-slate-800 sm:text-2xl">あなたのらくがきを送ってください</h2>
-            <p className="mx-auto mb-2 max-w-md text-sm leading-relaxed text-slate-600 sm:text-base">
-              上手い絵である必要はありません。
+          <section id="apply" className="rakugaki-final-cta rakugaki-notebook scroll-mt-24 sm:p-12">
+            <IconDoodleStar className="rakugaki-final-cta-deco left-4 top-4 h-6 w-6 text-amber-300" />
+            <IconDoodleCircle className="rakugaki-final-cta-deco bottom-6 right-6 h-5 w-5 text-sky-300" />
+            <h2 className="relative mb-4 text-xl font-bold text-slate-800 sm:text-2xl">
+              そのらくがき、送ってみませんか。
+            </h2>
+            <p className="relative mx-auto mb-8 max-w-md text-sm leading-relaxed text-slate-600 sm:text-base">
+              上手い絵である必要はありません。左胸に小さく置いたときに、なぜか気になる。そんならくがきを募集しています。
             </p>
-            <p className="mx-auto mb-8 max-w-md text-sm font-medium leading-relaxed text-slate-700 sm:text-base">
-              胸元に載せたとき、なぜか気になる。
-              <br className="hidden sm:inline" />
-              そんならくがきを募集しています。
-            </p>
-            <ApplyCta className="mx-auto min-w-[240px]" />
+            <ApplyCta className="relative mx-auto min-w-[240px]" />
+            <p className="relative mt-4 text-xs text-slate-500 sm:text-sm">写真で撮った画像でも大丈夫です。</p>
           </section>
         </div>
       </main>

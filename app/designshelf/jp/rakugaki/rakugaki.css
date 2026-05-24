@@ -7,37 +7,33 @@
   --rk-sky: #e0f2fe;
   --rk-mint: #ecfdf5;
   --rk-blush: #fdf2f8;
-  --rk-lilac: #f3e8ff;
   --rk-coral: #fb7185;
   --rk-coral-hover: #f43f5e;
-  --rk-sunny: #fbbf24;
   --rk-ink: #3d4f5f;
-  --rk-muted: #64748b;
-  background: linear-gradient(180deg, #fffbf5 0%, #fff7ed 45%, #f0f9ff 100%);
+  background: linear-gradient(180deg, #fffbf5 0%, #fff7ed 38%, #f0f9ff 72%, #fdf2f8 100%);
 }
 
 .rakugaki-notebook {
   background-color: var(--rk-paper);
   background-image:
-    linear-gradient(rgb(232 220 200 / 28%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(232 220 200 / 28%) 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(rgb(232 220 200 / 22%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(232 220 200 / 22%) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 .rakugaki-hero {
   position: relative;
   overflow: hidden;
   border-radius: 2rem;
-  border: 3px solid rgb(254 215 170 / 45%);
-  background: linear-gradient(145deg, #fffbeb 0%, #fff 35%, #f0f9ff 100%);
-  box-shadow: 0 8px 32px rgb(251 191 36 / 12%);
+  border: 2px dashed rgb(254 215 170 / 50%);
+  background: linear-gradient(145deg, #fffbeb 0%, #fff 40%, #f0f9ff 100%);
+  box-shadow: 0 6px 28px rgb(251 191 36 / 10%);
 }
 
 .rakugaki-title {
-  font-family: inherit;
   letter-spacing: 0.04em;
   line-height: 1.1;
-  text-shadow: 3px 3px 0 rgb(254 240 138 / 80%);
+  text-shadow: 3px 3px 0 rgb(254 240 138 / 70%);
 }
 
 .rakugaki-title-en {
@@ -52,37 +48,63 @@
 
 .rakugaki-badge {
   display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
   border-radius: 9999px;
   border: 2px dashed rgb(251 191 36 / 75%);
   background: rgb(255 255 255 / 92%);
-  padding: 0.35rem 0.85rem;
+  padding: 0.4rem 0.95rem;
   font-size: 0.75rem;
   font-weight: 700;
   color: #b45309;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+}
+
+.rakugaki-label {
+  position: absolute;
+  z-index: 15;
+  display: inline-block;
+  max-width: 9.5rem;
+  border-radius: 0.65rem;
+  border: 2px dashed rgb(251 191 36 / 55%);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.35;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 6%);
+}
+
+.rakugaki-label--sky {
+  background: rgb(224 242 254 / 92%);
+  color: #0369a1;
+  border-color: rgb(125 211 252 / 70%);
+}
+
+.rakugaki-label--lemon {
+  background: rgb(254 249 195 / 92%);
+  color: #a16207;
+  border-color: rgb(253 224 71 / 65%);
+}
+
+.rakugaki-hero-doodle {
+  pointer-events: none;
 }
 
 .rakugaki-cta-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 1rem 2rem;
+  min-height: 3.25rem;
+  padding: 1rem 2.1rem;
   border-radius: 9999px;
   background: linear-gradient(180deg, #fda4af 0%, var(--rk-coral) 100%);
   color: #fff;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.05rem;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgb(251 113 133 / 35%);
+  box-shadow: 0 6px 20px rgb(251 113 133 / 30%);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .rakugaki-cta-primary:hover {
   background: linear-gradient(180deg, #fb7185 0%, var(--rk-coral-hover) 100%);
-  box-shadow: 0 8px 24px rgb(251 113 133 / 42%);
   transform: translateY(-2px);
 }
 
@@ -95,6 +117,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 3.1rem;
   padding: 0.95rem 1.65rem;
   border-radius: 9999px;
   border: 2px dashed rgb(125 211 252 / 90%);
@@ -103,28 +126,36 @@
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .rakugaki-cta-secondary:hover {
   background: var(--rk-sky);
-  border-color: rgb(56 189 248);
 }
 
 .rakugaki-card {
-  border-radius: 1.5rem;
-  border: 2px solid rgb(254 215 170 / 35%);
+  border-radius: 1.75rem;
+  border: 2px solid rgb(254 215 170 / 30%);
   background: rgb(255 255 255 / 94%);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 4%);
+  box-shadow: 0 3px 14px rgb(0 0 0 / 3%);
 }
 
+.rakugaki-section-band--cream { background: rgb(255 251 245 / 80%); border-radius: 1.75rem; }
+.rakugaki-section-band--mint { background: rgb(236 253 245 / 45%); border-radius: 1.75rem; }
+.rakugaki-section-band--blush { background: rgb(253 242 248 / 45%); border-radius: 1.75rem; }
+
 .rakugaki-section-title {
-  position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   line-height: 1.35;
 }
 
-.rakugaki-section-title::after {
+.rakugaki-section-title-text {
+  position: relative;
+  z-index: 1;
+}
+
+.rakugaki-section-title-text::after {
   content: '';
   position: absolute;
   left: -2%;
@@ -132,20 +163,247 @@
   width: 104%;
   height: 0.55em;
   border-radius: 999px;
-  background: rgb(254 240 138 / 65%);
+  background: rgb(254 240 138 / 55%);
   z-index: -1;
 }
 
+.rakugaki-section-icon {
+  flex-shrink: 0;
+  color: rgb(251 146 60);
+}
+
 .rakugaki-story-lead {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1.75;
   color: var(--rk-ink);
 }
 
+.rakugaki-memo {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 2px dashed rgb(251 191 36 / 45%);
+  background: linear-gradient(135deg, #fffbeb 0%, #fff 100%);
+  padding: 1.25rem 1.35rem;
+  transform: rotate(-0.6deg);
+}
+
+.rakugaki-memo::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 1.25rem;
+  width: 3rem;
+  height: 0.85rem;
+  border-radius: 2px;
+  background: rgb(254 240 138 / 55%);
+  transform: rotate(-2deg);
+}
+
+.rakugaki-highlight-card {
+  border-radius: 1.25rem;
+  border: 2px solid rgb(253 186 116 / 45%);
+  background: linear-gradient(145deg, #fffbeb 0%, #fef9c3 100%);
+  padding: 1.35rem 1.5rem;
+}
+
+.rakugaki-step-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .rakugaki-step-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .rakugaki-step-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.rakugaki-step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: 1.25rem;
+  border: 2px dashed rgb(254 215 170 / 55%);
+  background: rgb(255 255 255 / 90%);
+  padding: 1.15rem 1.25rem;
+}
+
+.rakugaki-step-card--calm {
+  border-style: solid;
+  border-color: rgb(203 213 225 / 70%);
+  background: rgb(248 250 252 / 90%);
+}
+
+.rakugaki-step-icon-wrap {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgb(254 243 199 / 80%);
+  color: #c2410c;
+}
+
+.rakugaki-step-card--calm .rakugaki-step-icon-wrap {
+  background: rgb(226 232 240 / 80%);
+  color: #475569;
+}
+
+.rakugaki-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  border: 1.5px dashed rgb(110 231 183 / 70%);
+  background: rgb(236 253 245 / 80%);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #047857;
+}
+
+.rakugaki-ng-tag {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-radius: 0.85rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.rakugaki-ng-tag--warn {
+  border: 2px solid rgb(254 202 202 / 80%);
+  background: rgb(255 255 255 / 95%);
+  font-weight: 600;
+  color: #9f1239;
+}
+
+.rakugaki-ng-tag--plain {
+  background: rgb(255 255 255 / 65%);
+  color: #475569;
+}
+
+.rakugaki-gift-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 2px dashed rgb(251 191 36 / 50%);
+  background: linear-gradient(160deg, #fff 0%, #fffbeb 45%, #fef3c7 100%);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.rakugaki-gift-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.45rem;
+  background: repeating-linear-gradient(90deg, #fda4af 0, #fda4af 12px, #fde68a 12px, #fde68a 24px, #93c5fd 24px, #93c5fd 36px);
+  opacity: 0.55;
+}
+
+.rakugaki-flow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .rakugaki-flow-diagram {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.rakugaki-flow-node {
+  flex: 1;
+  border-radius: 1.15rem;
+  border: 2px solid rgb(203 213 225 / 70%);
+  background: #fff;
+  padding: 1.1rem 1rem;
+  text-align: center;
+}
+
+.rakugaki-flow-node--alt {
+  border-style: dashed;
+  background: rgb(248 250 252 / 90%);
+}
+
+.rakugaki-flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(251 113 133 / 70%);
+  transform: rotate(90deg);
+}
+
+@media (min-width: 640px) {
+  .rakugaki-flow-arrow {
+    transform: none;
+    flex-shrink: 0;
+    width: 2.5rem;
+  }
+}
+
+.rakugaki-notice-card {
+  border-radius: 1.15rem;
+  border-left: 4px solid #f59e0b;
+  background: linear-gradient(90deg, #fffbeb 0%, #fff 100%);
+  padding: 1.1rem 1.25rem;
+}
+
+.rakugaki-check-item {
+  display: flex;
+  gap: 0.85rem;
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  line-height: 1.65;
+}
+
+.rakugaki-check-item--highlight {
+  border: 2px dashed rgb(125 211 252 / 75%);
+  background: rgb(224 242 254 / 45%);
+  font-weight: 600;
+}
+
+.rakugaki-check-icon {
+  display: flex;
+  height: 1.65rem;
+  width: 1.65rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgb(71 85 105);
+  color: #fff;
+}
+
+.rakugaki-faq-card {
+  border-radius: 1.15rem;
+  border: 1.5px solid rgb(254 215 170 / 35%);
+  background: rgb(255 255 255 / 85%);
+}
+
+.rakugaki-faq-card + .rakugaki-faq-card {
+  margin-top: 0.65rem;
+}
+
 .rakugaki-faq summary {
+  position: relative;
   list-style: none;
   cursor: pointer;
-  padding-right: 1.5rem;
+  padding: 1.1rem 2.5rem 1.1rem 1.15rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #334155;
 }
 
 .rakugaki-faq summary::-webkit-details-marker {
@@ -154,19 +412,66 @@
 
 .rakugaki-faq summary::after {
   content: '+';
-  float: right;
+  position: absolute;
+  right: 1.15rem;
   font-size: 1.35rem;
-  font-weight: 400;
   color: rgb(251 113 133);
-  line-height: 1.1;
 }
 
 .rakugaki-faq[open] summary::after {
   content: '−';
 }
 
-.rakugaki-trust-panel {
-  border-radius: 1.25rem;
-  border: 2px solid rgb(203 213 225 / 80%);
-  background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+.rakugaki-faq-answer {
+  padding: 0 1.15rem 1.15rem;
+  border-top: 1px dashed rgb(254 215 170 / 40%);
+  padding-top: 0.85rem;
+  line-height: 1.7;
+  color: #64748b;
+}
+
+.rakugaki-faq-q-label {
+  margin-right: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: rgb(251 113 133);
+}
+
+.rakugaki-final-cta {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 2px dashed rgb(253 186 116 / 55%);
+  background: linear-gradient(145deg, #fffbeb 0%, #fff 50%, #f0f9ff 100%);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.rakugaki-final-cta-deco {
+  pointer-events: none;
+  position: absolute;
+  opacity: 0.35;
+}
+
+.rakugaki-icon-badge {
+  display: inline-flex;
+  height: 1.75rem;
+  width: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgb(254 243 199 / 80%);
+  color: #059669;
+}
+
+.rakugaki-icon-badge--ng {
+  background: rgb(255 228 230 / 80%);
+  color: #e11d48;
+}
+
+.rakugaki-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
