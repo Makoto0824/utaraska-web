@@ -132,8 +132,6 @@ export default function GamesPage() {
         <div className="ut-container">
           <nav className="ut-footer-links" aria-label="フッターナビゲーション">
             <Link href="/">トップ</Link>
-            <Link href="/#works">実績</Link>
-            <Link href="/#contact">Contact</Link>
           </nav>
           <p>&copy; {new Date().getFullYear()} ウタラスカ合同会社. All rights reserved.</p>
         </div>

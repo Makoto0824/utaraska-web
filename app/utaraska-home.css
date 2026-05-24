@@ -109,8 +109,6 @@
 .ut-header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   padding-block: 1rem;
 }
 
@@ -131,27 +129,6 @@
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-}
-
-.ut-nav {
-  display: none;
-  gap: 1.5rem;
-  font-size: 0.875rem;
-}
-
-.ut-nav a {
-  color: var(--ut-muted);
-  transition: color 0.2s ease;
-}
-
-.ut-nav a:hover {
-  color: var(--ut-ink);
-}
-
-@media (min-width: 768px) {
-  .ut-nav {
-    display: flex;
-  }
 }
 
 .ut-hero {

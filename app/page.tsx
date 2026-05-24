@@ -39,17 +39,10 @@ export default function HomePage() {
 
       <header className="ut-header">
         <div className="ut-container ut-header-inner">
-          <a href="#" className="ut-logo-mark">
+          <Link href="/" className="ut-logo-mark">
             <Image src="/images/logo.png" alt="" width={40} height={40} priority />
             <span className="ut-logo-text">ウタラスカ合同会社</span>
-          </a>
-          <nav className="ut-nav" aria-label="ページ内ナビゲーション">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#works">Works</a>
-            <a href="#process">Process</a>
-            <a href="#contact">Contact</a>
-          </nav>
+          </Link>
         </div>
       </header>
 
@@ -77,11 +70,8 @@ export default function HomePage() {
               <span className="ut-tag">AI活用・プロトタイプ</span>
             </div>
             <div className="ut-hero-actions">
-              <a href="#contact" className="ut-btn ut-btn--primary">
+              <a href={`mailto:${COMPANY_INFO.email}`} className="ut-btn ut-btn--primary">
                 制作の相談をする
-              </a>
-              <a href="#works" className="ut-btn ut-btn--ghost">
-                実績を見る
               </a>
             </div>
           </div>
@@ -103,7 +93,7 @@ export default function HomePage() {
         </div>
 
         {/* About */}
-        <section id="about" className="ut-section ut-container scroll-mt-20">
+        <section id="about" className="ut-section ut-container">
           <div className="ut-about-grid">
             <p className="ut-about-aside" aria-hidden>
               01
@@ -137,7 +127,7 @@ export default function HomePage() {
         <hr className="ut-rule ut-container" />
 
         {/* Services */}
-        <section id="services" className="ut-section ut-container scroll-mt-20">
+        <section id="services" className="ut-section ut-container">
           <p className="ut-kicker">Services</p>
           <h2 className="ut-heading ut-heading-lg">提供領域</h2>
           <p className="ut-lead" style={{ maxWidth: '36rem', marginTop: '0.75rem' }}>
@@ -156,7 +146,7 @@ export default function HomePage() {
         </section>
 
         {/* Works */}
-        <section id="works" className="ut-section ut-section--tech scroll-mt-20">
+        <section id="works" className="ut-section ut-section--tech">
           <div className="ut-container">
             <p className="ut-kicker">Works</p>
             <h2 className="ut-heading ut-heading-lg">実績・事例</h2>
@@ -234,7 +224,7 @@ export default function HomePage() {
         </section>
 
         {/* Process */}
-        <section id="process" className="ut-section ut-container scroll-mt-20">
+        <section id="process" className="ut-section ut-container">
           <p className="ut-kicker">Process</p>
           <h2 className="ut-heading ut-heading-lg">ご相談からの流れ</h2>
           <p className="ut-lead" style={{ maxWidth: '32rem', marginTop: '0.75rem' }}>
@@ -268,7 +258,7 @@ export default function HomePage() {
         </section>
 
         {/* Contact + Company */}
-        <section id="contact" className="ut-section ut-section--tech scroll-mt-20">
+        <section id="contact" className="ut-section ut-section--tech">
           <div className="ut-container">
             <p className="ut-kicker">Contact</p>
             <h2 className="ut-heading ut-heading-lg">まずはご相談ください</h2>
@@ -357,7 +347,6 @@ export default function HomePage() {
           <nav className="ut-footer-links" aria-label="フッターナビゲーション">
             <Link href="/games">Games</Link>
             <Link href="/designshelf/jp">Design Shelf</Link>
-            <a href="#contact">Contact</a>
           </nav>
           <p>&copy; {new Date().getFullYear()} ウタラスカ合同会社. All rights reserved.</p>
         </div>
