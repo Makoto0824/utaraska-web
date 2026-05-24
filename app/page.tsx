@@ -59,43 +59,31 @@ export default function HomePage() {
           <p className="ut-hero-vertical" aria-hidden>
             イラストとあそび
           </p>
-          <div className="ut-hero-grid">
-            <div>
-              <p className="ut-kicker">Creative Studio</p>
-              <h1 id="hero-heading" className="ut-heading ut-heading-xl">
-                イラストで世界観を固め、
-                <br />
-                ゲームで「あそび」を届ける。
-              </h1>
-              <hr className="ut-rule-accent" />
-              <p className="ut-lead">
-                ウタラスカ合同会社は、テレビ番組・企業案件向けのイラスト制作と、ゲーム・アプリ開発を軸に活動する小さなクリエイティブスタジオです。
-                ビジュアルとプレイ体験の両方から、伝えたい体験を形にします。
-              </p>
-              <div className="ut-hero-tags" aria-label="主要領域">
-                <span className="ut-tag">イラスト制作</span>
-                <span className="ut-tag">ゲーム・アプリ開発</span>
-                <span className="ut-tag">AI活用・プロトタイプ</span>
-              </div>
-              <div className="ut-hero-actions">
-                <a href="#contact" className="ut-btn ut-btn--primary">
-                  制作の相談をする
-                </a>
-                <a href="#works" className="ut-btn ut-btn--ghost">
-                  実績を見る
-                </a>
-              </div>
+          <div className="ut-hero-content">
+            <p className="ut-kicker">Creative Studio</p>
+            <h1 id="hero-heading" className="ut-heading ut-heading-xl">
+              イラストで世界観を固め、
+              <br />
+              ゲームで「あそび」を届ける。
+            </h1>
+            <hr className="ut-rule-accent" />
+            <p className="ut-lead">
+              ウタラスカ合同会社は、テレビ番組・企業案件向けのイラスト制作と、ゲーム・アプリ開発を軸に活動する小さなクリエイティブスタジオです。
+              ビジュアルとプレイ体験の両方から、伝えたい体験を形にします。
+            </p>
+            <div className="ut-hero-tags" aria-label="主要領域">
+              <span className="ut-tag">イラスト制作</span>
+              <span className="ut-tag">ゲーム・アプリ開発</span>
+              <span className="ut-tag">AI活用・プロトタイプ</span>
             </div>
-            <figure className="ut-hero-visual">
-              <Image
-                src="/images/main.png"
-                alt="ウタラスカ合同会社の制作イメージ"
-                width={600}
-                height={400}
-                priority
-              />
-              <figcaption className="ut-hero-caption">Illustration × Game Development</figcaption>
-            </figure>
+            <div className="ut-hero-actions">
+              <a href="#contact" className="ut-btn ut-btn--primary">
+                制作の相談をする
+              </a>
+              <a href="#works" className="ut-btn ut-btn--ghost">
+                実績を見る
+              </a>
+            </div>
           </div>
         </section>
 

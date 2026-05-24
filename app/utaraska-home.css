@@ -159,17 +159,8 @@
   position: relative;
 }
 
-.ut-hero-grid {
-  display: grid;
-  gap: 3rem;
-  align-items: center;
-}
-
-@media (min-width: 960px) {
-  .ut-hero-grid {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-  }
+.ut-hero-content {
+  max-width: 42rem;
 }
 
 .ut-hero-vertical {
@@ -253,24 +244,6 @@
 .ut-btn--ghost:hover {
   border-color: var(--ut-accent);
   color: var(--ut-accent);
-}
-
-.ut-hero-visual {
-  border: 1px solid var(--ut-line);
-  background: #fff;
-  padding: 0.75rem;
-}
-
-.ut-hero-visual img {
-  width: 100%;
-  display: block;
-}
-
-.ut-hero-caption {
-  margin-top: 0.65rem;
-  font-size: 0.75rem;
-  color: var(--ut-muted);
-  text-align: right;
 }
 
 .ut-about-grid {
