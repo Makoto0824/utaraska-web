@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: "ウタラスカ合同会社 - イラスト × ゲーム",
+  title: 'ウタラスカ合同会社 — イラスト × ゲーム開発',
   description:
-    "イラスト・キャラクターデザインからAI活用のアプリ・ゲーム開発まで一気通貫。バイブコーディング等で工程を効率化し、抑えたお見積りが可能なクリエイティブスタジオ。番組向けイラスト実績多数。",
+    'テレビ番組・企業案件向けのイラスト制作と、ゲーム・アプリ開発。イラストで世界観を固め、ゲームで「あそび」を届けるクリエイティブスタジオ。',
 };
 
 export default function RootLayout({
@@ -28,14 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ECVYESFRPV"
