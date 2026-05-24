@@ -5,8 +5,8 @@
 export const RAKUGAKI_T = {
   /** 応募フォーム（Googleフォーム等）— 未設定時は # */
   applicationFormUrl: '#',
-  /** 利用規約ページ — 未設定時は # */
-  termsUrl: '#',
+  /** 利用規約ページ */
+  termsUrl: '/designshelf/jp/rakugaki/terms',
   /** 採用謝礼（Amazonギフト券・円） */
   adoptionRewardYen: 1000,
   /** ヒーロー：Tシャツ着用イメージ（カルーセル・表示順） */

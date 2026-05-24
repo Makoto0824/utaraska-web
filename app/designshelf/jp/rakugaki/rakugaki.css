@@ -438,6 +438,12 @@
   color: rgb(251 113 133);
 }
 
+.rakugaki-pre-cta {
+  padding: 0.25rem 0.5rem 0.5rem;
+  font-weight: 500;
+  color: var(--rk-ink);
+}
+
 .rakugaki-final-cta {
   position: relative;
   overflow: hidden;
@@ -474,4 +480,110 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+/* 応募規約ページ */
+.rakugaki-terms-heading {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #334155;
+}
+
+.rakugaki-terms-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #475569;
+}
+
+.rakugaki-terms-body p + p {
+  margin-top: 0.75rem;
+}
+
+.rakugaki-terms-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rakugaki-terms-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-top: 0.45rem;
+}
+
+.rakugaki-terms-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: rgb(251 191 36 / 70%);
+}
+
+.rakugaki-terms-toc {
+  border-radius: 1.15rem;
+  border: 2px dashed rgb(254 215 170 / 45%);
+  background: rgb(255 251 245 / 80%);
+  padding: 1.15rem 1.25rem;
+}
+
+.rakugaki-terms-toc-link {
+  display: block;
+  padding: 0.2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #0369a1;
+  text-decoration: none;
+}
+
+.rakugaki-terms-toc-link:hover {
+  text-decoration: underline;
+}
+
+.rakugaki-terms-keypoints {
+  border-radius: 1.15rem;
+  border: 2px solid rgb(191 219 254 / 60%);
+  background: rgb(239 246 255 / 50%);
+  padding: 1.15rem 1.25rem;
+}
+
+.rakugaki-terms-bullet {
+  margin-top: 0.45rem;
+  height: 0.4rem;
+  width: 0.4rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: rgb(251 113 133 / 70%);
+}
+
+.rakugaki-terms-section--highlight {
+  border-radius: 1.15rem;
+  border: 2px solid rgb(254 215 170 / 45%);
+  background: rgb(255 251 245 / 60%);
+  padding: 1.15rem 1.25rem;
+  margin-inline: -0.25rem;
+}
+
+.rakugaki-terms-emphasis {
+  border-radius: 0.85rem;
+  border-left: 3px solid #f59e0b;
+  background: rgb(255 251 235 / 80%);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #92400e;
+}
+
+.rakugaki-terms-link {
+  font-weight: 600;
+  color: #0369a1;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rakugaki-terms-link:hover {
+  color: #0c4a6e;
 }

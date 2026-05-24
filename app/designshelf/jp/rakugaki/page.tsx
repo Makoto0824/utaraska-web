@@ -522,7 +522,7 @@ export default function RakugakiLandingPage() {
               >
                 らくがきT 利用規約
               </a>
-              （準備中）もあわせてご確認ください。
+              もあわせてご確認ください。
             </p>
           </SectionCard>
 
@@ -530,6 +530,10 @@ export default function RakugakiLandingPage() {
           <SectionCard id="faq" title="よくある質問" tint="blush" icon={<IconNote className="h-5 w-5" />}>
             <FaqList items={FAQ} />
           </SectionCard>
+
+          <p className="rakugaki-pre-cta mx-auto max-w-lg text-center text-sm leading-relaxed text-slate-600 sm:text-base">
+            写真で撮った画像でも大丈夫です。まずは1枚、送ってみてください。
+          </p>
 
           {/* 最終CTA */}
           <section id="apply" className="rakugaki-final-cta rakugaki-notebook scroll-mt-24 sm:p-12">
@@ -542,7 +546,6 @@ export default function RakugakiLandingPage() {
               上手い絵である必要はありません。左胸に小さく置いたときに、なぜか気になる。そんならくがきを募集しています。
             </p>
             <ApplyCta className="relative mx-auto min-w-[240px]" />
-            <p className="relative mt-4 text-xs text-slate-500 sm:text-sm">写真で撮った画像でも大丈夫です。</p>
           </section>
         </div>
       </main>
