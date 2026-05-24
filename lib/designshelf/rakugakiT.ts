@@ -15,8 +15,8 @@ export const RAKUGAKI_T = {
     '/designshelf/images/rakugaki/hero-tshirt1.png',
     '/designshelf/images/rakugaki/hero-tshirt2.png',
   ] as const,
-  /** OGP / SNS 用画像（専用カットがあれば差し替え） */
-  openGraphImageSrc: '/designshelf/images/rakugaki/hero-tshirt1.png',
+  /** OGP / SNS 用画像 */
+  openGraphImageSrc: '/designshelf/images/rakugaki/ogp.png',
   /** ヒーロー背景：散らす手描き装飾（doodle系・差し替え可） */
   doodleStickerImages: [
     '/designshelf/images/rakugaki/doodle-cat.png',

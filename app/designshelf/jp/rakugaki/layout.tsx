@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: RAKUGAKI_T.openGraphImageSrc,
-        width: 768,
-        height: 1024,
-        alt: 'らくがきT｜胸元にらくがきを配置したTシャツのイメージ',
+        width: 1731,
+        height: 909,
+        alt: 'らくがきT｜Design Shelf 投稿企画',
       },
     ],
   },

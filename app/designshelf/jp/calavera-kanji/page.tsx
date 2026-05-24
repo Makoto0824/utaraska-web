@@ -59,6 +59,9 @@ export default function CalaveraKanjiLandingPage() {
               <Link href="/designshelf/jp/picks" className="text-gray-600 transition-colors hover:text-gray-900">
                 Amazonおすすめ
               </Link>
+              <Link href="/designshelf/jp/rakugaki" className="text-gray-600 transition-colors hover:text-gray-900">
+                らくがきT
+              </Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 transition-colors hover:text-gray-900">
                 お問い合わせ
               </Link>

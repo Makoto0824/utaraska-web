@@ -200,7 +200,10 @@ const CHECKLIST = [
 const FAQ = [
   { q: '子どもの絵でも応募できますか？', a: 'はい。保護者の方が応募してください。' },
   { q: '写真で撮った画像でも大丈夫ですか？', a: '大丈夫です。できるだけ明るく、影が少ない状態で撮影してください。' },
-  { q: '採用されなかった場合、連絡はありますか？', a: '運用初期は、採用者への連絡を優先する場合があります。' },
+  {
+    q: '採用されなかった場合、連絡はありますか？',
+    a: '原則として、不採用の個別連絡は行いません。採用の連絡が届かない場合は、不採用とご理解ください。',
+  },
   { q: '自分で描いた大人のらくがきでも応募できますか？', a: 'はい。大人のらくがきも歓迎します。' },
   { q: 'AIで作った画像は応募できますか？', a: '現時点では受け付けていません。手描きの作品のみ対象です。' },
   { q: '採用後に売上報告はありますか？', a: 'ありません。謝礼は一回限りで、売上に応じた追加報酬はありません。' },
@@ -227,6 +230,9 @@ function SiteHeader() {
             </Link>
             <Link href="/designshelf/jp/picks" className="text-gray-600 transition-colors hover:text-gray-900">
               Amazonおすすめ
+            </Link>
+            <Link href="/designshelf/jp/rakugaki" className="font-medium text-gray-900">
+              らくがきT
             </Link>
             <Link href="/designshelf/jp/contact" className="text-gray-600 transition-colors hover:text-gray-900">
               お問い合わせ

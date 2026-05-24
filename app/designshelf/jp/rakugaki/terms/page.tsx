@@ -65,12 +65,24 @@ function SiteHeader() {
               className="h-auto w-[100px] sm:w-[120px]"
             />
           </Link>
-          <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm sm:gap-6">
-            <Link href="/designshelf/jp/rakugaki" className="text-gray-600 hover:text-gray-900">
+          <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 sm:gap-6">
+            <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900">
+              ホーム
+            </Link>
+            <Link href="/designshelf/jp/picks" className="text-gray-600 hover:text-gray-900">
+              Amazonおすすめ
+            </Link>
+            <Link href="/designshelf/jp/rakugaki" className="font-medium text-gray-900">
               らくがきT
             </Link>
             <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900">
               お問い合わせ
+            </Link>
+            <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900">
+              運営者情報
+            </Link>
+            <Link href="/designshelf" className="text-gray-600 hover:text-gray-900">
+              EN Store
             </Link>
           </div>
         </div>

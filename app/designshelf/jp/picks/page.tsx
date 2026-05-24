@@ -69,6 +69,9 @@ export default function JpPicksPage() {
               <Link href={PICKS_PATH} className="text-gray-900 font-medium">
                 Amazonおすすめ
               </Link>
+              <Link href="/designshelf/jp/rakugaki" className="text-gray-600 hover:text-gray-900 transition-colors">
+                らくがきT
+              </Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
                 お問い合わせ
               </Link>

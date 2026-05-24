@@ -177,13 +177,13 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
+    { src: "/designshelf/images/banner6.png", alt: "らくがきT 投稿企画", link: "/designshelf/jp/rakugaki" },
     {
       src: "/designshelf/images/40_skull/jp/banner6.jpg",
       alt: "カラベラドクロと漢字 特設ページ",
       link: "/designshelf/jp/calavera-kanji",
     },
     { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4azSuGy" },
-    { src: "/designshelf/images/banner2.jpg", alt: "バナー2", link: "https://amzn.to/4tjnulH" },
     { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
     { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "https://amzn.to/4bHeLmY" },
   ];
@@ -996,6 +996,7 @@ export default function DesignShelf() {
             <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 sm:gap-6">
               <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
               <Link href="/designshelf/jp/picks" className="text-gray-600 hover:text-gray-900 transition-colors">Amazonおすすめ</Link>
+              <Link href="/designshelf/jp/rakugaki" className="text-gray-600 hover:text-gray-900 transition-colors">らくがきT</Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
               <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
@@ -1547,6 +1548,7 @@ export default function DesignShelf() {
               <h4 className="text-lg font-semibold mb-4">Design Shelf</h4>
               <ul className="space-y-2">
                 <li><Link href="/designshelf/jp/picks" className="text-gray-300 hover:text-white transition-colors">AmazonおすすめTシャツ</Link></li>
+                <li><Link href="/designshelf/jp/rakugaki" className="text-gray-300 hover:text-white transition-colors">らくがきT</Link></li>
                 <li><Link href="/designshelf/jp/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/jp/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>

@@ -23,6 +23,7 @@ export default function About() {
             <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 sm:gap-6">
               <Link href="/designshelf/jp" className="text-gray-600 hover:text-gray-900 transition-colors">ホーム</Link>
               <Link href="/designshelf/jp/picks" className="text-gray-600 hover:text-gray-900 transition-colors">Amazonおすすめ</Link>
+              <Link href="/designshelf/jp/rakugaki" className="text-gray-600 hover:text-gray-900 transition-colors">らくがきT</Link>
               <Link href="/designshelf/jp/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/designshelf/jp/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
               <Link href="/designshelf" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
