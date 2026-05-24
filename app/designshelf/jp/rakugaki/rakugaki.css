@@ -1,106 +1,151 @@
-/* 落書きT LP — 手描き・ファミリー向けトーン（このページのみ） */
+/* らくがきT LP — ファミリー・手描き世界観（このページのみ） */
 
 .rakugaki-page {
   --rk-cream: #fffbf5;
   --rk-paper: #fff9eb;
-  --rk-coral: #f97316;
-  --rk-coral-hover: #ea580c;
+  --rk-lemon: #fef9c3;
   --rk-sky: #e0f2fe;
   --rk-mint: #ecfdf5;
   --rk-blush: #fdf2f8;
-  --rk-ink: #334155;
+  --rk-lilac: #f3e8ff;
+  --rk-coral: #fb7185;
+  --rk-coral-hover: #f43f5e;
+  --rk-sunny: #fbbf24;
+  --rk-ink: #3d4f5f;
   --rk-muted: #64748b;
-  background-color: var(--rk-cream);
+  background: linear-gradient(180deg, #fffbf5 0%, #fff7ed 45%, #f0f9ff 100%);
 }
 
 .rakugaki-notebook {
   background-color: var(--rk-paper);
   background-image:
-    linear-gradient(rgb(232 220 200 / 35%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(232 220 200 / 35%) 1px, transparent 1px);
-  background-size: 22px 22px;
+    linear-gradient(rgb(232 220 200 / 28%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(232 220 200 / 28%) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.rakugaki-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 3px solid rgb(254 215 170 / 45%);
+  background: linear-gradient(145deg, #fffbeb 0%, #fff 35%, #f0f9ff 100%);
+  box-shadow: 0 8px 32px rgb(251 191 36 / 12%);
 }
 
 .rakugaki-title {
   font-family: inherit;
-  letter-spacing: 0.02em;
-  text-shadow: 2px 2px 0 rgb(251 191 36 / 25%);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-shadow: 3px 3px 0 rgb(254 240 138 / 80%);
+}
+
+.rakugaki-title-en {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgb(251 113 133 / 90%);
+  text-shadow: none;
+}
+
+.rakugaki-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  border: 2px dashed rgb(251 191 36 / 75%);
+  background: rgb(255 255 255 / 92%);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b45309;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
 }
 
 .rakugaki-cta-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  padding: 0.85rem 1.75rem;
+  gap: 0.4rem;
+  padding: 1rem 2rem;
   border-radius: 9999px;
-  background: linear-gradient(180deg, #fb923c 0%, var(--rk-coral) 100%);
+  background: linear-gradient(180deg, #fda4af 0%, var(--rk-coral) 100%);
   color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 800;
+  font-size: 1rem;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgb(249 115 22 / 35%);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  box-shadow: 0 6px 20px rgb(251 113 133 / 35%);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .rakugaki-cta-primary:hover {
-  background: linear-gradient(180deg, #f97316 0%, var(--rk-coral-hover) 100%);
-  box-shadow: 0 6px 18px rgb(249 115 22 / 40%);
-  transform: translateY(-1px);
+  background: linear-gradient(180deg, #fb7185 0%, var(--rk-coral-hover) 100%);
+  box-shadow: 0 8px 24px rgb(251 113 133 / 42%);
+  transform: translateY(-2px);
 }
 
 .rakugaki-cta-primary:focus-visible {
-  outline: 3px solid rgb(251 191 36 / 60%);
-  outline-offset: 2px;
+  outline: 3px solid rgb(254 240 138 / 80%);
+  outline-offset: 3px;
 }
 
 .rakugaki-cta-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 1.5rem;
+  padding: 0.95rem 1.65rem;
   border-radius: 9999px;
-  border: 2px dashed rgb(251 191 36 / 70%);
-  background: #fff;
+  border: 2px dashed rgb(125 211 252 / 90%);
+  background: rgb(255 255 255 / 95%);
   color: var(--rk-ink);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .rakugaki-cta-secondary:hover {
-  background: rgb(255 251 235);
-  border-color: rgb(251 191 36);
+  background: var(--rk-sky);
+  border-color: rgb(56 189 248);
 }
 
 .rakugaki-card {
-  border-radius: 1.25rem;
-  border: 1px solid rgb(254 215 170 / 50%);
-  background: rgb(255 255 255 / 92%);
-  box-shadow: 0 2px 12px rgb(0 0 0 / 4%);
+  border-radius: 1.5rem;
+  border: 2px solid rgb(254 215 170 / 35%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 4%);
 }
 
 .rakugaki-section-title {
   position: relative;
   display: inline-block;
+  line-height: 1.35;
 }
 
 .rakugaki-section-title::after {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
-  height: 6px;
+  left: -2%;
+  bottom: 2px;
+  width: 104%;
+  height: 0.55em;
   border-radius: 999px;
-  background: rgb(254 240 138 / 70%);
+  background: rgb(254 240 138 / 65%);
   z-index: -1;
+}
+
+.rakugaki-story-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--rk-ink);
 }
 
 .rakugaki-faq summary {
   list-style: none;
   cursor: pointer;
+  padding-right: 1.5rem;
 }
 
 .rakugaki-faq summary::-webkit-details-marker {
@@ -110,12 +155,18 @@
 .rakugaki-faq summary::after {
   content: '+';
   float: right;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 400;
-  color: var(--rk-muted);
-  line-height: 1.2;
+  color: rgb(251 113 133);
+  line-height: 1.1;
 }
 
 .rakugaki-faq[open] summary::after {
   content: '−';
+}
+
+.rakugaki-trust-panel {
+  border-radius: 1.25rem;
+  border: 2px solid rgb(203 213 225 / 80%);
+  background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
 }

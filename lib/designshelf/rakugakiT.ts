@@ -1,5 +1,5 @@
 /**
- * 落書きT LP の外部リンク・運用パラメータ。
+ * らくがきT LP の外部リンク・運用パラメータ。
  * フォームURL・規約URL・謝礼金額・OGP画像はこのファイルのみ差し替えればよいです。
  */
 export const RAKUGAKI_T = {
@@ -16,4 +16,21 @@ export const RAKUGAKI_T = {
   ] as const,
   /** OGP / SNS 用画像（専用カットがあれば差し替え） */
   openGraphImageSrc: '/designshelf/images/rakugaki/hero-tshirt1.png',
+  /** ヒーロー背景：散らす手描き装飾（doodle系・差し替え可） */
+  doodleStickerImages: [
+    '/designshelf/images/rakugaki/doodle-cat.png',
+    '/designshelf/images/rakugaki/doodle-star.png',
+    '/designshelf/images/rakugaki/doodle-rainbow.png',
+    '/designshelf/images/rakugaki/doodle-pencil.png',
+    '/designshelf/images/rakugaki/doodle-cloud.png',
+  ] as const,
+  /** ヒーロー背景：散らす手描き装飾（deco系・差し替え可） */
+  heroDecorationImages: [
+    '/designshelf/images/rakugaki/deco-sun.png',
+    '/designshelf/images/rakugaki/deco-house.png',
+    '/designshelf/images/rakugaki/doodle-star.png',
+    '/designshelf/images/rakugaki/deco-squiggle.png',
+    '/designshelf/images/rakugaki/deco-circle.png',
+    '/designshelf/images/rakugaki/deco-triangle.png',
+  ] as const,
 } as const;
