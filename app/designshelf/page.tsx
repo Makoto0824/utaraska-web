@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
 export default function DesignShelf() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
@@ -1037,13 +1038,15 @@ export default function DesignShelf() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Utaraska LLC</h3>
+              <h3 className="text-xl font-bold mb-4">
+                <UtaraskaCorporateLink className="hover:text-gray-200 transition-colors">Utaraska LLC</UtaraskaCorporateLink>
+              </h3>
               <p className="text-gray-300 mb-2">2F-C, Shibuya Dogenzaka Tokyu Building, 1-10-8 Dogenzaka, Shibuya-ku, Tokyo 150-0043, Japan</p>
               <p className="text-gray-300">contact@utaraska.co.jp</p>
             </div>
           </div>
           <div className="text-center pt-8 border-t border-gray-700">
-            <p className="text-gray-400 mb-2">&copy; 2025 Utaraska LLC. All rights reserved.</p>
+            <p className="text-gray-400 mb-2">&copy; 2025 <UtaraskaCorporateLink className="hover:text-gray-300 transition-colors">Utaraska LLC</UtaraskaCorporateLink>. All rights reserved.</p>
             <p className="text-xs text-gray-500 max-w-4xl mx-auto">
               Some product images are AI-generated or edited, and colors and details may differ from the actual product. Please check the product description on Amazon before purchasing.
             </p>

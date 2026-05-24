@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
@@ -1540,7 +1541,9 @@ export default function DesignShelf() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">ウタラスカ合同会社</h3>
+              <h3 className="text-xl font-bold mb-4">
+                <UtaraskaCorporateLink className="hover:text-gray-200 transition-colors" />
+              </h3>
               <p className="text-gray-300 mb-2">〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号渋谷道玄坂東急ビル2F−C</p>
               <p className="text-gray-300">contact@utaraska.co.jp</p>
             </div>
@@ -1549,6 +1552,7 @@ export default function DesignShelf() {
               <ul className="space-y-2">
                 <li><Link href="/designshelf/jp/picks" className="text-gray-300 hover:text-white transition-colors">AmazonおすすめTシャツ</Link></li>
                 <li><Link href="/designshelf/jp/rakugaki" className="text-gray-300 hover:text-white transition-colors">らくがきT</Link></li>
+                <li><Link href="/designshelf/jp/privacy" className="text-gray-300 hover:text-white transition-colors">プライバシーポリシー</Link></li>
                 <li><Link href="/designshelf/jp/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
                 <li>
                   <Link href="/designshelf/jp/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
@@ -1576,7 +1580,7 @@ export default function DesignShelf() {
             </div>
           </div>
           <div className="text-center pt-8 border-t border-gray-700">
-            <p className="text-gray-400 mb-2">&copy; 2025 ウタラスカ合同会社. All rights reserved.</p>
+            <p className="text-gray-400 mb-2">&copy; 2025 <UtaraskaCorporateLink className="hover:text-gray-300 transition-colors">ウタラスカ合同会社</UtaraskaCorporateLink>. All rights reserved.</p>
             <p className="text-xs text-gray-500 max-w-4xl mx-auto">
               一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。
             </p>

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CALAVERA_KANJI } from '@/lib/designshelf/calaveraKanji';
+import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 import { SongLyrics } from './SongLyrics';
 
 function AmazonCta({ className = '' }: { className?: string }) {
@@ -238,7 +239,9 @@ export default function CalaveraKanjiLandingPage() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
-              <h3 className="mb-4 text-xl font-bold">ウタラスカ合同会社</h3>
+              <h3 className="mb-4 text-xl font-bold">
+                <UtaraskaCorporateLink className="hover:text-gray-200 transition-colors" />
+              </h3>
               <p className="mb-2 text-gray-300">
                 〒150-0043
                 <br />
@@ -257,6 +260,11 @@ export default function CalaveraKanjiLandingPage() {
                 <li>
                   <Link href="/designshelf/jp/about" className="text-gray-300 transition-colors hover:text-white">
                     運営者情報
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/designshelf/jp/privacy" className="text-gray-300 transition-colors hover:text-white">
+                    プライバシーポリシー
                   </Link>
                 </li>
                 <li>
@@ -288,7 +296,9 @@ export default function CalaveraKanjiLandingPage() {
           </div>
           <div className="border-t border-gray-700 pt-8 text-center">
             <p className="mb-2 text-gray-400">
-              &copy; {new Date().getFullYear()} ウタラスカ合同会社. All rights reserved.
+              &copy; {new Date().getFullYear()}{' '}
+              <UtaraskaCorporateLink className="hover:text-gray-300 transition-colors">ウタラスカ合同会社</UtaraskaCorporateLink>.
+              All rights reserved.
             </p>
             <p className="mx-auto max-w-4xl text-xs text-gray-500">
               一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。

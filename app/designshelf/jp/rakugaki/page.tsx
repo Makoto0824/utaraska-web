@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RAKUGAKI_T } from '@/lib/designshelf/rakugakiT';
+import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 import { FaqList } from './FaqList';
 import { HeroDecorations } from './HeroDecorations';
 import { HeroTshirtCarousel } from './HeroTshirtCarousel';
@@ -31,8 +32,10 @@ function ApplyCta({
   return (
     <a
       href={RAKUGAKI_T.applicationFormUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`rakugaki-cta-primary ${fullWidth ? 'w-full sm:w-auto' : ''} ${className}`}
-      aria-label="らくがきを送ってみる"
+      aria-label="らくがきを送ってみる（新しいタブで開く）"
     >
       らくがきを送ってみる
     </a>
@@ -256,7 +259,9 @@ function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           <div>
-            <h3 className="mb-4 text-xl font-bold">ウタラスカ合同会社</h3>
+            <h3 className="mb-4 text-xl font-bold">
+              <UtaraskaCorporateLink className="hover:text-gray-200 transition-colors" />
+            </h3>
             <p className="mb-2 text-gray-300">
               〒150-0043
               <br />
@@ -275,6 +280,11 @@ function SiteFooter() {
               <li>
                 <Link href="/designshelf/jp/about" className="text-gray-300 transition-colors hover:text-white">
                   運営者情報
+                </Link>
+              </li>
+              <li>
+                <Link href="/designshelf/jp/privacy" className="text-gray-300 transition-colors hover:text-white">
+                  プライバシーポリシー
                 </Link>
               </li>
               <li>
@@ -306,7 +316,9 @@ function SiteFooter() {
         </div>
         <div className="border-t border-gray-700 pt-8 text-center">
           <p className="mb-2 text-gray-400">
-            &copy; {new Date().getFullYear()} ウタラスカ合同会社. All rights reserved.
+            &copy; {new Date().getFullYear()}{' '}
+            <UtaraskaCorporateLink className="hover:text-gray-300 transition-colors">ウタラスカ合同会社</UtaraskaCorporateLink>.
+            All rights reserved.
           </p>
           <p className="mx-auto max-w-4xl text-xs text-gray-500">
             らくがきTの応募・採用条件の詳細は、本ページおよび

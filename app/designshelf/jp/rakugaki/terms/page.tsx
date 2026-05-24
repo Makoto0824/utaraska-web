@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { DESIGN_SHELF_JP_URLS } from '@/lib/designshelf/siteUrls';
 import { RAKUGAKI_T } from '@/lib/designshelf/rakugakiT';
+import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
-const PRIVACY_POLICY_URL = '#';
+const PRIVACY_POLICY_URL = DESIGN_SHELF_JP_URLS.privacyPolicy;
 
 const KEY_POINTS = [
   '採用されても、Amazonでの永久掲載や継続販売を保証するものではありません。',
@@ -95,7 +97,7 @@ function SiteFooter() {
   return (
     <footer className="mt-16 bg-gray-800 py-10 text-white">
       <div className="mx-auto max-w-3xl px-4 text-center text-sm text-gray-400">
-        <p>&copy; {new Date().getFullYear()} ウタラスカ合同会社</p>
+        <p>&copy; {new Date().getFullYear()} <UtaraskaCorporateLink className="underline underline-offset-2 hover:text-white">ウタラスカ合同会社</UtaraskaCorporateLink></p>
         <p className="mt-2">
           <Link href="/designshelf/jp/rakugaki" className="underline underline-offset-2 hover:text-white">
             らくがきT

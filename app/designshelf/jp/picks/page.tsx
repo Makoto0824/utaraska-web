@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 import {
   AMAZON_THREADS_PICKS,
   AMAZON_PICK_CATEGORY_LABELS,
@@ -165,7 +166,9 @@ export default function JpPicksPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">ウタラスカ合同会社</h3>
+              <h3 className="text-xl font-bold mb-4">
+                <UtaraskaCorporateLink className="hover:text-gray-200 transition-colors" />
+              </h3>
               <p className="text-gray-300 mb-2">
                 〒150-0043
                 <br />
@@ -187,6 +190,11 @@ export default function JpPicksPage() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/designshelf/jp/privacy" className="text-gray-300 hover:text-white transition-colors">
+                    プライバシーポリシー
+                  </Link>
+                </li>
+                <li>
                   <Link href="/designshelf/jp/contact" className="text-gray-300 hover:text-white transition-colors">
                     お問い合わせ
                   </Link>
@@ -195,7 +203,7 @@ export default function JpPicksPage() {
             </div>
           </div>
           <div className="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; {new Date().getFullYear()} utaraska合同会社 All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} <UtaraskaCorporateLink className="hover:text-gray-300 transition-colors">utaraska合同会社</UtaraskaCorporateLink> All rights reserved.</p>
           </div>
         </div>
       </footer>
