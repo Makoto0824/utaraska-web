@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { RAKUGAKI_T } from '@/lib/designshelf/rakugakiT';
+import './rakugaki.css';
 
 const title = '落書きT｜あなたの落書きがTシャツになる｜Design Shelf';
 const description =
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '落書きT｜Design Shelf',
     description:
-      'あなたの落書きが、Tシャツになる。採用制の投稿型Tシャツ企画です。',
+      '子どもの絵も、大人の落書きも。採用制の投稿型Tシャツ企画です。',
     type: 'website',
     locale: 'ja_JP',
     images: [
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '落書きT｜Design Shelf',
     description:
-      'あなたの落書きが、Tシャツになる。採用制の投稿型Tシャツ企画です。',
+      '子どもの絵も、大人の落書きも。採用制の投稿型Tシャツ企画です。',
     images: [RAKUGAKI_T.openGraphImageSrc],
   },
 };

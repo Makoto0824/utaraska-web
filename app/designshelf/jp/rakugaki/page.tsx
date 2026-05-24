@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RAKUGAKI_T } from '@/lib/designshelf/rakugakiT';
+import { FaqList } from './FaqList';
+import { HeroDecorations } from './HeroDecorations';
 import { HeroTshirtCarousel } from './HeroTshirtCarousel';
 
 function ApplyCta({
@@ -14,80 +16,139 @@ function ApplyCta({
   return (
     <a
       href={RAKUGAKI_T.applicationFormUrl}
-      className={`amazon-btn justify-center px-5 py-3 text-sm sm:text-base ${fullWidth ? 'w-full sm:w-auto' : ''} ${className}`}
-      aria-label="落書きを応募する"
+      className={`rakugaki-cta-primary ${fullWidth ? 'w-full sm:w-auto' : ''} ${className}`}
+      aria-label="落書きを送ってみる"
     >
-      <span className="label text-center">落書きを応募する</span>
+      落書きを送ってみる
     </a>
+  );
+}
+
+function SecondaryCta({ className = '' }: { className?: string }) {
+  return (
+    <a href="#examples" className={`rakugaki-cta-secondary w-full sm:w-auto ${className}`}>
+      応募できる絵を見る
+    </a>
+  );
+}
+
+function CtaBand({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={`flex flex-col items-center gap-3 sm:flex-row sm:justify-center ${compact ? 'py-2' : 'py-4'}`}
+    >
+      <ApplyCta fullWidth />
+      <SecondaryCta />
+    </div>
   );
 }
 
 function SectionCard({
   id,
   title,
+  lead,
   children,
   className = '',
+  tint = 'white',
 }: {
   id?: string;
   title: string;
+  lead?: string;
   children: ReactNode;
   className?: string;
+  tint?: 'white' | 'sky' | 'mint' | 'blush';
 }) {
+  const tints = {
+    white: 'bg-white/95 border-orange-100/60',
+    sky: 'bg-sky-50/80 border-sky-100',
+    mint: 'bg-emerald-50/50 border-emerald-100/80',
+    blush: 'bg-pink-50/40 border-pink-100/80',
+  };
+
   return (
     <section
       id={id}
-      className={`scroll-mt-24 rounded-lg border border-gray-100 bg-white p-6 shadow-md sm:p-8 ${className}`}
+      className={`rakugaki-card scroll-mt-24 border p-6 sm:p-8 ${tints[tint]} ${className}`}
     >
-      <h2 className="mb-4 text-xl font-bold text-gray-800 sm:text-2xl">{title}</h2>
+      <h2 className="rakugaki-section-title mb-1 text-xl font-bold text-slate-800 sm:text-2xl">{title}</h2>
+      {lead ? <p className="mb-4 mt-3 text-sm font-medium text-orange-700/90 sm:text-base">{lead}</p> : null}
+      {!lead ? <div className="mb-4" /> : null}
       {children}
     </section>
   );
 }
 
 function StepCard({
-  step,
+  stepNum,
   title,
   children,
+  calm = false,
 }: {
-  step: string;
+  stepNum: number;
   title: string;
   children: ReactNode;
+  calm?: boolean;
 }) {
   return (
-    <div className="relative rounded-lg border border-dashed border-amber-200 bg-amber-50/40 p-4 sm:p-5">
-      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-amber-700">{step}</p>
-      <h3 className="mb-2 text-base font-bold text-gray-800 sm:text-lg">{title}</h3>
-      <p className="text-sm leading-relaxed text-gray-600">{children}</p>
+    <div
+      className={`flex gap-4 rounded-2xl border p-4 sm:p-5 ${
+        calm
+          ? 'border-slate-200 bg-slate-50/90'
+          : 'border-dashed border-amber-200/90 bg-gradient-to-br from-amber-50/80 to-white'
+      }`}
+    >
+      <div
+        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg font-bold ${
+          calm ? 'bg-slate-200 text-slate-700' : 'bg-orange-400 text-white shadow-sm'
+        }`}
+        aria-hidden
+      >
+        {stepNum}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className={`mb-0.5 text-xs font-bold uppercase tracking-wide ${calm ? 'text-slate-500' : 'text-orange-600'}`}>
+          STEP {stepNum}
+        </p>
+        <h3 className="mb-2 text-base font-bold text-slate-800">{title}</h3>
+        <p className="text-sm leading-relaxed text-slate-600">{children}</p>
+      </div>
+    </div>
+  );
+}
+
+function SalesFlowDiagram() {
+  return (
+    <div
+      className="my-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-2"
+      aria-label="販売の流れ：Amazon Merch On Demand から UP-T / BASE へ移行する場合があります"
+    >
+      <div className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-center sm:max-w-[200px]">
+        <p className="text-xs font-bold text-slate-500">まず</p>
+        <p className="mt-1 text-sm font-bold text-slate-800">Amazon Merch On Demand</p>
+        <p className="mt-1 text-xs text-slate-500">一定期間販売</p>
+      </div>
+      <div className="flex items-center justify-center text-2xl text-slate-400 sm:px-1" aria-hidden>
+        →
+      </div>
+      <div className="flex-1 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-center sm:max-w-[200px]">
+        <p className="text-xs font-bold text-slate-500">必要に応じて</p>
+        <p className="mt-1 text-sm font-bold text-slate-800">UP-T / BASE</p>
+        <p className="mt-1 text-xs text-slate-500">へ移行する場合あり</p>
+      </div>
     </div>
   );
 }
 
 const FLOW_STEPS = [
+  { title: '落書きを応募', body: 'スマホで撮った写真やスキャン画像を送ってください。', calm: false },
+  { title: 'ウタラスカが審査', body: 'すべての作品が採用されるわけではありません。Tシャツに合いそうな作品を選びます。', calm: false },
   {
-    step: 'STEP 1',
-    title: '落書きを応募',
-    body: 'スマホで撮った写真やスキャン画像を送ってください。',
-  },
-  {
-    step: 'STEP 2',
-    title: 'ウタラスカが審査',
-    body: 'すべての作品が採用されるわけではありません。Tシャツに合いそうな作品を選びます。',
-  },
-  {
-    step: 'STEP 3',
     title: 'Tシャツ用に調整',
     body: '線や配置を整え、Tシャツ用のデザインにします。胸元の位置や大きさは作品に合わせて決め、元の味はできるだけ残します。',
+    calm: false,
   },
-  {
-    step: 'STEP 4',
-    title: 'Amazonで販売',
-    body: '採用作品はまず Amazon Merch On Demand で一定期間販売します。',
-  },
-  {
-    step: 'STEP 5',
-    title: '掲載期間後の移行',
-    body: '販売状況や掲載枠の都合により、UP-T / BASE へ移行する場合があります。',
-  },
+  { title: 'Amazonで販売', body: '採用作品はまず Amazon Merch On Demand で一定期間販売します。', calm: true },
+  { title: '掲載期間後の移行', body: '販売状況や掲載枠の都合により、UP-T / BASE へ移行する場合があります。', calm: true },
 ] as const;
 
 const OK_EXAMPLES = [
@@ -101,16 +162,16 @@ const OK_EXAMPLES = [
   '大人がなんとなく描いた落書き',
 ] as const;
 
-const NG_EXAMPLES = [
-  'アニメ・漫画・ゲームなどの二次創作',
-  '有名キャラクターに似ている絵',
-  'ブランドロゴや企業ロゴ',
-  '芸能人・有名人の似顔絵',
-  '他人が描いた絵',
-  'AI生成画像',
-  '公序良俗に反する内容',
-  '差別的・攻撃的な内容',
-] as const;
+const NG_EXAMPLES: { text: string; highlight?: boolean }[] = [
+  { text: 'アニメ・漫画・ゲームなどの二次創作', highlight: true },
+  { text: '有名キャラクターに似ている絵', highlight: true },
+  { text: 'ブランドロゴや企業ロゴ', highlight: true },
+  { text: '芸能人・有名人の似顔絵' },
+  { text: '他人が描いた絵' },
+  { text: 'AI生成画像', highlight: true },
+  { text: '公序良俗に反する内容' },
+  { text: '差別的・攻撃的な内容' },
+];
 
 const CHECKLIST = [
   '応募作品は、応募者本人または保護者が権利を持つオリジナル作品です。',
@@ -122,34 +183,13 @@ const CHECKLIST = [
 ] as const;
 
 const FAQ = [
-  {
-    q: '子どもの絵でも応募できますか？',
-    a: 'はい。保護者の方が応募してください。',
-  },
-  {
-    q: '写真で撮った画像でも大丈夫ですか？',
-    a: '大丈夫です。できるだけ明るく、影が少ない状態で撮影してください。',
-  },
-  {
-    q: '採用されなかった場合、連絡はありますか？',
-    a: '運用初期は、採用者への連絡を優先する場合があります。',
-  },
-  {
-    q: '自分で描いた大人の落書きでも応募できますか？',
-    a: 'はい。大人の落書きも歓迎します。',
-  },
-  {
-    q: 'AIで作った画像は応募できますか？',
-    a: '現時点では受け付けていません。手描きの作品のみ対象です。',
-  },
-  {
-    q: '採用後に売上報告はありますか？',
-    a: 'ありません。謝礼は一回限りで、売上に応じた追加報酬はありません。',
-  },
-  {
-    q: 'Amazonで販売終了したらどうなりますか？',
-    a: '販売状況に応じて、UP-T / BASE へ移行する場合があります。',
-  },
+  { q: '子どもの絵でも応募できますか？', a: 'はい。保護者の方が応募してください。' },
+  { q: '写真で撮った画像でも大丈夫ですか？', a: '大丈夫です。できるだけ明るく、影が少ない状態で撮影してください。' },
+  { q: '採用されなかった場合、連絡はありますか？', a: '運用初期は、採用者への連絡を優先する場合があります。' },
+  { q: '自分で描いた大人の落書きでも応募できますか？', a: 'はい。大人の落書きも歓迎します。' },
+  { q: 'AIで作った画像は応募できますか？', a: '現時点では受け付けていません。手描きの作品のみ対象です。' },
+  { q: '採用後に売上報告はありますか？', a: 'ありません。謝礼は一回限りで、売上に応じた追加報酬はありません。' },
+  { q: 'Amazonで販売終了したらどうなりますか？', a: '販売状況に応じて、UP-T / BASE へ移行する場合があります。' },
 ] as const;
 
 function SiteHeader() {
@@ -264,51 +304,46 @@ export default function RakugakiLandingPage() {
   const rewardLabel = RAKUGAKI_T.adoptionRewardYen.toLocaleString('ja-JP');
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="rakugaki-page min-h-screen">
       <SiteHeader />
 
-      <main className="mx-auto max-w-3xl px-4 py-8">
+      <main className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
         {/* ヒーロー */}
-        <section className="mb-8 overflow-hidden rounded-lg border border-gray-100 bg-white p-6 shadow-md sm:p-8">
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+        <section className="rakugaki-notebook relative mb-8 overflow-hidden rounded-3xl border border-amber-100/80 p-6 shadow-md sm:p-8 lg:p-10">
+          <HeroDecorations />
+          <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <p className="mb-2 inline-block rotate-[-1deg] rounded-md border border-dashed border-amber-300 bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800">
-                Design Shelf 投稿企画
+              <p className="mb-3 inline-block -rotate-1 rounded-full border-2 border-dashed border-amber-300 bg-white/90 px-3 py-1 text-xs font-bold text-amber-800 shadow-sm">
+                ✏️ Design Shelf 投稿企画
               </p>
-              <h1 className="mb-3 text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">落書きT</h1>
-              <p className="mb-4 text-lg font-bold leading-snug text-gray-700 sm:text-xl">
-                あなたの落書きが、Tシャツになる。
+              <h1 className="rakugaki-title mb-4 text-4xl font-black tracking-tight text-slate-800 sm:text-5xl">
+                落書きT
+              </h1>
+              <p className="mb-3 text-lg font-bold leading-snug text-slate-700 sm:text-xl">
+                子どもの絵も、大人の落書きも、胸元の小さなTシャツに。
               </p>
-              <p className="mb-6 text-sm leading-relaxed text-gray-600 sm:text-base">
-                子どもの絵、ふと描いた落書き、ちょっと変なイラスト。
-                その中から採用作品を選び、Design ShelfのTシャツとして商品化します。
+              <p className="mb-6 text-sm leading-relaxed text-slate-600 sm:text-base">
+                スマホで撮った手描きの絵を送るだけ。採用作品はウタラスカがTシャツ用に整えて、Design
+                Shelfの企画として販売します。
               </p>
-              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                <ApplyCta fullWidth />
-                <a
-                  href="#examples"
-                  className="inline-flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50 sm:w-auto sm:text-base"
-                >
-                  募集条件を見る
-                </a>
-              </div>
+              <CtaBand />
             </div>
             <HeroTshirtCarousel />
           </div>
         </section>
 
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-7 sm:gap-8">
           {/* この企画について */}
-          <SectionCard id="about" title="落書きTとは">
-            <div className="space-y-4 text-sm leading-relaxed text-gray-700 sm:text-base">
+          <SectionCard id="about" title="落書きTとは" lead="上手い絵より、なぜか気になる絵を探しています。">
+            <div className="space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base">
               <p>
                 落書きTは、みなさんから届いた手描きの絵を、ウタラスカがTシャツ用に少しだけ整えて販売する投稿企画です。
                 きれいに描かれた絵よりも、線のゆれ、変な形、よくわからない表情など、その人にしか描けない味を大切にします。
               </p>
-              <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
-                <p className="mb-1 font-semibold text-gray-800">運営方針</p>
-                <p>清書しすぎず、元の落書きらしさを残します。</p>
-                <p className="mt-2">
+              <div className="rounded-2xl border-2 border-amber-300/70 bg-gradient-to-br from-amber-50 to-yellow-50/80 p-5 shadow-sm">
+                <p className="mb-2 text-base font-bold text-amber-900">✨ 大切にしていること</p>
+                <p className="font-semibold text-slate-800">清書しすぎず、元の落書きらしさを残します。</p>
+                <p className="mt-2 text-sm text-slate-600">
                   胸元に小さく載せることが多いですが、作品によっては中央寄りなど配置も変えます。サイズや位置はウタラスカがデザインに合わせて決めます。
                 </p>
               </div>
@@ -317,9 +352,14 @@ export default function RakugakiLandingPage() {
 
           {/* 流れ */}
           <SectionCard id="flow" title="応募から販売まで">
-            <div className="grid gap-3 sm:gap-4">
-              {FLOW_STEPS.map((item) => (
-                <StepCard key={item.step} step={item.step} title={item.title}>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+              {FLOW_STEPS.map((item, index) => (
+                <StepCard
+                  key={item.title}
+                  stepNum={index + 1}
+                  title={item.title}
+                  calm={item.calm}
+                >
                   {item.body}
                 </StepCard>
               ))}
@@ -327,14 +367,16 @@ export default function RakugakiLandingPage() {
           </SectionCard>
 
           {/* OK / NG */}
-          <SectionCard id="examples" title="こんな落書きを募集しています">
+          <SectionCard id="examples" title="こんな落書きを募集しています" tint="mint">
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border border-emerald-100 bg-emerald-50/50 p-4 sm:p-5">
-                <h3 className="mb-3 text-sm font-bold text-emerald-800 sm:text-base">OK例</h3>
+              <div className="rounded-2xl border-2 border-emerald-200/80 bg-white p-4 sm:p-5">
+                <h3 className="mb-3 flex items-center gap-2 text-base font-bold text-emerald-800">
+                  <span aria-hidden>😊</span> OK例
+                </h3>
                 <ul className="space-y-2">
                   {OK_EXAMPLES.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm text-gray-700">
-                      <span className="shrink-0 font-bold text-emerald-600" aria-hidden>
+                    <li key={item} className="flex gap-2 text-sm text-slate-700">
+                      <span className="shrink-0 font-bold text-emerald-500" aria-hidden>
                         ○
                       </span>
                       <span>{item}</span>
@@ -342,15 +384,24 @@ export default function RakugakiLandingPage() {
                   ))}
                 </ul>
               </div>
-              <div className="rounded-lg border border-rose-100 bg-rose-50/50 p-4 sm:p-5">
-                <h3 className="mb-3 text-sm font-bold text-rose-800 sm:text-base">NG例</h3>
+              <div className="rounded-2xl border-2 border-rose-200/70 bg-rose-50/30 p-4 sm:p-5">
+                <h3 className="mb-3 flex items-center gap-2 text-base font-bold text-rose-800">
+                  <span aria-hidden>🙅</span> NG例
+                </h3>
                 <ul className="space-y-2">
                   {NG_EXAMPLES.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm text-gray-700">
-                      <span className="shrink-0 font-bold text-rose-500" aria-hidden>
+                    <li
+                      key={item.text}
+                      className={`flex gap-2 text-sm ${
+                        item.highlight
+                          ? 'rounded-lg border border-rose-200 bg-white/80 px-2 py-1.5 font-medium text-rose-900'
+                          : 'text-slate-700'
+                      }`}
+                    >
+                      <span className="shrink-0 font-bold text-rose-400" aria-hidden>
                         ×
                       </span>
-                      <span>{item}</span>
+                      <span>{item.text}</span>
                     </li>
                   ))}
                 </ul>
@@ -358,22 +409,39 @@ export default function RakugakiLandingPage() {
             </div>
           </SectionCard>
 
+          {/* 途中CTA */}
+          <section className="rakugaki-card border border-orange-100/80 bg-gradient-to-r from-orange-50/90 to-amber-50/90 p-6 text-center sm:p-8">
+            <p className="mb-4 text-sm font-medium text-slate-700 sm:text-base">
+              思い当たる落書き、ノートの端の絵、ありませんか？
+            </p>
+            <CtaBand compact />
+          </section>
+
           {/* 謝礼 */}
-          <SectionCard id="reward" title="採用された方には謝礼をお送りします">
-            <div className="space-y-4 text-sm leading-relaxed text-gray-700 sm:text-base">
-              <p>
-                採用作品には、謝礼としてAmazonギフト券をメールでお送りします。
-                謝礼は一回限りです。販売数や売上に応じた追加報酬、継続ロイヤリティはありません。
-              </p>
-              <p className="inline-block rounded-lg bg-amber-50 px-4 py-3 text-base font-bold text-amber-900 ring-1 ring-amber-200">
+          <section
+            id="reward"
+            className="scroll-mt-24 overflow-hidden rounded-3xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 via-yellow-50/80 to-orange-50/60 p-6 shadow-md sm:p-10"
+          >
+            <h2 className="mb-4 text-center text-lg font-bold text-slate-800 sm:text-xl">
+              採用された方には謝礼をお送りします
+            </h2>
+            <p className="mx-auto mb-6 max-w-md text-center text-sm leading-relaxed text-slate-600">
+              採用作品には、謝礼としてAmazonギフト券をメールでお送りします。
+            </p>
+            <p className="text-center">
+              <span className="inline-block rounded-2xl bg-white px-6 py-4 text-2xl font-black text-orange-600 shadow-sm ring-2 ring-amber-200 sm:text-3xl">
                 採用謝礼：Amazonギフト券 {rewardLabel}円分
-              </p>
-            </div>
-          </SectionCard>
+              </span>
+            </p>
+            <p className="mt-4 text-center text-xs text-slate-500 sm:text-sm">
+              謝礼は一回限りです。売上に応じた追加報酬はありません。
+            </p>
+          </section>
 
           {/* 販売 */}
-          <SectionCard id="sales" title="販売場所と掲載期間について">
-            <div className="space-y-4 text-sm leading-relaxed text-gray-700 sm:text-base">
+          <SectionCard id="sales" title="販売場所と掲載期間について" tint="sky">
+            <SalesFlowDiagram />
+            <div className="space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base">
               <p>
                 採用作品は、まず Amazon Merch On Demand で販売します。
                 Amazonの掲載枠には限りがあるため、一定期間販売実績がない作品や、掲載枠の整理が必要な作品は、
@@ -383,9 +451,10 @@ export default function RakugakiLandingPage() {
                 販売場所、販売期間、販売価格、商品種類は運営側で決定します。
                 採用が Amazon での販売開始を保証するものではありません。
               </p>
-              <p className="rounded-lg border-l-4 border-amber-500 bg-amber-50 px-4 py-3 font-semibold text-amber-950">
-                採用＝Amazonで永久販売ではありません。
-              </p>
+              <div className="rounded-xl border-l-4 border-amber-500 bg-amber-50/90 px-4 py-3">
+                <p className="font-bold text-amber-950">ご注意</p>
+                <p className="mt-1 font-semibold text-amber-900">採用＝Amazonで永久販売ではありません。</p>
+              </div>
             </div>
           </SectionCard>
 
@@ -393,9 +462,9 @@ export default function RakugakiLandingPage() {
           <SectionCard id="before-apply" title="応募前にご確認ください">
             <ul className="space-y-3">
               {CHECKLIST.map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-relaxed text-gray-700 sm:text-base">
+                <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-700 sm:text-base">
                   <span
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gray-800 text-xs font-bold text-white"
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-white"
                     aria-hidden
                   >
                     ✓
@@ -404,11 +473,11 @@ export default function RakugakiLandingPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-xs leading-relaxed text-gray-500 sm:text-sm">
+            <p className="mt-6 rounded-xl bg-slate-50 px-4 py-3 text-xs leading-relaxed text-slate-500 sm:text-sm">
               詳細な条件・権利関係については、
               <a
                 href={RAKUGAKI_T.termsUrl}
-                className="font-medium text-gray-700 underline decoration-gray-400 underline-offset-2 hover:text-gray-900"
+                className="font-medium text-slate-700 underline decoration-slate-400 underline-offset-2 hover:text-slate-900"
               >
                 落書きT 利用規約
               </a>
@@ -417,27 +486,20 @@ export default function RakugakiLandingPage() {
           </SectionCard>
 
           {/* FAQ */}
-          <SectionCard id="faq" title="よくある質問">
-            <dl className="divide-y divide-gray-100">
-              {FAQ.map((item) => (
-                <div key={item.q} className="py-4 first:pt-0 last:pb-0">
-                  <dt className="mb-2 text-sm font-bold text-gray-800 sm:text-base">Q. {item.q}</dt>
-                  <dd className="text-sm leading-relaxed text-gray-600 sm:text-base">A. {item.a}</dd>
-                </div>
-              ))}
-            </dl>
+          <SectionCard id="faq" title="よくある質問" tint="blush">
+            <FaqList items={FAQ} />
           </SectionCard>
 
           {/* 最終CTA */}
           <section
             id="apply"
-            className="scroll-mt-24 rounded-lg border border-dashed border-amber-300 bg-gradient-to-br from-amber-50/80 to-white p-6 text-center shadow-md sm:p-10"
+            className="rakugaki-notebook scroll-mt-24 overflow-hidden rounded-3xl border-2 border-dashed border-amber-300/80 p-6 text-center shadow-md sm:p-10"
           >
-            <h2 className="mb-3 text-xl font-bold text-gray-800 sm:text-2xl">あなたの落書きを送ってください</h2>
-            <p className="mx-auto mb-2 max-w-md text-sm leading-relaxed text-gray-600 sm:text-base">
+            <h2 className="mb-3 text-xl font-bold text-slate-800 sm:text-2xl">あなたの落書きを送ってください</h2>
+            <p className="mx-auto mb-2 max-w-md text-sm leading-relaxed text-slate-600 sm:text-base">
               上手い絵である必要はありません。
             </p>
-            <p className="mx-auto mb-6 max-w-md text-sm font-medium leading-relaxed text-gray-700 sm:text-base">
+            <p className="mx-auto mb-6 max-w-md text-sm font-medium leading-relaxed text-slate-700 sm:text-base">
               胸元に載せたとき、なぜか気になる。
               <br className="hidden sm:inline" />
               そんな落書きを募集しています。

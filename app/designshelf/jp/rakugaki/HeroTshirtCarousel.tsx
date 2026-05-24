@@ -23,7 +23,7 @@ export function HeroTshirtCarousel() {
 
   return (
     <div className="relative mx-auto w-full max-w-[260px] sm:max-w-[300px]">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-b from-gray-50 to-white p-3 shadow-md sm:p-4">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-3xl border-2 border-dashed border-amber-200/80 bg-white p-3 shadow-md ring-4 ring-amber-50 sm:p-4">
         {images.map((src, index) => (
           <div
             key={src}
@@ -48,7 +48,7 @@ export function HeroTshirtCarousel() {
             <button
               type="button"
               onClick={() => setCurrent((prev) => (prev - 1 + images.length) % images.length)}
-              className="absolute left-1 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-sm text-gray-700 shadow ring-1 ring-gray-200 transition-colors hover:bg-white"
+              className="absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-base text-orange-600 shadow-md ring-1 ring-orange-100 transition-colors hover:bg-orange-50"
               aria-label="前の画像"
             >
               ‹
@@ -56,7 +56,7 @@ export function HeroTshirtCarousel() {
             <button
               type="button"
               onClick={() => setCurrent((prev) => (prev + 1) % images.length)}
-              className="absolute right-1 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-sm text-gray-700 shadow ring-1 ring-gray-200 transition-colors hover:bg-white"
+              className="absolute right-1 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-base text-orange-600 shadow-md ring-1 ring-orange-100 transition-colors hover:bg-orange-50"
               aria-label="次の画像"
             >
               ›
@@ -67,8 +67,8 @@ export function HeroTshirtCarousel() {
                   key={src}
                   type="button"
                   onClick={() => setCurrent(index)}
-                  className={`h-2 w-2 rounded-full transition-colors ${
-                    index === current ? 'bg-gray-700' : 'bg-gray-300 hover:bg-gray-400'
+                  className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                    index === current ? 'bg-orange-500' : 'bg-orange-200 hover:bg-orange-300'
                   }`}
                   aria-label={`画像 ${index + 1} を表示`}
                   aria-current={index === current ? 'true' : undefined}
@@ -78,7 +78,7 @@ export function HeroTshirtCarousel() {
           </>
         )}
       </div>
-      <p className="mt-3 text-center text-xs leading-relaxed text-gray-500">
+      <p className="mt-3 text-center text-xs leading-relaxed text-slate-500">
         ※イメージ画像です。実際の商品は採用作品に合わせ、胸元の配置やTシャツの色味が異なる場合があります。
       </p>
     </div>
