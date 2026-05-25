@@ -7,7 +7,7 @@ import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144,
 ]);
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -382,6 +382,43 @@ export default function DesignShelf() {
 
   // 商品データ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 144,
+      title: 'ユニコーン家族',
+      brand: 'AJIARIE',
+      image: '/designshelf/images/rakugaki/2/tshirt.jpg',
+      designImage: '/designshelf/images/rakugaki/2/design.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://amzn.to/4nKX0a9',
+      jpAssets: {
+        root: '/designshelf/images/rakugaki/2',
+        design: 'design.jpg',
+        slots: {
+          tshirt: 'tshirt.jpg',
+        },
+      },
+      features: [
+        'らくがきT 採用作品。娘と父の会話がそのままデザインになった、ほっこりユーモアの一着。',
+        '「見てぇー。」から始まる家族のやりとり。鬼の家族かな？と言われた娘のツッコミが笑える。',
+      ],
+      description: `娘「見てぇー。」
+父「おぉー、かわいいねー。」
+娘「そだよー。」
+父「鬼の家族かなー？」
+娘「ユ・ニ・コーン！！（怒）」
+父「うっ、ご、ごめん…」`,
+      videoUrl:
+        'https://www.instagram.com/p/DYxGOBMk9aA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://amzn.to/4nKX0a9',
+          videoUrl:
+            'https://www.instagram.com/p/DYxGOBMk9aA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
     {
       id: 143,
       title: '4歳の娘が描いた ひよこ',
@@ -1271,7 +1308,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -1430,7 +1467,7 @@ export default function DesignShelf() {
                     }`}
                     style={{ pointerEvents: expandedDetails === index ? 'auto' : 'none' }}
                   >
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="whitespace-pre-line text-sm text-gray-700 leading-relaxed">
                       {product.description}
                     </p>
                   </div>
