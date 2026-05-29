@@ -53,8 +53,23 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/designshelf/:path*',
-        destination: '/odd/en/:path*',
+        source: '/designshelf/about',
+        destination: '/odd/en/about',
+        permanent: true,
+      },
+      {
+        source: '/designshelf/contact',
+        destination: '/odd/en/contact',
+        permanent: true,
+      },
+      {
+        source: '/designshelf/brands',
+        destination: '/odd/en/brands',
+        permanent: true,
+      },
+      {
+        source: '/designshelf/brands/:path*',
+        destination: '/odd/en/brands/:path*',
         permanent: true,
       },
     ];
