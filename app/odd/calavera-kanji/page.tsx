@@ -276,7 +276,7 @@ export default function CalaveraKanjiLandingPage() {
               </ul>
               <div className="mt-6">
                 <a
-                  href="https://www.instagram.com/designshelf2025/"
+                  href="https://www.instagram.com/utaraska_odd/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-gray-300 transition-colors hover:text-white"
@@ -289,7 +289,7 @@ export default function CalaveraKanjiLandingPage() {
                     className="h-5 w-5"
                     unoptimized
                   />
-                  <span className="text-sm">@designshelf2025</span>
+                  <span className="text-sm">@utaraska_odd</span>
                 </a>
               </div>
             </div>

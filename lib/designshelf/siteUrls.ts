@@ -1,6 +1,12 @@
 /** utaraska odd（旧 Design Shelf）サイト内の共通URL・表示名 */
 export const STORE_SITE_NAME = 'utaraska odd';
 
+export const STORE_INSTAGRAM_URL = 'https://www.instagram.com/utaraska_odd/';
+export const STORE_INSTAGRAM_HANDLE = '@utaraska_odd';
+
+export const STORE_THREADS_URL = 'https://www.threads.com/@utaraska_odd';
+export const STORE_THREADS_HANDLE = '@utaraska_odd';
+
 export const ODD_JP_URLS = {
   privacyPolicy: '/odd/privacy',
 } as const;
