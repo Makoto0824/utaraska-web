@@ -7,7 +7,7 @@ export const RAKUGAKI_T = {
   applicationFormUrl:
     'https://docs.google.com/forms/d/e/1FAIpQLScx_1Zm4FcaKnkveXv3sdyiDsV6GlYyUOtisrU5A79IoqP8gQ/viewform?usp=dialog',
   /** 利用規約ページ */
-  termsUrl: '/designshelf/jp/rakugaki/terms',
+  termsUrl: '/odd/rakugaki/terms',
   /** 採用謝礼（Amazonギフト券・円） */
   adoptionRewardYen: 1000,
   /** ヒーロー：Tシャツ着用イメージ（カルーセル・表示順） */

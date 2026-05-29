@@ -288,8 +288,8 @@ export default function HomePage() {
                     <span>{copied ? 'コピーしました' : COMPANY_INFO.email}</span>
                     <span aria-hidden>{copied ? 'OK' : 'Copy'}</span>
                   </button>
-                  <Link href="/designshelf/jp" className="ut-contact-link">
-                    <span>Design Shelf（ブランドサイト）</span>
+                  <Link href="/odd" className="ut-contact-link">
+                    <span>utaraska odd（ブランドサイト）</span>
                     <span aria-hidden>→</span>
                   </Link>
                 </div>
@@ -346,7 +346,7 @@ export default function HomePage() {
         <div className="ut-container">
           <nav className="ut-footer-links" aria-label="フッターナビゲーション">
             <Link href="/games">Games</Link>
-            <Link href="/designshelf/jp">Design Shelf</Link>
+            <Link href="/odd">utaraska odd</Link>
           </nav>
           <p>&copy; {new Date().getFullYear()} ウタラスカ合同会社. All rights reserved.</p>
         </div>

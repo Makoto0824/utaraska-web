@@ -34,7 +34,31 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 0,
   },
   assetPrefix: process.env.NODE_ENV === 'production' ? 'https://www.utaraska.co.jp' : '',
-  trailingSlash: false
+  trailingSlash: false,
+  async redirects() {
+    return [
+      {
+        source: '/designshelf/jp',
+        destination: '/odd',
+        permanent: true,
+      },
+      {
+        source: '/designshelf/jp/:path*',
+        destination: '/odd/:path*',
+        permanent: true,
+      },
+      {
+        source: '/designshelf',
+        destination: '/odd/en',
+        permanent: true,
+      },
+      {
+        source: '/designshelf/:path*',
+        destination: '/odd/en/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
