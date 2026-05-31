@@ -130,5 +130,4 @@ export const COMPANY_INFO = {
   address: '〒150-0043\n東京都渋谷区道玄坂1丁目10番8号\n渋谷道玄坂東急ビル2F−C',
   founded: '2021年4月1日',
   email: 'contact@utaraska.co.jp',
-  xUrl: 'https://x.com/utaraska',
 } as const;

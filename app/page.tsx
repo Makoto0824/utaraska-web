@@ -270,15 +270,6 @@ export default function HomePage() {
               <div>
                 <h3 className="ut-heading ut-heading-md">お問い合わせ</h3>
                 <div className="ut-contact-actions">
-                  <a
-                    href={COMPANY_INFO.xUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ut-contact-link"
-                  >
-                    <span>X @utaraska</span>
-                    <span aria-hidden>→</span>
-                  </a>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(COMPANY_INFO.email)}

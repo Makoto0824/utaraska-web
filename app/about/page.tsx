@@ -160,15 +160,6 @@ export default function AboutPage() {
               <span>{COMPANY_INFO.email}</span>
               <span aria-hidden>→</span>
             </a>
-            <a
-              href={COMPANY_INFO.xUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ut-contact-link"
-            >
-              <span>X @utaraska</span>
-              <span aria-hidden>→</span>
-            </a>
           </div>
         </section>
       </main>
