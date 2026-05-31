@@ -7,7 +7,7 @@ import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145,
 ]);
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -382,6 +382,38 @@ export default function DesignShelf() {
 
   // 商品データ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 145,
+      title: '猫マン',
+      brand: 'AJIARIE',
+      image: '/designshelf/images/rakugaki/3/tshirt.jpg',
+      designImage: '/designshelf/images/rakugaki/3/design.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://amzn.to/4u7zfe3',
+      jpAssets: {
+        root: '/designshelf/images/rakugaki/3',
+        design: 'design.jpg',
+        slots: {
+          tshirt: 'tshirt.jpg',
+        },
+      },
+      features: [
+        'らくがきT 採用作品。猫のキャラクター「猫マン」が胸元に映える、シンプルで愛らしい一着。',
+        '名前どおり猫らしい表情と線のゆらぎが、そのままデザインの魅力になっています。',
+      ],
+      description: '猫のキャラクターで名前は『猫マン』',
+      videoUrl:
+        'https://www.instagram.com/p/DY_H1Drk7GN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://amzn.to/4u7zfe3',
+          videoUrl:
+            'https://www.instagram.com/p/DY_H1Drk7GN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
     {
       id: 144,
       title: 'ユニコーン家族',
@@ -1308,7 +1340,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
