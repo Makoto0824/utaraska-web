@@ -77,7 +77,7 @@ export default function JpPicksPage() {
                 お問い合わせ
               </Link>
               <Link href="/odd/about" className="text-gray-600 hover:text-gray-900 transition-colors">
-                運営者情報
+                運営情報
               </Link>
               <Link href="/odd/en" className="text-gray-600 hover:text-gray-900 transition-colors">
                 EN Store
@@ -186,7 +186,7 @@ export default function JpPicksPage() {
                 </li>
                 <li>
                   <Link href="/odd/about" className="text-gray-300 hover:text-white transition-colors">
-                    運営者情報
+                    運営情報
                   </Link>
                 </li>
                 <li>

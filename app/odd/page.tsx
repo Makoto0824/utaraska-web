@@ -1083,7 +1083,7 @@ export default function DesignShelf() {
               <Link href="/odd/picks" className="text-gray-600 hover:text-gray-900 transition-colors">Amazonおすすめ</Link>
               <Link href="/odd/rakugaki" className="text-gray-600 hover:text-gray-900 transition-colors">らくがきT</Link>
               <Link href="/odd/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
-              <Link href="/odd/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
+              <Link href="/odd/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営情報</Link>
               <Link href="/odd/en" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
             </div>
           </div>
@@ -1640,7 +1640,8 @@ export default function DesignShelf() {
                 <li><Link href="/odd/picks" className="text-gray-300 hover:text-white transition-colors">AmazonおすすめTシャツ</Link></li>
                 <li><Link href="/odd/rakugaki" className="text-gray-300 hover:text-white transition-colors">らくがきT</Link></li>
                 <li><Link href="/odd/privacy" className="text-gray-300 hover:text-white transition-colors">プライバシーポリシー</Link></li>
-                <li><Link href="/odd/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
+                <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">ウタラスカ合同会社について</Link></li>
+                <li><Link href="/odd/about" className="text-gray-300 hover:text-white transition-colors">運営情報</Link></li>
                 <li>
                   <Link href="/odd/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>
                   <div className="text-xs text-gray-500 mt-1">v0.1.4</div>

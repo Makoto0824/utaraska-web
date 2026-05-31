@@ -40,7 +40,7 @@ export default function Contact() {
               <Link href="/odd/picks" className="text-gray-600 hover:text-gray-900 transition-colors">Amazonおすすめ</Link>
               <Link href="/odd/rakugaki" className="text-gray-600 hover:text-gray-900 transition-colors">らくがきT</Link>
               <Link href="/odd/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
-              <Link href="/odd/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営者情報</Link>
+              <Link href="/odd/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営情報</Link>
               <Link href="/odd/en" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function Contact() {
               <h4 className="text-lg font-semibold mb-4">utaraska odd</h4>
               <ul className="space-y-2">
                 <li><Link href="/odd/picks" className="text-gray-300 hover:text-white transition-colors">AmazonおすすめTシャツ</Link></li>
-                <li><Link href="/odd/about" className="text-gray-300 hover:text-white transition-colors">運営者情報</Link></li>
+                <li><Link href="/odd/about" className="text-gray-300 hover:text-white transition-colors">運営情報</Link></li>
                 <li><Link href="/odd/privacy" className="text-gray-300 hover:text-white transition-colors">プライバシーポリシー</Link></li>
                 <li>
                   <Link href="/odd/contact" className="text-gray-300 hover:text-white transition-colors">お問い合わせ</Link>

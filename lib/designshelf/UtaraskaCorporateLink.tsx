@@ -1,4 +1,5 @@
-import { UTARASKA_CORPORATE_URL } from '@/lib/designshelf/siteUrls';
+import Link from 'next/link';
+import { UTARASKA_ABOUT_URL } from '@/lib/designshelf/siteUrls';
 
 export function UtaraskaCorporateLink({
   className = '',
@@ -8,8 +9,8 @@ export function UtaraskaCorporateLink({
   children?: React.ReactNode;
 }) {
   return (
-    <a href={UTARASKA_CORPORATE_URL} target="_blank" rel="noopener noreferrer" className={className}>
+    <Link href={UTARASKA_ABOUT_URL} className={className}>
       {children}
-    </a>
+    </Link>
   );
 }

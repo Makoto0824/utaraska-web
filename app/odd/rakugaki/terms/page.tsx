@@ -81,7 +81,7 @@ function SiteHeader() {
               お問い合わせ
             </Link>
             <Link href="/odd/about" className="text-gray-600 hover:text-gray-900">
-              運営者情報
+              運営情報
             </Link>
             <Link href="/odd/en" className="text-gray-600 hover:text-gray-900">
               EN Store

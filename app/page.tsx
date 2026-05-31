@@ -345,6 +345,7 @@ export default function HomePage() {
       <footer className="ut-footer">
         <div className="ut-container">
           <nav className="ut-footer-links" aria-label="フッターナビゲーション">
+            <Link href="/about">会社情報</Link>
             <Link href="/games">Games</Link>
             <Link href="/odd">utaraska odd</Link>
           </nav>

@@ -16,3 +16,9 @@ export const DESIGN_SHELF_JP_URLS = ODD_JP_URLS;
 
 /** ウタラスカ合同会社 コーポレートサイト */
 export const UTARASKA_CORPORATE_URL = 'https://utaraska.co.jp';
+
+/** ウタラスカ合同会社 会社情報ページ */
+export const UTARASKA_ABOUT_URL = '/about';
+
+/** utaraska odd BASEストア */
+export const ODD_BASE_STORE_URL = 'https://store.utaraska.co.jp';

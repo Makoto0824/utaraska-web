@@ -78,7 +78,7 @@ function SiteHeader() {
               お問い合わせ
             </Link>
             <Link href="/odd/about" className="text-gray-600 hover:text-gray-900">
-              運営者情報
+              運営情報
             </Link>
             <Link href="/odd/en" className="text-gray-600 hover:text-gray-900">
               EN Store
@@ -166,7 +166,7 @@ export default function PrivacyPolicyPage() {
                 当サイトおよびらくがきT企画の運営者は、ウタラスカ合同会社です。
                 所在地、事業内容などの詳細は
                 <Link href="/odd/about" className="rakugaki-terms-link">
-                  運営者情報
+                  運営情報
                 </Link>
                 をご確認ください。
               </p>
