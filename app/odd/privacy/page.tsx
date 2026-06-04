@@ -6,6 +6,7 @@ import '../rakugaki/rakugaki.css';
 const KEY_POINTS = [
   '氏名やメールアドレスなどの個人情報は、記載した目的の範囲で利用します。',
   'らくがきTへの応募情報は、企画の運営・審査・連絡・謝礼送付のために使用します。',
+  '採用作品については、応募時の公開用ニックネームをサイト・SNS等で表示する場合があります。',
   '応募フォームなど、外部サービスを利用する場合があります。',
   'ご本人からのお問い合わせに応じて、開示・訂正・削除等に対応します。',
   '未成年の方の情報は、保護者の方が応募・問い合わせを行う前提で取り扱います。',
@@ -175,7 +176,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection id="section-3" title="3. 取得する個人情報">
               <p className="mb-3">当社が取得する個人情報には、次のようなものがあります。</p>
               <ul className="rakugaki-terms-list">
-                <li>氏名、ニックネーム</li>
+                <li>氏名、公開用ニックネーム（採用作品の紹介・クレジット表示用。本名ではなく、公開してよい名前をご記入ください）</li>
                 <li>メールアドレス</li>
                 <li>お問い合わせ内容</li>
                 <li>らくがきTへの応募内容（作品画像、コメント、年齢に関する情報など）</li>
@@ -193,6 +194,7 @@ export default function PrivacyPolicyPage() {
               <ul className="rakugaki-terms-list">
                 <li>当サイトの提供、表示、改善</li>
                 <li>らくがきT企画の運営、審査、採用連絡、謝礼送付</li>
+                <li>採用作品の紹介、商品ページ・SNS等での公開用ニックネームの表示</li>
                 <li>お問い合わせへの対応</li>
                 <li>不正利用の防止、トラブル対応</li>
                 <li>アクセス状況の分析、サイト改善</li>
@@ -211,7 +213,12 @@ export default function PrivacyPolicyPage() {
                 <li>採用謝礼（Amazonギフト券等）の送付</li>
                 <li>応募に関する問い合わせ対応</li>
                 <li>企画運営上必要な記録の保管</li>
+                <li>採用作品の紹介、商品ページ・SNS・当サイト等での公開用ニックネームの表示</li>
               </ul>
+              <p className="mt-4 text-sm text-slate-600">
+                公開用ニックネームは、採用作品を紹介する際に作者名として表示する目的で利用します。
+                本名の記載はお願いしておりません。
+              </p>
               <p className="mt-4">
                 応募作品の著作権や利用許諾については、
                 <Link href="/odd/rakugaki/terms" className="rakugaki-terms-link">
