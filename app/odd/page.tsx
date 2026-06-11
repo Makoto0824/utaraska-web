@@ -7,7 +7,7 @@ import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147,
 ]);
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -382,6 +382,71 @@ export default function DesignShelf() {
 
   // 商品データ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 146,
+      title: 'タイヤがお気に入り',
+      brand: 'AJIARIE',
+      image: '/designshelf/images/rakugaki/5/tshirt.jpg',
+      designImage: '/designshelf/images/rakugaki/5/design.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://amzn.to/43oiH6L',
+      jpAssets: {
+        root: '/designshelf/images/rakugaki/5',
+        design: 'design.jpg',
+        slots: {
+          tshirt: 'tshirt.jpg',
+        },
+      },
+      features: [
+        'らくがきT 採用作品。本人が言うには気に入っているのはタイヤとのことです。',
+        'シンプルな線と言葉のギャップが、日常着にも映えるユーモアの一着です。',
+      ],
+      description: '本人が言うには気に入っているのはタイヤとのことです。',
+      videoUrl:
+        'https://www.instagram.com/p/DZbNX4Ck3lz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://amzn.to/43oiH6L',
+          videoUrl:
+            'https://www.instagram.com/p/DZbNX4Ck3lz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
+    {
+      id: 147,
+      title: '世界一ブサイクなゴリラ Tシャツ',
+      brand: 'AJIARIE',
+      image: '/designshelf/images/rakugaki/4/tshirt.jpg',
+      designImage: '/designshelf/images/rakugaki/4/design.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://amzn.to/4xmUhIw',
+      jpAssets: {
+        root: '/designshelf/images/rakugaki/4',
+        design: 'design.jpg',
+        slots: {
+          tshirt: 'tshirt.jpg',
+        },
+      },
+      features: [
+        'らくがきT 採用作品。顔をがんばって描きました。背景をカラフルにして、元気な感じにしました。',
+        '強そうだけど、やさしそうなゴリラになったので気に入っています。',
+      ],
+      description:
+        '顔をがんばって描きました。背景をカラフルにして、元気な感じにしました。強そうだけど、やさしそうなゴリラになったので気に入っています。',
+      videoUrl:
+        'https://www.instagram.com/p/DZKeoIyDzit/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://amzn.to/4xmUhIw',
+          videoUrl:
+            'https://www.instagram.com/p/DZKeoIyDzit/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
     {
       id: 145,
       title: '猫マン',
@@ -1340,7 +1405,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
