@@ -321,7 +321,7 @@ function getProductListRows(product: ProductListSource, filter: WearFilterId): P
 }
 
 export default function DesignShelf() {
-  const [wearFilter, setWearFilter] = useState<WearFilterId>('all');
+  const [wearFilter, setWearFilter] = useState<WearFilterId>('tshirt');
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
   const [expandedProductList, setExpandedProductList] = useState<number | null>(null);
   const [currentBanner, setCurrentBanner] = useState(0);
