@@ -286,11 +286,11 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
-    { src: "/designshelf/images/banner7_toys.jpg", alt: "utaraska odd toys 販売開始", link: "/odd/rakugaki" },
+    { src: "/designshelf/images/banner6.png", alt: "らくがきT 投稿企画", link: "/odd/rakugaki" },
     {
-      src: "/designshelf/images/40_skull/jp/banner6.jpg",
-      alt: "カラベラドクロと漢字 特設ページ",
-      link: "/odd/calavera-kanji",
+      src: "/designshelf/images/banner7_toys.jpg",
+      alt: "utaraska odd toys 販売開始",
+      link: "https://store.utaraska.co.jp/categories/7472318",
     },
     { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4azSuGy" },
     { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
