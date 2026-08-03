@@ -5,9 +5,38 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 
+function isBaseStoreLink(link: string): boolean {
+  return link.includes('store.utaraska.co.jp');
+}
+
+function getPurchaseLinkMeta(link: string, itemName: string) {
+  if (isBaseStoreLink(link)) {
+    return {
+      ariaLabel: `BASEストアで${itemName}を見る`,
+      label: (
+        <>
+          BASE
+          <br />
+          で見る
+        </>
+      ),
+    };
+  }
+  return {
+    ariaLabel: `Amazonで${itemName}を見る`,
+    label: (
+      <>
+        Amazon
+        <br />
+        で見る
+      </>
+    ),
+  };
+}
+
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148,
 ]);
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -19,20 +48,19 @@ const NO_SHARED_REEL_WHEN_LONGSLEEVE_FILTER_IDS = new Set([102, 132, 133]);
 /** トレーナーフィルタ時は一覧末尾の共有リールを出さない（132 はトレーナー行に video がなくフォールバックで出ていた） */
 const NO_SHARED_REEL_WHEN_SWEAT_FILTER_IDS = new Set([132]);
 
-type WearFilterId = 'all' | 'tshirt' | 'longsleeve' | 'sweat' | 'hoodie' | 'ziphoodie';
-
-type JpWearSlot = Exclude<WearFilterId, 'all'>;
+type ClothingSlot = 'tshirt' | 'longsleeve' | 'sweat' | 'hoodie' | 'ziphoodie';
+type WearFilterId = 'all' | ClothingSlot | 'figure';
 
 /** public/designshelf/images 配下の統一構成: root + design + jp/slots */
 type JpAssetsConfig = {
   root: string;
   design: string;
-  slots: Partial<Record<JpWearSlot, string>>;
+  slots: Partial<Record<ClothingSlot | 'figure', string>>;
   /** 「すべて」絞り込み時、スロット画像より前に挿入する URL（サイトルートからの絶対パス） */
   carouselPrefix?: string[];
 };
 
-const JP_SLOT_ORDER: JpWearSlot[] = ['tshirt', 'longsleeve', 'sweat', 'hoodie', 'ziphoodie'];
+const JP_SLOT_ORDER: ClothingSlot[] = ['tshirt', 'longsleeve', 'sweat', 'hoodie', 'ziphoodie'];
 
 const WEAR_FILTER_OPTIONS: { id: WearFilterId; label: string }[] = [
   { id: 'all', label: 'すべて' },
@@ -41,6 +69,7 @@ const WEAR_FILTER_OPTIONS: { id: WearFilterId; label: string }[] = [
   { id: 'sweat', label: 'トレーナー' },
   { id: 'hoodie', label: 'パーカー' },
   { id: 'ziphoodie', label: 'ジップパーカー' },
+  { id: 'figure', label: 'フィギュア' },
 ];
 
 type WearTagSource = {
@@ -59,10 +88,15 @@ function getProductWearTags(product: WearTagSource): Set<WearFilterId> {
       if (n === 'トレーナー') tags.add('sweat');
       if (n === 'パーカー') tags.add('hoodie');
       if (n === 'ジップパーカー') tags.add('ziphoodie');
+      if (n === 'フィギュア' || n.includes('フィギュア')) tags.add('figure');
     }
     return tags;
   }
   const t = product.title;
+  if (t.includes('フィギュア')) {
+    tags.add('figure');
+    return tags;
+  }
   if (t.includes('トレーナー')) {
     tags.add('sweat');
     return tags;
@@ -86,9 +120,18 @@ function getResolvedCarouselImages(
 ): string[] {
   const fallback = product.carouselImages ?? [];
   const jp = product.jpAssets;
+  if (wearFilter === 'figure') {
+    if (fallback.length > 0) return fallback;
+    if (jp?.slots?.figure) {
+      const figureUrl = `${jp.root}/${jp.slots.figure}`;
+      const designUrl = jp.design ? `${jp.root}/${jp.design}` : null;
+      return designUrl ? [figureUrl, designUrl] : [figureUrl];
+    }
+    return fallback;
+  }
   if (!jp?.slots || !jp.design) return fallback;
   const designUrl = `${jp.root}/${jp.design}`;
-  const slotUrl = (s: JpWearSlot) => (jp.slots[s] ? `${jp.root}/${jp.slots[s]}` : null);
+  const slotUrl = (s: ClothingSlot | 'figure') => (jp.slots[s] ? `${jp.root}/${jp.slots[s]}` : null);
   if (wearFilter === 'all') {
     const prefix = jp.carouselPrefix ?? [];
     const chain = JP_SLOT_ORDER.flatMap((s) => {
@@ -113,6 +156,7 @@ function variationNameToWearFilter(name: string): WearFilterId | null {
   if (name === 'トレーナー') return 'sweat';
   if (name === 'パーカー') return 'hoodie';
   if (name === 'ジップパーカー') return 'ziphoodie';
+  if (name === 'フィギュア' || name.includes('フィギュア')) return 'figure';
   return null;
 }
 
@@ -122,6 +166,7 @@ const FILTER_LABEL_BY_WEAR: Record<Exclude<WearFilterId, 'all'>, string> = {
   sweat: 'トレーナー',
   hoodie: 'パーカー',
   ziphoodie: 'ジップパーカー',
+  figure: 'フィギュア',
 };
 
 type ProductListRow = {
@@ -382,6 +427,54 @@ export default function DesignShelf() {
 
   // 商品データ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 148,
+      title: 'utaraska odd toys #001 ボールチェーン付き',
+      brand: 'utaraska odd',
+      image: '/designshelf/images/toys/1/figure.jpg',
+      designImage: '/designshelf/images/toys/1/photo-2.jpg',
+      price: '¥5,800',
+      amazonLink: 'https://store.utaraska.co.jp/items/153014392',
+      jpAssets: {
+        root: '/designshelf/images/toys/1',
+        design: 'photo-5.jpg',
+        slots: {
+          figure: 'figure.jpg',
+        },
+      },
+      carouselImages: [
+        '/designshelf/images/toys/1/figure.jpg',
+        '/designshelf/images/toys/1/photo-2.jpg',
+        '/designshelf/images/toys/1/photo-3.jpg',
+        '/designshelf/images/toys/1/photo-4.jpg',
+        '/designshelf/images/toys/1/photo-5.jpg',
+      ],
+      features: [
+        '手のひらサイズのオリジナルフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。',
+        '頭部にボールチェーン付き。置いて飾るほか、バッグチャームとしても使えます。',
+      ],
+      description: `オリジナルキャラクターを立体化した、手のひらサイズのフィギュアです。
+
+キャラクターデザインから3Dモデルの調整、3Dプリント、塗装まで、一点ずつ手作業で仕上げています。
+
+頭部にはボールチェーンが付いているため、バッグなどに取り付けたり、フックに掛けて飾ったりすることもできます。フィギュアとして置いて楽しむだけでなく、チャームとしても使用できます。
+
+3Dプリンターならではの積層跡や、手塗りによる色ムラ、筆跡などがあります。量産品にはない個体差も含めて、作品の風合いとしてお楽しみください。
+
+【商品詳細】
+サイズ：高さ約8cm
+素材：PLA、金属製ボールチェーン
+制作方法：3Dプリント、手作業による塗装
+付属品：ボールチェーン
+数量：1点`,
+      variations: [
+        {
+          name: 'フィギュア',
+          price: '¥5,800',
+          amazonLink: 'https://store.utaraska.co.jp/items/153014392',
+        },
+      ],
+    },
     {
       id: 146,
       title: 'タイヤがお気に入り',
@@ -1405,7 +1498,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
@@ -1444,7 +1537,9 @@ export default function DesignShelf() {
                       listRows.every((r) => !r.videoUrl);
                     const listBody = (
                       <div className="mb-4 space-y-3">
-                        {listRows.map((variation, idx) => (
+                        {listRows.map((variation, idx) => {
+                          const purchaseMeta = getPurchaseLinkMeta(variation.amazonLink, variation.name);
+                          return (
                           <div
                             key={`${product.id}-${variation.name}-${idx}`}
                             className="flex flex-col gap-2 border-b border-gray-200 pb-3 last:border-b-0"
@@ -1462,10 +1557,10 @@ export default function DesignShelf() {
                                 target="_blank"
                                 rel="noopener noreferrer nofollow"
                                 className="amazon-btn shrink-0"
-                                aria-label={`Amazonで${variation.name}を見る`}
+                                aria-label={purchaseMeta.ariaLabel}
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                <span className="label">Amazon<br />で見る</span>
+                                <span className="label">{purchaseMeta.label}</span>
                               </a>
                             </div>
                             {variation.videoUrl && (
@@ -1491,7 +1586,8 @@ export default function DesignShelf() {
                               <p className="text-sm text-gray-500">Instagram：準備中</p>
                             )}
                           </div>
-                        ))}
+                          );
+                        })}
                         {sharedReelAfterList && (
                           <a
                             href={product.videoUrl}
