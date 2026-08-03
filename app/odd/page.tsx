@@ -34,9 +34,72 @@ function getPurchaseLinkMeta(link: string, itemName: string) {
   };
 }
 
+const ODD_TOY_FIGURE_FEATURES = [
+  '手のひらサイズのオリジナルフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。',
+  '頭部にボールチェーン付き。置いて飾るほか、バッグチャームとしても使えます。',
+] as const;
+
+const ODD_TOY_FIGURE_DESCRIPTION = `オリジナルキャラクターを立体化した、手のひらサイズのフィギュアです。
+
+キャラクターデザインから3Dモデルの調整、3Dプリント、塗装まで、一点ずつ手作業で仕上げています。
+
+頭部にはボールチェーンが付いているため、バッグなどに取り付けたり、フックに掛けて飾ったりすることもできます。フィギュアとして置いて楽しむだけでなく、チャームとしても使用できます。
+
+3Dプリンターならではの積層跡や、手塗りによる色ムラ、筆跡などがあります。量産品にはない個体差も含めて、作品の風合いとしてお楽しみください。
+
+【商品詳細】
+サイズ：高さ約8cm
+素材：PLA、金属製ボールチェーン
+制作方法：3Dプリント、手作業による塗装
+付属品：ボールチェーン
+数量：1点`;
+
+function buildOddToyFigureProduct(
+  id: number,
+  toyNumber: string,
+  folderNum: number,
+  baseItemId: string,
+  photoCount = 5,
+) {
+  const root = `/designshelf/images/toys/${folderNum}`;
+  const carouselImages = Array.from({ length: photoCount }, (_, index) => {
+    if (index === 0) return `${root}/figure.jpg`;
+    return `${root}/photo-${index + 1}.jpg`;
+  });
+  const designPhoto = photoCount <= 1 ? 'figure.jpg' : `photo-${photoCount}.jpg`;
+  const storeUrl = `https://store.utaraska.co.jp/items/${baseItemId}`;
+
+  return {
+    id,
+    title: `utaraska odd toys ${toyNumber} ボールチェーン付き`,
+    brand: 'utaraska odd',
+    image: `${root}/figure.jpg`,
+    designImage: `${root}/photo-2.jpg`,
+    price: '¥5,800',
+    amazonLink: storeUrl,
+    jpAssets: {
+      root,
+      design: designPhoto,
+      slots: {
+        figure: 'figure.jpg',
+      },
+    },
+    carouselImages,
+    features: [...ODD_TOY_FIGURE_FEATURES],
+    description: ODD_TOY_FIGURE_DESCRIPTION,
+    variations: [
+      {
+        name: 'フィギュア',
+        price: '¥5,800',
+        amazonLink: storeUrl,
+      },
+    ],
+  };
+}
+
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152,
 ]);
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -427,54 +490,11 @@ export default function DesignShelf() {
 
   // 商品データ（完全な商品説明付き）
   const products: Product[] = [
-    {
-      id: 148,
-      title: 'utaraska odd toys #001 ボールチェーン付き',
-      brand: 'utaraska odd',
-      image: '/designshelf/images/toys/1/figure.jpg',
-      designImage: '/designshelf/images/toys/1/photo-2.jpg',
-      price: '¥5,800',
-      amazonLink: 'https://store.utaraska.co.jp/items/153014392',
-      jpAssets: {
-        root: '/designshelf/images/toys/1',
-        design: 'photo-5.jpg',
-        slots: {
-          figure: 'figure.jpg',
-        },
-      },
-      carouselImages: [
-        '/designshelf/images/toys/1/figure.jpg',
-        '/designshelf/images/toys/1/photo-2.jpg',
-        '/designshelf/images/toys/1/photo-3.jpg',
-        '/designshelf/images/toys/1/photo-4.jpg',
-        '/designshelf/images/toys/1/photo-5.jpg',
-      ],
-      features: [
-        '手のひらサイズのオリジナルフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。',
-        '頭部にボールチェーン付き。置いて飾るほか、バッグチャームとしても使えます。',
-      ],
-      description: `オリジナルキャラクターを立体化した、手のひらサイズのフィギュアです。
-
-キャラクターデザインから3Dモデルの調整、3Dプリント、塗装まで、一点ずつ手作業で仕上げています。
-
-頭部にはボールチェーンが付いているため、バッグなどに取り付けたり、フックに掛けて飾ったりすることもできます。フィギュアとして置いて楽しむだけでなく、チャームとしても使用できます。
-
-3Dプリンターならではの積層跡や、手塗りによる色ムラ、筆跡などがあります。量産品にはない個体差も含めて、作品の風合いとしてお楽しみください。
-
-【商品詳細】
-サイズ：高さ約8cm
-素材：PLA、金属製ボールチェーン
-制作方法：3Dプリント、手作業による塗装
-付属品：ボールチェーン
-数量：1点`,
-      variations: [
-        {
-          name: 'フィギュア',
-          price: '¥5,800',
-          amazonLink: 'https://store.utaraska.co.jp/items/153014392',
-        },
-      ],
-    },
+    buildOddToyFigureProduct(148, '#001', 1, '153014392'),
+    buildOddToyFigureProduct(149, '#002', 2, '153018381'),
+    buildOddToyFigureProduct(150, '#003', 3, '153018451'),
+    buildOddToyFigureProduct(151, '#004', 4, '153018511'),
+    buildOddToyFigureProduct(152, '#005', 5, '153018561'),
     {
       id: 146,
       title: 'タイヤがお気に入り',
@@ -1498,7 +1518,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
