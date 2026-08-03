@@ -286,7 +286,7 @@ export default function DesignShelf() {
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
   const banners = [
-    { src: "/designshelf/images/banner6.png", alt: "らくがきT 投稿企画", link: "/odd/rakugaki" },
+    { src: "/designshelf/images/banner7_toys.jpg", alt: "utaraska odd toys 販売開始", link: "/odd/rakugaki" },
     {
       src: "/designshelf/images/40_skull/jp/banner6.jpg",
       alt: "カラベラドクロと漢字 特設ページ",
@@ -493,7 +493,7 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(148, '#001', 1, '153014392'),
     buildOddToyFigureProduct(149, '#002', 2, '153018381'),
     buildOddToyFigureProduct(150, '#003', 3, '153018451'),
-    buildOddToyFigureProduct(151, '#004', 4, '153018511'),
+    buildOddToyFigureProduct(151, '#004', 4, '153018511', 3),
     buildOddToyFigureProduct(152, '#005', 5, '153018561'),
     {
       id: 146,
