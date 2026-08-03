@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
+import { ORIGINAL_ART_CATALOG, ORIGINAL_ART_PRODUCT_IDS, type OriginalArtCatalogEntry } from '@/lib/designshelf/originalArtCatalog';
 
 function isBaseStoreLink(link: string): boolean {
   return link.includes('store.utaraska.co.jp');
@@ -33,6 +34,42 @@ function getPurchaseLinkMeta(link: string, itemName: string) {
     ),
   };
 }
+
+function buildOriginalArtProduct(entry: OriginalArtCatalogEntry) {
+  const root = `/designshelf/images/original/${entry.folder}`;
+  const imageFile = `figure.${entry.imageExt}`;
+  const imageUrl = `${root}/${imageFile}`;
+  const storeUrl = `https://store.utaraska.co.jp/items/${entry.baseItemId}`;
+
+  return {
+    id: entry.id,
+    title: entry.title,
+    brand: entry.brand ?? 'utaraska odd',
+    image: imageUrl,
+    designImage: imageUrl,
+    price: entry.price,
+    amazonLink: storeUrl,
+    jpAssets: {
+      root,
+      design: imageFile,
+      slots: {
+        original: imageFile,
+      },
+    },
+    carouselImages: [imageUrl],
+    features: [...entry.features],
+    description: entry.description,
+    variations: [
+      {
+        name: '原画',
+        price: entry.price,
+        amazonLink: storeUrl,
+      },
+    ],
+  };
+}
+
+const ORIGINAL_ART_PRODUCTS = ORIGINAL_ART_CATALOG.map(buildOriginalArtProduct);
 
 const ODD_TOY_FIGURE_FEATURES = [
   '手のひらサイズのオリジナルフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。',
@@ -100,6 +137,7 @@ function buildOddToyFigureProduct(
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
   102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152,
+  ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
 ]);
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -112,13 +150,13 @@ const NO_SHARED_REEL_WHEN_LONGSLEEVE_FILTER_IDS = new Set([102, 132, 133]);
 const NO_SHARED_REEL_WHEN_SWEAT_FILTER_IDS = new Set([132]);
 
 type ClothingSlot = 'tshirt' | 'longsleeve' | 'sweat' | 'hoodie' | 'ziphoodie';
-type WearFilterId = 'all' | ClothingSlot | 'figure';
+type WearFilterId = 'all' | ClothingSlot | 'figure' | 'original';
 
 /** public/designshelf/images 配下の統一構成: root + design + jp/slots */
 type JpAssetsConfig = {
   root: string;
   design: string;
-  slots: Partial<Record<ClothingSlot | 'figure', string>>;
+  slots: Partial<Record<ClothingSlot | 'figure' | 'original', string>>;
   /** 「すべて」絞り込み時、スロット画像より前に挿入する URL（サイトルートからの絶対パス） */
   carouselPrefix?: string[];
 };
@@ -133,6 +171,7 @@ const WEAR_FILTER_OPTIONS: { id: WearFilterId; label: string }[] = [
   { id: 'hoodie', label: 'パーカー' },
   { id: 'ziphoodie', label: 'ジップパーカー' },
   { id: 'figure', label: 'フィギュア' },
+  { id: 'original', label: '原画' },
 ];
 
 type WearTagSource = {
@@ -152,12 +191,17 @@ function getProductWearTags(product: WearTagSource): Set<WearFilterId> {
       if (n === 'パーカー') tags.add('hoodie');
       if (n === 'ジップパーカー') tags.add('ziphoodie');
       if (n === 'フィギュア' || n.includes('フィギュア')) tags.add('figure');
+      if (n === '原画' || n.includes('原画')) tags.add('original');
     }
     return tags;
   }
   const t = product.title;
   if (t.includes('フィギュア')) {
     tags.add('figure');
+    return tags;
+  }
+  if (t.includes('KAO CLUB') || t.startsWith('SHAREZOH')) {
+    tags.add('original');
     return tags;
   }
   if (t.includes('トレーナー')) {
@@ -183,18 +227,19 @@ function getResolvedCarouselImages(
 ): string[] {
   const fallback = product.carouselImages ?? [];
   const jp = product.jpAssets;
-  if (wearFilter === 'figure') {
+  if (wearFilter === 'figure' || wearFilter === 'original') {
     if (fallback.length > 0) return fallback;
-    if (jp?.slots?.figure) {
-      const figureUrl = `${jp.root}/${jp.slots.figure}`;
+    const slotKey = wearFilter === 'figure' ? 'figure' : 'original';
+    if (jp?.slots?.[slotKey]) {
+      const primaryUrl = `${jp.root}/${jp.slots[slotKey]}`;
       const designUrl = jp.design ? `${jp.root}/${jp.design}` : null;
-      return designUrl ? [figureUrl, designUrl] : [figureUrl];
+      return designUrl && designUrl !== primaryUrl ? [primaryUrl, designUrl] : [primaryUrl];
     }
     return fallback;
   }
   if (!jp?.slots || !jp.design) return fallback;
   const designUrl = `${jp.root}/${jp.design}`;
-  const slotUrl = (s: ClothingSlot | 'figure') => (jp.slots[s] ? `${jp.root}/${jp.slots[s]}` : null);
+  const slotUrl = (s: ClothingSlot | 'figure' | 'original') => (jp.slots[s] ? `${jp.root}/${jp.slots[s]}` : null);
   if (wearFilter === 'all') {
     const prefix = jp.carouselPrefix ?? [];
     const chain = JP_SLOT_ORDER.flatMap((s) => {
@@ -220,6 +265,7 @@ function variationNameToWearFilter(name: string): WearFilterId | null {
   if (name === 'パーカー') return 'hoodie';
   if (name === 'ジップパーカー') return 'ziphoodie';
   if (name === 'フィギュア' || name.includes('フィギュア')) return 'figure';
+  if (name === '原画' || name.includes('原画')) return 'original';
   return null;
 }
 
@@ -230,6 +276,7 @@ const FILTER_LABEL_BY_WEAR: Record<Exclude<WearFilterId, 'all'>, string> = {
   hoodie: 'パーカー',
   ziphoodie: 'ジップパーカー',
   figure: 'フィギュア',
+  original: '原画',
 };
 
 type ProductListRow = {
@@ -495,6 +542,7 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(150, '#003', 3, '153018451'),
     buildOddToyFigureProduct(151, '#004', 4, '153018511', 3),
     buildOddToyFigureProduct(152, '#005', 5, '153018561'),
+    ...ORIGINAL_ART_PRODUCTS,
     {
       id: 146,
       title: 'タイヤがお気に入り',
@@ -1518,7 +1566,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
