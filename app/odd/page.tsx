@@ -341,7 +341,11 @@ export default function DesignShelf() {
     },
     { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4azSuGy" },
     { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
-    { src: "/designshelf/images/banner4.jpg", alt: "バナー4", link: "https://amzn.to/4bHeLmY" },
+    {
+      src: "/designshelf/images/banner8_rkc.jpg",
+      alt: "RAKUGAKI KAO CLUB 原画",
+      link: "https://store.utaraska.co.jp/categories/6336616",
+    },
   ];
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
