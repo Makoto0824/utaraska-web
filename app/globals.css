@@ -48,3 +48,27 @@ body {
 .amazon-btn .label {
   line-height: 1.4;
 }
+
+.base-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  padding: .4rem .6rem;
+  border-radius: .4rem;
+  background: #00BFB3;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.base-btn:focus {
+  outline: 3px solid rgba(0, 191, 179, 0.25);
+  outline-offset: 2px;
+}
+
+.base-btn .label {
+  line-height: 1.4;
+}

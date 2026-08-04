@@ -14,6 +14,7 @@ function getPurchaseLinkMeta(link: string, itemName: string) {
   if (isBaseStoreLink(link)) {
     return {
       ariaLabel: `BASEストアで${itemName}を見る`,
+      buttonClass: 'base-btn',
       label: (
         <>
           BASE
@@ -25,6 +26,7 @@ function getPurchaseLinkMeta(link: string, itemName: string) {
   }
   return {
     ariaLabel: `Amazonで${itemName}を見る`,
+    buttonClass: 'amazon-btn',
     label: (
       <>
         Amazon
@@ -1041,12 +1043,12 @@ export default function DesignShelf() {
     },
     {
       id: 117,
-      title: "ゆるいパンダとパンダ",
+      title: "向かい合う ニヤついたパンダ",
       image: "/designshelf/images/33_panda/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/33_panda/design.png",
       modelImage: "/designshelf/images/33_panda/jp/hoodie_model.jpg",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/442991Y",
+      price: "¥2,500",
+      amazonLink: "https://store.utaraska.co.jp/items/153112461",
       jpAssets: {
         root: "/designshelf/images/33_panda",
         design: "design.png",
@@ -1065,8 +1067,8 @@ export default function DesignShelf() {
       variations: [
         {
           name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/442991Y"
+          price: "¥2,500",
+          amazonLink: "https://store.utaraska.co.jp/items/153112461"
         },
         {
           name: "パーカー",
@@ -1082,12 +1084,12 @@ export default function DesignShelf() {
     },
     {
       id: 114,
-      title: "ゆるい般若と般若",
+      title: "向かい合う　目がイってる般若",
       image: "/designshelf/images/30_hannya/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/30_hannya/design.png",
       modelImage: "/designshelf/images/30_hannya/jp/hoodie_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3JRLlal",
+      price: "¥2,500",
+      amazonLink: "https://store.utaraska.co.jp/items/153118426",
       jpAssets: {
         root: "/designshelf/images/30_hannya",
         design: "design.png",
@@ -1107,8 +1109,8 @@ export default function DesignShelf() {
       variations: [
         {
           name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/3JRLlal",
+          price: "¥2,500",
+          amazonLink: "https://store.utaraska.co.jp/items/153118426",
           videoUrl: "https://www.instagram.com/reel/DWeHNH6AS2_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
         },
         {
@@ -1163,12 +1165,12 @@ export default function DesignShelf() {
     },
     {
       id: 108,
-      title: "ゆるいライオン",
+      title: "大きなライオン",
       image: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/26_lion/design.png",
       modelImage: "/designshelf/images/26_lion/jp/tshirt_model.jpg",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/3OkHvbZ",
+      price: "¥2,500",
+      amazonLink: "https://store.utaraska.co.jp/items/153114726",
       jpAssets: {
         root: "/designshelf/images/26_lion",
         design: "design.png",
@@ -1183,8 +1185,8 @@ export default function DesignShelf() {
       variations: [
         {
           name: "Tシャツ",
-          price: "¥2,300",
-          amazonLink: "https://amzn.to/3OkHvbZ",
+          price: "¥2,500",
+          amazonLink: "https://store.utaraska.co.jp/items/153114726",
           videoUrl: "https://www.instagram.com/reel/DXe0xx5AXm0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
         },
         {
@@ -1201,8 +1203,8 @@ export default function DesignShelf() {
       image: "/designshelf/images/4_ashura/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/4_ashura/design.png",
       modelImage: "/designshelf/images/4_ashura/jp/hoodie_model.png",
-      price: "¥2,300",
-      amazonLink: "https://amzn.to/4rWJgtm",
+      price: "¥2,500",
+      amazonLink: "https://store.utaraska.co.jp/items/153118438",
       jpAssets: {
         root: "/designshelf/images/4_ashura",
         design: "design.png",
@@ -1218,7 +1220,7 @@ export default function DesignShelf() {
       description: "このデザインは、日本で広く知られる阿修羅像を、ポップかつユーモラスなタッチで表現した\"ゆるアート\"作品です。宗教的荘厳さよりも、日常に溶け込むかわいさと不思議な存在感を持ち、仏像・仏教カルチャー・和風アート・ご利益デザイン・ゆるキャラ・サブカル・アジアンテイストといった複数のジャンルにアピールします。シンプルな白地に映えるミニマル構成で、老若男女問わず楽しめるデザインです。ユニークなギフトを探している方におすすめ。",
       videoUrl: "https://www.instagram.com/reel/DWY3QEmgS7C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       variations: [
-        { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4rWJgtm", videoUrl: "https://www.instagram.com/reel/DWY3QEmgS7C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        { name: "Tシャツ", price: "¥2,500", amazonLink: "https://store.utaraska.co.jp/items/153118438", videoUrl: "https://www.instagram.com/reel/DWY3QEmgS7C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
         { name: "パーカー", price: "¥4,400", amazonLink: "https://amzn.to/4oIKozG", videoUrl: "https://www.instagram.com/reel/DQi8IRygWyW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
       ],
     },
@@ -1628,7 +1630,7 @@ export default function DesignShelf() {
                                 href={variation.amazonLink}
                                 target="_blank"
                                 rel="noopener noreferrer nofollow"
-                                className="amazon-btn shrink-0"
+                                className={`${purchaseMeta.buttonClass} shrink-0`}
                                 aria-label={purchaseMeta.ariaLabel}
                                 onClick={(e) => e.stopPropagation()}
                               >
