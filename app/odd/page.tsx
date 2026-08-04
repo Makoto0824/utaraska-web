@@ -587,8 +587,8 @@ export default function DesignShelf() {
       brand: 'AJIARIE',
       image: '/designshelf/images/rakugaki/4/tshirt.jpg',
       designImage: '/designshelf/images/rakugaki/4/design.jpg',
-      price: '¥2,300',
-      amazonLink: 'https://amzn.to/4xmUhIw',
+      price: '¥2,500',
+      amazonLink: 'https://store.utaraska.co.jp/items/153136097',
       jpAssets: {
         root: '/designshelf/images/rakugaki/4',
         design: 'design.jpg',
@@ -607,8 +607,8 @@ export default function DesignShelf() {
       variations: [
         {
           name: 'Tシャツ',
-          price: '¥2,300',
-          amazonLink: 'https://amzn.to/4xmUhIw',
+          price: '¥2,500',
+          amazonLink: 'https://store.utaraska.co.jp/items/153136097',
           videoUrl:
             'https://www.instagram.com/p/DZKeoIyDzit/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
         },
