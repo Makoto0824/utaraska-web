@@ -138,7 +138,7 @@ function buildOddToyFigureProduct(
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263,
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
 ]);
 
@@ -611,6 +611,38 @@ export default function DesignShelf() {
           amazonLink: 'https://store.utaraska.co.jp/items/153136097',
           videoUrl:
             'https://www.instagram.com/p/DZKeoIyDzit/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
+    {
+      id: 263,
+      title: 'クワガタのタモ',
+      brand: 'AJIARIE',
+      image: '/designshelf/images/rakugaki/6/tshirt.jpg',
+      designImage: '/designshelf/images/rakugaki/6/design.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://link.amazon/B0bRqXg2z',
+      jpAssets: {
+        root: '/designshelf/images/rakugaki/6',
+        design: 'design.jpg',
+        slots: {
+          tshirt: 'tshirt.jpg',
+        },
+      },
+      features: [
+        'らくがきT 採用作品。息子が飼っているクワガタ「タモ」を描きました。',
+        '昨日描いた、身近な存在が主役の一作品です。',
+      ],
+      description: '息子が飼っているクワガタです。名前はタモ。昨日描きました',
+      videoUrl:
+        'https://www.instagram.com/p/DboIH_PE3iN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://link.amazon/B0bRqXg2z',
+          videoUrl:
+            'https://www.instagram.com/p/DboIH_PE3iN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
         },
       ],
     },
@@ -1572,7 +1604,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || product.id === 263 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
