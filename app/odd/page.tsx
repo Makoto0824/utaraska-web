@@ -138,7 +138,7 @@ function buildOddToyFigureProduct(
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264,
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
 ]);
 
@@ -548,6 +548,7 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(150, '#003', 3, '153018451'),
     buildOddToyFigureProduct(151, '#004', 4, '153018511', 3),
     buildOddToyFigureProduct(152, '#005', 5, '153018561'),
+    buildOddToyFigureProduct(264, '#006', 6, '153555887'),
     ...ORIGINAL_ART_PRODUCTS,
     {
       id: 146,
@@ -1604,7 +1605,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || product.id === 263 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || product.id === 263 || product.id === 264 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
