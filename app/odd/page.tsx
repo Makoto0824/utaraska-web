@@ -93,13 +93,14 @@ const ODD_TOY_FIGURE_DESCRIPTION = `オリジナルキャラクターを立体�
 付属品：ボールチェーン
 数量：1点`;
 
-const ODD_TOY_FIGURE_STANDALONE_FEATURES = [
-  '戦国武将 伊達政宗 の手のひらサイズフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。',
-] as const;
+type OddToyFigureProductOptions = {
+  ballChain?: boolean;
+  price?: string;
+  features?: readonly string[];
+  description?: string;
+};
 
-const ODD_TOY_FIGURE_STANDALONE_DESCRIPTION = `戦国武将 伊達政宗 手のひらサイズのフィギュアです。
-
-キャラクターデザインから3Dモデルの調整、3Dプリント、塗装まで、一点ずつ手作業で仕上げています。
+const ODD_TOY_FIGURE_STANDALONE_BODY = `キャラクターデザインから3Dモデルの調整、3Dプリント、塗装まで、一点ずつ手作業で仕上げています。
 
 3Dプリンターならではの積層跡や、手塗りによる色ムラ、筆跡などがあります。量産品にはない個体差も含めて、作品の風合いとしてお楽しみください。
 
@@ -109,12 +110,18 @@ const ODD_TOY_FIGURE_STANDALONE_DESCRIPTION = `戦国武将 伊達政宗 手の�
 制作方法：3Dプリント、手作業による塗装
 数量：1点`;
 
-type OddToyFigureProductOptions = {
-  ballChain?: boolean;
-  price?: string;
-  features?: readonly string[];
-  description?: string;
-};
+function buildOddToySamuraiFigureOptions(characterName: string): OddToyFigureProductOptions {
+  return {
+    ballChain: false,
+    price: '¥9,800',
+    features: [
+      `戦国武将 ${characterName} の手のひらサイズフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。`,
+    ],
+    description: `戦国武将 ${characterName} 手のひらサイズのフィギュアです。
+
+${ODD_TOY_FIGURE_STANDALONE_BODY}`,
+  };
+}
 
 function buildOddToyFigureProduct(
   id: number,
@@ -126,8 +133,8 @@ function buildOddToyFigureProduct(
 ) {
   const ballChain = options.ballChain ?? true;
   const price = options.price ?? '¥5,800';
-  const features = options.features ?? (ballChain ? ODD_TOY_FIGURE_FEATURES : ODD_TOY_FIGURE_STANDALONE_FEATURES);
-  const description = options.description ?? (ballChain ? ODD_TOY_FIGURE_DESCRIPTION : ODD_TOY_FIGURE_STANDALONE_DESCRIPTION);
+  const features = options.features ?? ODD_TOY_FIGURE_FEATURES;
+  const description = options.description ?? ODD_TOY_FIGURE_DESCRIPTION;
   const root = `/designshelf/images/toys/${folderNum}`;
   const carouselImages = Array.from({ length: photoCount }, (_, index) => {
     if (index === 0) return `${root}/figure.jpg`;
@@ -169,7 +176,7 @@ function buildOddToyFigureProduct(
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266, 267,
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
 ]);
 
@@ -581,7 +588,8 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(152, '#005', 5, '153018561'),
     buildOddToyFigureProduct(264, '#006', 6, '153555887'),
     buildOddToyFigureProduct(265, '#007', 7, '154163137'),
-    buildOddToyFigureProduct(266, '#008', 8, '154166635', 5, { ballChain: false, price: '¥9,800' }),
+    buildOddToyFigureProduct(266, '#008', 8, '154166635', 5, buildOddToySamuraiFigureOptions('伊達政宗')),
+    buildOddToyFigureProduct(267, '#009', 9, '154441462', 4, buildOddToySamuraiFigureOptions('真田幸村')),
     ...ORIGINAL_ART_PRODUCTS,
     {
       id: 146,
@@ -1638,7 +1646,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || product.id === 263 || product.id === 264 || product.id === 265 || product.id === 266 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
+                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || product.id === 263 || product.id === 264 || product.id === 265 || product.id === 266 || product.id === 267 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
