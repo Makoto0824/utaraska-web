@@ -182,7 +182,7 @@ const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
 
 /** 期間限定以外で NEW バッジを付ける商品（Tシャツは対象外） */
 const NEW_BADGE_PRODUCT_IDS = new Set([
-  148, 149, 150, 151, 152, 264, 265, 266, 267,
+  148, 149, 150, 151, 152, 264, 265, 266, 267, 268,
 ]);
 
 function showsNewBadge(product: { id: number; endDate?: string }): boolean {
