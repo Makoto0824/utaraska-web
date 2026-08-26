@@ -180,6 +180,16 @@ const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
 ]);
 
+/** 期間限定以外で NEW バッジを付ける商品（Tシャツは対象外） */
+const NEW_BADGE_PRODUCT_IDS = new Set([
+  148, 149, 150, 151, 152, 264, 265, 266, 267,
+]);
+
+function showsNewBadge(product: { id: number; endDate?: string }): boolean {
+  if (product.endDate) return false;
+  return NEW_BADGE_PRODUCT_IDS.has(product.id) || ORIGINAL_ART_PRODUCT_IDS.has(product.id);
+}
+
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
 const PRODUCT_REEL_FALLBACK_IDS = new Set([128, 129, 130, 131, 132, 133]);
 
@@ -581,6 +591,38 @@ export default function DesignShelf() {
 
   // 商品データ（完全な商品説明付き）
   const products: Product[] = [
+    {
+      id: 268,
+      title: 'ゆるい虎と虎 2',
+      image: '/designshelf/images/42_tigertiger2/tshirt_model.jpg',
+      designImage: '/designshelf/images/42_tigertiger2/desgin.png',
+      price: '¥2,300',
+      amazonLink: 'https://link.amazon/B0d6bCmfU',
+      jpAssets: {
+        root: '/designshelf/images/42_tigertiger2',
+        design: 'desgin.png',
+        slots: {
+          tshirt: 'tshirt_model.jpg',
+        },
+      },
+      features: [
+        '大きな口を開けて吠える2匹のタイガーを左右に配置。力強い表情とコミカルでポップなイラスト表現が特徴。',
+        'ストリートアート、ポップアート、個性的なキャラクター、ユニークで面白い動物イラストが好きな方におすすめ。',
+      ],
+      description:
+        '大きな口を開けて吠える2匹のタイガーを左右に配置した、ユニークなオリジナルアニマルデザインです。虎らしい力強い表情と、コミカルでポップなイラスト表現を組み合わせています。タイガーや虎などの動物モチーフが好きな方はもちろん、ストリートアート、ポップアート、個性的なキャラクター、ユニークで面白いデザインを好む方にもおすすめ。存在感のある虎のイラストを楽しみたい方や、動物好きの方へのプレゼントにも適したデザインです。',
+      videoUrl:
+        'https://www.instagram.com/reel/DcgDlGSkzy2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://link.amazon/B0d6bCmfU',
+          videoUrl:
+            'https://www.instagram.com/reel/DcgDlGSkzy2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
     buildOddToyFigureProduct(148, '#001', 1, '153014392'),
     buildOddToyFigureProduct(149, '#002', 2, '153018381'),
     buildOddToyFigureProduct(150, '#003', 3, '153018451'),
@@ -853,38 +895,6 @@ export default function DesignShelf() {
       videoUrl: "https://www.instagram.com/reel/DWY-Ystgf-3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       variations: [
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4lXg9Vy", videoUrl: "https://www.instagram.com/reel/DWY-Ystgf-3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
-      ],
-    },
-    {
-      id: 268,
-      title: 'ゆるい虎と虎 2',
-      image: '/designshelf/images/42_tigertiger2/tshirt_model.jpg',
-      designImage: '/designshelf/images/42_tigertiger2/desgin.png',
-      price: '¥2,300',
-      amazonLink: 'https://link.amazon/B0d6bCmfU',
-      jpAssets: {
-        root: '/designshelf/images/42_tigertiger2',
-        design: 'desgin.png',
-        slots: {
-          tshirt: 'tshirt_model.jpg',
-        },
-      },
-      features: [
-        '大きな口を開けて吠える2匹のタイガーを左右に配置。力強い表情とコミカルでポップなイラスト表現が特徴。',
-        'ストリートアート、ポップアート、個性的なキャラクター、ユニークで面白い動物イラストが好きな方におすすめ。',
-      ],
-      description:
-        '大きな口を開けて吠える2匹のタイガーを左右に配置した、ユニークなオリジナルアニマルデザインです。虎らしい力強い表情と、コミカルでポップなイラスト表現を組み合わせています。タイガーや虎などの動物モチーフが好きな方はもちろん、ストリートアート、ポップアート、個性的なキャラクター、ユニークで面白いデザインを好む方にもおすすめ。存在感のある虎のイラストを楽しみたい方や、動物好きの方へのプレゼントにも適したデザインです。',
-      videoUrl:
-        'https://www.instagram.com/reel/DcgDlGSkzy2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
-      variations: [
-        {
-          name: 'Tシャツ',
-          price: '¥2,300',
-          amazonLink: 'https://link.amazon/B0d6bCmfU',
-          videoUrl:
-            'https://www.instagram.com/reel/DcgDlGSkzy2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
-        },
       ],
     },
     {
@@ -1678,7 +1688,7 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
-                  {!product.endDate && (product.id === 141 || product.id === 142 || product.id === 143 || product.id === 144 || product.id === 145 || product.id === 146 || product.id === 147 || product.id === 148 || product.id === 149 || product.id === 150 || product.id === 151 || product.id === 152 || product.id === 263 || product.id === 264 || product.id === 265 || product.id === 266 || product.id === 267 || product.id === 268 || ORIGINAL_ART_PRODUCT_IDS.has(product.id)) && (
+                  {showsNewBadge(product) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
                 </div>
