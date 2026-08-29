@@ -19,6 +19,9 @@ export default function DesignShelf() {
     { src: "/designshelf/images/banner_en1.png", alt: "Banner" }
   ];
 
+  const YURU_STYLE_JAPAN_AMAZON_URL =
+    "https://www.amazon.com/s?rh=n%3A7141123011%2Cp_4%3A%25E3%2582%2586%25E3%2582%258B%25E3%2582%25B9%25E3%2582%25BF%25E3%2582%25A4%25E3%2583%25AB%25E3%2582%25BB%25E3%2583%25B3%25E3%2583%25BB%25E3%2582%25B8%25E3%2583%25A3%25E3%2583%2591%25E3%2583%25B3&ref=bl_sl_s_ap_web_7141123011";
+
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
   const [bannerRatios, setBannerRatios] = useState<number[]>(() => banners.map(() => 1200 / 500));
 
@@ -196,13 +199,122 @@ export default function DesignShelf() {
     description: string;
     modelImage?: string;
     videoUrl?: string;
+    /** true のときリンクなしでアイコン＋「View on Instagram」を表示 */
+    instagramLabelOnly?: boolean;
     endDate?: string; // ISO形式の日時文字列（例: "2025-12-25T23:59:59"）
     variations?: ProductVariation[]; // 商品バリエーション（Tシャツ、パーカーなど）
     carouselImages?: string[]; // カルーセル用の画像配列
   };
 
-  // 元のサイトと同じ24商品のデータ（完全な商品説明付き）
+  // T-shirt products (Amazon US only, $18.99)
   const products: Product[] = [
+    {
+      id: 268,
+      title: "Face-to-Face Tiger Illustration 2 (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/42_tigertiger2/tshirt_model.jpg",
+      designImage: "/designshelf/images/42_tigertiger2/desgin.png",
+      modelImage: "/designshelf/images/42_tigertiger2/tshirt_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/0eVd12qK",
+      features: [
+        "Two tigers with wide open mouths, placed on left and right. Strong expressions combined with a comic, pop illustration style.",
+        "Recommended for fans of street art, pop art, distinctive characters, and unique animal illustrations."
+      ],
+      description:
+        "An original animal design featuring two tigers with wide open mouths placed on left and right. Combines the powerful expression of tigers with a comic, pop illustration style. Great for tiger lovers, street art and pop art fans, and anyone who enjoys distinctive characters and playful designs. A bold tiger graphic that works as a statement piece or a gift for animal lovers.",
+      videoUrl:
+        "https://www.instagram.com/reel/DcgDlGSkzy2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/42_tigertiger2/tshirt_model.jpg",
+        "/designshelf/images/42_tigertiger2/desgin.png"
+      ]
+    },
+    {
+      id: 119,
+      title: "Face-to-Face Daruma Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/34_daruma/en/tshirt_model.jpg",
+      designImage: "/designshelf/images/34_daruma/design.png",
+      modelImage: "/designshelf/images/34_daruma/en/tshirt_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/00v0kohv",
+      features: [
+        "A pair of daruma faces facing each other, drawn in a relaxed, rounded style. Strong outlines and simple color blocks improve visibility from a distance.",
+        "A modern reinterpretation of a traditional good-luck motif, designed to change impact by background and color choice. Chest-centered placement makes it easy to pair with layering and accessories."
+      ],
+      description:
+        "This design places two daruma faces facing one another, rendered in a playful, low-tension illustration style. Bold outlines and restrained facial expressions keep the motif attention-grabbing yet wearable for everyday outfits.",
+      instagramLabelOnly: true,
+      carouselImages: [
+        "/designshelf/images/34_daruma/en/tshirt_model.jpg",
+        "/designshelf/images/34_daruma/jp/tshirt_model.jpg",
+        "/designshelf/images/34_daruma/design.png"
+      ]
+    },
+    {
+      id: 141,
+      title: "Face-to-Face Pixel Tiger Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/41_tigertiger_pixel/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/41_tigertiger_pixel/design.jpg",
+      modelImage: "/designshelf/images/41_tigertiger_pixel/jp/tshirt_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/0hKDSfQl",
+      features: [
+        "Symmetrically arranged pixel-art tiger faces create a unique composition. Impact and balance embedded in a simple design.",
+        "Fusion of Japanese-style pixel tiger motifs with contemporary pop illustration aesthetics. Catchy expressions for street fashion and art enthusiasts."
+      ],
+      description:
+        "This design features pixel-art tiger faces arranged symmetrically on both sides—a humorous yet powerful graphic. By blending traditional Japanese animal motifs with pop art aesthetics, it creates a unique Asian × Modern look. Despite its minimalist layout, the eye-catching design appeals across Japanese patterns, animal art, tiger motifs, street style, retro pop, and art fashion.",
+      videoUrl: "https://www.instagram.com/reel/DWY-Ystgf-3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/41_tigertiger_pixel/jp/tshirt_model.jpg",
+        "/designshelf/images/41_tigertiger_pixel/design.jpg"
+      ]
+    },
+    {
+      id: 106,
+      title: "Relaxed Japanese Masks Illustration",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/2_japanese_masks/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/2_japanese_masks/design.png",
+      modelImage: "/designshelf/images/2_japanese_masks/jp/tshirt_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/07R5QOnF",
+      features: [
+        "Six types of traditional Japanese masks rendered in a pop style for strong visual impact.",
+        "Motifs drawn from Noh, Kyogen, and festival masks—expressing the depth of Japanese culture with humor."
+      ],
+      description:
+        "Above the \"JAPANESE MASKS\" lettering, six colorful traditional Japanese masks are arranged in a unique layout. Each mask comes from Noh, Kyogen, festivals, and other contexts, carrying cultural background and symbolic meaning. The expressive, individual faces lined up together show the diversity and depth of Japanese culture in a humorous, artistic way. A bold visual for fans of Japanese culture, wa-motif art, and distinctive personal style.",
+      videoUrl: "https://www.instagram.com/reel/DWWOXW5gTSY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/2_japanese_masks/jp/tshirt_model.jpg",
+        "/designshelf/images/2_japanese_masks/design.png"
+      ]
+    },
+    {
+      id: 104,
+      title: "Face-to-Face Dragon Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/6_dragondragon/jp/tshirt_model.jpg",
+      designImage: "/designshelf/images/6_dragondragon/design.png",
+      modelImage: "/designshelf/images/6_dragondragon/jp/tshirt_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/07j8bgHd",
+      features: [
+        "Symmetrically placed dragon faces create a unique, eye-catching art design. Minimal layout with strong impact.",
+        "Japanese motifs blended with pop art for a modern graphic that suits Asian taste, casual fashion, and street art."
+      ],
+      description:
+        "This design features symmetrically placed dragon faces in a playful, relaxed Japanese art style. It fits art, streetwear, Asian motifs, wa patterns, and oriental design genres. The deformed dragon expressions are catchy and work as an accent for any outfit, for anyone who enjoys distinctive fashion—or as a gift.",
+      videoUrl: "https://www.instagram.com/reel/DWYyGmEgUvG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/6_dragondragon/jp/tshirt_model.jpg",
+        "/designshelf/images/6_dragondragon/design.png"
+      ]
+    },
     {
       id: 128,
       title: "Skull Calavera Kanji Katakana Duck",
@@ -241,26 +353,6 @@ export default function DesignShelf() {
       carouselImages: [
         "/designshelf/images/39_dragondragon2/jp/tshirt_model.jpg",
         "/designshelf/images/39_dragondragon2/design.png"
-      ]
-    },
-    {
-      id: 126,
-      title: "Face-to-Face Sumo Wrestler Kanji Katakana",
-      brand: "Yuru Style Japan",
-      image: "/designshelf/images/37_yokozuna/en/tshirt_model.jpg",
-      designImage: "/designshelf/images/37_yokozuna/design.png",
-      modelImage: "/designshelf/images/37_yokozuna/en/tshirt_model.jpg",
-      price: "$18.99",
-      amazonLink: "https://a.co/d/07MYyCZu",
-      features: [
-        "A sumo wrestler symbolizing the world of sumo is depicted using Japanese-style graphic elements combining kanji and katakana, reminiscent of traditional Japanese seals.",
-        "A composition centered around a red text motif as the focal point. The balanced design utilizes white space effectively, ensuring text and shapes remain clearly legible even when scaled down."
-      ],
-      description: "This graphic design centers on Japanese characters, featuring sumo and sumo wrestlers-theme of Japan's traditional culture. By combining kanji and katakana in a seal-like style, it achieves an impression blending Japanese authenticity with a playful spirit. Simplifying lines and shapes enhances visibility, creating a composition where the characters themselves stand out. It's a simple yet striking design for those who enjoy Japanese culture and Japanese-language motifs.",
-      videoUrl: "https://www.instagram.com/reel/DUS7L3zk2hp/?utm_source=ig_web_copy_link",
-      carouselImages: [
-        "/designshelf/images/37_yokozuna/en/tshirt_model.jpg",
-        "/designshelf/images/37_yokozuna/design.png"
       ]
     },
     {
@@ -318,27 +410,9 @@ export default function DesignShelf() {
       ],
       description: "Relaxed hannya faces in a face-to-face layout. Bold linework and flat color blocks make this a chest-center graphic that reads at a glance.",
       videoUrl: "https://www.instagram.com/reel/DSKGLh9k_J7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "T-Shirt",
-          price: "$18.99",
-          amazonLink: "https://a.co/d/aN7hGMy"
-        },
-        {
-          name: "Premium T-Shirt",
-          price: "$20.99",
-          amazonLink: "https://a.co/d/581bHuM"
-        },
-        {
-          name: "Long Sleeve",
-          price: "$21.99",
-          amazonLink: "https://a.co/d/ail861u"
-        }
-      ],
       carouselImages: [
         "/designshelf/images/30_hannya/en/tshirt_model.jpg",
         "/designshelf/images/30_hannya/jp/tshirt_model.jpg",
-        "/designshelf/images/30_hannya/jp/long_sleeve.jpg",
         "/designshelf/images/30_hannya/design.png"
       ]
     },
@@ -346,9 +420,9 @@ export default function DesignShelf() {
       id: 122,
       title: "Face-Center Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/3_tiger/en/hoodie_model.jpg",
+      image: "/designshelf/images/3_tiger/en/tshirt_model.jpg",
       designImage: "/designshelf/images/3_tiger/design.png",
-      modelImage: "/designshelf/images/3_tiger/en/hoodie_model.jpg",
+      modelImage: "/designshelf/images/3_tiger/en/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/hQ3qcoy",
       features: [
@@ -357,27 +431,9 @@ export default function DesignShelf() {
       ],
       description: "The boldly placed tiger motif achieves both a silhouette easily recognizable from a distance and clear definition in its details. As a focal point on the chest, it pairs well with layered outfits. Its modern interpretation of traditional Japanese elements makes it versatile for a wide range of styles. Its understated yet distinctive appeal makes it an excellent choice for gifts.",
       videoUrl: "https://www.instagram.com/reel/DSH7hCGE1VO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "T-Shirt",
-          price: "$18.99",
-          amazonLink: "https://a.co/d/hQ3qcoy"
-        },
-        {
-          name: "Pullover Hoodie",
-          price: "$31.99",
-          amazonLink: "https://a.co/d/37NFb6W"
-        },
-        {
-          name: "Long Sleeve",
-          price: "$21.99",
-          amazonLink: "https://a.co/d/4F5O7KP"
-        }
-      ],
       carouselImages: [
-        "/designshelf/images/3_tiger/en/hoodie_model.jpg",
+        "/designshelf/images/3_tiger/en/tshirt_model.jpg",
         "/designshelf/images/3_tiger/jp/tshirt_model.jpg",
-        "/designshelf/images/3_tiger/jp/long_sleeve.jpg",
         "/designshelf/images/3_tiger/design.png"
       ]
     },
@@ -385,9 +441,9 @@ export default function DesignShelf() {
       id: 120,
       title: "Face-to-Face Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/7_tigertiger/en/hoodie_model.jpg",
+      image: "/designshelf/images/7_tigertiger/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/7_tigertiger/design.png",
-      modelImage: "/designshelf/images/7_tigertiger/en/hoodie_model.jpg",
+      modelImage: "/designshelf/images/7_tigertiger/jp/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/eyYRrGF",
       features: [
@@ -396,27 +452,8 @@ export default function DesignShelf() {
       ],
       description: "This design features a humorous yet powerful graphic art piece with a tiger's face arranged symmetrically on both sides. By blending traditional Japanese animal motifs with an American comic-inspired pop art aesthetic, it creates a unique Asian × Modern worldview. Despite its minimalist composition, the eye-catching design has broad appeal across genres including Japanese patterns, animal designs, tiger art, street style, retro pop, and art fashion. It's a one-of-a-kind visual where visual impact and playfulness coexist.",
       videoUrl: "https://www.instagram.com/reel/DR9EKaBEykM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "T-Shirt",
-          price: "$18.99",
-          amazonLink: "https://a.co/d/eyYRrGF"
-        },
-        {
-          name: "Pullover Hoodie",
-          price: "$31.99",
-          amazonLink: "https://a.co/d/emf3QBt"
-        },
-        {
-          name: "Zip Hoodie",
-          price: "$33.99",
-          amazonLink: "https://a.co/d/3l5u38p"
-        }
-      ],
       carouselImages: [
-        "/designshelf/images/7_tigertiger/en/hoodie_model.jpg",
         "/designshelf/images/7_tigertiger/jp/tshirt_model.jpg",
-        "/designshelf/images/7_tigertiger/jp/zip_hoodie.jpg",
         "/designshelf/images/7_tigertiger/design.png"
       ]
     },
@@ -424,9 +461,9 @@ export default function DesignShelf() {
       id: 121,
       title: "Face-to-Face Dragon vs Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/5_dragon_tiger/en/zip_hoodie_model.jpg",
+      image: "/designshelf/images/5_dragon_tiger/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/5_dragon_tiger/design.png",
-      modelImage: "/designshelf/images/5_dragon_tiger/en/zip_hoodie_model.jpg",
+      modelImage: "/designshelf/images/5_dragon_tiger/jp/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/0g1Yc8X",
       features: [
@@ -435,27 +472,8 @@ export default function DesignShelf() {
       ],
       description: "This artwork places a dragon and a tiger head in a face-to-face layout, reinterpreting classic East Asian motifs in a relaxed, contemporary style. Thick linework and simplified shapes create immediate impact from a distance while patterned details reward a closer look. The design is sized to sit at the chest center so it integrates with everyday layering and streetwear silhouettes. Suitable for collections that blend traditional symbolism with modern, casual aesthetics.",
       videoUrl: "https://www.instagram.com/reel/DSAoW1YE5o4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "T-Shirt",
-          price: "$18.99",
-          amazonLink: "https://a.co/d/0g1Yc8X"
-        },
-        {
-          name: "Pullover Hoodie",
-          price: "$31.99",
-          amazonLink: "https://a.co/d/d6whhIl"
-        },
-        {
-          name: "Zip Hoodie",
-          price: "$33.99",
-          amazonLink: "https://a.co/d/gcIoSdN"
-        }
-      ],
       carouselImages: [
-        "/designshelf/images/5_dragon_tiger/en/zip_hoodie_model.jpg",
         "/designshelf/images/5_dragon_tiger/jp/tshirt_model.jpg",
-        "/designshelf/images/5_dragon_tiger/jp/hoodie_model.png",
         "/designshelf/images/5_dragon_tiger/design.png"
       ]
     },
@@ -474,61 +492,9 @@ export default function DesignShelf() {
       ],
       description: "This artwork features Fujin (the Wind God) and Raijin (the Thunder God), two iconic figures from Japanese mythology, reinterpreted in a cute and playful style. The characters keep the traditional elements-such as the wind bag and drums-while adding a modern, approachable look. Perfect for fans of Japanese art, mythology, pop-style illustrations, and character-based designs. Easy to match with streetwear outfits, and a fun gift for anyone who enjoys Japanese culture.",
       videoUrl: "https://www.instagram.com/reel/DRzK1SlE_Ln/?utm_source=ig_web_copy_link",
-      variations: [
-        {
-          name: "T-Shirt",
-          price: "$18.99",
-          amazonLink: "https://www.amazon.com/dp/B0FYR7YBSW?customId=B07537H64L&customizationToken=MC_Assembly_1%23B07537H64L&th=1&psc=1"
-        },
-        {
-          name: "Pullover Hoodie",
-          price: "$31.99",
-          amazonLink: "https://a.co/d/1vOgxO3"
-        },
-        {
-          name: "Zip Hoodie",
-          price: "$33.99",
-          amazonLink: "https://a.co/d/6oGiupf"
-        }
-      ],
       carouselImages: [
         "/designshelf/images/1_fujin_raijin/en/tshirt_model.jpg",
-        "/designshelf/images/1_fujin_raijin/en/hoodie_model.jpg",
-        "/designshelf/images/1_fujin_raijin/jp/zip_hoodie_model.png",
         "/designshelf/images/1_fujin_raijin/design.png"
-      ]
-    },
-    {
-      id: 119,
-      title: "Face-to-Face Daruma Illustration (Relaxed Style)",
-      brand: "Yuru Style Japan",
-      image: "/designshelf/images/34_daruma/en/tshirt_model.jpg",
-      designImage: "/designshelf/images/34_daruma/design.png",
-      modelImage: "/designshelf/images/34_daruma/en/tshirt_model.jpg",
-      price: "$18.99",
-      amazonLink: "https://www.amazon.com/Daruma-Illustration-Relaxed-Style-T-Shirt/dp/B0G4VXCS9D/ref=sr_1_5?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969541&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-5&customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1",
-      features: [
-        "A pair of daruma faces facing each other, drawn in a relaxed, rounded style. Strong outlines and simple color blocks improve visibility from a distance",
-        "A modern reinterpretation of a traditional good-luck motif, designed to change impact by background and color choice. Chest-centered placement makes it easy to pair with layering and accessories"
-      ],
-      description: "This design places two daruma faces facing one another, rendered in a playful, low-tension illustration style. Bold outlines and restrained facial expressions keep the motif attention-grabbing yet wearable for everyday outfits.",
-      videoUrl: "https://www.instagram.com/reel/DR5T8mME2kQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      variations: [
-        {
-          name: "T-Shirt",
-          price: "$18.99",
-          amazonLink: "https://www.amazon.com/Daruma-Illustration-Relaxed-Style-T-Shirt/dp/B0G4VXCS9D/ref=sr_1_5?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969541&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-5&customId=B0752XJYNL&customizationToken=MC_Assembly_1%23B0752XJYNL&th=1&psc=1"
-        },
-        {
-          name: "Premium T-Shirt",
-          price: "$20.99",
-          amazonLink: "https://www.amazon.com/Illustration-Relaxed-Style-Premium-Tri-Blend/dp/B0G4VWT9M4/ref=sr_1_6?dib=eyJ2IjoiMSJ9.baOD2aujbNaNJFcYi1LoM5X3Ik8E5ZEXFxHPcyccPOKMx3bVZwLQ0ufDz-iYP8G-2Ad9E3s7xtf7hACyvsixdg.EupN7gQaTBq3mOBSBBRDdfVlR3ya0rLBz1l7txLqSMc&dib_tag=se&qid=1764969704&refinements=p_4%3AYuru%2BStyle%2BJapan&s=apparel&sr=1-6&customId=B07536XX75&customizationToken=MC_Assembly_1%23B07536XX75&th=1&psc=1"
-        }
-      ],
-      carouselImages: [
-        "/designshelf/images/34_daruma/en/tshirt_model.jpg",
-        "/designshelf/images/34_daruma/en/tshirt_prem.jpg",
-        "/designshelf/images/34_daruma/design.png"
       ]
     }
   ];
@@ -733,35 +699,49 @@ export default function DesignShelf() {
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-1 min-h-[3rem]">{product.title}</h3>
                   {product.endDate && <CountdownTimer endDate={product.endDate} />}
-                  {product.brand !== "Yuru Style Japan" && (
-                    <Link 
-                      href={
-                        product.brand === "Yuru Style Japan" ? "/odd/en/brands/yuru-style-japan" :
-                        "/odd/en/brands"
-                      }
+                  {product.brand === "Yuru Style Japan" ? (
+                    <a
+                      href={YURU_STYLE_JAPAN_AMAZON_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
+                    >
+                      {product.brand}
+                    </a>
+                  ) : (
+                    <Link
+                      href="/odd/en/brands"
                       className="text-blue-600 font-medium mb-4 hover:text-blue-800 transition-colors"
                     >
                       {product.brand}
                     </Link>
                   )}
-                  {product.brand === "Yuru Style Japan" && (
-                    <p className="text-blue-600 font-medium mb-4">
-                      {product.brand}
+                  {product.instagramLabelOnly && (
+                    <p className="mb-4 flex items-center gap-2 text-sm text-gray-500">
+                      <Image
+                        src="/designshelf/images/Instagram_logo_black.png"
+                        alt="Instagram"
+                        width={20}
+                        height={20}
+                        className="h-5 w-5 shrink-0 opacity-60"
+                        unoptimized
+                      />
+                      <span>View on Instagram</span>
                     </p>
                   )}
-                  {(product.id === 118 || product.id === 119 || product.id === 120 || product.id === 121 || product.id === 122 || product.id === 123 || product.id === 124 || product.id === 125 || product.id === 126 || product.id === 127 || product.id === 128) && product.videoUrl && (
+                  {!product.instagramLabelOnly && product.videoUrl && (
                     <a
                       href={product.videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 mb-4 text-blue-600 hover:text-blue-800 transition-colors"
+                      className="mb-4 flex items-center gap-2 text-blue-600 transition-colors hover:text-blue-800"
                     >
                       <Image
                         src="/designshelf/images/Instagram_logo_black.png"
                         alt="Instagram"
                         width={20}
                         height={20}
-                        className="w-5 h-5"
+                        className="h-5 w-5"
                         unoptimized
                       />
                       <span className="text-sm">View on Instagram</span>
@@ -977,19 +957,32 @@ export default function DesignShelf() {
                     <span className="text-sm">Model</span>
                 </button>
                   )}
-                  {currentProduct.videoUrl && (
+                  {currentProduct.instagramLabelOnly && (
+                    <p className="mt-2 flex items-center gap-2 rounded bg-white/20 p-3 text-white/70">
+                      <Image
+                        src="/designshelf/images/Instagram_logo.png"
+                        alt="Instagram"
+                        width={20}
+                        height={20}
+                        className="h-5 w-5 shrink-0 opacity-60"
+                        unoptimized
+                      />
+                      <span className="text-sm">Watch on Instagram</span>
+                    </p>
+                  )}
+                  {!currentProduct.instagramLabelOnly && currentProduct.videoUrl && (
                     <a
                       href={currentProduct.videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-3 rounded bg-white/20 text-white hover:bg-white/30 transition-colors mt-2"
+                      className="mt-2 flex items-center gap-2 rounded bg-white/20 p-3 text-white transition-colors hover:bg-white/30"
                     >
                       <Image
                         src="/designshelf/images/Instagram_logo.png"
                         alt="Instagram"
                         width={20}
                         height={20}
-                        className="w-5 h-5"
+                        className="h-5 w-5"
                         unoptimized
                       />
                       <span className="text-sm">Watch on Instagram</span>

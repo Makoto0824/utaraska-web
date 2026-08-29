@@ -336,6 +336,8 @@ type ProductListRow = {
   videoUrl?: string;
   /** true のとき「Instagramで見る」の代わりに準備中表示 */
   instagramPreparing?: boolean;
+  /** true のときリンクなしでアイコン＋「Instagramで見る」を表示 */
+  instagramLabelOnly?: boolean;
 };
 
 type ProductListSource = {
@@ -567,6 +569,7 @@ export default function DesignShelf() {
     amazonLink: string;
     videoUrl?: string;
     instagramPreparing?: boolean;
+    instagramLabelOnly?: boolean;
   };
 
   type Product = {
@@ -620,6 +623,35 @@ export default function DesignShelf() {
           amazonLink: 'https://link.amazon/B0d6bCmfU',
           videoUrl:
             'https://www.instagram.com/reel/DcgDlGSkzy2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
+    {
+      id: 119,
+      title: 'ゆるいダルマとダルマ',
+      image: '/designshelf/images/34_daruma/jp/tshirt_model.jpg',
+      designImage: '/designshelf/images/34_daruma/design.png',
+      price: '¥2,300',
+      amazonLink: 'https://link.amazon/B05sPGGx2',
+      jpAssets: {
+        root: '/designshelf/images/34_daruma',
+        design: 'design.png',
+        slots: {
+          tshirt: 'jp/tshirt_model.jpg',
+        },
+      },
+      features: [
+        '向かい合うダルマの顔を、ゆるく丸みのあるタッチで描いた構成。太めの輪郭とシンプルな色面で、遠くからでも認識しやすいデザイン。',
+        '縁起物モチーフを現代的に再解釈。背景や色の組み合わせで印象が変わる設計で、胸元ワンポイントに重ね着や小物とも組み合わせやすい。',
+      ],
+      description:
+        '二つのダルマの顔が向かい合う、ゆるいタッチのイラストデザインです。輪郭をはっきりさせつつ表情は抑えめにまとめることで、目を引きつつ日常使いしやすいビジュアルに仕上げています。和の縁起モチーフとポップな線表現を組み合わせ、年代や性別を問わずコーデに取り入れやすい一着です。',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://link.amazon/B05sPGGx2',
+          instagramLabelOnly: true,
         },
       ],
     },
@@ -1753,6 +1785,19 @@ export default function DesignShelf() {
                                 <span className="label">{purchaseMeta.label}</span>
                               </a>
                             </div>
+                            {variation.instagramLabelOnly && (
+                              <p className="flex items-center gap-2 text-sm text-gray-500">
+                                <Image
+                                  src="/designshelf/images/Instagram_logo_black.png"
+                                  alt="Instagram"
+                                  width={20}
+                                  height={20}
+                                  className="h-5 w-5 shrink-0 opacity-60"
+                                  unoptimized
+                                />
+                                <span>Instagramで見る</span>
+                              </p>
+                            )}
                             {variation.videoUrl && (
                               <a
                                 href={variation.videoUrl}
