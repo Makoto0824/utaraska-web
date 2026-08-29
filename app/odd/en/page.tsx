@@ -20,7 +20,7 @@ export default function DesignShelf() {
   ];
 
   const YURU_STYLE_JAPAN_AMAZON_URL =
-    "https://www.amazon.com/s?rh=n%3A7141123011%2Cp_4%3A%25E3%2582%2586%25E3%2582%258B%25E3%2582%25B9%25E3%2582%25BF%25E3%2582%25A4%25E3%2583%25AB%25E3%2582%25BB%25E3%2583%25B3%25E3%2583%25BB%25E3%2582%25B8%25E3%2583%25A3%25E3%2583%2591%25E3%2583%25B3&ref=bl_sl_s_ap_web_7141123011";
+    "https://www.amazon.com/s?rh=n%3A7141123011%2Cp_4%3AYuru%2BStyle%2BJapan&ref=bl_sl_s_ap_web_7141123011";
 
   // バナーごとのアスペクト比（画像読み込み時に更新）。初期値は 1200/500 を仮置き
   const [bannerRatios, setBannerRatios] = useState<number[]>(() => banners.map(() => 1200 / 500));
@@ -57,8 +57,8 @@ export default function DesignShelf() {
   const openImagePopup = (productId: number) => {
     const product = products.find(p => p.id === productId);
     if (product) {
-      // ID 118、119、120、121、122、123、124、125、126、127の商品の場合はシンプルな画像拡大モーダルを使用
-      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 123 || productId === 124 || productId === 125 || productId === 126 || productId === 127 || productId === 128) && product.carouselImages && product.carouselImages.length > 0) {
+      // ID 118、119、120、121、122、124、125、127、128の商品の場合はシンプルな画像拡大モーダルを使用
+      if ((productId === 118 || productId === 119 || productId === 120 || productId === 121 || productId === 122 || productId === 124 || productId === 125 || productId === 127 || productId === 128) && product.carouselImages && product.carouselImages.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = product.carouselImages[currentImageIndex];
         setSimpleImagePopup(currentImage);
@@ -396,33 +396,12 @@ export default function DesignShelf() {
       ]
     },
     {
-      id: 123,
-      title: "Face-to-Face Hannya Illustration (Relaxed Style)",
-      brand: "Yuru Style Japan",
-      image: "/designshelf/images/30_hannya/en/tshirt_model.jpg",
-      designImage: "/designshelf/images/30_hannya/design.png",
-      modelImage: "/designshelf/images/30_hannya/en/tshirt_model.jpg",
-      price: "$18.99",
-      amazonLink: "https://a.co/d/aN7hGMy",
-      features: [
-        "Bold hannya faces rendered with thick outlines and clear color blocks for strong chest-center impact.",
-        "Flame-like shapes add motion; open mouth area creates strong focal contrast."
-      ],
-      description: "Relaxed hannya faces in a face-to-face layout. Bold linework and flat color blocks make this a chest-center graphic that reads at a glance.",
-      videoUrl: "https://www.instagram.com/reel/DSKGLh9k_J7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      carouselImages: [
-        "/designshelf/images/30_hannya/en/tshirt_model.jpg",
-        "/designshelf/images/30_hannya/jp/tshirt_model.jpg",
-        "/designshelf/images/30_hannya/design.png"
-      ]
-    },
-    {
       id: 122,
       title: "Face-Center Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
-      image: "/designshelf/images/3_tiger/en/tshirt_model.jpg",
+      image: "/designshelf/images/3_tiger/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/3_tiger/design.png",
-      modelImage: "/designshelf/images/3_tiger/en/tshirt_model.jpg",
+      modelImage: "/designshelf/images/3_tiger/jp/tshirt_model.jpg",
       price: "$18.99",
       amazonLink: "https://a.co/d/hQ3qcoy",
       features: [
@@ -432,7 +411,6 @@ export default function DesignShelf() {
       description: "The boldly placed tiger motif achieves both a silhouette easily recognizable from a distance and clear definition in its details. As a focal point on the chest, it pairs well with layered outfits. Its modern interpretation of traditional Japanese elements makes it versatile for a wide range of styles. Its understated yet distinctive appeal makes it an excellent choice for gifts.",
       videoUrl: "https://www.instagram.com/reel/DSH7hCGE1VO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       carouselImages: [
-        "/designshelf/images/3_tiger/en/tshirt_model.jpg",
         "/designshelf/images/3_tiger/jp/tshirt_model.jpg",
         "/designshelf/images/3_tiger/design.png"
       ]
