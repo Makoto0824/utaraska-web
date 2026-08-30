@@ -689,6 +689,38 @@ export default function DesignShelf() {
         },
       ],
     },
+    {
+      id: 270,
+      title: 'ゆるい白虎と白虎',
+      image: '/designshelf/images/38_white_tigertiger/tshirt_model.jpg',
+      designImage: '/designshelf/images/38_white_tigertiger/desgin.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://link.amazon/B00xGRuzq',
+      jpAssets: {
+        root: '/designshelf/images/38_white_tigertiger',
+        design: 'desgin.jpg',
+        slots: {
+          tshirt: 'tshirt_model.jpg',
+        },
+      },
+      features: [
+        '左右対称に配置された白虎の顔がユニークな構成。シンプルなデザインに込められたインパクトとバランスが魅力。',
+        '和風アートの白虎モチーフに、現代的なポップイラストのテイストを融合。ストリートファッションやアート好きに刺さるキャッチーな表現。',
+      ],
+      description:
+        'このデザインは、白虎（ホワイトタイガー）の顔を左右対称に配置したユーモラスかつ力強いグラフィックアートです。伝統的な日本の動物モチーフに、ポップアートテイストを加えることで、アジアン×モダンな独自の世界観を表現。ミニマルな配置ながら視線を惹きつけるデザインは、和柄、アニマルデザイン、タイガーアート、ストリート系、レトロポップ、アートファッションといったジャンルに幅広く親和性があります。',
+      videoUrl:
+        'https://www.instagram.com/reel/DcpVaVOBZUf/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://link.amazon/B00xGRuzq',
+          videoUrl:
+            'https://www.instagram.com/reel/DcpVaVOBZUf/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+        },
+      ],
+    },
     buildOddToyFigureProduct(148, '#001', 1, '153014392'),
     buildOddToyFigureProduct(149, '#002', 2, '153018381'),
     buildOddToyFigureProduct(150, '#003', 3, '153018451'),

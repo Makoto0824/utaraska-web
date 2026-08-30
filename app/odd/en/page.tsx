@@ -275,6 +275,28 @@ export default function DesignShelf() {
       ]
     },
     {
+      id: 270,
+      title: "Face-to-Face White Tiger Illustration (Relaxed Style)",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/38_white_tigertiger/tshirt_model.jpg",
+      designImage: "/designshelf/images/38_white_tigertiger/desgin.jpg",
+      modelImage: "/designshelf/images/38_white_tigertiger/tshirt_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/074IV6dM",
+      features: [
+        "Symmetrically arranged white tiger faces create a unique composition. Impact and balance embedded in a simple design.",
+        "Fusion of Japanese-style white tiger motifs with contemporary pop illustration aesthetics. Catchy expressions for street fashion and art enthusiasts."
+      ],
+      description:
+        "This design features white tiger faces arranged symmetrically on both sides—a humorous yet powerful graphic. By blending traditional Japanese animal motifs with pop art aesthetics, it creates a unique Asian × Modern look. Despite its minimalist layout, the eye-catching design appeals across Japanese patterns, animal art, tiger motifs, street style, retro pop, and art fashion.",
+      videoUrl:
+        "https://www.instagram.com/reel/DcpVaVOBZUf/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/38_white_tigertiger/tshirt_model.jpg",
+        "/designshelf/images/38_white_tigertiger/desgin.jpg"
+      ]
+    },
+    {
       id: 141,
       title: "Face-to-Face Pixel Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
