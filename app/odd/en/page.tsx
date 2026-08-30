@@ -253,6 +253,28 @@ export default function DesignShelf() {
       ]
     },
     {
+      id: 269,
+      title: "Yurui White Tiger",
+      brand: "Yuru Style Japan",
+      image: "/designshelf/images/36_whitetiger/tshirt_model.jpg",
+      designImage: "/designshelf/images/36_whitetiger/desgin.jpg",
+      modelImage: "/designshelf/images/36_whitetiger/tshirt_model.jpg",
+      price: "$18.99",
+      amazonLink: "https://a.co/d/03ikiaND",
+      features: [
+        "A white tiger face rendered in a Japanese art style—a unique, eye-catching chest-center graphic.",
+        "Relaxed character charm fused with traditional Japanese tattoo art elements in a pop illustration finish."
+      ],
+      description:
+        "Inspired by Japanese tattoo art, this design reimagines a white tiger face in a pop, relaxed character style. The motif balances strength and charm—great for fans of Japanese culture and Asian aesthetics, statement outfits, or gifts.",
+      videoUrl:
+        "https://www.instagram.com/reel/DcpTIgbhNlE/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      carouselImages: [
+        "/designshelf/images/36_whitetiger/tshirt_model.jpg",
+        "/designshelf/images/36_whitetiger/desgin.jpg"
+      ]
+    },
+    {
       id: 141,
       title: "Face-to-Face Pixel Tiger Illustration (Relaxed Style)",
       brand: "Yuru Style Japan",
@@ -578,6 +600,20 @@ export default function DesignShelf() {
 
         {/* 商品セクション */}
         <section>
+          <p className="mb-4 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
+            This site lists T-shirts only. Hoodies, sweatshirts, and other item types are sold on Amazon but are not all featured here.
+          </p>
+          <div className="mb-8 flex justify-center">
+            <a
+              href={YURU_STYLE_JAPAN_AMAZON_URL}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="amazon-btn px-5 py-3 text-sm"
+              aria-label="View all designs on Amazon"
+            >
+              <span className="label">View all designs on Amazon</span>
+            </a>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {products.filter(product => {
               // 期限が設定されている商品で、期限が過ぎている場合は非表示

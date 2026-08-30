@@ -384,6 +384,8 @@ export default function DesignShelf() {
   const [carouselIndices, setCarouselIndices] = useState<Record<number, number>>({});
   const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
 
+  const ALL_DESIGNS_AMAZON_URL = 'https://link.amazon/B0euJW5sF';
+
   const banners = [
     { src: "/designshelf/images/banner6.png", alt: "らくがきT 投稿企画", link: "/odd/rakugaki" },
     {
@@ -652,6 +654,38 @@ export default function DesignShelf() {
           price: '¥2,300',
           amazonLink: 'https://link.amazon/B05sPGGx2',
           instagramLabelOnly: true,
+        },
+      ],
+    },
+    {
+      id: 269,
+      title: 'ゆるい白虎',
+      image: '/designshelf/images/36_whitetiger/tshirt_model.jpg',
+      designImage: '/designshelf/images/36_whitetiger/desgin.jpg',
+      price: '¥2,300',
+      amazonLink: 'https://link.amazon/B0hq2xFhg',
+      jpAssets: {
+        root: '/designshelf/images/36_whitetiger',
+        design: 'desgin.jpg',
+        slots: {
+          tshirt: 'tshirt_model.jpg',
+        },
+      },
+      features: [
+        '白虎の顔を和風テイストで表現した、ユニークで目を引くアートスタイル。胸元ワンポイントで存在感のあるデザイン。',
+        'ゆるキャラ風のかわいらしさと、伝統的なジャパニーズタトゥーアートの要素を融合したポップな仕上がり。',
+      ],
+      description:
+        '和風のタトゥーアートから着想を得た白虎の顔を、ポップでゆるいキャラクター風にアレンジしたデザインです。力強さと愛嬌を併せ持つモチーフは、日本文化やアジアンテイストを好む方におすすめ。個性を演出したいシーンやプレゼントにも最適です。',
+      videoUrl:
+        'https://www.instagram.com/reel/DcpTIgbhNlE/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink: 'https://link.amazon/B0hq2xFhg',
+          videoUrl:
+            'https://www.instagram.com/reel/DcpTIgbhNlE/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
         },
       ],
     },
@@ -1625,6 +1659,22 @@ export default function DesignShelf() {
                   {label}
                 </button>
               ))}
+            </div>
+          </div>
+          <div className="mb-8 rounded-lg border border-gray-200 bg-gray-50 px-4 py-4">
+            <p className="mb-4 text-center text-xs sm:text-sm text-gray-600 leading-relaxed">
+              Tシャツ以外（パーカー・トレーナー・長袖Tシャツなど）や、当サイトに掲載しきれていないデザインもAmazonで販売しています。下のボタンから全デザインをご確認ください。
+            </p>
+            <div className="flex justify-center">
+              <a
+                href={ALL_DESIGNS_AMAZON_URL}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="amazon-btn px-5 py-3 text-sm"
+                aria-label="Amazonで販売中の全デザインを見る（らくがきTを除く）"
+              >
+                <span className="label">Amazonで販売中の全デザインを見る（らくがきTを除く）</span>
+              </a>
             </div>
           </div>
           {catalogProducts.length === 0 ? (
