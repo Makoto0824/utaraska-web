@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
+import { ShopRegionSwitch } from '@/lib/designshelf/ShopRegionSwitch';
 import { ORIGINAL_ART_CATALOG, ORIGINAL_ART_PRODUCT_IDS, type OriginalArtCatalogEntry } from '@/lib/designshelf/originalArtCatalog';
 
 function isBaseStoreLink(link: string): boolean {
@@ -1562,7 +1563,7 @@ export default function DesignShelf() {
               <Link href="/odd/rakugaki" className="text-gray-600 hover:text-gray-900 transition-colors">らくがきT</Link>
               <Link href="/odd/contact" className="text-gray-600 hover:text-gray-900 transition-colors">お問い合わせ</Link>
               <Link href="/odd/about" className="text-gray-600 hover:text-gray-900 transition-colors">運営情報</Link>
-              <Link href="/odd/en" className="text-gray-600 hover:text-gray-900 transition-colors">EN Store</Link>
+              <ShopRegionSwitch current="jp" variant="compact" className="ml-1" />
             </div>
           </div>
         </nav>
@@ -1576,6 +1577,13 @@ export default function DesignShelf() {
           <span className="font-semibold">ご注意：</span>
           一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。ご購入前はAmazonの商品説明等をご確認ください。
         </p>
+      </div>
+
+      <div className="mb-6 rounded-lg border border-gray-200 bg-white px-4 py-4 shadow-sm">
+        <p className="mb-3 text-center text-xs sm:text-sm text-gray-600">
+          ご利用地域に合わせてストアをお選びください
+        </p>
+        <ShopRegionSwitch current="jp" />
       </div>
       
       {/* バナースライドショー */}

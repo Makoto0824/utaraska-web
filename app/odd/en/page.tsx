@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
+import { ShopRegionSwitch } from '@/lib/designshelf/ShopRegionSwitch';
 
 export default function DesignShelf() {
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
@@ -541,8 +542,8 @@ export default function DesignShelf() {
               />
               
             </Link>
-            <div className="flex items-center gap-6">
-              <Link href="/odd" className="text-gray-600 hover:text-gray-900 transition-colors">JP Store</Link>
+            <div className="flex items-center gap-4">
+              <ShopRegionSwitch current="en" variant="compact" />
             </div>
           </div>
         </nav>
@@ -556,6 +557,13 @@ export default function DesignShelf() {
           <span className="font-semibold">Note: </span>
           Some product images are AI-generated or edited, and colors and details may differ from the actual product. Please check the product description on Amazon before purchasing.
         </p>
+      </div>
+
+      <div className="mb-6 rounded-lg border border-gray-200 bg-white px-4 py-4 shadow-sm">
+        <p className="mb-3 text-center text-xs sm:text-sm text-gray-600">
+          Choose your store by region
+        </p>
+        <ShopRegionSwitch current="en" />
       </div>
       
       {/* バナースライドショー */}
