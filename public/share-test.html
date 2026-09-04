@@ -45,6 +45,10 @@
       border-radius: 8px;
       cursor: pointer;
     }
+    #native-share {
+      background: #007aff;
+      color: #fff;
+    }
     #share-instagram {
       background: #111;
       color: #fff;
@@ -67,11 +71,12 @@
 <label for="caption-preview">Instagram キャプション（コピーされる内容）</label>
 <textarea id="caption-preview" readonly></textarea>
 
+<button id="native-share" type="button">端末標準でシェア</button>
 <button id="share-instagram" type="button">Instagramでシェア</button>
 <button id="copy-caption" type="button">キャプションだけコピー</button>
 
 <p class="note">
-  Web から Instagram のキャプション欄へ直接入力することはできないため、画像の保存と URL 付きキャプションのコピーを行います。Instagram アプリで投稿する際にキャプション欄へ貼り付けてください。
+  「端末標準でシェア」は OS の共有シートを開きます（画像・URL・テキストを渡せる環境ではそれらを共有）。Instagram 向けは画像保存とキャプションコピーを行います。
 </p>
 
 <script>
@@ -113,6 +118,40 @@ async function copyCaption() {
   }
 }
 
+async function shareNative() {
+  if (!navigator.share) {
+    alert('この環境では端末標準のシェア機能を利用できません');
+    return;
+  }
+
+  try {
+    const file = await loadShareImageFile();
+    const shareWithImage = { files: [file], text: SHARE_CAPTION };
+
+    if (!navigator.canShare || navigator.canShare(shareWithImage)) {
+      await navigator.share(shareWithImage);
+      return;
+    }
+
+    const shareWithUrl = {
+      title: 'NFTをシェア',
+      text: SHARE_CAPTION,
+      url: SHARE_URL,
+    };
+
+    if (navigator.canShare && !navigator.canShare(shareWithUrl)) {
+      alert('この環境ではシェア内容を共有できません');
+      return;
+    }
+
+    await navigator.share(shareWithUrl);
+  } catch (error) {
+    if (error.name === 'AbortError') return;
+    console.log(error);
+    alert('シェアできませんでした');
+  }
+}
+
 async function shareInstagram() {
   try {
     const file = await loadShareImageFile();
@@ -126,6 +165,8 @@ async function shareInstagram() {
     alert('準備に失敗しました。もう一度お試しください。');
   }
 }
+
+document.getElementById('native-share').addEventListener('click', shareNative);
 
 document.getElementById('share-instagram').addEventListener('click', shareInstagram);
 
