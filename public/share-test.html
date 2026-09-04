@@ -8,8 +8,27 @@
 <body>
 
 <button id="share">シェアする</button>
+<button id="share-instagram">Instagramでシェア</button>
 
 <script>
+async function shareInstagram() {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "NFTをシェア",
+        text: "NFTをゲットしました！",
+        url: location.href
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    alert("この環境ではシェア機能を利用できません");
+  }
+}
+
+document.getElementById("share-instagram").addEventListener("click", shareInstagram);
+
 document.getElementById("share").addEventListener("click", async () => {
   if (navigator.share) {
     try {
