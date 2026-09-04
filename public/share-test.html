@@ -4,44 +4,138 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Share Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 480px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      font-size: 0.875rem;
+      color: #444;
+      margin-bottom: 0.5rem;
+    }
+    textarea {
+      width: 100%;
+      min-height: 6rem;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      font: inherit;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.75rem;
+      padding: 0.875rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #share-instagram {
+      background: #111;
+      color: #fff;
+    }
+    #copy-caption {
+      background: #f3f4f6;
+      color: #111;
+    }
+    p.note {
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
 
-<button id="share">シェアする</button>
-<button id="share-instagram">Instagramでシェア</button>
+<img id="preview" src="/share_test/images/weekly_enxross.png" alt="シェア用画像">
+
+<label for="caption-preview">Instagram キャプション（コピーされる内容）</label>
+<textarea id="caption-preview" readonly></textarea>
+
+<button id="share-instagram" type="button">Instagramでシェア</button>
+<button id="copy-caption" type="button">キャプションだけコピー</button>
+
+<p class="note">
+  Web から Instagram のキャプション欄へ直接入力することはできないため、画像の保存と URL 付きキャプションのコピーを行います。Instagram アプリで投稿する際にキャプション欄へ貼り付けてください。
+</p>
 
 <script>
-async function shareInstagram() {
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "NFTをシェア",
-        text: "NFTをゲットしました！",
-        url: location.href
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    alert("この環境ではシェア機能を利用できません");
+const SHARE_IMAGE_URL = '/share_test/images/weekly_enxross.png';
+const SHARE_URL = 'https://www.utaraska.co.jp/share-test.html';
+const SHARE_CAPTION = `NFTをゲットしました！\n\n${SHARE_URL}`;
+
+document.getElementById('caption-preview').value = SHARE_CAPTION;
+
+async function loadShareImageFile() {
+  const response = await fetch(SHARE_IMAGE_URL);
+  if (!response.ok) {
+    throw new Error('画像の読み込みに失敗しました');
+  }
+  const blob = await response.blob();
+  return new File([blob], 'weekly_enxross.png', { type: blob.type || 'image/png' });
+}
+
+function saveImageFile(file) {
+  const url = URL.createObjectURL(file);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = file.name;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+async function copyCaption() {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(SHARE_CAPTION);
+    return;
+  }
+
+  const textarea = document.getElementById('caption-preview');
+  textarea.focus();
+  textarea.select();
+  if (!document.execCommand('copy')) {
+    throw new Error('キャプションのコピーに失敗しました');
   }
 }
 
-document.getElementById("share-instagram").addEventListener("click", shareInstagram);
+async function shareInstagram() {
+  try {
+    const file = await loadShareImageFile();
+    await copyCaption();
+    saveImageFile(file);
+    alert(
+      '画像を保存し、キャプション（URL付き）をコピーしました。\n\nInstagram アプリで画像を選んで投稿し、キャプション欄に貼り付けてください。'
+    );
+  } catch (error) {
+    console.log(error);
+    alert('準備に失敗しました。もう一度お試しください。');
+  }
+}
 
-document.getElementById("share").addEventListener("click", async () => {
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "シェアテスト",
-        text: "シェア機能のテストです",
-        url: location.href
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    alert("この環境ではシェア機能を利用できません");
+document.getElementById('share-instagram').addEventListener('click', shareInstagram);
+
+document.getElementById('copy-caption').addEventListener('click', async () => {
+  try {
+    await copyCaption();
+    alert('キャプション（URL付き）をコピーしました。');
+  } catch (error) {
+    console.log(error);
+    alert('キャプションのコピーに失敗しました');
   }
 });
 </script>
