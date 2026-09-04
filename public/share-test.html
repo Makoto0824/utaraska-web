@@ -45,13 +45,8 @@
       border-radius: 8px;
       cursor: pointer;
     }
-    #share-image {
-      background: #007aff;
-      color: #fff;
-      font-weight: 600;
-    }
     #native-share {
-      background: #5ac8fa;
+      background: #007aff;
       color: #fff;
     }
     #share-instagram {
@@ -77,8 +72,6 @@
 
 <img id="preview" src="/share_test/images/weekly_enxross.png" alt="シェア用画像">
 
-<button id="share-image" type="button">共有…</button>
-
 <label for="caption-preview">Instagram キャプション（コピーされる内容）</label>
 <textarea id="caption-preview" readonly></textarea>
 
@@ -88,7 +81,7 @@
 <button id="copy-caption" type="button">キャプションだけコピー</button>
 
 <p class="note">
-  「共有…」は画像長押し時の共有と同様、画像のみを OS の共有シートに渡します。キャプション付きで渡したい場合は「端末標準でシェア」を使ってください。
+  「端末標準でシェア」は OS の共有シートを開きます。Instagram 向けは画像保存とキャプションコピーを行います。
 </p>
 
 <script>
@@ -145,31 +138,6 @@ async function copyUrl() {
     throw new Error('URLのコピーに失敗しました');
   }
   document.body.removeChild(textarea);
-}
-
-async function shareImage() {
-  try {
-    const file = await loadShareImageFile();
-    const shareData = { files: [file] };
-
-    if (!navigator.share) {
-      saveImageFile(file);
-      alert('この環境では共有シートを使えません。画像を保存しました。');
-      return;
-    }
-
-    if (navigator.canShare && !navigator.canShare(shareData)) {
-      saveImageFile(file);
-      alert('この環境では画像共有に対応していません。画像を保存しました。');
-      return;
-    }
-
-    await navigator.share(shareData);
-  } catch (error) {
-    if (error.name === 'AbortError') return;
-    console.log(error);
-    alert('画像の共有に失敗しました');
-  }
 }
 
 async function shareUrl() {
@@ -252,8 +220,6 @@ async function shareInstagram() {
     alert('準備に失敗しました。もう一度お試しください。');
   }
 }
-
-document.getElementById('share-image').addEventListener('click', shareImage);
 
 document.getElementById('native-share').addEventListener('click', shareNative);
 
