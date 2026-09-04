@@ -53,6 +53,10 @@
       background: #111;
       color: #fff;
     }
+    #share-url {
+      background: #34c759;
+      color: #fff;
+    }
     #copy-caption {
       background: #f3f4f6;
       color: #111;
@@ -72,6 +76,7 @@
 <textarea id="caption-preview" readonly></textarea>
 
 <button id="native-share" type="button">端末標準でシェア</button>
+<button id="share-url" type="button">URLをシェア</button>
 <button id="share-instagram" type="button">Instagramでシェア</button>
 <button id="copy-caption" type="button">キャプションだけコピー</button>
 
@@ -115,6 +120,56 @@ async function copyCaption() {
   textarea.select();
   if (!document.execCommand('copy')) {
     throw new Error('キャプションのコピーに失敗しました');
+  }
+}
+
+async function copyUrl() {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(SHARE_URL);
+    return;
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = SHARE_URL;
+  document.body.appendChild(textarea);
+  textarea.select();
+  if (!document.execCommand('copy')) {
+    document.body.removeChild(textarea);
+    throw new Error('URLのコピーに失敗しました');
+  }
+  document.body.removeChild(textarea);
+}
+
+async function shareUrl() {
+  const shareData = {
+    title: 'NFTをシェア',
+    text: 'NFTをゲットしました！',
+    url: SHARE_URL,
+  };
+
+  if (!navigator.share) {
+    try {
+      await copyUrl();
+      alert('この環境では共有シートを使えません。URLをコピーしました。');
+    } catch (error) {
+      console.log(error);
+      alert('URLの共有に失敗しました');
+    }
+    return;
+  }
+
+  try {
+    if (navigator.canShare && !navigator.canShare(shareData)) {
+      await copyUrl();
+      alert('この環境ではURL共有に対応していません。URLをコピーしました。');
+      return;
+    }
+
+    await navigator.share(shareData);
+  } catch (error) {
+    if (error.name === 'AbortError') return;
+    console.log(error);
+    alert('URLのシェアに失敗しました');
   }
 }
 
@@ -167,6 +222,8 @@ async function shareInstagram() {
 }
 
 document.getElementById('native-share').addEventListener('click', shareNative);
+
+document.getElementById('share-url').addEventListener('click', shareUrl);
 
 document.getElementById('share-instagram').addEventListener('click', shareInstagram);
 
