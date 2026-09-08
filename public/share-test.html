@@ -45,6 +45,12 @@
       border-radius: 8px;
       cursor: pointer;
     }
+    #share-native-fn {
+      background: #5856d6;
+      color: #fff;
+      font-family: ui-monospace, monospace;
+      font-size: 0.9375rem;
+    }
     #native-share {
       background: #007aff;
       color: #fff;
@@ -75,6 +81,7 @@
 <label for="caption-preview">Instagram キャプション（コピーされる内容）</label>
 <textarea id="caption-preview" readonly></textarea>
 
+<button id="share-native-fn" type="button">shareNative()</button>
 <button id="native-share" type="button">端末標準でシェア</button>
 <button id="share-url" type="button">URLをシェア</button>
 <button id="share-instagram" type="button">Instagramでシェア</button>
@@ -220,6 +227,8 @@ async function shareInstagram() {
     alert('準備に失敗しました。もう一度お試しください。');
   }
 }
+
+document.getElementById('share-native-fn').addEventListener('click', shareNative);
 
 document.getElementById('native-share').addEventListener('click', shareNative);
 
