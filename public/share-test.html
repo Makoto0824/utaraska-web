@@ -2,250 +2,254 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Share Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>マイページ</title>
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 480px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    * {
+      box-sizing: border-box;
     }
-    img {
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: #fff;
+      color: #111;
+    }
+
+    .page {
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      padding: 0 20px 32px;
+    }
+
+    .header {
+      position: relative;
+      padding: 18px 0 12px;
+      text-align: center;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #1a2744;
+    }
+
+    .header-url {
+      margin: 4px 0 0;
+      font-size: 0.75rem;
+      color: #8a8a8a;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 0;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: transparent;
+      color: #666;
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .date-heading {
+      margin: 8px 0 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a2744;
+      letter-spacing: 0.02em;
+    }
+
+    .nft-title {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a2744;
+      line-height: 1.5;
+    }
+
+    .nft-card {
+      border: 1px solid #d9d9d9;
+      border-radius: 2px;
+      padding: 12px 12px 10px;
+      background: #fff;
+    }
+
+    .nft-card img {
       display: block;
       width: 100%;
       height: auto;
-      margin-bottom: 1rem;
-      border-radius: 8px;
     }
-    label {
-      display: block;
-      font-size: 0.875rem;
-      color: #444;
-      margin-bottom: 0.5rem;
+
+    .nft-card-caption {
+      margin: 10px 0 0;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: #222;
+      line-height: 1.4;
     }
-    textarea {
+
+    .share-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       width: 100%;
-      min-height: 6rem;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      font: inherit;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      resize: vertical;
-      box-sizing: border-box;
-    }
-    button {
-      display: block;
-      width: 100%;
-      margin-bottom: 0.75rem;
-      padding: 0.875rem 1rem;
-      font-size: 1rem;
+      margin-top: 18px;
+      padding: 14px 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 999px;
+      background: #00a0e9;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
     }
-    #share-native-fn {
-      background: #5856d6;
-      color: #fff;
-      font-family: ui-monospace, monospace;
-      font-size: 0.9375rem;
+
+    .share-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
-    #native-share {
-      background: #007aff;
-      color: #fff;
+
+    .date-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: #f3f3f3;
+      border-radius: 4px;
     }
-    #share-instagram {
-      background: #111;
-      color: #fff;
+
+    .date-box-label {
+      margin: 0 0 4px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.08em;
     }
-    #share-url {
-      background: #34c759;
-      color: #fff;
-    }
-    #copy-caption {
-      background: #f3f4f6;
+
+    .date-box-value {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
       color: #111;
     }
-    p.note {
+
+    .description {
+      margin-top: 28px;
+    }
+
+    .description-title {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .description-text {
+      margin: 0;
       font-size: 0.875rem;
-      color: #666;
-      line-height: 1.6;
+      line-height: 1.8;
+      color: #333;
     }
   </style>
 </head>
 <body>
+  <div class="page">
+    <header class="header">
+      <h1 class="header-title">マイページ</h1>
+      <p class="header-url">app.kirifuda.io</p>
+      <button class="close-btn" type="button" aria-label="閉じる" id="close-btn">×</button>
+    </header>
 
-<img id="preview" src="/share_test/images/weekly_enxross.png" alt="シェア用画像">
+    <p class="date-heading">2026-09-04</p>
+    <h2 class="nft-title">TOKYO DOME MEMORIAL NFT 365</h2>
 
-<label for="caption-preview">Instagram キャプション（コピーされる内容）</label>
-<textarea id="caption-preview" readonly></textarea>
+    <div class="nft-card">
+      <img id="preview" src="/share_test/images/test_image3.png" alt="TOKYO DOME MEMORIAL NFT 365">
+      <p class="nft-card-caption">TOKYO DOME MEMORIAL NFT 365</p>
+    </div>
 
-<button id="share-native-fn" type="button">shareNative()</button>
-<button id="native-share" type="button">端末標準でシェア</button>
-<button id="share-url" type="button">URLをシェア</button>
-<button id="share-instagram" type="button">Instagramでシェア</button>
-<button id="copy-caption" type="button">キャプションだけコピー</button>
+    <button id="share-btn" class="share-btn" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3.5 7 8.5h3v8h4v-8h3L12 3.5zM6 19.5h12v2H6v-2z"/>
+      </svg>
+      シェアする
+    </button>
 
-<p class="note">
-  「端末標準でシェア」は OS の共有シートを開きます。Instagram 向けは画像保存とキャプションコピーを行います。
-</p>
+    <div class="date-box">
+      <p class="date-box-label">DATE</p>
+      <p class="date-box-value">Sep, 2026</p>
+    </div>
 
-<script>
-const SHARE_IMAGE_URL = '/share_test/images/weekly_enxross.png';
-const SHARE_URL = 'https://www.utaraska.co.jp/share-test.html';
-const SHARE_CAPTION = `NFTをゲットしました！\n\n${SHARE_URL}`;
+    <section class="description">
+      <h3 class="description-title">説明</h3>
+      <p class="description-text">
+        NFTで記録する“東京ドームの日常”。97th THE INTERCITY BASEBALL TOURNAMENT in TOKYO DOME 2026
+        を記念したデジタルコレクションです。
+      </p>
+    </section>
+  </div>
 
-document.getElementById('caption-preview').value = SHARE_CAPTION;
+  <script>
+    const SHARE_IMAGE_URL = '/share_test/images/test_image3.png';
+    const SHARE_URL = 'https://www.utaraska.co.jp/share-test.html';
+    const SHARE_CAPTION = `NFTをゲットしました！\n\n${SHARE_URL}`;
 
-async function loadShareImageFile() {
-  const response = await fetch(SHARE_IMAGE_URL);
-  if (!response.ok) {
-    throw new Error('画像の読み込みに失敗しました');
-  }
-  const blob = await response.blob();
-  return new File([blob], 'weekly_enxross.png', { type: blob.type || 'image/png' });
-}
-
-function saveImageFile(file) {
-  const url = URL.createObjectURL(file);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = file.name;
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
-async function copyCaption() {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(SHARE_CAPTION);
-    return;
-  }
-
-  const textarea = document.getElementById('caption-preview');
-  textarea.focus();
-  textarea.select();
-  if (!document.execCommand('copy')) {
-    throw new Error('キャプションのコピーに失敗しました');
-  }
-}
-
-async function copyUrl() {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(SHARE_URL);
-    return;
-  }
-
-  const textarea = document.createElement('textarea');
-  textarea.value = SHARE_URL;
-  document.body.appendChild(textarea);
-  textarea.select();
-  if (!document.execCommand('copy')) {
-    document.body.removeChild(textarea);
-    throw new Error('URLのコピーに失敗しました');
-  }
-  document.body.removeChild(textarea);
-}
-
-async function shareUrl() {
-  const shareData = {
-    title: 'NFTをシェア',
-    text: 'NFTをゲットしました！',
-    url: SHARE_URL,
-  };
-
-  if (!navigator.share) {
-    try {
-      await copyUrl();
-      alert('この環境では共有シートを使えません。URLをコピーしました。');
-    } catch (error) {
-      console.log(error);
-      alert('URLの共有に失敗しました');
-    }
-    return;
-  }
-
-  try {
-    if (navigator.canShare && !navigator.canShare(shareData)) {
-      await copyUrl();
-      alert('この環境ではURL共有に対応していません。URLをコピーしました。');
-      return;
+    async function loadShareImageFile() {
+      const response = await fetch(SHARE_IMAGE_URL);
+      if (!response.ok) {
+        throw new Error('画像の読み込みに失敗しました');
+      }
+      const blob = await response.blob();
+      return new File([blob], 'test_image3.png', { type: blob.type || 'image/png' });
     }
 
-    await navigator.share(shareData);
-  } catch (error) {
-    if (error.name === 'AbortError') return;
-    console.log(error);
-    alert('URLのシェアに失敗しました');
-  }
-}
+    async function shareNative() {
+      if (!navigator.share) {
+        alert('この環境では端末標準のシェア機能を利用できません');
+        return;
+      }
 
-async function shareNative() {
-  if (!navigator.share) {
-    alert('この環境では端末標準のシェア機能を利用できません');
-    return;
-  }
+      try {
+        const file = await loadShareImageFile();
+        const shareWithImage = { files: [file], text: SHARE_CAPTION };
 
-  try {
-    const file = await loadShareImageFile();
-    const shareWithImage = { files: [file], text: SHARE_CAPTION };
+        if (!navigator.canShare || navigator.canShare(shareWithImage)) {
+          await navigator.share(shareWithImage);
+          return;
+        }
 
-    if (!navigator.canShare || navigator.canShare(shareWithImage)) {
-      await navigator.share(shareWithImage);
-      return;
+        const shareWithUrl = {
+          title: 'NFTをシェア',
+          text: SHARE_CAPTION,
+          url: SHARE_URL,
+        };
+
+        if (navigator.canShare && !navigator.canShare(shareWithUrl)) {
+          alert('この環境ではシェア内容を共有できません');
+          return;
+        }
+
+        await navigator.share(shareWithUrl);
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+        console.log(error);
+        alert('シェアできませんでした');
+      }
     }
 
-    const shareWithUrl = {
-      title: 'NFTをシェア',
-      text: SHARE_CAPTION,
-      url: SHARE_URL,
-    };
+    document.getElementById('share-btn').addEventListener('click', shareNative);
 
-    if (navigator.canShare && !navigator.canShare(shareWithUrl)) {
-      alert('この環境ではシェア内容を共有できません');
-      return;
-    }
-
-    await navigator.share(shareWithUrl);
-  } catch (error) {
-    if (error.name === 'AbortError') return;
-    console.log(error);
-    alert('シェアできませんでした');
-  }
-}
-
-async function shareInstagram() {
-  try {
-    const file = await loadShareImageFile();
-    await copyCaption();
-    saveImageFile(file);
-    alert(
-      '画像を保存し、キャプション（URL付き）をコピーしました。\n\nInstagram アプリで画像を選んで投稿し、キャプション欄に貼り付けてください。'
-    );
-  } catch (error) {
-    console.log(error);
-    alert('準備に失敗しました。もう一度お試しください。');
-  }
-}
-
-document.getElementById('share-native-fn').addEventListener('click', shareNative);
-
-document.getElementById('native-share').addEventListener('click', shareNative);
-
-document.getElementById('share-url').addEventListener('click', shareUrl);
-
-document.getElementById('share-instagram').addEventListener('click', shareInstagram);
-
-document.getElementById('copy-caption').addEventListener('click', async () => {
-  try {
-    await copyCaption();
-    alert('キャプション（URL付き）をコピーしました。');
-  } catch (error) {
-    console.log(error);
-    alert('キャプションのコピーに失敗しました');
-  }
-});
-</script>
-
+    document.getElementById('close-btn').addEventListener('click', () => {
+      if (history.length > 1) {
+        history.back();
+        return;
+      }
+      window.close();
+    });
+  </script>
 </body>
 </html>
