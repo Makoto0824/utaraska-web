@@ -172,7 +172,6 @@ function buildOddToyFigureProduct(
   photoCount = 5,
   options: OddToyFigureProductOptions = {},
 ) {
-  const ballChain = options.ballChain ?? true;
   const price = options.price ?? '¥5,800';
   const features = options.features ?? ODD_TOY_FIGURE_FEATURES;
   const description = options.description ?? ODD_TOY_FIGURE_DESCRIPTION;
@@ -183,9 +182,7 @@ function buildOddToyFigureProduct(
   });
   const designPhoto = photoCount <= 1 ? 'figure.jpg' : `photo-${photoCount}.jpg`;
   const storeUrl = `https://store.utaraska.co.jp/items/${baseItemId}`;
-  const title = ballChain
-    ? `utaraska odd toys ${toyNumber} ボールチェーン付き`
-    : `utaraska odd toys ${toyNumber}`;
+  const title = `utaraska odd toys ${toyNumber}`;
 
   return {
     id,
