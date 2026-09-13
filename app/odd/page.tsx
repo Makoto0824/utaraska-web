@@ -669,7 +669,7 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(273, '#011-3', 12, '157417058', 4, buildOddToyBuraburaFigureOptions(3, BURABURA_FIGURE_DESCRIPTION_3)),
     buildOddToyFigureProduct(272, '#011-2', 11, '157417024', 4, buildOddToyBuraburaFigureOptions(2, BURABURA_FIGURE_DESCRIPTION_2)),
     buildOddToyFigureProduct(271, '#011-1', 10, '157416956', 4, buildOddToyBuraburaFigureOptions(1, BURABURA_FIGURE_DESCRIPTION_1)),
-    buildOddToyFigureProduct(275, '#010', 14, '156638680', 8, buildOddToyOsuwariFigureOptions(OSUWARI_TOY_010_DESCRIPTION)),
+    buildOddToyFigureProduct(275, '#010', 14, '156638680', 7, buildOddToyOsuwariFigureOptions(OSUWARI_TOY_010_DESCRIPTION)),
     {
       id: 268,
       title: 'ゆるい虎と虎 2',
