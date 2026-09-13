@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 import { ShopRegionSwitch } from '@/lib/designshelf/ShopRegionSwitch';
 import { ORIGINAL_ART_CATALOG, ORIGINAL_ART_PRODUCT_IDS, type OriginalArtCatalogEntry } from '@/lib/designshelf/originalArtCatalog';
@@ -249,6 +250,22 @@ const WEAR_FILTER_OPTIONS: { id: WearFilterId; label: string }[] = [
   { id: 'original', label: '原画' },
 ];
 
+const DEFAULT_WEAR_FILTER: WearFilterId = 'tshirt';
+
+const WEAR_FILTER_ID_SET = new Set<WearFilterId>(WEAR_FILTER_OPTIONS.map((option) => option.id));
+
+function parseWearFilterFromCategoryParam(param: string | null): WearFilterId {
+  if (param && WEAR_FILTER_ID_SET.has(param as WearFilterId)) {
+    return param as WearFilterId;
+  }
+  return DEFAULT_WEAR_FILTER;
+}
+
+function buildOddCategoryHref(filter: WearFilterId): string {
+  if (filter === DEFAULT_WEAR_FILTER) return '/odd';
+  return `/odd?category=${filter}`;
+}
+
 type WearTagSource = {
   title: string;
   variations?: { name: string }[];
@@ -398,7 +415,19 @@ function getProductListRows(product: ProductListSource, filter: WearFilterId): P
 }
 
 export default function DesignShelf() {
-  const [wearFilter, setWearFilter] = useState<WearFilterId>('tshirt');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get('category');
+  const wearFilter = useMemo(
+    () => parseWearFilterFromCategoryParam(categoryParam),
+    [categoryParam],
+  );
+  const selectWearFilter = useCallback(
+    (id: WearFilterId) => {
+      router.replace(buildOddCategoryHref(id), { scroll: false });
+    },
+    [router],
+  );
   const [expandedDetails, setExpandedDetails] = useState<number | null>(null);
   const [expandedProductList, setExpandedProductList] = useState<number | null>(null);
   const [currentBanner, setCurrentBanner] = useState(0);
@@ -1717,7 +1746,7 @@ export default function DesignShelf() {
                 <button
                   key={id}
                   type="button"
-                  onClick={() => setWearFilter(id)}
+                  onClick={() => selectWearFilter(id)}
                   className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
                     wearFilter === id
                       ? 'bg-gray-900 text-white shadow-sm'
