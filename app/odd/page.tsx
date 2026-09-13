@@ -149,6 +149,21 @@ function buildOddToyBuraburaFigureOptions(seriesNumber: number, description: str
   };
 }
 
+const OSUWARI_TOY_010_DESCRIPTION =
+  'おすわりシリーズ　タイガー手のひらサイズのフィギュアです。キャラクターデザインから3Dモデルの調整、3Dプリント、塗装まで、一点ずつ手作業で仕上げています。3Dプリンターならではの積層跡や、手塗りによる色ムラ、筆跡などがあります。量産品にはない個体差も含めて、作品の風合いとしてお楽しみください。【商品詳細】サイズ：高さ約5cm素材：PLA制作方法：3Dプリント、手作業による塗装【ご購入前にご確認ください】・強い力を加えたり、落下させたりすると破損する場合があります。・高温になる場所や、直射日光の当たる場所での保管はお避けください。・写真と実物では、画面環境により色味が多少異なる場合があります。・細かな造形や塗装状態は掲載写真をご確認ください。';
+
+function buildOddToyOsuwariFigureOptions(description: string): OddToyFigureProductOptions {
+  return {
+    ballChain: false,
+    price: '¥2,800',
+    features: [
+      'おすわりシリーズ タイガー。手のひらサイズのフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。',
+      '高さ約5cm。PLA素材の3Dプリントと手作業による塗装。',
+    ],
+    description,
+  };
+}
+
 function buildOddToyFigureProduct(
   id: number,
   toyNumber: string,
@@ -202,13 +217,13 @@ function buildOddToyFigureProduct(
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266, 267, 268, 271, 272, 273, 274,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275,
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
 ]);
 
 /** 期間限定以外で NEW バッジを付ける商品（Tシャツは対象外） */
 const NEW_BADGE_PRODUCT_IDS = new Set([
-  148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274,
+  148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275,
 ]);
 
 function showsNewBadge(product: { id: number; endDate?: string }): boolean {
@@ -654,6 +669,7 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(273, '#011-3', 12, '157417058', 4, buildOddToyBuraburaFigureOptions(3, BURABURA_FIGURE_DESCRIPTION_3)),
     buildOddToyFigureProduct(272, '#011-2', 11, '157417024', 4, buildOddToyBuraburaFigureOptions(2, BURABURA_FIGURE_DESCRIPTION_2)),
     buildOddToyFigureProduct(271, '#011-1', 10, '157416956', 4, buildOddToyBuraburaFigureOptions(1, BURABURA_FIGURE_DESCRIPTION_1)),
+    buildOddToyFigureProduct(275, '#010', 14, '156638680', 8, buildOddToyOsuwariFigureOptions(OSUWARI_TOY_010_DESCRIPTION)),
     {
       id: 268,
       title: 'ゆるい虎と虎 2',
