@@ -247,6 +247,8 @@ type JpAssetsConfig = {
   slots: Partial<Record<ClothingSlot | 'figure' | 'original', string>>;
   /** 「すべて」絞り込み時、スロット画像より前に挿入する URL（サイトルートからの絶対パス） */
   carouselPrefix?: string[];
+  /** 「すべて」絞り込み時、このスロットを先頭にする */
+  leadSlotInAll?: ClothingSlot;
 };
 
 const JP_SLOT_ORDER: ClothingSlot[] = ['tshirt', 'longsleeve', 'sweat', 'hoodie', 'ziphoodie'];
@@ -346,12 +348,20 @@ function getResolvedCarouselImages(
   const slotUrl = (s: ClothingSlot | 'figure' | 'original') => (jp.slots[s] ? `${jp.root}/${jp.slots[s]}` : null);
   if (wearFilter === 'all') {
     const prefix = jp.carouselPrefix ?? [];
-    const chain = JP_SLOT_ORDER.flatMap((s) => {
+    const slotOrder = jp.leadSlotInAll
+      ? [jp.leadSlotInAll, ...JP_SLOT_ORDER.filter((s) => s !== jp.leadSlotInAll)]
+      : JP_SLOT_ORDER;
+    const chain = slotOrder.flatMap((s) => {
       const u = slotUrl(s);
       return u ? [u] : [];
     });
     if (chain.length === 0 && prefix.length === 0) return fallback;
-    return [...prefix, ...chain, designUrl];
+    const seen = new Set<string>();
+    return [...prefix, ...chain, designUrl].filter((url) => {
+      if (!url || seen.has(url)) return false;
+      seen.add(url);
+      return true;
+    });
   }
   const one = slotUrl(wearFilter);
   if (one) {
@@ -672,13 +682,16 @@ export default function DesignShelf() {
       title: 'ゆるい虎と虎 2',
       image: '/designshelf/images/42_tigertiger2/tshirt_model.jpg',
       designImage: '/designshelf/images/42_tigertiger2/desgin.png',
+      modelImage: '/designshelf/images/42_tigertiger2/hoodie_model.jpg',
       price: '¥2,300',
       amazonLink: 'https://link.amazon/B0d6bCmfU',
       jpAssets: {
         root: '/designshelf/images/42_tigertiger2',
         design: 'desgin.png',
+        leadSlotInAll: 'hoodie',
         slots: {
           tshirt: 'tshirt_model.jpg',
+          hoodie: 'hoodie_model.jpg',
         },
       },
       features: [
@@ -696,6 +709,14 @@ export default function DesignShelf() {
           amazonLink: 'https://link.amazon/B0d6bCmfU',
           videoUrl:
             'https://www.instagram.com/reel/DcgDlGSkzy2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+        },
+        {
+          name: 'パーカー',
+          price: '¥4,400',
+          amazonLink:
+            'https://www.amazon.co.jp/dp/B0HGCT1RK4?tag=designshelf-22&linkCode=ll2&linkId=afe66aa6cb561220b9b24deb460ba300',
+          videoUrl:
+            'https://www.instagram.com/reel/Dd7lm_nhpz-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
         },
       ],
     },
@@ -1605,7 +1626,13 @@ export default function DesignShelf() {
       }
       return true;
     })
-    .filter((product) => matchesWearFilter(getProductWearTags(product), wearFilter));
+    .filter((product) => matchesWearFilter(getProductWearTags(product), wearFilter))
+    .sort((a, b) => {
+      if (wearFilter !== 'all') return 0;
+      if (a.id === 268) return -1;
+      if (b.id === 268) return 1;
+      return 0;
+    });
 
   useEffect(() => {
     setCarouselIndices({});
@@ -1920,7 +1947,9 @@ export default function DesignShelf() {
                     const listBody = (
                       <div className="mb-4 space-y-3">
                         {listRows.map((variation, idx) => {
-                          const purchaseMeta = getPurchaseLinkMeta(variation.amazonLink, variation.name);
+                          const purchaseMeta = variation.amazonLink
+                            ? getPurchaseLinkMeta(variation.amazonLink, variation.name)
+                            : null;
                           return (
                           <div
                             key={`${product.id}-${variation.name}-${idx}`}
@@ -1934,6 +1963,7 @@ export default function DesignShelf() {
                                   <span className="text-xs text-gray-500">税込</span>
                                 </div>
                               </div>
+                              {purchaseMeta && (
                               <a
                                 href={variation.amazonLink}
                                 target="_blank"
@@ -1944,6 +1974,7 @@ export default function DesignShelf() {
                               >
                                 <span className="label">{purchaseMeta.label}</span>
                               </a>
+                              )}
                             </div>
                             {variation.instagramLabelOnly && (
                               <p className="flex items-center gap-2 text-sm text-gray-500">
