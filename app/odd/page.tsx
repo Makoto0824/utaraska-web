@@ -140,7 +140,7 @@ const BURABURA_FIGURE_DESCRIPTION_4 =
 function buildOddToyBuraburaFigureOptions(seriesNumber: number, description: string): OddToyFigureProductOptions {
   return {
     ballChain: false,
-    price: '¥3,200',
+    price: '¥3,500',
     features: [
       `ぶらぶらシリーズ #${seriesNumber}。手のひらサイズのフィギュア。3Dプリントと手塗りで、一点ずつ手作業で仕上げています。`,
       '高さ約6cm・幅約5cm。PLA素材の3Dプリントと手作業による塗装。',
@@ -172,7 +172,7 @@ function buildOddToyFigureProduct(
   photoCount = 5,
   options: OddToyFigureProductOptions = {},
 ) {
-  const price = options.price ?? '¥5,800';
+  const price = options.price ?? '¥3,500';
   const features = options.features ?? ODD_TOY_FIGURE_FEATURES;
   const description = options.description ?? ODD_TOY_FIGURE_DESCRIPTION;
   const root = `/designshelf/images/toys/${folderNum}`;
