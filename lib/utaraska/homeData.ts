@@ -56,6 +56,19 @@ export type WorkCase = {
 
 export const WORK_CASES: WorkCase[] = [
   {
+    id: 'shimokita-green-2026-jpyc',
+    client: '下北緑日2026｜JPYC決済実証実験',
+    clientShort: 'JPYC',
+    value:
+      '2026年7月25日・26日に開催された「下北緑日2026」にて、日本円連動型ステーブルコイン「JPYC」を活用した店舗決済の実証実験を実施。ウタラスカ合同会社が企画・運営を担当し、地域イベントにおけるステーブルコインの実用性を検証しました。',
+    projects: [
+      { name: 'JPYC決済実証実験', role: '企画・運営 — ウタラスカ合同会社' },
+      { name: '開催日', role: '2026年7月25日・26日' },
+      { name: 'イベント主催・運営', role: '株式会社あおとき' },
+    ],
+    images: [],
+  },
+  {
     id: 'bs-fuji',
     client: 'BSフジ',
     clientShort: 'BS',

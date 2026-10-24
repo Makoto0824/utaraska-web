@@ -151,8 +151,30 @@ export default function HomePage() {
             <p className="ut-kicker">Works</p>
             <h2 className="ut-heading ut-heading-lg">実績・事例</h2>
             <p className="ut-lead" style={{ maxWidth: '40rem', marginTop: '0.75rem', marginBottom: '2.5rem' }}>
-              放映局・番組向けのイラスト制作と、自社ゲームの公開タイトル。ギャラリーではなく、どんな価値を提供したかが伝わる構成にしています。
+              自社ゲームの公開タイトル、放映局・番組向けのイラスト制作、地域イベントにおけるWeb3決済の実証。どんな価値を提供したかが伝わる構成にしています。
             </p>
+
+            <article className="ut-work-article ut-work-article--games">
+              <div className="ut-work-header">
+                <h3 className="ut-work-client">ゲーム作品・公開一覧</h3>
+                <span className="ut-kicker" style={{ margin: 0 }}>
+                  Games
+                </span>
+              </div>
+              <p className="ut-work-value">
+                自社モバイルタイトル（App Store）と、ブラウザ向けカジュアルゲームの紹介。
+                ストア・プレイリンクは専用ページに集約しています。
+              </p>
+              <div className="ut-work-games-action">
+                <Link href="/games" className="ut-btn ut-btn--primary ut-btn--lg">
+                  ゲーム一覧を見る
+                  <span className="ut-btn-arrow" aria-hidden>
+                    →
+                  </span>
+                </Link>
+                <p className="ut-work-games-hint">App Store 公開タイトル・ブラウザで遊べるゲーム</p>
+              </div>
+            </article>
 
             {WORK_CASES.map((work) => (
               <article key={work.id} className="ut-work-article">
@@ -171,41 +193,31 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <div className="ut-work-gallery">
-                  {work.images.map((image) => (
-                    <figure key={image.src}>
-                      <Image src={image.src} alt={image.alt} width={160} height={107} />
-                    </figure>
-                  ))}
-                </div>
+                {work.images.length > 0 ? (
+                  <div className="ut-work-gallery">
+                    {work.images.map((image) => (
+                      <figure key={image.src}>
+                        <Image src={image.src} alt={image.alt} width={160} height={107} />
+                      </figure>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             ))}
-
-            <article className="ut-work-article">
-              <div className="ut-work-header">
-                <h3 className="ut-work-client">ゲーム作品・公開一覧</h3>
-                <span className="ut-kicker" style={{ margin: 0 }}>
-                  Games
-                </span>
-              </div>
-              <p className="ut-work-value">
-                自社モバイルタイトル（App Store）と、ブラウザ向けカジュアルゲームの紹介。
-                ストア・プレイリンクは専用ページに集約しています。
-              </p>
-              <Link href="/games" className="ut-btn ut-btn--primary">
-                ゲーム一覧を見る
-              </Link>
-            </article>
 
             <article className="ut-work-article">
               <div className="ut-work-header">
                 <h3 className="ut-work-client">実績サマリー</h3>
               </div>
               <p className="ut-work-value">
-                放映局とのイラスト実績に加え、ブラウザゲームの提供、自社ゲームのリリースなど、
+                放映局とのイラスト実績に加え、地域イベントでのJPYC決済実証、ブラウザゲームの提供、自社ゲームのリリースなど、
                 オンエア・配信に耐えるクオリティを意識した制作を行っています。
               </p>
               <ul className="ut-work-projects">
+                <li>
+                  <p className="ut-work-project-name">下北緑日2026｜JPYC決済実証実験</p>
+                  <p className="ut-work-project-role">企画・運営（2026年7月25日・26日）</p>
+                </li>
                 <li>
                   <p className="ut-work-project-name">放映局とのイラスト実績</p>
                   <p className="ut-work-project-role">BSフジ・TBS・日本テレビ・テレビ朝日</p>

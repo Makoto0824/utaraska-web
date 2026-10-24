@@ -223,6 +223,25 @@
   color: var(--ut-accent);
 }
 
+.ut-btn--lg {
+  min-height: 3.35rem;
+  padding: 0.9rem 1.85rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  box-shadow: 0 3px 0 var(--ut-ink);
+}
+
+.ut-btn--lg:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 var(--ut-accent-blue);
+}
+
+.ut-btn-arrow {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
 .ut-about-grid {
   display: grid;
   gap: 2.5rem;
@@ -408,6 +427,24 @@
   border-top: 2px solid var(--ut-ink);
   padding-top: 1.5rem;
   margin-bottom: 3rem;
+}
+
+.ut-work-article--games {
+  padding-bottom: 0.25rem;
+}
+
+.ut-work-games-action {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.ut-work-games-hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ut-muted);
 }
 
 .ut-work-header {

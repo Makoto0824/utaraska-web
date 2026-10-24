@@ -124,13 +124,50 @@ export default function AboutPage() {
           </dl>
         </section>
 
-        <section className="ut-section ut-section--tech" aria-labelledby="projects-heading">
+        <section className="ut-section ut-section--tech" aria-labelledby="works-heading">
           <div className="ut-container">
-            <p className="ut-kicker">Projects</p>
-            <h2 id="projects-heading" className="ut-heading ut-heading-lg">
-              関連プロジェクト
+            <p className="ut-kicker">Works</p>
+            <h2 id="works-heading" className="ut-heading ut-heading-lg">
+              実績
             </h2>
             <article className="ut-project-card">
+              <p className="ut-kicker" style={{ marginBottom: '0.75rem' }}>
+                Web3・ステーブルコイン／企画・運営
+              </p>
+              <h3 className="ut-project-title">下北緑日2026｜JPYC決済実証実験</h3>
+              <p className="ut-project-body">
+                2026年7月25日・26日に開催された「下北緑日2026」にて、日本円連動型ステーブルコイン「JPYC」を活用した店舗決済の実証実験を実施しました。
+                ウタラスカ合同会社がJPYC決済実証実験の企画・運営を担当し、地域イベントにおけるステーブルコインの実用性を検証しました。
+              </p>
+              <dl className="ut-info-list" style={{ marginTop: '1.25rem' }}>
+                <div className="ut-info-row">
+                  <dt>開催日</dt>
+                  <dd>2026年7月25日・26日</dd>
+                </div>
+                <div className="ut-info-row">
+                  <dt>イベント主催・運営</dt>
+                  <dd>株式会社あおとき</dd>
+                </div>
+                <div className="ut-info-row">
+                  <dt>JPYC決済実証実験 企画・運営</dt>
+                  <dd>ウタラスカ合同会社</dd>
+                </div>
+              </dl>
+              <div className="ut-project-links" style={{ marginTop: '1.25rem' }}>
+                <Link href="/#works" className="ut-btn ut-btn--ghost">
+                  トップの実績・事例を見る
+                </Link>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="ut-section ut-container" aria-labelledby="projects-heading">
+          <p className="ut-kicker">Projects</p>
+          <h2 id="projects-heading" className="ut-heading ut-heading-lg">
+            関連プロジェクト
+          </h2>
+          <article className="ut-project-card">
               <h3 className="ut-project-title">utaraska odd</h3>
               <p className="ut-project-body">
                 「ちょっと変で、ちょうどいい。」をコンセプトに、Tシャツやグッズ、投稿企画などを展開するプロジェクトです。
@@ -144,7 +181,6 @@ export default function AboutPage() {
                 </Link>
               </div>
             </article>
-          </div>
         </section>
 
         <section className="ut-section ut-container" aria-labelledby="contact-heading">
