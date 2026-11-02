@@ -220,7 +220,7 @@ const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
 
 /** 期間限定以外で NEW バッジを付ける商品（Tシャツは対象外） */
 const NEW_BADGE_PRODUCT_IDS = new Set([
-  148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275,
+  103, 148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275,
 ]);
 
 function showsNewBadge(product: { id: number; endDate?: string }): boolean {
@@ -1099,6 +1099,7 @@ export default function DesignShelf() {
         slots: {
           tshirt: "jp/tshirt_model.jpg",
           sweat: "jp/sweat_model.png",
+          hoodie: "jp/hoodie.png",
           ziphoodie: "jp/zip_hoodie.jpg",
         },
       },
@@ -1112,7 +1113,15 @@ export default function DesignShelf() {
       videoUrl: "https://www.instagram.com/reel/DWT8nuqgQuS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       variations: [
         { name: "Tシャツ", price: "¥2,300", amazonLink: "https://amzn.to/4mmNbOG", videoUrl: "https://www.instagram.com/reel/DWT8nuqgQuS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
-        { name: "トレーナー", price: "¥3,960", amazonLink: "https://amzn.to/4ocuRrV", videoUrl: "https://www.instagram.com/reel/DQX05pPASTA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" }
+        { name: "トレーナー", price: "¥3,960", amazonLink: "https://amzn.to/4ocuRrV", videoUrl: "https://www.instagram.com/reel/DQX05pPASTA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" },
+        {
+          name: "パーカー",
+          price: "¥4,400",
+          amazonLink:
+            "https://www.amazon.co.jp/dp/B0FWD2HLB2?linkCode=ll2&tag=designshelf-22&linkId=5ee61b5294a323ca487916d150e00aba",
+          videoUrl:
+            "https://www.instagram.com/reel/DfOCpdnB5KJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        },
       ],
     },
     {
@@ -1628,10 +1637,13 @@ export default function DesignShelf() {
     })
     .filter((product) => matchesWearFilter(getProductWearTags(product), wearFilter))
     .sort((a, b) => {
-      if (wearFilter !== 'all') return 0;
-      if (a.id === 268) return -1;
-      if (b.id === 268) return 1;
-      return 0;
+      const pinOrder = wearFilter === 'all' ? [103, 268] : [103];
+      const aIdx = pinOrder.indexOf(a.id);
+      const bIdx = pinOrder.indexOf(b.id);
+      if (aIdx === -1 && bIdx === -1) return 0;
+      if (aIdx === -1) return 1;
+      if (bIdx === -1) return -1;
+      return aIdx - bIdx;
     });
 
   useEffect(() => {
