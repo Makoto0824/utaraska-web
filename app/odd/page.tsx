@@ -223,8 +223,16 @@ const NEW_BADGE_PRODUCT_IDS = new Set([
   103, 148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275,
 ]);
 
+/** 売り切れ表示（#002 / #004 / #006 / #007 / #009 / #011-2） */
+const SOLD_OUT_PRODUCT_IDS = new Set([149, 151, 264, 265, 267, 272]);
+
+function isSoldOutProduct(product: { id: number }): boolean {
+  return SOLD_OUT_PRODUCT_IDS.has(product.id);
+}
+
 function showsNewBadge(product: { id: number; endDate?: string }): boolean {
   if (product.endDate) return false;
+  if (isSoldOutProduct(product)) return false;
   return NEW_BADGE_PRODUCT_IDS.has(product.id) || ORIGINAL_ART_PRODUCT_IDS.has(product.id);
 }
 
@@ -1919,6 +1927,9 @@ export default function DesignShelf() {
                   {product.endDate && (
                     <span className="absolute top-2 left-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded z-20">期間限定</span>
                   )}
+                  {isSoldOutProduct(product) && (
+                    <span className="absolute top-2 left-2 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded z-20">Sold Out</span>
+                  )}
                   {showsNewBadge(product) && (
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-20">NEW</span>
                   )}
@@ -1959,7 +1970,8 @@ export default function DesignShelf() {
                     const listBody = (
                       <div className="mb-4 space-y-3">
                         {listRows.map((variation, idx) => {
-                          const purchaseMeta = variation.amazonLink
+                          const soldOut = isSoldOutProduct(product);
+                          const purchaseMeta = !soldOut && variation.amazonLink
                             ? getPurchaseLinkMeta(variation.amazonLink, variation.name)
                             : null;
                           return (
@@ -1975,6 +1987,11 @@ export default function DesignShelf() {
                                   <span className="text-xs text-gray-500">税込</span>
                                 </div>
                               </div>
+                              {soldOut && (
+                                <span className="shrink-0 rounded bg-gray-800 px-3 py-2 text-xs font-bold text-white">
+                                  Sold Out
+                                </span>
+                              )}
                               {purchaseMeta && (
                               <a
                                 href={variation.amazonLink}
