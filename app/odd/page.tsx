@@ -214,13 +214,13 @@ function buildOddToyFigureProduct(
 
 /** タップ時はカルーセル表示中の画像をシンプル拡大（風神雷神などと同じ） */
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
-  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275,
+  102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275, 276,
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
 ]);
 
 /** 期間限定以外で NEW バッジを付ける商品（Tシャツは対象外） */
 const NEW_BADGE_PRODUCT_IDS = new Set([
-  103, 148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275,
+  103, 148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275, 276,
 ]);
 
 /** 売り切れ表示（#002 / #004 / #006 / #007 / #009 / #011-2） */
@@ -685,6 +685,55 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(272, '#011-2', 11, '157417024', 4, buildOddToyBuraburaFigureOptions(2, BURABURA_FIGURE_DESCRIPTION_2)),
     buildOddToyFigureProduct(271, '#011-1', 10, '157416956', 4, buildOddToyBuraburaFigureOptions(1, BURABURA_FIGURE_DESCRIPTION_1)),
     buildOddToyFigureProduct(275, '#010', 14, '156638680', 7, buildOddToyOsuwariFigureOptions(OSUWARI_TOY_010_DESCRIPTION)),
+    {
+      id: 276,
+      title: '向かい合う龍',
+      image: '/designshelf/images/45_dragondragon3/t-shirt.png',
+      designImage: '/designshelf/images/45_dragondragon3/desgin.png',
+      modelImage: '/designshelf/images/45_dragondragon3/swet_model.png',
+      price: '¥2,300',
+      amazonLink:
+        'https://www.amazon.co.jp/dp/B0HSJLPWXG?tag=designshelf-22&linkCode=ll2&linkId=98445369ffea7f922cf757d37e523ba7',
+      jpAssets: {
+        root: '/designshelf/images/45_dragondragon3',
+        design: 'desgin.png',
+        slots: {
+          tshirt: 't-shirt.png',
+          longsleeve: 'long-t.png',
+          sweat: 'swet_model.png',
+        },
+      },
+      features: [
+        '左右に向かい合う二体の龍を、太めの輪郭とゆるいタッチで描いた双龍モチーフ。シンメトリー構図で視認性が高く、一目で龍の対峙が伝わるデザインです。',
+        '和風の象徴である龍をポップなイラストで再解釈。アジアンテイスト、ストリート系、アートファッションに幅広く合うキャッチーなビジュアルです。',
+      ],
+      description:
+        '向かい合う二体の龍（ドラゴン）を中心に据えた、左右対称のグラフィックデザインです。伝統的な双龍の構図を、デフォルメされた表情と明瞭な輪郭線で現代的に表現し、縮小表示でも龍の存在感が伝わるよう設計しています。日本文化やオリエンタルモチーフを取り入れたコーデや、個性的なワンポイントを楽しみたい方におすすめの一枚です。',
+      videoUrl:
+        'https://www.instagram.com/reel/DgEBcwnhsHB/?utm_source=ig_web_copy_link&hvrq=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==',
+      variations: [
+        {
+          name: 'Tシャツ',
+          price: '¥2,300',
+          amazonLink:
+            'https://www.amazon.co.jp/dp/B0HSJLPWXG?tag=designshelf-22&linkCode=ll2&linkId=98445369ffea7f922cf757d37e523ba7',
+          videoUrl:
+            'https://www.instagram.com/reel/DgEBcwnhsHB/?utm_source=ig_web_copy_link&hvrq=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==',
+        },
+        {
+          name: '長袖Tシャツ',
+          price: '¥2,750',
+          amazonLink:
+            'https://www.amazon.co.jp/dp/B0HSJGP24L?tag=designshelf-22&linkCode=ll2&linkId=4726210f284f2825b6a713a8554b1e20',
+        },
+        {
+          name: 'トレーナー',
+          price: '¥3,960',
+          amazonLink:
+            'https://www.amazon.co.jp/dp/B0HSJPSN9P?tag=designshelf-22&linkCode=ll2&linkId=bce9b41b20541b8ac027eff5365a2444',
+        },
+      ],
+    },
     {
       id: 268,
       title: 'ゆるい虎と虎 2',
@@ -1645,7 +1694,7 @@ export default function DesignShelf() {
     })
     .filter((product) => matchesWearFilter(getProductWearTags(product), wearFilter))
     .sort((a, b) => {
-      const pinOrder = wearFilter === 'all' ? [103, 268] : [103];
+      const pinOrder = wearFilter === 'all' ? [276, 103, 268] : [276, 103];
       const aIdx = pinOrder.indexOf(a.id);
       const bIdx = pinOrder.indexOf(b.id);
       if (aIdx === -1 && bIdx === -1) return 0;
