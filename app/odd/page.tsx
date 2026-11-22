@@ -709,16 +709,12 @@ export default function DesignShelf() {
       ],
       description:
         '向かい合う二体の龍（ドラゴン）を中心に据えた、左右対称のグラフィックデザインです。伝統的な双龍の構図を、デフォルメされた表情と明瞭な輪郭線で現代的に表現し、縮小表示でも龍の存在感が伝わるよう設計しています。日本文化やオリエンタルモチーフを取り入れたコーデや、個性的なワンポイントを楽しみたい方におすすめの一枚です。',
-      videoUrl:
-        'https://www.instagram.com/reel/DgEBcwnhsHB/?utm_source=ig_web_copy_link&hvrq=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==',
       variations: [
         {
           name: 'Tシャツ',
           price: '¥2,300',
           amazonLink:
             'https://www.amazon.co.jp/dp/B0HSJLPWXG?tag=designshelf-22&linkCode=ll2&linkId=98445369ffea7f922cf757d37e523ba7',
-          videoUrl:
-            'https://www.instagram.com/reel/DgEBcwnhsHB/?utm_source=ig_web_copy_link&hvrq=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==',
         },
         {
           name: '長袖Tシャツ',
@@ -731,6 +727,8 @@ export default function DesignShelf() {
           price: '¥3,960',
           amazonLink:
             'https://www.amazon.co.jp/dp/B0HSJPSN9P?tag=designshelf-22&linkCode=ll2&linkId=bce9b41b20541b8ac027eff5365a2444',
+          videoUrl:
+            'https://www.instagram.com/reel/DgEBcwnhsHB/?utm_source=ig_web_copy_link&hvrq=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==',
         },
       ],
     },
