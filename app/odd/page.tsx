@@ -8,6 +8,11 @@ import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 import { ShopRegionSwitch } from '@/lib/designshelf/ShopRegionSwitch';
 import { ORIGINAL_ART_CATALOG, ORIGINAL_ART_PRODUCT_IDS, type OriginalArtCatalogEntry } from '@/lib/designshelf/originalArtCatalog';
 import {
+  BASE_FIGURE_PIN_ORDER,
+  BASE_FIGURE_PRODUCTS,
+  BASE_FIGURE_PRODUCT_IDS,
+} from '@/lib/designshelf/baseFiguresCatalog';
+import {
   ODD_HOOPERS_PIN_ORDER,
   ODD_HOOPERS_PRODUCTS,
   ODD_HOOPERS_PRODUCT_IDS,
@@ -222,10 +227,15 @@ const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
   102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275, 276,
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
   ...ODD_HOOPERS_PRODUCT_IDS,
+  ...BASE_FIGURE_PRODUCT_IDS,
 ]);
 
 /** 期間限定以外で NEW バッジを付ける商品 */
-const NEW_BADGE_PRODUCT_IDS = new Set([...ODD_HOOPERS_PRODUCT_IDS, 276]);
+const NEW_BADGE_PRODUCT_IDS = new Set([
+  ...BASE_FIGURE_PRODUCT_IDS,
+  ...ODD_HOOPERS_PRODUCT_IDS,
+  276,
+]);
 
 /** 売り切れ表示（#002 / #004 / #006 / #007 / #009 / #011-2） */
 const SOLD_OUT_PRODUCT_IDS = new Set([149, 151, 264, 265, 267, 272]);
@@ -485,7 +495,11 @@ export default function DesignShelf() {
       link: "https://store.utaraska.co.jp/categories/7472318",
     },
     { src: "/designshelf/images/banner1.jpg", alt: "バナー1", link: "https://amzn.to/4azSuGy" },
-    { src: "/designshelf/images/banner3.jpg", alt: "バナー3", link: "https://amzn.to/46Eh46L" },
+    {
+      src: "/designshelf/images/banner9.jpeg",
+      alt: "オーダーメイド3Dフィギュア",
+      link: "https://store.utaraska.co.jp/items/165965919",
+    },
     {
       src: "/designshelf/images/banner8_rkc.jpg",
       alt: "RAKUGAKI KAO CLUB 原画",
@@ -695,6 +709,7 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(272, '#011-2', 11, '157417024', 4, buildOddToyBuraburaFigureOptions(2, BURABURA_FIGURE_DESCRIPTION_2)),
     buildOddToyFigureProduct(271, '#011-1', 10, '157416956', 4, buildOddToyBuraburaFigureOptions(1, BURABURA_FIGURE_DESCRIPTION_1)),
     buildOddToyFigureProduct(275, '#010', 14, '156638680', 7, buildOddToyOsuwariFigureOptions(OSUWARI_TOY_010_DESCRIPTION)),
+    ...BASE_FIGURE_PRODUCTS,
     ...ODD_HOOPERS_PRODUCTS,
     {
       id: 276,
@@ -1732,7 +1747,10 @@ export default function DesignShelf() {
     })
     .filter((product) => matchesWearFilter(getProductWearTags(product), wearFilter))
     .sort((a, b) => {
-      const pinOrder = [...ODD_HOOPERS_PIN_ORDER, 276];
+      const pinOrder =
+        wearFilter === 'figure' || wearFilter === 'all'
+          ? [...BASE_FIGURE_PIN_ORDER, ...ODD_HOOPERS_PIN_ORDER, 276]
+          : [...ODD_HOOPERS_PIN_ORDER, 276];
       const aIdx = pinOrder.indexOf(a.id);
       const bIdx = pinOrder.indexOf(b.id);
       if (aIdx === -1 && bIdx === -1) return 0;
