@@ -22,6 +22,7 @@
 
 # misc
 .DS_Store
+.merch-playwright-profile/
 *.pem
 
 # debug

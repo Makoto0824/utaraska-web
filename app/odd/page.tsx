@@ -7,6 +7,11 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { UtaraskaCorporateLink } from '@/lib/designshelf/UtaraskaCorporateLink';
 import { ShopRegionSwitch } from '@/lib/designshelf/ShopRegionSwitch';
 import { ORIGINAL_ART_CATALOG, ORIGINAL_ART_PRODUCT_IDS, type OriginalArtCatalogEntry } from '@/lib/designshelf/originalArtCatalog';
+import {
+  ODD_HOOPERS_PIN_ORDER,
+  ODD_HOOPERS_PRODUCTS,
+  ODD_HOOPERS_PRODUCT_IDS,
+} from '@/lib/designshelf/oddHoopersCatalog';
 
 function isBaseStoreLink(link: string): boolean {
   return link.includes('store.utaraska.co.jp');
@@ -216,12 +221,11 @@ function buildOddToyFigureProduct(
 const SIMPLE_IMAGE_POPUP_PRODUCT_IDS = new Set([
   102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 117, 128, 129, 130, 131, 132, 133, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 263, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275, 276,
   ...ORIGINAL_ART_CATALOG.map((entry) => entry.id),
+  ...ODD_HOOPERS_PRODUCT_IDS,
 ]);
 
-/** 期間限定以外で NEW バッジを付ける商品（Tシャツは対象外） */
-const NEW_BADGE_PRODUCT_IDS = new Set([
-  103, 148, 149, 150, 151, 152, 264, 265, 266, 267, 268, 271, 272, 273, 274, 275, 276,
-]);
+/** 期間限定以外で NEW バッジを付ける商品 */
+const NEW_BADGE_PRODUCT_IDS = new Set([...ODD_HOOPERS_PRODUCT_IDS, 276]);
 
 /** 売り切れ表示（#002 / #004 / #006 / #007 / #009 / #011-2） */
 const SOLD_OUT_PRODUCT_IDS = new Set([149, 151, 264, 265, 267, 272]);
@@ -233,7 +237,7 @@ function isSoldOutProduct(product: { id: number }): boolean {
 function showsNewBadge(product: { id: number; endDate?: string }): boolean {
   if (product.endDate) return false;
   if (isSoldOutProduct(product)) return false;
-  return NEW_BADGE_PRODUCT_IDS.has(product.id) || ORIGINAL_ART_PRODUCT_IDS.has(product.id);
+  return NEW_BADGE_PRODUCT_IDS.has(product.id);
 }
 
 /** バリエーションに videoUrl がなくても商品単位のリールを一覧末尾に1本出す対象 */
@@ -466,7 +470,10 @@ export default function DesignShelf() {
   const [currentImageType, setCurrentImageType] = useState<'product' | 'design' | 'model'>('product');
   const [isZoomed, setIsZoomed] = useState(false);
   const [carouselIndices, setCarouselIndices] = useState<Record<number, number>>({});
-  const [simpleImagePopup, setSimpleImagePopup] = useState<string | null>(null);
+  const [simpleImagePopup, setSimpleImagePopup] = useState<{
+    productId: number;
+    slideIndex: number;
+  } | null>(null);
 
   const ALL_DESIGNS_AMAZON_URL = 'https://link.amazon/B0euJW5sF';
 
@@ -529,7 +536,10 @@ export default function DesignShelf() {
       if (SIMPLE_IMAGE_POPUP_PRODUCT_IDS.has(productId) && carouselSlides.length > 0) {
         const currentImageIndex = carouselIndices[productId] ?? 0;
         const currentImage = carouselSlides[currentImageIndex] ?? carouselSlides[0];
-        setSimpleImagePopup(currentImage);
+        setSimpleImagePopup({
+          productId,
+          slideIndex: currentImageIndex,
+        });
         document.body.style.overflow = 'hidden';
         return;
       }
@@ -685,6 +695,7 @@ export default function DesignShelf() {
     buildOddToyFigureProduct(272, '#011-2', 11, '157417024', 4, buildOddToyBuraburaFigureOptions(2, BURABURA_FIGURE_DESCRIPTION_2)),
     buildOddToyFigureProduct(271, '#011-1', 10, '157416956', 4, buildOddToyBuraburaFigureOptions(1, BURABURA_FIGURE_DESCRIPTION_1)),
     buildOddToyFigureProduct(275, '#010', 14, '156638680', 7, buildOddToyOsuwariFigureOptions(OSUWARI_TOY_010_DESCRIPTION)),
+    ...ODD_HOOPERS_PRODUCTS,
     {
       id: 276,
       title: '向かい合う龍',
@@ -1681,6 +1692,35 @@ export default function DesignShelf() {
   const currentProductId = popupId ? parseInt(popupId.replace('imagePopup', '')) : null;
   const currentProduct: Product | undefined = currentProductId ? products.find(p => p.id === currentProductId) : undefined;
 
+  const closeSimpleImagePopup = () => {
+    setSimpleImagePopup(null);
+    document.body.style.overflow = '';
+  };
+
+  const simplePopupProduct = simpleImagePopup
+    ? products.find((p) => p.id === simpleImagePopup.productId)
+    : undefined;
+  const simplePopupSlides = simplePopupProduct
+    ? getResolvedCarouselImages(simplePopupProduct, wearFilter)
+    : [];
+  const simplePopupSlideIndex =
+    simpleImagePopup && simplePopupSlides.length > 0
+      ? ((simpleImagePopup.slideIndex % simplePopupSlides.length) + simplePopupSlides.length) %
+        simplePopupSlides.length
+      : 0;
+  const simplePopupImageSrc = simplePopupSlides[simplePopupSlideIndex] ?? '';
+
+  const stepSimpleImagePopup = (delta: number) => {
+    if (!simpleImagePopup || simplePopupSlides.length <= 1) return;
+    const nextIndex =
+      (simplePopupSlideIndex + delta + simplePopupSlides.length) % simplePopupSlides.length;
+    setSimpleImagePopup({ productId: simpleImagePopup.productId, slideIndex: nextIndex });
+    setCarouselIndices((prev) => ({
+      ...prev,
+      [simpleImagePopup.productId]: nextIndex,
+    }));
+  };
+
   const catalogProducts = products
     .filter((product) => {
       if (product.endDate) {
@@ -1692,7 +1732,7 @@ export default function DesignShelf() {
     })
     .filter((product) => matchesWearFilter(getProductWearTags(product), wearFilter))
     .sort((a, b) => {
-      const pinOrder = wearFilter === 'all' ? [276, 103, 268] : [276, 103];
+      const pinOrder = [...ODD_HOOPERS_PIN_ORDER, 276];
       const aIdx = pinOrder.indexOf(a.id);
       const bIdx = pinOrder.indexOf(b.id);
       if (aIdx === -1 && bIdx === -1) return 0;
@@ -1704,6 +1744,21 @@ export default function DesignShelf() {
   useEffect(() => {
     setCarouselIndices({});
   }, [wearFilter]);
+
+  useEffect(() => {
+    if (!simpleImagePopup) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        stepSimpleImagePopup(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        stepSimpleImagePopup(1);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [simpleImagePopup, simplePopupSlideIndex, simplePopupSlides.length]);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -2288,32 +2343,55 @@ export default function DesignShelf() {
       )}
 
       {/* シンプルな画像拡大モーダル（カルーセル商品の一部） */}
-      {simpleImagePopup && (
-        <div 
+      {simpleImagePopup && simplePopupImageSrc && (
+        <div
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
-          onClick={() => {
-            setSimpleImagePopup(null);
-            document.body.style.overflow = '';
-          }}
+          onClick={closeSimpleImagePopup}
         >
-          <div className="relative flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="relative flex max-w-[95vw] max-h-[95vh] items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSimpleImagePopup(null);
-                document.body.style.overflow = '';
-              }}
-              className="absolute top-2 right-2 bg-black/70 text-white text-2xl cursor-pointer w-10 h-10 flex items-center justify-center z-10 hover:bg-black rounded-full transition-colors"
+              type="button"
+              onClick={closeSimpleImagePopup}
+              className="absolute -top-2 right-0 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/70 text-2xl text-white transition-colors hover:bg-black md:right-2 md:top-2"
+              aria-label="閉じる"
             >
               &times;
             </button>
+            {simplePopupSlides.length > 1 && (
+              <button
+                type="button"
+                onClick={() => stepSimpleImagePopup(-1)}
+                className="absolute left-0 z-20 flex h-12 w-12 -translate-x-2 items-center justify-center rounded-full bg-black/60 text-3xl text-white transition-colors hover:bg-black/80 md:-translate-x-14"
+                aria-label="前の画像"
+              >
+                ‹
+              </button>
+            )}
             <Image
-              src={simpleImagePopup}
+              src={simplePopupImageSrc}
               alt="拡大画像"
-              width={640}
-              height={768}
-              className="max-w-[90vw] max-h-[90vh] object-contain"
+              width={900}
+              height={900}
+              className="max-h-[90vh] max-w-[90vw] object-contain"
             />
+            {simplePopupSlides.length > 1 && (
+              <button
+                type="button"
+                onClick={() => stepSimpleImagePopup(1)}
+                className="absolute right-0 z-20 flex h-12 w-12 translate-x-2 items-center justify-center rounded-full bg-black/60 text-3xl text-white transition-colors hover:bg-black/80 md:translate-x-14"
+                aria-label="次の画像"
+              >
+                ›
+              </button>
+            )}
+            {simplePopupSlides.length > 1 && (
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm text-white/80">
+                {simplePopupSlideIndex + 1} / {simplePopupSlides.length}
+              </span>
+            )}
           </div>
         </div>
       )}
