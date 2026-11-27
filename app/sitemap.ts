@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/games',
     '/odd',
     '/odd/basketball-t-shirts',
+    '/odd/tiger-t-shirts',
     '/odd/about',
     '/odd/calavera-kanji',
     '/odd/contact',

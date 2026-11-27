@@ -4,7 +4,7 @@ import OddCatalog from './OddCatalog';
 export const metadata: Metadata = {
   title: 'オリジナルTシャツ・フィギュア | utaraska odd',
   description:
-    '遊び心のあるオリジナルイラストのTシャツとフィギュア。猫やパンダのバスケTシャツ、和柄のアパレル、3Dプリントのフィギュアを紹介します。',
+    '遊び心のあるオリジナルイラストのTシャツとフィギュア。バスケTシャツ、虎のイラストTシャツ、3Dプリントのフィギュアを紹介します。',
   alternates: {
     canonical: 'https://www.utaraska.co.jp/odd',
   },

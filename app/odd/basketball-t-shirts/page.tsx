@@ -1,60 +1,62 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { ODD_HOOPERS_PRODUCTS } from '@/lib/designshelf/oddHoopersCatalog';
+import { CollectionLanding, collectionMetadata, type CollectionFaq } from '../CollectionLanding';
 
-export const metadata: Metadata = {
-  title: 'バスケTシャツ｜猫・パンダ・忍者のイラスト | ODD HOOPERS',
-  description:
-    '黒猫やパンダ、忍者がバスケットボールと出会う、ODD HOOPERSのオリジナルTシャツ。デザインを見比べて、気に入った一枚をAmazonでチェックできます。',
-  alternates: {
-    canonical: 'https://www.utaraska.co.jp/odd/basketball-t-shirts',
+const title = 'バスケTシャツ｜猫・パンダ・忍者のイラスト | ODD HOOPERS';
+const description =
+  '黒猫、パンダ、忍者、海賊のバスケットボールイラストTシャツ。ODD HOOPERSのオリジナルデザインで、Tシャツは税込2,300円。Amazonで購入できます。';
+const path = '/odd/basketball-t-shirts';
+
+const faqs: CollectionFaq[] = [
+  {
+    question: 'どんな柄がありますか？',
+    answer:
+      '黒猫、ドクロの海賊、忍者、パンダがバスケットボールと一緒に描かれたTシャツです。ダンクやドリブルなど、柄ごとにポーズが違います。',
   },
-};
+  {
+    question: '値段はいくらですか？',
+    answer: '掲載しているバスケTシャツは、いずれも税込2,300円です。',
+  },
+  {
+    question: 'どこで購入できますか？',
+    answer: '各デザインの「Amazonで見る」から、ODD HOOPERSの商品ページで購入できます。',
+  },
+  {
+    question: '着用画像は実物と同じですか？',
+    answer:
+      '一部の着用画像はAIで生成・編集しており、色味や細部が実物と異なる場合があります。購入前にAmazonの商品説明を確認してください。',
+  },
+];
+
+export const metadata = collectionMetadata({
+  title,
+  description,
+  path,
+  image: ODD_HOOPERS_PRODUCTS[0]?.image ?? '/designshelf/images/logo.png',
+  imageAlt: '黒猫がバスケットボールを抱えるTシャツ',
+});
 
 export default function BasketballTShirtsPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10">
-      <Link href="/odd" className="text-sm font-semibold text-gray-700 underline underline-offset-4">
-        utaraska oddの商品一覧
-      </Link>
-      <h1 className="mt-5 text-3xl font-bold text-gray-900 sm:text-4xl">
-        ODD HOOPERSのバスケTシャツ
-      </h1>
-      <p className="mt-4 max-w-2xl leading-relaxed text-gray-700">
-        ボールを抱える黒猫、ダンクを決めるパンダ、ドリブルする忍者。
-        バスケットボールをテーマに、ウタラスカが描いたオリジナルイラストのTシャツです。
-        普段着やバスケ観戦に、好きな柄を選べます。
-      </p>
-      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {ODD_HOOPERS_PRODUCTS.map((product) => (
-          <li key={product.id} className="overflow-hidden rounded-xl border border-gray-200 bg-white">
-            <div className="relative aspect-square bg-gray-50">
-              <Image
-                src={product.image}
-                alt={`${product.features[0]} Tシャツのイメージ`}
-                fill
-                sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
-                className="object-contain"
-              />
-            </div>
-            <div className="p-5">
-              <h2 className="font-bold text-gray-900">{product.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-gray-700">{product.features[0]}</p>
-              {product.amazonLink && (
-                <a
-                  href={product.amazonLink}
-                  rel="sponsored"
-                  aria-label={`${product.title}をAmazonで見る`}
-                  className="mt-4 inline-block rounded-full bg-gray-900 px-5 py-2 text-sm font-semibold text-white"
-                >
-                  Amazonで見る
-                </a>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </main>
+    <CollectionLanding
+      path={path}
+      name="バスケTシャツ"
+      description={description}
+      h1="ODD HOOPERSのバスケTシャツ"
+      lead="ボールを抱える黒猫、ダンクを決めるパンダ、ドリブルする忍者。バスケットボールをテーマに、ウタラスカが描いたオリジナルイラストのTシャツです。普段着やバスケ観戦に、好きな柄を選べます。"
+      brand="ODD HOOPERS"
+      products={ODD_HOOPERS_PRODUCTS.map((product) => ({
+        id: product.id,
+        title: product.title,
+        image: product.image,
+        summary: product.features[0],
+        offers: product.variations.map((variation) => ({
+          name: variation.name,
+          price: variation.price,
+          amazonLink: variation.amazonLink,
+        })),
+      }))}
+      faqs={faqs}
+      sibling={{ href: '/odd/tiger-t-shirts', label: '虎のイラストTシャツ' }}
+    />
   );
 }

@@ -759,6 +759,7 @@ export default function OddCatalog({ category }: { category: string | null }) {
     {
       id: 268,
       title: 'ゆるい虎と虎 2',
+      featurePageHref: '/odd/tiger-t-shirts',
       image: '/designshelf/images/42_tigertiger2/tshirt_model.jpg',
       designImage: '/designshelf/images/42_tigertiger2/desgin.png',
       modelImage: '/designshelf/images/42_tigertiger2/hoodie_model.jpg',
@@ -831,6 +832,7 @@ export default function OddCatalog({ category }: { category: string | null }) {
     {
       id: 269,
       title: 'ゆるい白虎',
+      featurePageHref: '/odd/tiger-t-shirts',
       image: '/designshelf/images/36_whitetiger/tshirt_model.jpg',
       designImage: '/designshelf/images/36_whitetiger/desgin.jpg',
       price: '¥2,300',
@@ -863,6 +865,7 @@ export default function OddCatalog({ category }: { category: string | null }) {
     {
       id: 270,
       title: 'ゆるい白虎と白虎',
+      featurePageHref: '/odd/tiger-t-shirts',
       image: '/designshelf/images/38_white_tigertiger/tshirt_model.jpg',
       designImage: '/designshelf/images/38_white_tigertiger/desgin.jpg',
       price: '¥2,300',
@@ -1147,6 +1150,7 @@ export default function OddCatalog({ category }: { category: string | null }) {
     {
       id: 141,
       title: "ゆるい虎と虎（ドット）",
+      featurePageHref: '/odd/tiger-t-shirts',
       image: "/designshelf/images/41_tigertiger_pixel/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/41_tigertiger_pixel/design.jpg",
       price: "¥2,300",
@@ -1169,6 +1173,7 @@ export default function OddCatalog({ category }: { category: string | null }) {
     {
       id: 103,
       title: "ゆるい虎と虎",
+      featurePageHref: '/odd/tiger-t-shirts',
       image: "/designshelf/images/7_tigertiger/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/7_tigertiger/design.png",
       modelImage: "/designshelf/images/7_tigertiger/jp/sweat_model.png",
@@ -1235,6 +1240,7 @@ export default function OddCatalog({ category }: { category: string | null }) {
     {
       id: 102,
       title: "ゆるい龍と虎",
+      featurePageHref: '/odd/tiger-t-shirts',
       image: "/designshelf/images/5_dragon_tiger/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/5_dragon_tiger/design.png",
       modelImage: "/designshelf/images/5_dragon_tiger/jp/hoodie_model.png",
@@ -1648,6 +1654,7 @@ export default function OddCatalog({ category }: { category: string | null }) {
     {
       id: 105,
       title: "ゆるい虎",
+      featurePageHref: '/odd/tiger-t-shirts',
       image: "/designshelf/images/3_tiger/jp/tshirt_model.jpg",
       designImage: "/designshelf/images/3_tiger/design.png",
       modelImage: "/designshelf/images/3_tiger/jp/hoodie_model.png",
@@ -1810,12 +1817,14 @@ export default function OddCatalog({ category }: { category: string | null }) {
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
             オリジナルTシャツ・フィギュア | utaraska odd
           </h1>
-          <Link
-            href="/odd/basketball-t-shirts"
-            className="mt-3 inline-block text-sm font-semibold text-gray-800 underline underline-offset-4"
-          >
-            ODD HOOPERSのバスケTシャツを見る
-          </Link>
+          <nav aria-label="特集" className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
+            <Link href="/odd/basketball-t-shirts" className="text-gray-800 underline underline-offset-4">
+              バスケTシャツを見る
+            </Link>
+            <Link href="/odd/tiger-t-shirts" className="text-gray-800 underline underline-offset-4">
+              虎のTシャツを見る
+            </Link>
+          </nav>
         </div>
 
       {/* AI生成画像の注意書き */}
@@ -2438,6 +2447,8 @@ export default function OddCatalog({ category }: { category: string | null }) {
             <div>
               <h4 className="text-lg font-semibold mb-4">utaraska odd</h4>
               <ul className="space-y-2">
+                <li><Link href="/odd/basketball-t-shirts" className="text-gray-300 hover:text-white transition-colors">バスケTシャツ</Link></li>
+                <li><Link href="/odd/tiger-t-shirts" className="text-gray-300 hover:text-white transition-colors">虎のTシャツ</Link></li>
                 <li><Link href="/odd/picks" className="text-gray-300 hover:text-white transition-colors">AmazonおすすめTシャツ</Link></li>
                 <li><Link href="/odd/rakugaki" className="text-gray-300 hover:text-white transition-colors">らくがきT</Link></li>
                 <li><Link href="/odd/privacy" className="text-gray-300 hover:text-white transition-colors">プライバシーポリシー</Link></li>
